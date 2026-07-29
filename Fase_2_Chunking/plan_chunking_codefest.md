@@ -50,13 +50,48 @@ En el mismo estudio de Chroma, la estrategia con mejor recall de todas las evalu
 
 ### 2.3 Una técnica de vectorización compatible con las reglas: "late chunking"
 
-Existe una técnica que resuelve parte del trade-off de la sección 2.1 (chunks pequeños = más precisos pero con menos contexto) sin usar ningún modelo generativo. Se llama *late chunking* [4][5]: en vez de cortar el texto primero y vectorizar cada trozo aislado, se codifica el documento completo de una sola vez con un encoder de contexto largo, obteniendo una representación a nivel de token que ya conoce todo el documento; solo después se decide dónde estarían los límites de cada chunk, y se calcula el vector de cada uno promediando (pooling) la porción correspondiente de esa representación ya contextualizada.
+#### 2.3.1 El problema exacto que resuelve
 
-El resultado: cada chunk pequeño obtiene un vector que "sabe" en qué contexto aparece dentro del documento completo, sin necesidad de agrandar el chunk ni de usar solapamiento agresivo para compensar la pérdida de contexto.
+Cuando se vectoriza cada chunk de forma aislada (el enfoque convencional, incluido el de los Candidatos A y B de la sección 3), cada chunk pasa por el encoder **sin ver nada del resto del documento**. El transformer que genera el embedding solo tiene acceso a los tokens que están físicamente dentro de ese chunk. El resultado es que los embeddings de los distintos chunks de un mismo documento son estadísticamente independientes entre sí (independent and identically distributed, en la terminología del área) — cada uno "olvida" por completo de qué documento viene y qué se dijo antes o después.
 
-Es importante aclarar una distinción de diseño: el *late chunking* **no es una forma alternativa de decidir dónde cortar el texto** — es una forma alternativa de decidir **cómo vectorizar** los cortes ya decididos por cualquiera de las estrategias de las secciones 4.1 o 4.2 más abajo. Son dos ejes independientes del diseño, no opciones mutuamente excluyentes.
+Esto es un problema concreto y frecuente en textos como los de este reto: informes técnicos, artículos de observatorios, documentos institucionales. Un ejemplo ilustrativo y muy citado en la literatura: un documento menciona "Berlín" en el primer párrafo, y dos párrafos más adelante dice algo como "la ciudad enfrenta desafíos de infraestructura" sin repetir el nombre. Si ese segundo fragmento se vectoriza de forma aislada, su embedding no tiene ninguna señal de que "la ciudad" se refiere a Berlín — semánticamente, ese chunk podría estar hablando de cualquier ciudad del mundo. Una consulta como "desafíos de infraestructura en Berlín" tendría dificultad para encontrar ese chunk, aunque sea exactamente la respuesta correcta [5].
 
-**Requisito técnico:** esta técnica exige un encoder que soporte contextos largos (los encoders BERT clásicos, tope ~512 tokens, no alcanzan). Un candidato con soporte multilingüe fuerte y contexto de hasta 8192 tokens es BGE-M3 (BAAI), de licencia MIT, que soporta más de 100 idiomas [6] — lo cual cubre holgadamente el requisito de soporte para español, inglés y portugués del corpus de este reto. Nota de implementación: la disponibilidad de *late chunking* "llave en mano" depende del proveedor del encoder — algunos modelos comerciales (p. ej. Jina) exponen esto como un parámetro directo de su API; con un modelo open source como BGE-M3 habría que implementar manualmente el acceso a los embeddings previos al pooling final, lo cual añade complejidad de desarrollo no trivial.
+Este patrón — término o entidad introducida en un párrafo, referenciada por pronombre o descripción en los siguientes — es habitual precisamente en el tipo de fuentes que provee ADL para este reto: informes técnicos, publicaciones institucionales y artículos de observatorios (Sección 1.3 de la especificación), que suelen desarrollar una idea a lo largo de varios párrafos en vez de repetir el sujeto en cada oración.
+
+#### 2.3.2 Cómo funciona mecánicamente
+
+1. En vez de cortar el texto y pasar cada trozo por el encoder por separado, se pasa el **documento completo** (hasta el límite de contexto del modelo) por el transformer en una sola pasada.
+2. Como el mecanismo de atención de un transformer permite que cada token "vea" a todos los demás tokens de esa misma pasada, el token embedding resultante para cada palabra ya está influenciado por todo el documento — incluyendo referencias anteriores como "Berlín" en el ejemplo anterior.
+3. Solo **después** de esa pasada se decide dónde están los límites de cada chunk (usando cualquiera de las estrategias de la sección 3), y se calcula el vector final de cada chunk promediando (mean pooling) únicamente los token embeddings que caen dentro de ese rango.
+4. El resultado: cada chunk conserva un tamaño pequeño y preciso (para efectos de la Sección 9.2, sigue siendo un fragmento de ~150-230 palabras), pero su vector ya incorpora información de todo el documento, sin necesidad de agrandar el chunk ni de usar solapamiento agresivo para compensar la pérdida de contexto.
+
+#### 2.3.3 Evidencia cuantitativa, no solo conceptual
+
+El artículo original que propone esta técnica la evaluó en varios conjuntos de datos del benchmark BEIR, comparando chunking convencional contra *late chunking* con el mismo modelo de embeddings en ambos casos, usando NDCG@10 como métrica [5] — la misma métrica que usa este reto para fragmentos. Los resultados (NDCG@10, chunking convencional → *late chunking*):
+
+| Dataset | Longitud promedio del documento (caracteres) | NDCG@10 convencional | NDCG@10 late chunking |
+|---|---|---|---|
+| NFCorpus | 1,590 | 23.5% | 30.0% |
+| SciFact | 1,498 | 64.2% | 66.1% |
+| TRECCOVID | 1,117 | 63.4% | 64.7% |
+| FiQA2018 | 767 | 33.3% | 33.8% |
+| Quora | 62 | 87.2% | 87.2% (sin cambio) |
+
+El patrón es consistente y es la parte más importante para decidir si vale la pena aquí: **la mejora crece con la longitud del documento**. En Quora, donde los documentos son preguntas cortas de una sola oración, no hay ninguna diferencia — no hay contexto que perder porque no hay nada más allá del propio chunk. En NFCorpus, con documentos de más de 1,500 caracteres en promedio, la mejora es la mayor de toda la tabla (+6.5 puntos porcentuales).
+
+Esto es directamente relevante para este reto: los documentos PDF de informes técnicos e institucionales que provee ADL son, casi con certeza, mucho más largos que una pregunta de Quora y del orden de longitud de NFCorpus o mayores — exactamente el régimen donde esta técnica muestra su mayor beneficio. Los datasets tabulares (CSV/XLSX), en cambio, cuyo texto por fila es corto y autocontenido, caen más cerca del caso Quora, donde no cabría esperar mejora — otra razón para tratar el chunking de forma distinta según el tipo de fuente, como ya se señaló en la sección 3.
+
+Una salvedad honesta: estos números provienen del propio equipo que desarrolló la técnica (Jina AI), aunque el trabajo está publicado como preprint revisable en arXiv y el código de evaluación es público y reproducible [5]. No es evidencia independiente de terceros, así que conviene tratarla como una señal fuerte a favor de probar la técnica, no como una garantía de que el mismo salto de rendimiento se replicará en este corpus.
+
+#### 2.3.4 Relación con los candidatos de la sección 3
+
+Es importante no confundir esto con una tercera forma de decidir *dónde cortar*: el *late chunking* **no reemplaza** al Candidato A ni al B — ambos se siguen usando exactamente igual para decidir los límites de cada chunk. Lo único que cambia es el momento en que se calcula el vector: en vez de vectorizar cada chunk ya cortado y aislado, se vectoriza el documento completo primero y se extrae el vector de cada chunk después. Son dos ejes de diseño independientes, no opciones mutuamente excluyentes (se retoma esto en la sección 3.3).
+
+**Requisito técnico:** esta técnica exige un encoder que soporte contextos largos (los encoders BERT clásicos, tope ~512 tokens, no alcanzan). Un candidato con soporte multilingüe fuerte y contexto de hasta 8192 tokens es BGE-M3 (BAAI), de licencia MIT, que soporta más de 100 idiomas [6] — lo cual cubre holgadamente el requisito de soporte para español, inglés y portugués del corpus de este reto.
+
+**Nota de implementación:** la disponibilidad de *late chunking* "llave en mano" depende del proveedor del encoder — algunos modelos comerciales (p. ej. Jina, a través de su propia API) exponen esto como un parámetro directo de la petición; con un modelo open source como BGE-M3 habría que implementar manualmente el acceso a los embeddings previos al pooling final(Normalizar), lo cual añade complejidad de desarrollo no trivial. (En caso de implementarlo revisar cahts hablados con IAs)
+
+**Límite práctico:** si un documento supera el contexto máximo del encoder (8192 tokens en el caso de BGE-M3), habría que procesarlo en ventanas, y ahí reaparece — aunque mucho más atenuado — el mismo problema de pérdida de contexto, ahora en la frontera entre ventanas en lugar de en la frontera entre chunks pequeños. Para la mayoría de las fuentes de este reto (artículos, informes de observatorios) es razonable esperar que quepan enteras dentro de ese límite, pero conviene verificarlo antes de asumir que el problema queda completamente resuelto.
 
 ---
 
@@ -136,3 +171,5 @@ El ground truth real de las 50 consultas de evaluación es oculto hasta después
 [5] Günther et al. — "Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models" (arXiv:2409.04701) — https://arxiv.org/pdf/2409.04701
 
 [6] BAAI — Ficha del modelo BGE-M3 en Hugging Face — https://huggingface.co/BAAI/bge-m3
+
+[7] Digital Applied — "RAG Chunking Strategies: A 2026 Retrieval Playbook" (corrobora las cifras de la Tabla 2 del artículo original de late chunking) — https://www.digitalapplied.com/blog/rag-chunking-strategies-2026-retrieval-quality-playbook
