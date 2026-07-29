@@ -1,0 +1,987 @@
+Aten Primaria. 2020;52(10):770- - -777
+www.elsevier.es/ap
+Atención Primaria
+ORIGINAL
+Necesidad y uso de productos de apoyo y facilitadores
+arquitectónicos en población dependiente
+Ana María Rodríguez-Gonzáleza,b,c,∗ y Eva Rodríguez-Míguezc,d,e
+a Facultad de Ciencias de Educación y del Deporte, Universidad de Vigo, Pontevedra, Espa˜na
+b Centro de Salud Altamira, Servicio Cántabro de Salud, Puente San Miguel (Cantabria), Espa˜na
+c Fundación Biomédica Galicia Sur, Vigo (Pontevedra), Espa˜na
+d Departamento de Economía Aplicada, Facultad de Ciencias Económicas y Empresariales, Universidad de Vigo, Campus
+Universitario Lagoas-Marcosende, Vigo (Pontevedra), Espa˜na
+e ECOBAS, Facultad de Ciencias Económicas y Empresariales, Campus Universitario Lagoas-Marcosende, Vigo (Pontevedra), Espa˜na
+Recibido
+el 29 de mayo de 2019; aceptado el 23 de agosto de 2019
+Disponible
+en Internet el 10 de noviembre de 2019
+PALABRAS CLAVE
+Cuidadores
+informales;
+Productos
+de apoyo;
+Dependencia;
+Cuidados
+de larga
+duración;
+Sobrecarga
+de
+cuidados
+Resumen
+Objetivo:
+Describir la utilización y percepción de la necesidad de productos de apoyo e identi-
+ﬁcar
+su asociación con instrumentos para medir la dependencia y la sobrecarga de cuidados.
+Dise˜no:
+Estudio transversal.
+Emplazamiento:
+Atención Primaria del área sur de Pontevedra.
+Participantes:
+Un total de 112 personas cuidadoras informales que atienden a 125 personas
+dependientes.
+Mediciones
+principales: Mediante entrevista personal se recogen datos sobre la utilización y
+percepción
+de necesidad de estos productos. Además, se obtienen datos sociodemográﬁcos
+e información referida al tiempo dedicado al cuidado diario, la sobrecarga del cuidador , el
+Baremo
+de Valoración de Dependencia y el indicador de dependencia DEP-6D. Se ha utilizado
+un
+contraste de medias para identiﬁcar si existen diferencias signiﬁcativas en dichos indicadores
+en
+función de si utilizan o no los productos facilitadores. Se ha calculado una regresión logística
+para
+identiﬁcar aquellas variables asociadas con tener una necesidad no cubierta.
+Resultados:
+Un 60% (IC 95%: 50,9-68,7) de las personas dependientes tienen necesidades no
+cubiertas
+de estos dispositivos. Estas necesidades se asocian, principalmente, con una renta
+familiar baja, un mayor grado de dependencia y una mejor salud del cuidador , aunque en
+situaciones
+de gran dependencia y muy mala salud del cuidador estas carencias se suavizan.
+Conclusiones:
+Existe una fuerte asociación entre grado de dependencia y utilización de estos
+productos.
+Sin embargo, también hay un elevado porcentaje de la muestra con necesidades
+no
+cubiertas de estos productos que están asociadas tanto con la situación socioeconómica del
+hogar
+como con las características del dependiente y de la persona cuidadora.
+©
+2019 Los Autores. Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo
+la
+licencia CC BY-NC-ND (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+∗ Autor para correspondencia.
+Correo electrónico: anarodriguez@uvigo.es (A.M. Rodríguez-González).
+https://doi.org/10.1016/j.aprim.2019.08.003
+0212-6567/© 2019 Los Autores. Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Productos de apoyo en población dependiente 771
+KEYWORDS
+Informal caregivers;
+Assistive devices;
+Dependence;
+Long-term
+care;
+Burden
+Need and use of assistive devices and architectural facilitators in a dependent
+population
+Abstract
+Objective:
+To describe the use and perception of the need for assistive devices and identify
+their
+relationship with instruments to measure dependence and caregiver burden.
+Design: Cross-sectional study.
+Location:
+Primary Health Care in the southern area of Pontevedra.
+Participants:
+A total of 112 informal caregivers providing care to 125 dependent persons.
+Key
+measurements: Through a personal interview, data was collected on the use and perception
+of
+the need for these devices. In addition, sociodemographic data and information on the
+time dedicated to daily care, caregiver burden, the Dependency Rating Scale, and the DEP-6D
+dependency indicator were obtained. A contrast mean was used to identify whether there are
+signiﬁcant differences in these indicators, depending on whether or not they use the facilitator
+devices.
+A logistic regression was performed to identify those variables most associated with
+not
+having a need covered.
+Results: More
+than half (60%: 95% CI; 50.9-68.7) of dependent persons have unmet needs for
+these
+devices. These needs are mainly associated with a low family income, a high degree
+of
+dependence, and better health of the caregiver; although in extreme situations of greater
+dependence and worse health
+of the caregiver these deﬁciencies are smoothed out.
+Conclusions: There is a
+strong association between the level of dependence and the use of
+these devices. However , there is a high percentage of the sample that do not have the products
+that they need,
+
+which
+are associated with the socioeconomic situation of the household as well
+as with the characteristics of the dependent person and the caregiver .
+© 2019 The Authors. Published by Elsevier Espa˜na, S.L.U. This is an open access article under
+the
+CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Introducción
+El envejecimiento de la población es una constante en la
+mayor
+parte de los países de la OCDE y se espera que se
+incremente
+en las próximas décadas. Así, la población mayor
+de
+65 a˜nos, que en 1960 era inferior al 10%, ha pasado a
+representar
+el 15% en el a˜no 2010 y se espera que alcance
+el
+27% en el a˜no 20501. En la Unión Europea, más de 70
+millones
+de personas padecen algún tipo de discapacidad2.
+Esta
+situación supondrá un importante reto tanto para los
+gobiernos
+como para las familias, sobre las cuales sigue reca-
+yendo
+de forma mayoritaria los cuidados de las personas
+dependientes.
+El
+grado de autonomía de las personas dependientes y
+los
+cuidados que reciben pueden verse favorecidos con la
+eliminación
+de barreras arquitectónicas y la utilización de
+productos
+de apoyo. Se consideran barreras arquitectónicas
+a
+los obstáculos que entorpecen o impiden a las personas
+con
+discapacidad desplazarse con libertad en lugares de uso
+público.
+Por
+su parte, producto de apoyo es aquel «utilizado
+por o para personas con discapacidad destinado a facilitar
+su
+participación: proteger , apoyar , entrenar , medir o susti-
+tuir
+funciones o estructuras corporales y actividades o para
+prevenir
+impedimentos, limitaciones en la actividad o res-
+tricciones
+en la participación»3.
+La
+eliminación de barreras en la vivienda y su entorno
+pueden
+reducir o eliminar la pérdida de autonomía que
+se
+deriva de las limitaciones en la movilidad. Respecto
+a
+los productos de apoyo, aunque algunos también están
+enfocados
+en aumentar la autonomía del dependiente (por
+ejemplo, la silla de ruedas eléctrica), la mayoría están desti-
+nados
+a incrementar la calidad de los cuidados y el bienestar
+del
+dependiente y de la persona cuidadora. Dado que, en
+nuestro
+país, gran parte de las personas dependientes no
+están
+institucionalizadas y sus cuidados son prestados por
+personas
+del ámbito familiar4 (en su mayoría mujeres5) es
+preciso
+tener en cuenta el beneﬁcio que dichos facilitado-
+res
+aportan para hacer que los cuidados sean más seguros y
+cómodos.
+Dichos dispositivos no solo incrementan el bienes-
+tar
+presente de cuidadores y dependientes sino que además
+previenen
+enfermedades futuras.
+En
+la literatura existen varios estudios que analizan el
+impacto
+del uso de productos de apoyo en la reducción de la
+sobrecarga de cuidados6,7; sin embargo, apenas hay estudios
+que
+analicen la asociación entre el uso de estos produc-
+tos
+y el nivel de dependencia de la persona que recibe los
+cuidados.
+El
+objetivo de este trabajo es doble. Por una parte,
+se
+describe la utilización o no de una relación extensa de
+productos
+de
+apoyo, así como su asociación con variables
+relacionadas
+con la sobrecarga del cuidador y el nivel de
+dependencia de la persona que recibe los cuidados. Por
+otro
+lado, se identiﬁcan los principales determinantes de
+las
+necesidades no cubiertas de estos productos.
+Material y métodos
+Se ha entrevistado a 112 cuidadores principales informales
+de
+125 personas dependientes que padecen una enferme-
+dad
+crónica, captados por trabajadores sociosanitarios de
+
+772 A.M. Rodríguez-González, E. Rodríguez-Míguez
+centros de salud de atención primaria del área sur de Pon-
+tevedra.
+Los criterios de inclusión fueron: ser el cuidador
+principal
+de una persona dependiente adulta, no recibir una
+remuneración económica por dichos cuidados y poder leer
+la
+letra peque˜na.
+La recogida de datos se realizó del 2014 al 2016,
+principalmente
+en el domicilio del cuidador . Se recogió
+información
+sobre: las características sociodemográﬁcas y
+sanitarias
+del cuidador y del dependiente; el nivel de depen-
+dencia
+del dependiente; la sobrecarga del cuidador y si
+poseía
+y si necesitaba cada uno los productos de apoyo y
+adaptaciones
+del hogar mostrados en un listado. En el caso
+de
+que un cuidador prestara cuidados a más de una persona
+dependiente, se recogían los datos relativos a cada una de
+ellas.
+En particular , el nivel de dependencia fue medido con
+indicadores: el Baremo para la Valoración de la Depen-
+dencia
+(BVD) y el indicador DEP-6D. El BVD8 oscila entre 0
+(total
+independencia) y 100 (máxima dependencia en todas
+las
+actividades)9 en función del desempe˜no del dependiente
+en 59 tareas.
+El indicador DEP-6D10 mide el nivel de depen-
+dencia en función de 6 dimensiones (comer , incontinencia,
+cuidado personal,
+
+movilidad,
+tareas domésticas y depen-
+dencia ligada a
+problemas cognitivos). Cada dependiente
+recibe una puntuación que oscila entre −0,84 (nivel de
+dependencia más alto) y
+1 (no dependencia): los valores
+negativos corresponden con situaciones que
+son conside-
+radas peores
+que la muerte.
+La ventaja de este indicador
+es que puede ser utilizado en estudios de evaluación eco-
+nómica.
+La sobrecarga del cuidador fue medida con el
+cuestionario
+Zarit Burden Interview abreviado11 (derivado
+del
+Zarit Burden Interview)12, el cual recoge 7 ítems indi-
+cativos
+de sobrecarga. Para cada uno, el cuidador debía
+indicar
+la frecuencia percibida de sobrecarga, en una escala
+Likert
+que puntúa entre 1 («nunca») y 5 («casi siempre»).
+La
+puntuación total varía entre 7 y 35 puntos: la sobre-
+carga
+intensa corresponde con una puntuación de 17 o más
+puntos13.
+Asimismo,
+se les entregaba un diario de actividades, que
+era
+recogido posteriormente, en el cual debían apuntar ,
+durante
+un día, los minutos dedicados al cuidado del depen-
+diente,
+tanto en las actividades básicas de la vida diaria
+(ABVD)
+como en las instrumentales (AIVD). Además, para
+aquellas actividades que no eran realizadas a diario, se debía
+registrar
+con qué frecuencia se hacían (semanal o mensual-
+mente)
+y el tiempo de ejecución. Los minutos dedicados
+a
+este tipo de actividades se prorratearon para obtener
+una
+medida diaria. Los minutos dedicados a las actividades
+domésticas
+realizadas de forma conjunta para toda la fami-
+lia
+fueron
+ajustados según el tama˜no del hogar mediante la
+escala
+de equivalencia de la OCDE.
+Con
+base
+en la información obtenida se elaboró un análi-
+sis descriptivo tanto de las características sociodemográﬁcas
+y
+sanitarias de la muestra como de la utilización o no de
+cada
+uno de los dispositivos analizados, poniendo especial
+énfasis
+en las necesidades no cubiertas. Identiﬁcamos como
+una
+necesidad no cubierta aquella situación en la que no se
+dispone
+de un producto, a pesar de haber manifestado su
+necesidad.
+En segundo lugar , se analiza si existen diferen-
+cias
+signiﬁcativas en los valores de los indicadores obtenidos
+(tiempo
+de cuidados en ABVD y AIVD, DEP-6D, BVD y escala
+Zarit),
+en función de si la muestra utiliza o no cada uno de los
+66 no ace ptan participar
+216 cuidadoras se les ofreció
+participar en el estudio
+3 ingresos en residencia (dejan de
+cumplir los requisitos del estudio)
+18 abandonos
+Muestra de estud io
+N = 112 cuidadoras
+17 exitus (dependientes)
+Figura
+1 Esquema del estudio.
+productos facilitadores analizados. Previamente se emplea
+el test de normalidad de Shapiro-Wilk. Si dicho test rechaza
+la
+normalidad de las variables, las comparaciones se hacen
+con
+base
+en las medianas.
+Finalmente, se estimaron regresiones logísticas para ana-
+lizar
+la
+asociación entre tener al menos una necesidad no
+cubierta
+(la variable dependiente toma 1 en este caso y 0 en
+caso
+contrario) y las características de cuidadores y depen-
+dientes.
+Para
+evitar problemas de multicolinealidad solo se
+consideró
+un indicador de
+dependencia en cada estimación.
+Se presenta el modelo de mejor ajuste.
+El
+estudio fue aprobado por el Comité Ético de Investiga-
+ción
+Clínica de Galicia (2012/381). Puede verse un esquema
+del estudio en la ﬁgura 1.
+Resultados
+La tabla 1 recoge las características de la muestra. Una
+amplia
+mayoría de los cuidadores son mujeres y más de la
+mitad
+son hijas. Su media de edad es de 56 a˜nos. Menos
+de
+un cuarto de la muestra tenía un trabajo retribuido. Un
+59%
+sufre dolor o malestar y alrededor de un tercio padece
+una
+enfermedad psicológica o psiquiátrica. Por su parte, los
+dependientes
+suelen ser mujeres de edad avanzada (solo un
+7%
+tiene menos de 65 a˜nos) y 3/4 partes tiene una dependen-
+cia
+severa o gran dependencia. El tiempo medio de cuidados
+recibidos
+es
+7,5 h, de las que un 56% se destina a ABVD. La
+renta
+media
+equivalente del hogar es de 865 euros mensua-
+les.
+La tabla 2 muestra que, respecto a la eliminación de
+barreras
+arquitectónicas, son las reformas del ba˜no, segui-
+das
+de las barras de apoyo y protecciones, las más utilizadas.
+En
+lo relativo a los productos de apoyo, la silla de ruedas y
+la
+cama articulada son los más utilizados. Un 60% (IC 95%:
+50,9-68,7)
+de los encuestados se˜nala tener al menos una
+necesidad
+no cubierta. Destacan las rampas de acceso y
+las
+grúas domiciliarias, las cuales ﬁguran como una nece-
+sidad
+no cubierta para el 29 y el 22% de los encuestados,
+respectivamente.
+La
+tabla 3 muestra el valor mediano de los indicadores
+de
+dependencia y sobrecarga, en función de si se utilizan o
+no
+los productos analizados, así como aquellas diferencias
+que
+son signiﬁcativas utilizando el test de Mann-Whitney.
+
+Productos de apoyo en población dependiente 773
+T abla 1 Características de la persona cuidadora y de la persona dependiente
+Cuidadora (n = 112) N % Dependiente (n = 125)a N %
+Sexo Mujer 100 89,3 Sexo Mujer 90 72
+Hombre 12 10,7 Hombre 35 28
+Edad
+Menores de 45 15 13,4 Edad Menos de 85 73 58,4
+Entre
+45 y 54 32 28,6 85 y más 52 41,6
+Entre
+55 y 65 39 34,8 BVD Grado I o menos 31 24,8
+a˜nos y más 26 23,2 Grado II 35 28
+Grado
+de parentesco Hijo/a 70 62,5 Grado III 59 47,2
+Esposo/a
+9 8 Renta familiarb < 601 D 38 30,4
+Nuera/yerno
+12 10,7 601-1.200 D 63 50,4
+Otros 21 18,8 Más de 1.200 D 24 19,2
+Situación Pensionista 31 27,7 Horas diarias de cuidado
+laboral Trabaja 25 22,3 Menos de 3 43 34,4
+Desempleado
+56 50 ABVD Entre 3 y 5 36 28,8
+Dolor
+o No 46 41,1 Más de 5 46 36,8
+malestar
+Moderado 59 52,7 Menos de 3 55 44
+Severo
+7 6,2 AIVD Entre 3 y 5 51 40,8
+Psicológica-
+Sin enfermedad 77 68,8 Más de 5 19 15,2
+psiquiátrica
+Con enfermedad 35 31,2
+Sobrecarga
+No intensa 39 34,8
+escala
+Zarit Intensa 73 65,2
+ABVD: actividades básicas de la vida diaria; AIVD: actividades instrumentales de la vida diaria; BVD: Baremo de Valoración de la Depen-
+dencia. Oscila entre 0 (total independencia) y 100 (máxima dependencia). Grado I o menos: 0-49 puntos; Grado II: 50-74 puntos; Grado
+III: 75-100 puntos; Zarit: sobrecarga del cuidador medida a través del cuestionario Zarit Burden Interview abreviado. Oscila entre 7 y 35
+puntos. Sobrecarga intensa: 17 o más puntos.
+a Algunos dependientes son atendidos por el mismo cuidador .
+b Renta familiar equivalente ajustada según el tama˜no del hogar mediante la escala de equivalencia de la OCDE.
+T abla 2 Productos y adaptaciones en el hogar en función de su utilización y necesidada
+Producto o adaptación Utiliza N (%) No utiliza pero necesita N (%) No necesita N (%)
+Barras de apoyo/protecciones 70 (56) 20 (16) 35 (28,0)
+Reformas
+del ba˜no 77 (61,6) 22 (17,6) 26 (20,8)
+Rampas
+de acceso 19 (15,2) 36 (28,8) 70 (56,0)
+Silla
+elevadora/ascensor 27 (21,6) 4 (3,2) 94 (75,2)
+Silla
+de ruedas 61 (48,8) 7 (5,6) 57 (45,6)
+Silla de ruedas de ducha 22 (17,6) 18 (14,4) 85 (68,0)
+Asiento
+de ducha o ba˜nera 41 (32,8) 0 84 (67,2)
+Cama
+articulada 55 (44) 18 (14,4) 52 (41,6)
+Colchón
+antiescaras 41 (32,8) 9 (7,2) 75 (60,0)
+Cojín
+antiescaras 13 (10,4) 0 112 (89,6)
+Grúa
+domiciliaria 11 (8,8) 27 (21,6) 87 (69,6)
+Sillón articulado 11 (8,8) 0 114 (91,2)
+Bastón/muletas
+33 (26,4) 1 (0,8) 91 (72,8)
+Andador
+8 (6,4) 3 (2,4) 114 (91,2)
+Timbre/avisador
+7 (5,6) 0 118 (94,4)
+a Se eliminan de la tabla los productos y adaptaciones con una frecuencia en la muestra inferior al 5%.
+Se ha utilizado el test de medianas y no de medias porque
+el
+test de Shapiro-Wilk rechaza normalidad excepto en la
+variable
+minutos ABVD. En primer lugar , la muestra anali-
+zada
+tiene un nivel de dependencia elevado, tanto en el
+BVD
+(73 puntos), como en el DEP-6D (−0,241) y el tiempo
+diario
+de cuidados en ABVD (4,5 h). En segundo lugar , el Zarit
+alcanza los 19 puntos, por encima de los 17 puntos que mar-
+can
+la consideración de sobrecarga intensa. En tercer lugar ,
+se observa que existen diferencias signiﬁcativas en los indi-
+cadores
+de dependencia (DEP-6D y BVD) entre aquellos que
+utilizan
+los productos facilitadores y los que no, aunque la
+dirección
+varía por producto. Así, mientras la utilización de
+barras
+de apoyo y muletas está asociada a una menor depen-
+dencia,
+la silla de ruedas, la cama articulada, el colchón
+antiescaras y la grúa domiciliaria están relacionados con un
+nivel
+de dependencia mayor . Por último, la utilización de
+
+774 A.M. Rodríguez-González, E. Rodríguez-Míguez
+T abla
+3 Valores medianos del BVD, DEP-6D, tiempo de cuidado y escala Zarit, en función de si utiliza o no determinados
+productos y adaptaciones en el hogara
+Utilizar/no utilizar BVD DEP-6D Minutos ABVD Minutos AIVD Zarit
+Barras de apoyo/protecciones 61/85 *** −0,076/−0,34** 257/267 176/165 21,5/16*
+Reformas del ba˜no 69/76 −0,241/−0,229 273/237 176/161 19/20
+Rampas
+de acceso 78/70 −0,255/−0,228 276/262 200/171 23/19
+Silla
+elevadora/ascensor 78/70 −0,314/−0,228 234/266 191/168 22/19
+Silla
+de ruedas 86/52 *** −0,406/−0,076*** 288/204** 167/178 22/18**
+Silla de ruedas de ducha 89/69 *** −0,483/−0,129*** 274/250 199/171 23,5/19
+Asiento
+ducha-ba˜nera 70/74 −0,249/−0,228 267/250 191/159** 21/19
+Cama
+articulada 86/57 *** −0,538/−0,026*** 295/190*** 165/178 23/17***
+Colchón antiescaras 92/60 *** −0,554/−0,056*** 306/203*** 186/170 23/17,5***
+Grúa domiciliaria 95/69 *** −0,717/−0,165*** 286/237 211/171 22/19
+Bastón/muletas 52/79 *** 0,095/−0,325*** 189/274 185/168 19/19
+Mediana
+de la muestra 73 −0,241 264 172 19
+ABVD: actividades básicas de la vida diaria; AIVD: actividades instrumentales de la vida diaria; BVD: Baremo de Valoración de la Depen-
+dencia. Oscila entre 0 (total independencia) y 100 (máxima dependencia). Grado I o menos: 0-49; Grado II: 50-74; Grado III: 75-100;
+DEP-6D: indicador de dependencia. Oscila entre −0,84 (nivel de dependencia más alto) y 1 (no dependencia); Zarit: Sobrecarga del
+cuidador medida a través del cuestionario Zarit Burden Interview abreviado. Oscila entre 7 y 35 puntos. Sobrecarga intensa: 17 o más
+puntos.
+a Se eliminan de la tabla los productos y adaptaciones con una frecuencia en la muestra inferior al 15%.
+* Diferencias signiﬁcativas al nivel 10% entre los que lo utilizan y los que no.
+** Diferencias signiﬁcativas al nivel 5% entre los que lo utilizan y los que no.
+*** Diferencias signiﬁcativas al nivel 1% entre los que lo utilizan y los que no.
+cama articulada, colchón antiescaras y silla de ruedas están
+asociadas
+con un mayor tiempo de cuidados en ABVD y una
+mayor
+sobrecarga del cuidador .
+La
+tabla 4 muestra los resultados de la regresión logís-
+tica.
+En primer lugar , debemos destacar el efecto de la
+renta.
+Como era esperable, a medida que se reduce la renta
+familiar
+aumenta la probabilidad de tener una necesidad
+no
+cubierta. Una vez controlado por el nivel de renta, se
+observa
+una tendencia creciente en la probabilidad de tener
+necesidades
+no cubiertas a medida que se reduce la edad del
+cuidador
+y mejora su nivel de salud (tanto en términos de
+dolor
+o malestar como del padecimiento de una enferme-
+dad
+psicológica-psiquiátrica). Esto es, cuanto más favorable
+es la situación de la persona cuidadora (más joven y menos
+dolencias),
+más probable es que asuma el trabajo extra que
+supone
+esta necesidad no cubierta. Por su parte, la percep-
+ción
+de una sobrecarga intensa está asociada a una mayor
+probabilidad
+de tener una necesidad no cubierta. Respecto
+a
+las características del dependiente, tener 85 o más a˜nos y
+un
+grado de dependencia elevado también está fuertemente
+asociado
+a tener necesidades no cubiertas. Sin embargo, es
+en
+el grado II donde se producen las mayores carencias. Esto
+es
+explicable porque en los niveles más severos, la necesi-
+dad
+de apoyos es más intensa y, por tanto, es más probable
+que
+ya esté cubierta.
+Discusión
+El presente estudio muestra una panorámica general del
+uso
+y de las necesidades no cubiertas de productos facili-
+tadores.
+Además, se analizó la asociación entre el uso de
+estos
+dispositivos y determinados indicadores relacionados
+con la sobrecarga del cuidador y el nivel de dependencia de
+la persona dependiente. También se analizaron las variables
+relacionadas
+con tener necesidades no cubiertas.
+El
+primer resultado destacable es la elevada prevalen-
+cia
+de las necesidades no cubiertas. El segundo es que la
+utilización
+de productos más relacionados con dependencia
+severa
+(cama articulada o colchón antiescaras) presentan
+una
+fuerte asociación con la sobrecarga y con un mayor
+tiempo
+destinados a ABVD. Finalmente, las necesidades no
+cubiertas
+están asociadas a un menor nivel de renta familiar ,
+a
+una mayor capacidad de los cuidadores (que posiblemente
+retrase
+la adquisición de estos productos) y a una peor situa-
+ción
+del dependiente (que incrementa su necesidad).
+Los
+resultados obtenidos son consistentes con la evi-
+dencia de otros países. Tanto la elevada prevalencia de
+necesidades
+no cubiertas como la asociación de esta con
+un
+elevado grado de dependencia ya han sido puestas de
+maniﬁesto14-16. El papel de la renta está en línea con varios
+estudios,
+por ejemplo, la revisión de Yusif et al.17 enfocada
+en
+el equipamiento electrónico, u otros trabajos centra-
+dos
+en productos de apoyo tradicionales18,19. Por último, la
+literatura
+también muestra una clara asociación entre pro-
+ductos
+de apoyo y una menor sobrecarga del cuidador , tal y
+como
+se muestra en la revisión de Madara20.
+Estudios
+como este ponen en evidencia la necesidad de
+facilitar
+la tenencia de productos de apoyo (adquisición o
+préstamo) y la eliminación de barreras. Esto contribuiría
+tanto
+a la eﬁciencia como a la equidad de los servicios
+sociales.
+Respecto a la eﬁciencia, hay evidencias de que
+dichos
+productos de apoyo son coste-efectivos21. Además,
+estos
+productos no solo pueden retrasar una situación de
+dependencia,
+con el consiguiente ahorro de recursos, sino
+que pueden prevenir un deterioro de la salud de las per-
+sonas
+cuidadoras, un aspecto que debería ser objeto de
+más
+estudio en el futuro. Respecto a la equidad, en primer
+
+Productos de apoyo en población dependiente 775
+T abla
+4 Determinantes de las necesidades no cubiertas: regresión logística
+OR EE z p>|z| IC 95%
+Cuidadora
+Edad
+(ref. 65 a˜nos y más)
+Entre
+55 y 64 a˜nos 7,131 6,800 2,06 0,039 1,100-46,229
+Entre
+45 y 54 a˜nos 7,490 7,727 1,95 0,051 0,992-56,565
+Menor
+45 a˜nos 8,334 10,121 1,75 0,081 0,771-90,082
+Parentesco
+(ref. hija)
+Esposa
+1,433 1,514 0,34 0,734 0,181-11,365
+Nuera
+0,301 0,261 −1,39 0,166 0,055-1,644
+Otro
+3,125 2,233 1,59 0,111 0,770-12,679
+Situación laboral (ref. empleo remunerado)
+Desempleado
+u otras 0,566 0,378 −0,85 0,394
+0,152-2,099
+Jubilado o pensionista 3,385 3,023 1,37 0,172 0,5881-19,485
+Dolor/malestar
+(ref. mucho dolor/malestar)
+Dolor
+moderado/malestar 18,121 19,341 2,71 0,007 2,237-146,792
+Ni
+dolor ni malestar 9,544 10,322 2,09 0,037 1,146-79,484
+Enfermedad
+psicológica-psiquiátrica (ref. padecer)
+No
+padecer 4,719 2,775 2,64 0,008 1,490-14,942
+Zarit
+(ref. no sobrecarga severa)
+Sobrecarga
+severa 2,932 1,679 1,88 0,060 0,955-9,005
+Dependiente
+Edad (ref. menor 85 a˜nos)
+85 a˜nos o más 4,234 2,544 2,40 0,016 1,304-13,749
+BVD
+(ref. grado I o menos)
+Grado
+II 9,567 7,010 3,08 0,002 2,275-40,225
+Grado
+III 5,840 3,892 2,65 0,008 1,582-21,561
+Renta
+familiara (ref. más de 1.200 D )
+Entre
+601 D y 1.200 D 3,290 2,200 1,78 0,075 0,887-12,197
+D o menos 11,303 9,959 2,75 0,006 2,010-63,564
+Constante
+0,001 0,001 −4,18 0,001 0,001-0,004
+Pseudo
+R2 = 0,297; observaciones: 125
+BVD: Baremo de Valoración de la Dependencia. Oscila entre 0 (total independencia) y 100 (máxima dependencia). Grado I o menos: 0-49;
+Grado II: 50-74; Grado III: 75-100.
+EE: error estándar; OR: odds ratio; Zarit: sobrecarga del cuidador medida a través del cuestionario Zarit Burden Interview abreviado.
+Oscila entre 7 y 35 puntos. Sobrecarga intensa: 17 o más puntos;
+a Renta familiar equivalente ajustada según el tama˜no del hogar mediante la escala de equivalencia de la OCDE.
+lugar , hemos visto que la renta puede explicar la carencia
+de
+estos productos. Así, mientras aquellos de precio ase-
+quible
+(por ejemplo, un asiento de ducha) los poseen la
+mayoría
+de las personas que dicen necesitarlo, cuando el
+coste
+del producto se eleva, como es la grúa domiciliaria,
+aumenta
+considerablemente el porcentaje de personas que
+aﬁrma
+no tenerlo, pese a necesitarlo. Relacionado con lo
+anterior ,
+hemos obtenido que la renta es una variable signi-
+ﬁcativa
+a la hora de identiﬁcar una necesidad no cubierta.
+En
+segundo lugar , quienes más padecen estas carencias son
+aquellas familias con una fuerte sobrecarga de cuidados,
+debido
+al elevado nivel de dependencia de las personas a
+las
+que cuidan.
+Este
+estudio no está exento de limitaciones. En primer
+lugar ,
+la generalización de los resultados obtenidos está con-
+dicionada
+por los potenciales sesgos de selección, debido a
+la
+forma de captación y al carácter voluntario de la partici-
+pación.
+En segundo lugar , la complejidad y extensión de los
+cuestionarios también ha contribuido al reducido tama˜no de
+la
+muestra. En tercer lugar , la utilización de diversas escalas
+en un periodo determinado de tiempo impide interpretar los
+resultados
+en términos de causalidad, así como identiﬁcar
+su
+dirección. Por último, debido a la utilización de instru-
+mentos
+estructurados y cerrados, se puede haber perdido
+información
+cualitativa que podría ser de interés. Relacio-
+nado
+con lo anterior , la literatura existente en torno a este
+tema
+muestra que los cuidadores se muestran satisfechos
+con
+el uso de los productos de apoyo22, aunque existe una
+falta
+de información sobre la gama de servicios y productos
+disponibles
+y de sus beneﬁcios, así como sobre la forma de
+utilizarlos23,24. Esto podría estar infravalorando las necesi-
+dades
+no cubiertas que hemos detectado.
+A
+modo de conclusión, debemos destacar que hay evi-
+dencia
+de que un alto porcentaje de cuidadores y de
+dependientes
+tienen necesidades de productos facilitadores
+no
+cubiertas. La probabilidad de que dichas necesidades no
+se
+cubran se intensiﬁca a medida que se incrementa el nivel
+de
+dependencia y disminuye la renta del hogar , y se reduce
+cuando empeora el nivel de salud del cuidador (identiﬁcando
+un
+uso más paliativo que preventivo de estos productos).
+
+776 A.M. Rodríguez-González, E. Rodríguez-Míguez
+Dado el reducido tama˜no de la muestra, debemos destacar
+que
+son necesarios más estudios que evalúen la utilización
+y
+necesidad de estos dispositivos con el objetivo de priori-
+zar
+los recursos sociales y potenciar el banco de préstamo
+de aquellos productos que inciden más positivamente en el
+bienestar
+de cuidadores y dependientes.
+Puntos clave
+Lo conocido sobre el tema
+- La utilización de productos de apoyo está relacionada
+con
+padecer dependencia severa.
+-
+Un elevado
+número de cuidadoras/dependientes
+tie-
+nen necesidades no
+cubiertas de productos de apoyo.
+- Una renta familiar reducida incrementa la probabili-
+dad
+de tener una necesidad no cubierta de productos
+de
+apoyo.
+Qué aporta este estudio
+- El análisis del uso de productos de apoyo, así como
+de
+los predictores de una necesidad no cubierta, en
+una
+población con dependencia severa.
+-
+Un menor nivel de renta familiar , una mejor salud
+de
+la
+cuidadora y una peor situación del dependiente
+están
+asociados a una mayor probabilidad de tener
+necesidades
+no cubiertas de productos de apoyo.
+-
+La sobrecarga de cuidados está asociada con una
+mayor
+probabilidad de tener una necesidad no
+cubierta.
+Financiación
+Ministerio de Ciencia, Innovación y Universidades, Espa˜na, y
+FEDER
+(RTI2018-099403-B-I00).
+Agradecimientos
+A Ana Clavería por su aportación en la elaboración de los
+cuestionarios,
+así como a las personas cuidadoras de depen-
+dientes
+participantes en el estudio por su colaboración
+desinteresada.
+Bibliografía
+1. OECD. Health at a glace 2015. OECD Indicators. París: OECD
+Publishing; 2015.
+2. Eurostat [Internet]. Population by sex, age and disabi-
+lity
+status. 2015 [consultado 19 Feb 2019]. Disponible en:
+https://ec.europa.eu/eurostat/data/database.
+3. ISO 9999: 2016. Assistive products for persons with disability ---
+Classiﬁcation and terminology. ISO/TC 173/SC 2. 2016.
+4. Sampayo A, Rodriguez E, Álvarez B. Distribución territorial
+de la dependencia en Espa˜na y Europa. Papeles Econ Esp.
+2011;129:27- - -47.
+5. Rodríguez-González AM, Rodríguez-Míguez E, Duarte-Pérez A,
+Díaz-Sanisidro E, Barbosa-Álvarez A, Clavería C. Estudio obser-
+vacional transversal de la sobrecarga en cuidadoras informales
+y los determinantes relacionados con la atención a las personas
+dependientes. Aten Primaria. 2017;49:156- - -65.
+6. Chen T, Mann WC, Tomita M, Nochajski S. Caregiver involve-
+ment in the use of assistive devices by frail older persons. OTJR.
+2000;20:179- - -99.
+7. Marasinghe KM. Assistive technologies in reducing caregiver
+burden among informal caregivers of older adults: a syste-
+matic review. Disabil Rehabil Assist Technol. 2016;11:353- - -60,
+http://dx.doi.org/10.3109/17483107.2015.1087061.
+8. Ley 39/2006, de 14 de diciembre, de Promoción de la Autonomía
+Personal y Atención a las personas en situación de dependencia.
+Boletín Oﬁcial del Estado n.◦ 299, de 15 de diciembre de 2006.
+9. Real Decreto 174/2011, de 11 de Feb, por el que se aprueba el
+baremo de valoración de la situación de dependencia estable-
+cido por la Ley 39/2006, de 14 de diciembre, de Promoción de
+la Autonomía Personal y Atención a las personas en situación de
+dependencia. Boletín Oﬁcial del Estado n.◦ 42, de 18 de febrero
+de 2011.
+10. Rodríguez-Míguez E, Abellán-Perpi˜nán JM, Álvarez XC, Gonzá-
+lez XM, Sampayo AR. The DEP-6D, a new preference-based
+measure to assess health states of dependency. Soc Sci Med.
+2016;153:210- - -9.
+11. Regueiro
+AA, Pérez-Vásquez A, Gomara S, Ferreiro M. Escala
+de Zarit reducida para la sobrecarga del cuidador en atención
+primaria. Aten Primaria. 2007;39:185- - -8.
+12. Zarit SH, Reever KE, Bach-Peterson J. Relatives of the impai-
+red elderly: Correlates of feelings of burden. Gerontologist.
+1980;20:649- - -55.
+13. Breinbauer H, Vásquez H, Mayanz S, Guerra C, Millán T. Vali-
+dación en Chile de la Escala de Sobrecarga del Cuidador de
+Zarit en sus versiones original y abreviada. Rev Méd Chile.
+2009;137:657- - -65.
+14. De Rosende I. Productos y tecnología para las actividades de
+movilidad y autocuidado de las personas dependientes: análisis
+de barreras y facilitadores [Tesis doctoral]. La Coru˜na: Uni-
+versidad da Coru˜na; 2014. p. 272 [consultado 15 oct 2019].
+Disponible en: http://hdl.handle.net/2183/12449.
+15. Florio J, Arnet U, Gemperli A, Hinrichs T, SwiSCI
+study group. Need and use of assistive devices
+for personal mobility by individuals with spinal
+cord injury. J Spinal Cord Med. 2016;39:461- - -70,
+http://dx.doi.org/10.1080/10790268.2015.1114228.
+16. Pousada T, Pereira J, Groba B, Nieto-Riveiro L, Pazos A. Estudio
+sobre nivel de independencia y necesidad de recursos de apoyo
+en una población con enfermedades neuromusculares. Rev Esp
+Discapac REDIS. 2018;6(II):131- - -47.
+17. Yusif S, Soar J, Hafeez-Baig A. Older people, assistive techno-
+logies, and the barriers to adoption: A systematic review. Int J
+Med Inform. 2016;94:112- - -6.
+18. Lindsay S, Tsybina I. Predictors of unmet needs for
+communication and mobility assistive devices among
+youth with a disability: The role of socio-cultural
+factors. Disabil Rehabil Assist Technol. 2011;6:10- - -21,
+http://dx.doi.org/10.3109/17483107.2010.514972.
+19. Hartke R, Prohaska T, Furner S. Older adults and assistive devi-
+ces: Use, multiple-device use and need,. J Ageing Health.
+1998;10:99- - -116.
+20. Madara Marasinghe K. Assistive technologies in reducing caregi-
+ver burden among informal caregivers of older adults: A syste-
+matic review. Disabil Rehabil Assist Technol. 2016;11:353- - -60.
+21. Lansley P, McCreadie C, Tinker A. Can adapting the homes of
+older people and providing assistive technology pay its way?
+Age Ageing. 2004;33:571- - -6.
+22. Edlund C, Björklund A. Family caregivers’ conceptions
+of usage of and information on products, technology
+
+Productos de apoyo en población dependiente 777
+and Web-based services. Technol Disabil. 2011;23:205- - -14,
+http://dx.doi.org/10.3233/TAD-2011-0327.
+23. Gitlin LN, Corcoran MA. Managing dementia at home: The
+role of home environmental modiﬁcations. Top Geriatr Rehabil.
+1996;12:28- - -39.
+24. Torp S, Hanson E, Hauge S, Ulstein I, Magnusson L. A pilot
+study of how information and communication technology
+may contribute to health promotion among elderly spousal
+carers in Norway. Health Soc Care Community. 2007;16:75- - -85,
+http://dx.doi.org/10.1111/j.1365-2524.2007.00725.x.

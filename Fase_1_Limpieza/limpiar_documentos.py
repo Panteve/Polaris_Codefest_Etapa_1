@@ -120,23 +120,32 @@ TEXT_KEYS = {
     "title", "titulo", "headline", "body", "body_text", "body_paragraphs",
     "paragraphs", "content", "text", "article", "abstract", "summary", "section",
 }
-METADATA_KEYS = {"url", "date", "published", "authors", "author", "tags", "id", "source"}
+METADATA_KEYS = {
+    "url", "date", "published", "authors", "author", "tags", "id", "source",
+    "license", "language", "lang", "created_at", "updated_at",
+}
 
 
-def json_text(value: Any, key: str = "") -> list[str]:
-    """Recorre JSON y conserva únicamente campos con contenido textual."""
+def json_text(value: Any, key: str = "", path: str = "") -> list[str]:
+    """Convierte un JSON en l?neas textuales etiquetadas y trazables."""
     if isinstance(value, str):
-        return [value.strip()] if value.strip() else []
+        if not value.strip() or key.lower() in METADATA_KEYS:
+            return []
+        label = path or key
+        return [f"{label}: {value.strip()}" if label else value.strip()]
     if isinstance(value, list):
         result: list[str] = []
-        for item in value:
-            result.extend(json_text(item, key))
+        for index, item in enumerate(value):
+            item_path = f"{path}[{index}]" if path else f"{key}[{index}]"
+            result.extend(json_text(item, key, item_path))
         return result
     if isinstance(value, dict):
         result: list[str] = []
         for child_key, child in value.items():
-            if child_key.lower() in TEXT_KEYS:
-                result.extend(json_text(child, child_key))
+            if child_key.lower() in METADATA_KEYS:
+                continue
+            child_path = f"{path}.{child_key}" if path else child_key
+            result.extend(json_text(child, child_key, child_path))
         return result
     return []
 
@@ -226,6 +235,33 @@ def extract(path: Path) -> Extraction:
     return Extraction("", "no_soportado", [f"Formato no soportado: {path.suffix or '(sin extensión)'}"])
 
 
+MOJIBAKE_PATTERN = re.compile(r"(?:\u00c3.|\u00c2.|\u00e2(?:\u20ac|\u2013|\u2014|\u2026)|\u00cb\u0153|\ufffd)")
+
+
+def repair_mojibake(text: str) -> tuple[str, int]:
+    """Corrige UTF-8 mal interpretado solo si reduce patrones sospechosos."""
+    best = text
+    best_score = len(MOJIBAKE_PATTERN.findall(text))
+    for encoding in ("latin-1", "cp1252"):
+        try:
+            candidate = text.encode(encoding).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        score = len(MOJIBAKE_PATTERN.findall(candidate))
+        if score < best_score:
+            best, best_score = candidate, score
+    return best, len(MOJIBAKE_PATTERN.findall(text)) - best_score
+
+
+def quality_warnings(text: str, format_name: str) -> list[str]:
+    """Detecta salidas no vac?as que carecen de contenido ?til."""
+    if format_name != "pdf":
+        return []
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    if len(lines) >= 3 and len(set(lines)) == 1:
+        return ["[CRITICO] El PDF contiene unicamente una linea repetida; requiere OCR o reemplazo."]
+    return []
+
 def clean_text(text: str) -> tuple[str, list[str]]:
     """Normaliza texto sin resumir, traducir ni reescribir su contenido.
 
@@ -233,6 +269,9 @@ def clean_text(text: str) -> tuple[str, list[str]]:
     páginas solo cuando hay evidencia de repetición.
     """
     warnings: list[str] = []
+    text, repaired = repair_mojibake(text)
+    if repaired:
+        warnings.append(f"Se repararon {repaired} secuencias de codificacion sospechosas.")
     text = unicodedata.normalize("NFC", text.replace("\r\n", "\n").replace("\r", "\n").replace("\u00a0", " "))
     text = "".join(char for char in text if char in "\n\t" or not unicodedata.category(char).startswith("C"))
     pages = re.split(r"\n\f\n|\f", text)
@@ -344,7 +383,7 @@ def process(input_dir: Path, output_dir: Path, fenomeno: int | None = None) -> d
         cleaned, clean_warnings = clean_text(extraction.text)
         clean_path = output_dir / "limpios" / f"{doc_id}.txt"
         clean_path.write_text(cleaned, encoding="utf-8")
-        warnings = extraction.warnings + clean_warnings
+        warnings = extraction.warnings + clean_warnings + quality_warnings(cleaned, format_for(path))
         entry = {
             "doc_id": doc_id,
             "fuente": source,
@@ -352,7 +391,7 @@ def process(input_dir: Path, output_dir: Path, fenomeno: int | None = None) -> d
             "fenomeno": fenomeno,
             "tamano_bytes": path.stat().st_size,
             "checksum": sha256_file(path),
-            "estado": "procesado" if cleaned and not warnings else ("procesado_con_advertencias" if cleaned else "fallido"),
+            "estado": "fallido" if not cleaned or any(w.startswith("[CRITICO]") for w in warnings) else ("procesado_con_advertencias" if warnings else "procesado"),
             "idioma": detect_language(cleaned),
             "metodo_extraccion": extraction.method,
             "advertencias": warnings,
@@ -365,14 +404,14 @@ def process(input_dir: Path, output_dir: Path, fenomeno: int | None = None) -> d
             },
             "archivo_extraido": f"extraidos/{doc_id}.txt",
             "archivo_limpio": f"limpios/{doc_id}.txt",
-            "version_pipeline": "1.0.0",
+            "version_pipeline": "1.1.0",
             **extraction.metadata,
         }
         entries.append(entry)
         counters[entry["estado"]] += 1
     entries.sort(key=lambda item: item["fuente"])
     (output_dir / "manifiesto.jsonl").write_text("".join(json.dumps(item, ensure_ascii=False) + "\n" for item in entries), encoding="utf-8")
-    (output_dir / "reporte_calidad.json").write_text(json.dumps({"total": len(entries), "estados": counters, "version_pipeline": "1.0.0"}, ensure_ascii=False, indent=2, default=dict), encoding="utf-8")
+    (output_dir / "reporte_calidad.json").write_text(json.dumps({"total": len(entries), "estados": counters, "version_pipeline": "1.1.0"}, ensure_ascii=False, indent=2, default=dict), encoding="utf-8")
     return dict(counters)
 
 

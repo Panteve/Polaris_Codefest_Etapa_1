@@ -1,0 +1,289 @@
+Aten Primaria. 2020;52(10):796- - -807
+www.elsevier.es/ap
+Atención Primaria
+LETTER TO THE EDITOR
+Postmenopausal women presenting
+with
+ spinal fractures and the
+importance
+ of primary care:
+A
+ case-series
+Mujeres posmenopáusicas que presentan
+fracturas
+ vertebrales y la importancia de la
+atención
+ primaria: un estudio de caso
+Dear Editor:
+Osteoporosis
+ (OP) is a condition characterized by loss of
+bone
+ mass and resistance with increased risk of fractures.1
+Bone deterioration can occur over a number of years without
+presenting
+ any symptoms. If detected when fracture appear ,
+the
+ disease is already advanced. The most common OP asso-
+ciated
+ fractures sites are hip, spine and wrist. The diagnostic
+tool
+ to evaluate bone mineral density (BMD) is DEXA (dual
+energy
+ X-ray absorptiometry) by which nowadays it is possi-
+ble
+ to applied a new software that quantiﬁes a parameter ,
+reﬂection
+ of the structural bone condition: Trabecular Bone
+Score
+ (TBS).2 TBS is strongly correlated with the number
+Table 1 Clinical parameters of recruited women, including age, menopausal age, type and severity of vertebral fractures
+(Genant’s
+ method) and some risks factors for OP .
+Patients (21) n (%)
+Age 60.6 ± 4.2
+N◦ and type of vertebral fractures (6) 30% polifractured
+(8)
+ 40% biconcave
+(3
+ mild- - -3 moderate- - -
+2
+ severe)
+(12)
+ 60% wedge
+(5
+ mild- - -4 moderate- - -3 severe)
+(6)
+ 30% crush
+(3
+ moderate- - -
+3
+ severe)
+Lactose and/or other intolerance due to intestinal
+malabsorption
+(6) 30%
+Family
+ history of fracture (5) 20%
+Previous
+ OP diagnosis (13) 60%
+Back
+ pain (13) 60%
+Smoke
+ (13) 60%
+BMI
+ (kg/m2) 25.5 ± 9.3
+Drugs
+ 30% OAD
+60%
+ AH
+Physical
+ activity (3) 15%
+Menopause
+ age 52.6 ± 3.7
+OAD, oral anti-diabetic; AH, anti-hypertensive.
+of trabeculae and their connectivity and negatively with
+the
+ space between trabeculae. High TBS value means that
+microarchitecture
+ bone is dense, well connected with little
+spaces
+ between trabeculaes. Conversely, a low TBS value
+means
+ that the microarchitecture of bone is incomplete and
+poorly
+ connected with wide spaces between trabeculae.3
+Osteoporotic fractures represent a major cause of mor-
+bidity
+ and disability in elderly, so OP is increasingly a
+disease
+ of social importance. The general practitioner (GP)
+plays
+ an essential role for early OP diagnosis, of crucial
+importance
+ for fractures prevention. We describe clini-
+cal, demographic and pharmacological characteristics of
+post-menopausal
+ women suffering from vertebral fractures
+attending
+ a primary care center in three years (1st Novem-
+ber
+ 2015- - -1st November 2018). Clinical parameters are
+shown
+ in Table 1. Attended GP’s surgery 1300 patients, 550
+males
+ and
+ 750 females, 55% of whom in menopause (412),
+21 of them presented an osteoporotic vertebral fracture in
+these three years (5%).
+Only
+ 15%
+ of women with vertebral fracture practiced
+physical
+ activity and 60% smoked. All theme assumed cole-
+calciferol and
+ (60%) 13 women
+ had a previous OP diagnosis,
+but due to poor compliance 6 of them had stopped bis-
+
+LETTER TO THE EDITOR 797
+phosphonate therapy. Some patients, despite signiﬁcant
+differences
+ in terms of BMD, presented similar TBS values.
+6 subjects (30%), despite the normal BMD values, suffered
+atraumatic
+ fractures. Therefore, the quantitative parame-
+ter
+ must be integrated with the qualitative one. Moreover
+major
+ BMI correlated with greater bone fragility and both
+qualitative
+ and quantitative parameters did not correlate
+with
+ serum 25OH-VitaminD levels. Vitamin-D alone is not
+able
+ to prevent OP and reduce fracture risk; it would
+be
+ important to prevent bone fragility by doing physical
+activity
+ and abolishing smoking instead. Furthermore, this
+case-series analysis revealed the poor adherence to anti-
+absorptive therapy, because OP is a silent disease. As several
+factors inﬂuence risk of fractures, it’s important to know val-
+idated algorithms for fracture estimation,4 but even these
+one
+ present some weak points. Important risk factors are
+not
+ considered in the most common algorithms, such as
+the risk of
+ falls, physical activity, 25OH-D deﬁciency, and
+some important laboratory tests are
+ not taken into consid-
+eration such
+ as bone remodeling markers. This is important
+to establish the
+ fracture risk threshold to considered for
+setting the treatment threshold. Is
+ interesting to note that
+10% (2)
+ post-menopausal women had never underwent DEXA
+before the appearance of fracture. So GP role is essential to
+screen
+ patients for DEXA, to emphasize the importance of
+lifestyles,
+ to address bone specialist not only patients with
+densitometric
+ OP diagnosis, but also those who present risk
+factors
+ for OP in order to keep them under strict control,
+to
+ immediately start therapy. GP has to note not only the
+quantitative
+ BMD value, but the qualitative one too. TBS
+value,
+ in fact, in combination with BMD, increase the num-
+ber
+ of patients at risk correctly identiﬁed. Moreover GP is
+the
+ only one who can increase awareness of the importance
+of
+ therapy adherence, because of his strict relationship with
+patients.
+Financial support
+There is not ﬁnancial support.
+Conﬂicts of interest
+There are not conﬂicts of interest. All authors are responsi-
+ble
+ for the entire content of the letter .
+References
+1. Hernlund E, Svedbom A, Ivergard M, Compston J, Cooper C,
+Stenmark J, et al. Osteoporosis in the European union: medi-
+cal management, epidemiology and economic burden. A report
+prepared in collaboration with the International Osteoporosis
+Foundation (IOF) and the European Federation of Pharmaceu-
+tical Industry Associations (EFPIA). Arch Osteoporos. 2013;8:
+136.
+2. Martineau P, Silva BC, Leslie WD. Utility of trabecular bone score
+in the evaluation of osteoporosis. Curr Opin Endocrinol Diabetes
+Obes. 2017;24:402- - -10.
+3. Hans D, Barthe N, Boutroy S, Pothuaud L, Wizenrieth R, Krieg
+MA. Correlations between trabecular bone score, measured using
+anteroposterior dual-energy X-ray absorptiometry acquisition,
+and 3-dimensional parameters of bone microarchitecture: an
+experimental study on human cadaver vertebrae. J Clin Den-
+sitom. 2011;14:302- - -12.
+4. Kanis JA, Hans D, Cooper C, et al. Interpretation and use of FRAX
+in clinical practice. Osteoporos Int. 2011;22:2395- - -411.
+Ripalta Colia∗,
+ Addolorata Corrado,
+Francesco Paolo
+ Cantatore
+Rheumatology Clinic, Department of Medical and Surgical
+Sciences,
+ University of Foggia, Foggia, Italy
+∗ Corresponding author .
+E-mail
+ address: ripaltacolia@gmail.com
+(R. Colia).
+https://doi.org/10.1016/j.aprim.2019.11.007
+0212-6567/ © 2020 Published by Elsevier Espa˜na, S.L.U. This is an
+open access article under the CC BY-NC-ND license (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+Re: Presencia de familiares durante
+la
+ reanimación cardiopulmonar:
+perspectivas
+ de pacientes,
+familiares
+ y profesionales de la
+salud
+ en el País Vasco
+Re- Presence of relatives during
+cardiopulmonary
+ resuscitation: Perspectives
+of
+ health professionals, patients and family
+in
+ the Basque Country
+Sr Editor:
+En
+ relación con el artículo Presencia de familiares durante
+la
+ reanimación cardiopulmonar, de Tiscar Gonzalez et al.1,
+permítannos
+ compartir la experiencia expresada en un
+artículo
+ con tema similar para México2, realizado en 90
+pacientes internados y en 90 familiares asistentes, todos
+mayores
+ de 18 a˜nos y con una estancia mayor a 4 horas,
+elegidos aleatoriamente de la lista de ingresos y que
+aceptaron
+ informadamente participar , entrevistados en el
+servicio
+ de urgencias de un hospital de segundo nivel de
+la
+ seguridad social en la ciudad de Guadalajara, Méx-
+ico.
+ Pacientes y familiares en su mayoría mujeres, de
+escolaridad
+ hasta secundaria, pertenecientes a estratos
+populares,
+ a quienes se aplicó un cuestionario estructurado
+basado
+ en utilizando la técnica de listas libres, encontrán-
+dose
+ las
+ similitudes y diferencias que se exponen en la
+tabla 1.
+Lo
+ anterior
+ apunta a la posible existencia de un
+acuerdo cultural compartido entre nuestras poblaciones
+de
+ pacientes, familiares y profesionales de la salud ante
+la
+ práctica poco habitual, compleja y contextualizada de
+la
+ RCP , argumento que puede ayudar para su aplicación
+y
+ establecimiento como política sanitaria centrada en el
+paciente3.

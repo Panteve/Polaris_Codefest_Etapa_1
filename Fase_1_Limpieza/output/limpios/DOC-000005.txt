@@ -1,0 +1,1149 @@
+Aten Primaria. 2020;52(10):680- - -689
+www.elsevier.es/ap
+Atención Primaria
+ORIGINAL
+Asociación de tipología familiar y disfuncionalidad en
+familias con adolescentes de una población mexicana
+Yeyetsy Ordó˜nez Azuaraa,∗, Raúl F. Gutiérrez Herreraa, Eduardo Méndez Espinozaa,
+Neri
+A. Alvarez Villalobosb, Daniela Lopez Mataa y Carlos de la Cruz de la Cruza
+a Departamento de Medicina Familiar, Facultad de Medicina, Hospital Universitario Dr. José Eleuterio González, Universidad
+Autónoma
+de Nuevo León, Monterrey, Nuevo León, México
+b Unidad de Investigación Clínica, Facultad de Medicina, Hospital Universitario Dr. José Eleuterio González, Universidad
+Autónoma
+de Nuevo León, Monterrey, Nuevo León, México
+Recibido
+el 13 de febrero de 2019; aceptado el 13 de febrero de 2020
+Disponible
+en Internet el 4 de mayo de 2020
+PALABRAS CLAVE
+Familia;
+Composición
+familiar;
+Relaciones
+familiares;
+Salud
+de la familia;
+Adolescente
+Resumen
+Objetivo:
+Determinar la asociación entre tipología y disfuncionalidad familiar en familias mexi-
+canas
+con adolescentes.
+Dise˜no:
+Estudio observacional de tipo transversal.
+Emplazamiento
+y participantes: Cuatrocientas treinta y siete familias con adolescentes inscri-
+tos
+en una escuela secundaria pública de una población mexicana.
+Mediciones
+principales: Determinación de la tipología familiar (Consejo y Consenso Mexicano
+de
+Medicina Familiar) y la funcionalidad familiar (APGAR familiar) en adolescentes y sus
+padres/tutores.
+Identiﬁcación de las familias con percepciones concordantes entre miembros
+(kappa
+de Cohen), en las cuales se determinó la asociación entre tipología y percepción de
+disfuncionalidad
+familiar (odds ratio [OR]).
+Resultados:
+Los tipos de familias están asociados con la funcionalidad familiar por parentesco,
+presencia
+física en el hogar y el nivel de pobreza familiar . Desde la percepción del adolescente,
+se
+asocian los tipos: nuclear simple (OR 0,5, IC 95% 0,3-0,8), monoparental extendida (OR 1,9,
+IC
+95% 1,03-3,5), núcleo integrado (OR 0,6, IC 95% 0,4-0,9), pobreza familiar baja (OR 0,5, IC
+95%
+0,3-0,8) y pobreza familiar alta (OR 5,3, IC 95% 1,5-18,6). Desde la percepción del tutor:
+la
+monoparental (OR
+1,9, IC 95% 1,09-3,4) y de pobreza familiar alta (OR 2 9, IC 95% 1,1-7,7).
+Hubo 259 familias con percepción concordante de funcionalidad/disfuncionalidad familiar con
+un
+/H9260 = 0,189, determinando que los tipos asociados son: la nuclear simple (OR 0,4, IC 95% 0,2-
+0,7),
+monoparental (OR 1,7, IC 95% 0,80-3,8), núcleo integrado (OR 0,5, IC 95% 0,3-0,8), núcleo
+no
+integrado (OR 1,9, IC 95% 1,09-3,5) y pobreza familiar alta (OR 13,8, IC 95% 1,7-108,5).
+∗ Autor para correspondencia.
+Correos electrónicos: yeyetsy 10@hotmail.com, yeyeazuara@gmail.com (Y . Ordó˜nez Azuara).
+https://doi.org/10.1016/j.aprim.2020.02.011
+0212-6567/© 2020 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Tipología y disfuncionalidad familiar en familias con adolescentes 681
+Conclusión: Los tipos de familia con adolescentes asociadas con disfuncionalidad familiar son
+las
+monoparentales, las de núcleo no integrado y aquellas con pobreza familiar alta, y como
+factores
+de protección, la nuclear simple y con núcleo integrado.
+©
+2020 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia
+CC
+BY-NC-ND (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+KEYWORDS
+Family;
+Family
+characteristics;
+Family
+relationships;
+Family
+health;
+Adolescent
+Association of family typology and dysfunction in families with adolescents from a
+Mexican
+population
+Abstract
+Objective: To determine the association between family typology and dysfunction in families
+with
+adolescents in a Mexican population.
+Design:
+Cross-sectional observational study.
+Setting and population: A total of 437 families in a Mexican population with adolescents atten-
+ding
+a public high school.
+Main
+measurements: Determination of family typology (Mexican Family Medicine Council and
+Consensus)
+and family function (family APGAR) in adolescents and their parents/guardians.
+Identiﬁcation
+of families with concordant perceptions among members (Cohen kappa), in which
+the
+association between typology and perception of family dysfunction was determined (odds
+ratio
+[OR]).
+Results:
+The types
+of families are associated with family function by kinship, physical presence
+in the home and the level of family poverty. From the perception of the adolescent, the types
+are
+associated with: simple nuclear (OR 0.5, 95% CI 0.3-0.8), extended single parent (OR 1.9,
+95% CI 1.03-3.5), integrated nucleus (OR 0.6, 95% CI 0.4-0.9), low family poverty (OR 0.5, 95%
+CI
+0.3-0.8), and high family poverty (OR 5.3, 95% CI 1.5-18.6). From the perception of the
+tutor:
+the
+single parent (OR 1.9, 95% CI 1.09-3.4), and high family poverty (OR 2.9, 95% CI
+1.1-7.7). There were 259 families with concordant perception of family function/dysfunction
+with a /H9260 = 0.189, determining that the types associated are: simple nuclear (OR 0.4, 95% CI
+0.2-0.7), single-parent
+(OR 1.7, 95% CI 0.80-3.8), integrated nucleus (OR 0.5, 95% CI 0.3-0.8),
+non-integrated
+nucleus (OR 1.9, 95% CI 1.09-3.5), and high family poverty (OR 13.8, 95% CI
+1.7-108.5).
+Conclusion:
+The family types with adolescents associated with family dysfunction are single-
+parent
+families with a non-integrated nucleus and high family poverty, and as protective factors,
+the
+simple nuclear and integrated nucleus.
+©
+2020 Published by Elsevier Espa˜na, S.L.U. This is an open access article under the CC BY-NC-ND
+license
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Introducción
+La funcionalidad familiar se deﬁne como la percepción del
+individuo
+sobre el funcionamiento global de su familia. Es
+determinada
+a través de la satisfacción sobre la relación
+familiar ,
+la cual es explorada en 5 dimensiones: adaptación,
+participación,
+desarrollo, afecto y resolución1 --- 3.
+La
+funcionalidad familiar juega un rol importante en
+el
+proceso salud-enfermedad ya que, además del cum-
+plimiento
+de las 5 funciones básicas (cuidado, afecto,
+socialización,
+estatus y reproducción), la familia debe
+garantizar el desarrollo personal y facilitar la socialización
+individual
+de cada miembro, a la par que el mantenimiento
+de
+la identidad y la cohesión grupal. En caso de que la familia
+no
+sea capaz de crear dicho entorno, se favorece la dis-
+función
+familiar . La discrepancia entre los miembros de la
+familia
+respecto a la percepción de la vida familiar es una
+característica
+de las
+familias disfuncionales4,5.
+La disfuncionalidad familiar impacta en el estado de
+salud de los miembros, ya que favorece la aparición de crisis
+o eventos psicológicos graves. Se han asociado distintos fac-
+tores
+con disfunción familiar , tales como el déﬁcit de apoyo
+social,
+ser viudo, separado o divorciado, una mayor percep-
+ción
+de susceptibilidad-gravedad ante la enfermedad y ser
+hiperfrecuentador
+de servicios médicos1,5,6.
+La
+adolescencia es el periodo de crecimiento y desarrollo
+humano
+entre los 10 y los 19 a˜nos de edad. En las teorías des-
+critas
+acerca del ciclo vital individual y familiar , aun siendo
+un
+evento normativo, se considera la adolescencia como un
+evento
+crítico, por las alteraciones cognitivas, físicas y psi-
+cológicas
+que conlleva y repercuten en la salud familiar6,7.
+La
+percepción de la disfuncionalidad familiar en ado-
+lescentes
+se
+ha relacionado con el desarrollo de obesidad,
+alcoholismo,
+abuso de drogas, embarazo no planeado,
+enfermedades mentales y violencia, a nivel mundial. Los
+adolescentes
+son el grupo etario predominante en la actua-
+lidad
+en México, y las causas de morbimortalidad en esta
+población
+(como violencia, embarazo no planeado, depre-
+sión
+y suicidio, etc.) coinciden con las relacionadas con
+la disfuncionalidad familiar , siendo estas comorbilidades
+
+682 Y. Ordó˜nez Azuara et al.
+prevenibles, tratables y de índole psicosocial, motivos que
+justiﬁcan su investigación. Además, es fundamental estudiar
+y
+trabajar con la familia del adolescente, al ser considerada
+como
+el primer entorno de desarrollo para el individuo, y
+ser el recurso y sostén en cada etapa del desarrollo de sus
+integrantes6 --- 9.
+El
+estudio de la familia durante el abordaje del ado-
+lescente
+implica identiﬁcar en la valoración inicial, como
+mínimo, los siguientes aspectos: la tipología familiar , el ciclo
+vital,
+los patrones de repetición y la funcionalidad fami-
+liar .
+Estos son elementos necesarios y recomendados en el
+abordaje
+y el análisis de la salud familiar10- - -13.
+La
+tipología familiar se reﬁere a las diversas clasiﬁca-
+ciones que algunos autores u organizaciones han propuesto
+para el estudio de la familia. Generalmente, su determina-
+ción
+se basa en las características sociodemográﬁcas y la
+estructura
+o sociodinámica familiar; estos factores han per-
+mitido
+objetivar la clasiﬁcación de las familias, y algunos
+son
+considerados como determinantes de la salud. Con res-
+pecto
+a la composición familiar , se deﬁne como el tama˜no
+de la familia valorada con 3 componentes básicos a la vez: el
+parentesco,
+que puede ser consanguíneo o contraído (como
+en
+el
+matrimonio o la adopción), la presencia física en el
+hogar y los
+lazos afectivos4,10,14,15.
+Si bien se han descrito diversos estudios acerca de la
+familia, sobre
+todo sociológicos, actualmente existe escasa
+literatura sobre la tipología familiar para el abordaje en
+medicina familiar ,
+que permita
+identiﬁcar los nuevos tipos
+de familia
+en México en la actualidad. Este hecho se debe
+a que persiste el estudio y orientación al tipo de familia
+«tradicional» (nuclear o extensa), constituida por padres,
+hijos
+y, ocasionalmente, abuelos, lo cual no ha permi-
+tido
+conocer los nuevos tipos de familias ni reconocer sus
+necesidades para priorizar la atención desde la tipología
+familiar16- - -19. El consenso actual para el estudio de las carac-
+terísticas
+de la tipología familiar en nuestro país4 se describe
+en
+la tabla 1 (ﬁg. 1).
+El objetivo de este trabajo es determinar la asociación
+entre
+tipología y disfuncionalidad familiar en familias con
+adolescentes
+en una población mexicana, con el ﬁn de
+orientar
+la planeación de una atención médico-familiar que
+coadyuve
+en la protección, el acompa˜namiento y el restable-
+cimiento de la salud de la persona adolescente y la familia
+como institución biopsicosocial.
+Material y métodos
+Se dise˜nó un estudio observacional de tipo transversal en
+familias
+con adolescentes de una comunidad mexicana en
+julio
+de 2015. Se analizó la asociación entre la tipología
+familiar
+y la percepción de funcionalidad familiar percibida
+por
+adolescentes, así como también por los padres o tutores
+de
+forma individual, determinando posteriormente la con-
+cordancia
+entre ambas percepciones. Entre las familias con
+percepción
+concordante, se determinó la asociación entre
+tipología
+y funcionalidad del sistema familiar .
+Figura 1 Esquema general del estudio.
+
+Tipología y disfuncionalidad familiar en familias con adolescentes 683
+Tabla 1 Descripción de las características de la tipología familiar
+Tipología familiar Características Deﬁnición
+Por parentesco
+Es la clasiﬁcación de las familias
+acorde
+a características propuestas
+por
+diversos autores u
+organizaciones;
+en este estudio los
+tipos
+de familia considerados fueron
+los
+establecidos con base en:
+El
+parentesco
+La
+presencia física en el hogar o
+convivencia
+Los
+medios de subsistencia
+El nivel de pobreza familiar
+La
+demografía
+El
+desarrollo
+Con
+parentesco
+Nuclear
+Hombre y mujer sin hijos
+Nuclear
+simple Padre y madre con 1 a 3 hijos
+Nuclear
+numerosa Padre y madre con 4 hijos o más
+Reconstruida
+(binuclear) Padre y madre en donde alguno o ambos han sido
+divorciados
+o viudos y tienen hijos de su unión
+anterior
+Monoparental
+Padre
+o madre con hijos
+Monoparental extendida Padre o madre con hijos, más otras personas con
+parentesco.
+Monoparental
+extendida
+compuesta
+Padre o madre con hijos, más otras personas con y
+sin
+parentesco
+Extensa
+Padre y madre con hijos, más otras personas con
+parentesco
+Extensa
+compuesta Padre y madre con hijos, más otras personas con y
+sin
+parentesco
+No
+parental Familiares con vínculo de parentesco que realizan
+funciones
+o roles de familia sin la presencia de los
+padres
+(por ejemplo: tíos y sobrinos, abuelos y
+nietos, primos o hermanos, etc.)
+Sin
+parentesco
+Monoparental
+extendida sin
+parentesco
+Padre o madre son hijos, más otras personas sin
+parentesco.
+Grupos
+similares a familias Personas sin vínculo de parentesco que realizan
+funciones
+o roles familiares. Por ejemplo: grupos
+de
+amigos, estudiantes, religiosos, personas que
+viven
+en hospicios o asilos, etc.
+Por presencia física en el hogar
+Núcleo
+integrado Presencia de ambos padres en el hogar
+Núcleo
+no integrado No hay presencia física de alguno de los padres en
+el
+hogar
+Extensa
+ascendente Hijos casados o en unión libre que viven en la casa
+de
+alguno de los padres
+Extensa descendente Padres que viven en la casa de alguno de los hijos
+Extensa
+colateral Núcleo o pareja que vive en la casa de familiares
+colaterales
+(tíos, primos, abuelos, etc.)
+Medios
+de subsistencia
+Servicios
+Se elige el tipo de recurso que sea el origen
+esencial
+de la subsistencia familiar y que
+corresponda
+a lo aportado por el jefe de familia
+Comercio
+Industria
+Agrícolas
+y pecuarias
+Nivel
+de pobreza familiar
+Sin
+evidencia de pobreza familiar Fue determinado acorde al Índice Simpliﬁcado de
+Pobreza
+Familiar , instrumento dise˜nado en la
+Universidad
+Nacional Autónoma de México para
+medir
+el nivel de pobreza familiar , que considera
+el
+ingreso familiar en salarios mínimos, el número
+de hijos dependientes, la escolaridad materna y
+el
+número de personas por habitación. Se
+interpreta
+en un puntaje de 0 a 10, siendo de 0 a
+3:
+sin evidencia de pobreza familiar , de 3,5 a 6:
+pobreza
+familiar baja, y de 6,5 a 10: pobreza
+familiar
+alta20
+
+684 Y. Ordó˜nez Azuara et al.
+Tabla
+1 (continuación)
+Tipología
+familiar Características Deﬁnición
+Pobreza familiar baja
+Pobreza
+familiar alta
+Demografía
+Rural
+Lugar de residencia en una población menor de
+2.500
+habitantes
+Urbana
+Lugar de residencia en una población mayor de
+2.500
+habitantes
+Desarrollo
+Tradicional
+Aquella en la que el padre o ﬁgura paterna es el
+único
+proveedor de hogar
+Moderna
+Aquella familia donde la madre o ﬁgura materna
+labora
+Se invitó a una
+población total de 1.526 familias de
+adolescentes inscritos en una
+escuela secundaria pública
+mexicana de Xalapa, Veracruz, de las cuales 447 cumplieron
+los criterios de inclusión,
+otorgando asentimiento infor-
+mado por el adolescente y consentimiento informado por
+el
+tutor . Se utilizó, como criterio de exclusión, al autorre-
+porte de padecer alguna afección cognitiva. Se eliminaron
+del
+estudio 10 familias por encuestas con llenado incom-
+pleto.
+Se consideraron como familias 2 miembros familiares
+(un
+adolescente y un padre de familia o tutor), a quienes se
+entrevistó.
+Variables e instrumentos de medición
+Se recogieron las características sociodemográﬁcas, la tipo-
+logía
+y la funcionalidad familiar mediante entrevistas
+estructuradas
+y cuestionarios autoaplicables.
+La
+tipología familiar se determinó con base en caracte-
+rísticas
+propuestas por el Consenso Mexicano de Medicina
+Familiar
+de 2005 y el Consejo Mexicano de Medicina Familiar
+para
+el Estudio de Salud Familiar , a partir del parentesco,
+la presencia física en el hogar o convivencia, los medios de
+subsistencia,
+el nivel de pobreza familiar , la demografía y el
+desarrollo
+(tabla 1)4,20.
+La
+funcionalidad familiar fue determinada con el APGAR
+familiar ,
+instrumento dise˜nado por Smilkstein en 1978 para
+la
+percepción del funcionamiento de la familia de un indi-
+viduo
+en un momento determinado, por lo que resulta útil
+como
+apoyo para la evaluación del entorno familiar . Eva-
+lúa
+5 dimensiones1 --- 3: 1) Adaptación (Adaptation): capacidad
+de
+utilizar recursos intra y extrafamiliares para resolver
+problemas
+en situaciones de estrés familiar o de enfrenta-
+miento
+de eventos críticos; 2) Participación o cooperación
+(Partnership):
+implicación de los miembros familiares en la
+toma
+de decisiones respecto a la comunicación y la solu-
+ción
+de problemas; 3) Desarrollo o crecimiento (Growth):
+apoyo
+y asesoramiento que otorga la familia para el creci-
+miento
+físico y emocional o maduración para la realización
+de
+los componentes; 4) Afecto (Affection): expresión y satis-
+facción
+por la respuesta ante la interacción emocional que
+existe
+en la familia, y 5) Resolución (Resolve): percepción
+del
+compromiso familiar para compartir el tiempo, el espa-
+cio
+y el dinero en atención a las necesidades familiares. Este
+instrumento ha sido
+previamente evaluado, mostrando un
+índice de conﬁabilidad (alfa de Cronbach) de entre 0,71 y
+0,83,
+ya que puede conseguir una aproximación conﬁable
+para
+la percepción de disfuncionalidad familiar por un miem-
+bro
+familiar . Es autoadministrado, excepto en personas que
+no
+sepan leer . Se evalúa cada ítem en una escala tipo Likert
+(casi
+nunca, a veces, casi siempre; cada respuesta tiene un
+puntaje
+de 0, 1 y 2 puntos, respectivamente), dando punta-
+ciones
+totales entre 0 y 10; un valor mayor de 6 puntos se
+interpreta
+como funcional y menor de 6 como disfuncional
+(de
+0 a 2 disfuncional grave, y de 3 a 6 disfuncional leve).
+En este trabajo utilizamos la versión modiﬁcada por Arias,
+que
+considera, además, a los amigos, en la que cada una de
+las
+respuestas se puntúa como casi nunca (1 punto), algunas
+veces
+(2 puntos), casi siempre (3 puntos) y siempre (4 pun-
+tos),
+con una puntuación total que va de 0 a 20 puntos, que
+se
+interpreta como: normal (17-20), leve (16-13), moderada
+(12-10),
+severa (menor o igual a 9)1- - -3,21.
+Análisis estadístico
+Los datos se consignaron en una base de datos en Microsoft
+Excel 2017 y se realizó un análisis exploratorio por medio
+de
+frecuencias
+y porcentajes. Se determinó la concordan-
+cia de la funcionalidad percibida entre padres/tutores y
+adolescentes
+con el índice de kappa de Cohen y las dife-
+rencias entre funcionalidad y disfuncionalidad por medio de
+la
+chi cuadrada de Pearson. Se calcularon los riesgos (odds
+ratio
+[OR]) de percepción individual (padres/tutores y ado-
+lescentes)
+y del sistema familiar (percepción concordante
+de
+ambos miembros) con respecto a la tipología familiar . Se
+consideró
+una p < 0,05 y un intervalo de conﬁanza al 95% (IC
+95%)
+como estadísticamente signiﬁcativos. Se utilizó el pro-
+grama
+IBM SPSS 23.0 (SPSS Inc., Armonk, NY , EE. UU.) para
+el
+procesamiento y análisis de los datos.
+Resultados
+Un total de 437 familias (874 sujetos) fueron seleccionadas
+para
+el estudio. La media de edad de los tutores fue de 40,4
+(DE
+6,9) a˜nos, con predominio de mujeres (80%). La media de
+edad
+de los adolescentes fue de 13,3 (DE 1,8) a˜nos, teniendo
+la
+mayoría 13 a˜nos (38%) y siendo el 57% mujeres.
+
+Tipología y disfuncionalidad familiar en familias con adolescentes 685
+Las tipologías familiares más frecuentes, por catego-
+rías, fueron: por parentesco, nuclear simple (47,1%); por
+presencia
+física en el hogar , núcleo integrado (62,7%); por
+medios
+de subsistencia, servicios (71,9%); por nivel econó-
+mico, pobreza familiar baja (66,1%); por demografía, urbana
+(99,5%);
+y por desarrollo, moderna (68,2%).
+Se
+identiﬁcó percepción de disfuncionalidad familiar en
+el
+53% de los adolescentes (tabla 2), a diferencia de la
+percepción del padre/madre o tutor , que percibieron fun-
+cionalidad
+familiar en un 54% (tabla 3).
+En
+el caso de los adolescentes, la percepción de disfun-
+cionalidad
+familiar se asoció a la tipología monoparental
+extendida
+y de pobreza familiar alta, y la de funcionalidad
+familiar ,
+a los tipos nuclear simple, de núcleo integrado y
+de pobreza familiar baja (tabla 2). En el caso de los tuto-
+res,
+la percepción de disfuncionalidad familiar se asoció a
+la
+tipología monoparental y por nivel de pobreza familiar , a
+la
+pobreza familiar alta (tabla 3).
+Se
+observó concordancia entre la funcionalidad fami-
+liar
+percibida por el adolescente y el tutor en 259 familias
+(59%), con un índice kappa de Cohen de 0,189 (tabla 4). De
+ellas, 133 (51%) se percibieron funcionales y 126 (49%) dis-
+funcionales.
+Se determinó la asociación signiﬁcativa entre
+la
+percepción de funcionalidad/disfuncionalidad familiar y
+tipología de las familias: por parentesco (con parentesco),
+nuclear
+simple y monoparental; por presencia física en el
+hogar ,
+núcleo integrado y núcleo no integrado; y por nivel
+de
+pobreza familiar , pobreza familiar alta (tabla 5).
+Discusión
+En este estudio se observó que los tipos de familia impactan
+sobre
+la funcionalidad familiar en familias con adolescen-
+tes,
+al contrario de lo descrito por Pérez Milena et al.,
+que concluyeron que la estructura familiar no condicionaba
+la
+funcionalidad familiar en una población de adolescentes
+espa˜noles22. Sin embargo, en dicho estudio se alude como
+composición
+familiar a la tipología familiar valorada acorde
+a
+la presencia física en el hogar , siendo estos conceptos uti-
+lizados
+como sinónimos de forma errónea, ya que, en los
+Tabla 2 Asociación de la tipología familiar y la percepción de la funcionalidad familiar de los adolescentes
+Adolescentes, n = 437
+Global % Disfuncional % Funcional % p OR (IC 95%)
+Tipología familiar 437 100 231 52,9 206 47,1
+Por
+parentesco (con parentesco)
+Nuclear
+simple 206 47,1 93 45,1 113 54,9 < 0,01 0,5 (0,3-0,8)
+Extensa
+91 20,8 54 59,3 37 40,7 0,1 1,3 (0,8-2,2)
+Monoparental
+52 11,9 28 53,8 24 46,2 0,8 1,0 (0,5-1,8)
+Monoparental
+extendida 51 11,7 34 66,7 17 33,3 0,03 1,9 (1,03-3,5)
+Nuclear
+numerosa 18 4,1 10 55,6 8 44,4 0,8 1,1 (0,4-2,8)
+Reconstruida
+11 2,5 7 63,6 4 36,4 0,5 1,5 (0,4-5,4)
+No
+parental 5 1,1 3 60,0 2 40,0 0,9 1,3 (0,2-8,1)
+Extensa
+compuesta 3 0,7
+2 66,7 1 33,3 0,9 1,7 (0,1-19,8)
+Por presencia
+física en el hogar
+Integrado 274
+62,7 133 48,5 141 51,5 0,01 0,6 (0,4-0,9)
+No
+integrado 104 23,8 62 59,6 42 40,4 0,1 1,4 (0,9-2,2)
+Extensa ascendente 37 8,5 23 62,2 14 37,8 0,2 1,5 (0,7-3,0)
+Extensa
+descendente 20 4,6 12 60,0 8 40,0 0,5 1,3 (0,5-3,3)
+Extensa
+colateral 2 0,5 1 50,0 1 50,0 0,9 0,8 (0,0-14,3)
+Por
+medios
+de subsistencia
+Servicios 314 71,9 171 54,5 143 45,5 0,2 1,2 (0,8-1,9)
+Comercio
+85 19,5 42 49,4 43 50,6 0,4 0,8 (0,5-1,3)
+Industrial
+37 8,5 18 48,6 19 51,4 0,5 0,8 (0,4-1,6)
+Agrícola
+1 0,2 0 0 1 100 0,4 2,1 (1,9-2,3)
+Nivel
+de pobreza familiar (ISPF)
+PFB
+289 66,1 140 48,4 149 51,6 0,01 0,5 (0,3-0,8)
+SEPF
+128 29,3 74 57,8 54 42,2 0,1 1,3 (0,8-2,0)
+PFA
+20 4,6 17 85,0 3 15,0 < 0,01 5,3 (1,5-18,6)
+Demografía
+Urbana
+435 99,5 230 52,9 205 47,1 0,9 1,1 (0,07-18,0)
+Rural
+2 0,5 1 50,0 1 50,0 0,9 Ref
+Desarrollo
+Moderna
+298 68,2 165 55,4 133 44,6 0,1 1,3 (0,9-2,0)
+Tradicional
+139 31,8 66 47,5 73 52,5 Ref
+ISPF: Índice Simpliﬁcado de Pobreza Familiar; OR (IC 95%): odds ratio (intervalo de conﬁanza al 95%); PFA: pobreza familiar alta; PFB:
+pobreza familiar baja; Ref: referencia; SEPF: sin evidencia de pobreza familiar .
+Los datos resaltados en negritas corresponden a tipologías asociadas con disfuncionalidad familiar (con signiﬁcancia estadística).
+
+686 Y. Ordó˜nez Azuara et al.
+Tabla 3
+Asociación de la tipología familiar y la percepción de la funcionalidad familiar de los padres/tutores
+Tutores, n = 437
+Global % Disfuncional % Funcional % p OR (IC 95%)
+Tipología familiar 437 100 199 45,5 238 54,5
+Por
+parentesco (con
+parentesco)
+Nuclear
+simple 206 47,1 85 41,3 121 58,7 0,09 0,7 (0,4-1,05)
+Extensa
+91 20,8 43 47,3 48 52,7 0,7 1,09 (0,6-1,7)
+Monoparental 52 11,9 31 59,6 21 40,4 0,03 1,9 (1,09-3,4)
+Monoparental
+extendida
+11,7 26 51,0 25 49,0 0,4 1,2 (0,7-2,2)
+Nuclear
+numerosa 18 4,1 9 50,0 9 50,0 0,6 1,2 (0,4-3,0)
+Reconstruida
+11 2,5 3 27,3 8 72,7 0,3 0,4 (0,1-1,6)
+No
+parental 5 1,1 2 40,0 3 60,0 0,9 0,7 (0,1-4,8)
+Extensa
+compuesta 3 0,7 0 0 3 100 0,2 NC
+Por presencia física en el
+hogar
+Integrado
+274 62,7 116 42,3 158 57,7 0,08 0,7 (0,4-1,04)
+No
+integrado 104 23,8 56 53,8 48 46,2 0,05 1,5 (0,9-2,4)
+Extensa ascendente 37 8,5 16 43,2 21 56,8 0,7 0,9 (0,4-1,7)
+Extensa
+descendente 20 4,6 10 50,0 10 50,0 0,6 1,2 (0,4-2,9)
+Extensa
+colateral 2 0,5 1, 50,0 1 50,0 0,9 1,1 (0,07-19,2)
+Por medios de
+subsistencia
+Servicios
+314 71,9 136 43,3 178 56,7 0,1 0,7 (0,4-1,1)
+Comercio
+85 19,5 42 49,4 43 50,6 0,4 1,2 (0,7-1,9)
+Industrial
+37 8,5 20 54,1 17 45,9 0,2 1,4 (0,7-2,8)
+Agrícola
+1 0,2 1 100 0 0 0,4 NC
+Nivel
+de pobreza
+familiar
+(ISPF)
+PFB
+289 66,1 135 46,7 154 53,3 0,4 1,1 (0,7-1,7)
+SEPF
+128 29,3 50 39,1 78 60,9 0,08 0,6 (0,4-1,0)
+PFA
+20 4,6 14 70,0 6 30,0 0,02 2,9 (1,1-7,7)
+Demografía
+Urbana
+435 99,5 197 45,3 238 54,7 0,2 NC
+Rural
+2 0,5 2 100 0 0 -
+Desarrollo
+Moderna
+68,2 130 43,6 168 56,4 0,240 0,7 (0,5-1,1)
+Tradicional 139 31,8 69 49,6 70 50,4 Ref
+ISPF: Índice Simpliﬁcado de Pobreza Familiar; NC: no calculable; OR (IC 95%): odds ratio (intervalo de conﬁanza al 95%); PFA: pobreza
+familiar alta; PFB: pobreza familiar baja; Ref: referencia; SEPF: sin evidencia de pobreza familiar .
+Los datos resaltados en negritas corresponden a tipologías asociadas con disfuncionalidad familiar (con signiﬁcancia estadística).
+Tabla 4 Concordancia de la percepción de la funcionalidad familiar en familias con adolescentes
+Tutor , n (%)
+Funcional Disfuncional Total
+Adolescente Funcional 133 (30) 105 (24) 238
+Disfuncional
+73 (17) 126 (29) 199
+Total
+206 231 437
+Kappa
+de Cohen 0,189
+descriptores internacionales en ciencias de la salud, la com-
+posición
+familiar se reﬁere al «tama˜no de la familia». Con
+base
+en este concepto y con los cambios que ha tenido la
+conceptualización
+de la familia en la actualidad, la valo-
+ración de la composición familiar por medio de un solo
+componente,
+como la presencia física en el hogar , se queda
+corta,
+y debería considerarse también el parentesco y los
+lazos
+afectivos familiares14,16,17,23.
+
+Tipología y disfuncionalidad familiar en familias con adolescentes 687
+Tabla
+5 Asociación de la tipología familiar y la percepción de disfuncionalidad familiar de familias con adolescentes
+Familias, n = 259
+Global % Disfuncional % Funcional % p OR (IC 95%)
+Tipología familiar 259 100 126 49,0 133 51,0
+Por
+parentesco
+(con
+parentesco)
+Nuclear
+simple 124 47,9 48 38,7 76 61,3 < 0,01 0,4 (0,2-0,7)
+Extensa
+54 20,8 30 55,5 24 44,4 0,2 1,4 (0,7-2,5)
+Monoparental 31 12,0 19 61,3 12 38,7 0,1 1,7 (0,8-3,8)
+Monoparental
+extendida
+12,0 20 64,5 11 35,5 0,06 2,0 (0,9-4,5)
+Nuclear
+numerosa 9 3,5 5 55,5 4, 44,4 0,7 1,3 (0,3-5,0)
+Reconstruida
+5 1,9 2 40,0 3 60,0 0,9 0,7 (0,1-4,2)
+No
+parental 4 1,5 2 50,0 2 50,0 0,9 1,0 (0,1-7,6)
+Extensa
+compuesta
+0,4 0 0 1 100 0,9 1,9 (1,7-2,2)
+Por
+presencia
+física
+en el hogar
+Integrado
+161 62,2 68 42,2 93 57,8 < 0,01 0,5 (0,3-0,8)
+No integrado 62 23,9 38 61,3 24 38,7 0,02 1,9 (1,09-3,5)
+Extensa
+ascendente
+7,7 11 55,0 9 45,0 0,5 1,3 (0,5-3,2)
+Extensa
+descendente
+6,2 9 56,3 7 43,8 0,5 1,3 (0,5-3,8)
+Por
+medios de
+subsistencia
+Servicios
+185 71,4 89 48,1 96 51,9 0,7 0,9 (0,5-1,5)
+Comercio
+53 20,5 26 49,1 27 50,9 0,9 1,0 (0,5-1,8)
+Industrial
+21 8,1 11 52,4 10 47,6 0,7 1,1 (0,4-2,8)
+ISPF
+PFB
+178 68,7 82 46,1 96 53,9 0,2 0,7 (0,4-1,2)
+SEPF
+68 26,3 32 47,1 36 52,9 0,7 0,9 (0,5-1,5)
+PFA
+13 5,0 12 92,3 1 7,7 < 0,01 13,8 (1,7-108,5)
+Desarrollo
+Moderna
+167 64,5 82 49,1 85 50,9 0,8 1,0 (0,6-1,7)
+Tradicional
+92 35,5 44 47,8 48 52,2 Ref
+ISPF: Índice Simpliﬁcado de Pobreza Familiar; NC: no calculable; OR (IC 95%): odds ratio (intervalo de conﬁanza al 95%); PFA: pobreza
+familiar alta; PFB: pobreza familiar baja; Ref: referencia; SEPF: sin evidencia de pobreza familiar .
+Los datos resaltados en negritas corresponden a tipologías asociadas con disfuncionalidad familiar (con signiﬁcancia estadística).
+Creemos que valdría la pena un replanteamiento del
+concepto
+de composición familiar y evaluarlo a través del
+cuestionamiento
+al paciente guía, sobre quiénes son los
+elementos
+que considera que componen su familia, enlis-
+tándolos
+respecto al rol y describiéndolos en una tabla de
+composición
+familiar , lo que permitiría identiﬁcar la fami-
+lia
+desde la subjetividad del paciente y no solo por vínculos
+contractuales23,24. Posteriormente, es necesario identiﬁcar
+la
+tipología familiar que se basa en características más
+objetivas
+de «ser familia», cuya obtención requiere de la
+entrevista clínica y/o el uso de instrumentos de valoración
+familiar4,13,20.
+La
+relevancia de este estudio radica en que orienta al
+médico
+de familia en el abordaje inicial de familias con un
+miembro
+adolescente; el trabajo con familias con adoles-
+centes
+es un reto de actualidad en medicina, no solo por
+la
+problemática biopsicosocial, sino por la poca empatía
+para
+el abordaje familiar , ligado al desconocimiento de los
+elementos de estudio y atención en el trabajo con fami-
+lias
+por causas como son: la falta de formación desde el
+pregrado
+en la materia de medicina familiar , la falta de
+modelos
+médico-familiares y la baja aptitud clínica en el
+enfoque
+familiar por la carencia de una práctica cotidiana
+en
+la atención integral familiar11,23,24. Sin embargo, este tra-
+bajo
+supone una aportación al presentar la asociación de
+diversas
+categorías de la tipología familiar con la percepción
+de
+funcionalidad familiar desde la perspectiva individual del
+adolescente, la del padre/tutor y la del sistema familiar .
+Determina
+que las categorías referentes al parentesco, la
+presencia
+física en el hogar y el nivel de pobreza familiar
+engloban
+la tipología que impacta en la funcionalidad de la
+familia
+con adolescentes.
+Las
+asociaciones aquí descritas se incluyen entre los
+determinantes
+de salud familiar14, coincidiendo con lo
+descrito
+sobre la relación de la disfuncionalidad con la
+estructura
+familiar , condiciones materiales limitadas, así
+
+688 Y. Ordó˜nez Azuara et al.
+como también con el pobre control de enfermedades cró-
+nicas y mayor incidencia de enfermedades psicosociales. De
+forma
+similar , Commanor y Phillips en 2002 describen que
+los
+ingresos económicos y la estructura familiar tienen rela-
+ción
+con la ausencia del padre, la delincuencia juvenil y la
+violencia
+en jóvenes de 14 y 22 a˜nos, lo cual aumenta de
+complejidad en varones; así mismo, Chuquimajo Huaman-
+tumba
+en 2017, en Perú, identiﬁca que los adolescentes de
+familias
+monoparentales perciben un clima familiar inade-
+cuado
+respecto a los de familias nucleares14,22,25,26.
+Es
+interesante la pobre concordancia entre la percep-
+ción
+de la disfuncionalidad del adolescente y la de su
+padre/madre
+o tutor , lo cual pudiera explicarse por la etapa
+del
+neurodesarrollo, respecto al modelo de desbalance del
+desarrollo cerebral (sistema cognitivo inmaduro contra rec-
+toría
+del sistema socioemocional) y madurez del adolescente
+respecto
+al del padre o tutor27.
+Se
+concluye que los tipos de familia con adolescentes
+asociadas
+como factores de riesgo para disfuncionalidad son
+las
+monoparentales, de núcleo no integrado y con pobreza
+familiar alta, y se consideran como factores de protección
+para
+disfuncionalidad los tipos de familia nuclear simple y
+con
+núcleo
+integrado.
+Recomendamos
+identiﬁcar
+la tipología familiar durante la
+atención médico-familiar , ya que permitirá establecer guías
+anticipadas y
+la activación de recursos para los tipos de
+familia en riesgo de presentar disfuncionalidad familiar , así
+como promover
+a las familias
+y apoyar las fortalezas de los
+tipos de
+familias que se consideran como factores protec-
+tores
+para la disfuncionalidad familiar28. Las limitantes de
+nuestro
+estudio radican en la existencia de una población
+cautiva
+a una sola región, con altos indicios de pobreza y
+predominancia
+de tutores mujeres. Este estudio establece
+las
+bases para posteriores estudios de cohortes familiares
+de
+los tipos de familias que resultaron asociadas, así como
+también
+para estudios de intervenciones orientadas a la res-
+tauración
+de la salud familiar en los tipos de familia en
+riesgo.
+Conﬂicto de intereses
+Los autores declaran no tener ningún conﬂicto de intereses.
+Agradecimientos
+Al grupo
+de profesores del Departamento de Medicina Fami-
+liar de la UANL, a la Dra. Issa Gil Alfaro y a los jóvenes de
+GEBIMed.
+Bibliografía
+1. Suarez Cuba MA, Alcalá Espinoza M. Apgar familiar: una herra-
+mienta para detectar disfunción familiar . Rev Med La Paz.
+2014;20:53- - -7.
+2. Gómez-Clavelina FJ, Ponce-Rosas ES. Una nueva propuesta para
+la interpretación de Family APGAR. Aten Fam. 2010;17:102- - -6.
+3. Casado Vicente V, Cordón Granados F, García Velasco G. Manual
+de exploración física. Barcelona: Sociedad Espa˜nola de Medicina
+de Familia y Comunitaria; 2012.
+4. Consenso de Medicina Familiar . Conceptos básicos para el estu-
+dio
+de las familias. Arch Med Fam. 2005;7:15- - -9.
+5. Fuentes Aguilar AP , Merino Escobar JM. Validación de un instru-
+mento de funcionalidad familiar . Ajayu. 2016;14:247- - -83.
+6. Moreno Méndez JH, Chauta Rozo LC. Funcionalidad familiar ,
+conductas externalizadas y rendimiento académico en un grupo
+de adolescentes de la ciudad de Bogotá. Psychol Av Discip.
+2012;6:155- - -66.
+7. Perdomo Romero AY, Ramírez Perdomo CA, Galán González EF .
+Asociación de la funcionalidad familiar entre padre e hijos ado-
+lescentes en Neiva. Av Enferm. 2015;33:94- - -103.
+8. González-Rico JL, Vásquez-Garibay EM, Cabrera-Pivaral CE,
+González-Pérez GJ, Troyo-Sanromán R. La disfunción familiar
+como factor de riesgo para obesidad en escolares mexicanos.
+Rev Med Inst Mex Seguro Soc. 2012;50:127- - -34.
+9. Ordó˜nez-Azuara YG, Vázquez-Azuara NL, Gutiérrez-Herrera RF ,
+Mendoza-Rivera R, Riquelme-Heras HM, González-Contreras
+H. Correlación de factores biopsicosociales con insatisfacción
+de la imagen corporal en adolescentes. Salud Publica Mex.
+2018;60:385- - -6.
+10. Ramírez Aranda JM. Conceptos del sistema familiar . En: Garza
+Elizondo T, Gutiérrez Herrera RF , editores. Trabajo con familias:
+abordaje médico integral. México D. F. : Manual Moderno; 2015.
+p. 7- - -10.
+11. Ordonez-Azuara Y, Aguilera Portales R, Rodríguez Alanís MM,
+López Cabrera NG, Gutiérrez Herrera RF . Análisis hermenéutico
+de los dilemas
+bioéticos en la atención médica de los adoles-
+centes
+en México.
+Rev Iberoam Bioét. 2019;9:1- - -11.
+12. Horwitz Campos N, Florenzano Urzúa R, Ringeling Polanco I.
+Familia y salud familiar . Un enfoque para la atención primaria.
+Bol Of Sanit Panam. 1985;98:144- - -55.
+13. Rebelo L. Genograma familiar . O bisturi do Médico de Família.
+Rev Port Clin Geral. 2007;23:309- - -17.
+14. Louro Bernal I. La familia en la determinación de la salud. Rev
+Cubana Salud Publica. 2003;29:48- - -51.
+15. Cervini R, Dari N, Quiroz S. Estructura familiar , tama˜no de la
+familia y el rendimiento en matemática y lectura: análisis com-
+parativo entre países de América Latina. Perﬁles Educativos.
+2016;38:12- - -31.
+16. Gutiérrez Capulín R, Díaz Otero KY , Román Reyes RP . El concepto
+de familia en México: una revisión desde la mirada antropoló-
+gica y demográﬁca. Ciencia ergo-sum. 2017;23:219- - -28.
+17. López Romo H. Los once tipos de familias en México. AMAI.
+2016;47:26- - -31.
+18. Instituto Nacional de Estadística y Geografía. Estadísticas a
+propósito del. . . día de la familia mexicana (5 de marzo).
+Datos Nacionales, 2017 [consultado 1 Dic 2018]; Disponible en:
+https://www.cndh.org.mx/sites/default/ﬁles/doc/Programas/
+Ninez
+familia/Material/trip-familias-juridicas.pdf
+19. Comisión Nacional de los Derechos Humanos. Las familias y
+su protección jurídica. Ciudad de México. 2018. [actualizado
+Jul 2018; consultado 5 Nov 2018]. Disponible en: http://
+www.cndh.org.mx/sites/all/doc/programas/ninez familia/
+material/trip-familias-juridicas.pdf.
+20. Irigoyen-Coria A, Ponce-Rosas R, Gómez-Clavelina F. Índice
+simpliﬁcado de pobreza familiar: Proposta para uma previsão
+ponderada. Pan Am Fam Med Clin. 2005;1:97- - -8.
+21. Arias L. El APGAR familiar en el cuidado primario de salud.
+Colomb Med (Cali). 1994;25:26- - -128.
+22. Pérez Milena A, Pérez Milena R, Martínez Fernández ML, Leal
+Helmling FJ, Mesa Gallardo I, Jiménez Pulido I. Estructura y fun-
+cionalidad de la familia durante la adolescencia: relación con
+el apoyo social, el consumo de tóxicos y el malestar psíquico.
+Aten Primaria. 2007;39:61- - -7.
+23. Borrillo D. La contractualización de los vínculos de familia. RIDJ.
+2017;1:1- - -28.
+24. De la Cruz-Florencio P, Godínez-Tamay ED, Hernández Miranda
+MB. La Medicina Familiar como especialidad médica: percepción
+de otros especialistas. Aten Fam. 2016;23:109- - -12.
+
+Tipología y disfuncionalidad familiar en familias con adolescentes 689
+25. Chuquimajo Huamantumba S. Personalidad y clima social
+familiar en adolescentes de familia nuclear , biparental y mono-
+parental. Rev Inv Psicol. 2017;20:347- - -62.
+26. Commanor W, Phillips L. El impacto de los ingresos y
+la estructura familiar en la delincuencia. Rev Econ Apl.
+2002;5(2):209-32.
+27. Broche Pérez Y. Modelo de desbalance del desarrollo cere-
+bral: nuevo enfoque teórico en la comprensión de conductas de
+riesgo en la adolescencia. Rev Cubana Neurol Neurocir . 2015;5:
+38- - -40.
+28. Gutiérrez Herrera RF , Ordó˜nez Azuara Y, Gómez Gómez C, Ramí-
+rez Aranda JM, Méndez Espinoza E, Martínez Lazcano F. Análisis
+sobre elementos de contenido en medicina familiar para la
+identidad profesional del médico familiar . Rev Med La Paz.
+2019;25:58- - -67.

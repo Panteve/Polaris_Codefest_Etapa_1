@@ -1,0 +1,636 @@
+Aten Primaria. 2020;52(10):676- - -679
+www.elsevier.es/ap
+Atención Primaria
+EDITORIAL
+COVID-19 en Espa˜na, ¿cómo hemos llegado hasta aquí?
+COVID-19 in Spain, how did we get here?
+Los primeros casos COVID-19 en Espa˜na se produjeron en
+febrero.
+ La
+ OMS declaró la pandemia el 11 de marzo y el 14
+el Gobierno espa˜nol
+ aprobó el RD 463/2020, declarando el
+estado de alarma para la gestión de la situación de emer-
+gencia sanitaria
+ originada por COVID-19. Esta situación se
+prolongó hasta el 21
+ de junio, después del alivio progresivo
+de las estrictas medidas de limitación de la movilidad en el
+mes de mayo. A partir de esa fecha se entró en un escenario
+de
+ ‘‘control de la pandemia’’ y los casos han experimentado
+un
+ aumento progresivo y exponencial en la mayoría de las
+comunidades
+ autónomas (CCAA). Este repunte generalizado
+de
+ contagios ha situado a nuestro país junto con resto de
+Europa,
+ en una 2a onda pandémica.
+Globalmente
+ Espa˜na ha sido uno de los países con mayo-
+res
+ tasas de contagios y mortalidad del mundo. A ﬁnales de
+octubre,
+ la cifra de fallecidos facilitadas por el Centro de
+Coordinación
+ de Alertas y Emergencias Sanitarias ascendía
+a
+ 36.0001. Las cifras reales son mayores que las reconocidas,
+tal
+ y como se deduce de los datos del INE que sitúa el exceso
+de
+ mortalidad atribuible al COVID-19 entre marzo y octubre,
+en
+ alrededor de 60.000 personas2. El exceso de mortalidad
+Tabla 1 comparativo poblacional de la primera y segunda onda pandémicas por SARS-COV-2 en Espa˜na
+Datos epidemiológicos 1a oleda (RENAVE 11-5-20) 2a oleada (RENAVE 21-10-20)
+Periodos Marzo-Mayo A partir Junio
+N◦ total de casos (% respecto a la población total) 231.765 (0,49%) 769.351 (1,62%)
+Edad (a˜nos) (Mediana) 60 (46-78) 39 (24-55)
+Casos
+ en menores de 30 a˜nos 6,5% 34,6%
+Casos
+ en mayores de 60 a˜nos 51% 18,9%
+Casos
+ sintomáticos 50 51,6%
+Contacto
+ estrecho con casos COVID-19 probable o conﬁrmado 53% 60%
+Hospitalizados
+ (n, %) 88.707 (44,0%) 41.240 (5,4%)
+Ingresados
+ en cuidados intensivos 7.306 (5,3%) 3.264 (0,4%)
+Defunciones
+ 18.352 (7,9%) 6.153 (0,8%)
+Exceso
+ de mortalidad (INE)[Desde 11/02/2020] 48.000 12.000
+Personal
+ sanitario (% del total de profesionales) 38.064 (22%) 17.501 (4,1%)
+Elaboración por los autores a partir de referencia 4 y 5.
+en Espa˜na, entre febrero y ﬁnales de mayo fue del 38%, el
+más
+ alto
+ de 21 países industrializados a nivel mundial3.
+En la 2a onda, a pesar de causar un mayor número de
+infectados que en la 1a, el número de hospitalizaciones,
+ingresos en
+ UCI o letalidad, están siendo notablemente
+inferiores4,5 (Tabla
+ 1). En la 1a onda se afectaron personas en
+situación de vulnerabilidad, siendo 2/3 de los infectados y
+hospitalizados y el 95% de los fallecidos mayores de 60 a˜nos4.
+Además,
+ 2/3 de los fallecidos vivían en residencias de la
+3a edad, insuﬁcientemente protegidas, circunstancia agra-
+vada
+ por la ausencia de pruebas diagnósticas y de equipos
+de
+ protección para los residentes y el personal4.
+En
+ esta 2a onda se está afectando la población más joven.
+El
+ 68% tiene menos de 60 a˜nos y el grupo de edad de 15 a
+29
+ a˜nos, es el más afectado (22%)5. El porcentaje de hospi-
+talizados
+ y fallecidos es menor en todos los grupos de edad
+y
+ cuantitativamente inferior a la 1a onda5.
+Hasta
+ ﬁnales de octubre, Espa˜na ha presentado una cifra
+de
+ 68.000 profesionales infectados, que podría deberse a
+la
+ falta de medidas de protección adecuadas, al menos al
+inicio
+ de la pandemia4,5, esta situación es especialmente
+https://doi.org/10.1016/j.aprim.2020.10.003
+0212-6567/© 2020 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+EDITORIAL 677
+Tabla 2
+ amenazas y oportunidades de mejora para la gestión sanitaria de la COVID-19
+FALLOS PROPUESTAS
+GESTIÓN
+•
+ Descoordinación entre administraciones
+sanitarias (CC.AA y Ministerio de Sanidad) con
+comunicaciones
+ y actuaciones contradictorias y
+discrepancias
+ políticas en la gestión de la
+pandemia.
+•
+ Precipitación en algunas CC.AA en el proceso de
+desconﬁnamiento
+ con una normalización social
+rápida.
+•
+ Desarrollo incompleto del plan de respuesta
+temprana.
+•
+ Diﬁcultad para realizar las restricciones de
+movilidad
+ y reducción de actividad en regiones.
+•
+ Coordinación de modo efectivo entre el
+Ministerio y de las CC.AA para dar respuesta a la
+pandemia,
+ atendiendo a criterios cientíﬁcos sin
+interferencias
+ políticas.
+• Marco común para todas las CC.AA de detección
+y
+ clasiﬁcación del nivel de alerta epidemiológica,
+atendiendo
+ a indicadores epidemiológicos y de
+actividad
+ asistencial, con establecimiento de
+medidas
+ de control y de restricción de la
+movilidad e interacciones sociales, según
+diferentes niveles de intervención.
+ORGANIZACIÓN
+•
+ Descrédito del sistema de notiﬁcación y registros
+de
+ los datos epidemiológicos de la pandemia.
+•
+ Inexistencia de indicadores claros, consensuados
+y
+ transparentes para el seguimiento y
+monitorización
+ de la pandemia.
+•
+ Medidas con baja evidencia cientíﬁca e
+insuﬁciente
+ participación de la comunidad
+cientíﬁca.
+•
+ Insuﬁciente coordinación entre los servicios de
+Salud
+ Pública y AP .
+•
+ Establecimiento de pautas comunes de
+actuación
+ en prevención, manejo clínico y
+estrategias
+ de rastreo de los casos y contactos.
+•
+ Sistema homogéneo, ﬁable y ágil de recopilación
+de
+ datos epidemiológicos de las CC.AA.
+•
+ Uso de indicadores comunes para el seguimiento
+y
+ monitorización de la situación epidemiológica.
+•
+ Adoptar medidas contando con la revisión por
+paneles
+ de expertos de reconocido prestigio o
+comités
+ cientíﬁcos.
+PREVENCION Y CONTROL
+•
+ Insuﬁciente capacidad de diagnóstico precoz y
+seguimiento
+ de caso y de los contactos.
+•
+ Diagnóstico tardío de casos.
+•
+ Rastreo limitado de casos.
+•
+ Mala respuesta a los brotes iniciales en
+temporeros
+ o en actividades sociales (ocio
+nocturno,
+ eventos familiares).
+•
+ Incumplimiento de medidas de
+aislamiento/cuarentena.
+•
+ Desprotección de las personas vulnerables,
+especialmente
+ la población mayor , ingresados en
+residencias
+ en la 1aprimera onda.
+•
+ Fortalecer la Salud Pública y la Vigilancia
+Epidemiológica.
+•
+ Aumentar la capacidad de realizar pruebas para
+el
+ diagnóstico precoz de los infectados.
+•
+ Rastreo exhaustivo de todos contactos.
+•
+ Búsqueda activa de casos sintomáticos en la
+comunidad
+ en zonas de alta prevalencia.
+•
+ Facilitar el aislamiento efectivo de todos los
+casos diagnosticados.
+•
+ Protección de poblaciones vulnerables.
+•
+ Asegurar las medidas de protección
+homologadas
+ a los profesionales.
+RECURSOS
+•
+ Sistema de AP muy mermado previamente a
+nivel
+ de recursos humanos y materiales, con una
+profunda
+ necesidad de cambio.
+•
+ Sobrecarga de funciones de AP . Detección y
+seguimiento
+ de casos, realización de pruebas,
+rastreo,
+ comunicación de resultados de cribados y
+brotes.
+•
+ Servicios de Salud Pública debilidades por
+recortes previos.
+•
+ Insuﬁciente contratación de rastreadores.
+•
+ Potenciación y refuerzos de los dispositivos
+hospitalarios (servicios de urgencia y UCI) en
+detrimento
+ de la inversión en AP
+•
+ Elevado número de profesionales sanitarios
+infectados
+•
+ Insuﬁcientes medidas para control la
+vulnerabilidad
+ social que ha facilitado la
+transmisión
+ y diﬁcultad el seguimiento de las
+recomendaciones
+ de aislamiento y cuarentena
+•
+ Refuerzo inmediato de la AP a nivel de recursos
+humanos,
+ tecnológicos y adecuación de las
+infraestructuras.
+•
+ Creación de dispositivos para la toma de
+muestras
+ y comunicación de resultados
+centralizados
+ ajenos a los centros de salud (CS)
+sin
+ implicar a profesionales sanitarios de AP
+•
+ Reforzar
+ la actividad de los CS con otros
+profesionales sanitario (diferente de médicos y
+enfermeros).
+•
+ Equipo de rastreadores suﬁcientes e integrados
+o coordinados con los CS, en número suﬁciente
+para
+ que el rastreo sea efectivo y exhaustivo.
+•
+ Aumentar la capacidad de realizar mayor
+número
+ de pruebas diagnósticas.
+•
+ Facilitar el aislamiento de casos positivos o de
+la
+ cuarentena mediante medidas de apoyo
+socioeconómico
+ (hoteles o residencias
+medicalizadas).
+
+678 EDITORIAL
+Tabla
+ 2 (continuación)
+FALLOS PROPUESTAS
+POBLACIÓN
+•
+ Características sociales de la población
+espa˜nola:
+ relaciones sociales intensas,
+intergeneracionales
+ con mucha movilidad.
+•
+ Alto grado de vulnerabilidad por la elevada
+esperanza
+ de vida.
+•
+ Excesiva relajación en verano de las medidas y
+conductas de protección social y permisividad de
+las
+ interacciones sociales.
+•
+ Bajo nivel de concienciación en grupos
+poblacionales
+ más jóvenes.
+• Insuﬁcientes campa˜nas de información y
+sensibilización
+ para la responsabilidad individual
+de
+ la población. Se ha transmitido una falsa
+sensación de seguridad a la población tras la
+pandemia.
+•
+ Campa˜nas institucionales para educar e
+involucrar
+ y empoderar a todos los miembros de
+la
+ sociedad, especialmente los más vulnerables y,
+para
+ que participen en la respuesta a la
+pandemia.
+•
+ Campa˜na de información y sensibilización a la
+población especialmente a grupo sociales más
+resistentes
+ como jóvenes para promover la
+concienciación
+ social.
+•
+ Mantener políticas seguras para el
+distanciamiento físico y el uso de mascarillas.
+Elaboración por los autores.
+importante por
+ su posible papel en la transmisión de la
+enfermedad.
+El
+ Ministerio
+ de Sanidad estableció los criterios actuales
+de ‘‘caso sospechoso’’ de COVID-19 el 12 mayo y de
+acuerdo con el
+ Plan de respuesta temprana en un escenario
+de control
+ de la pandemia, las Administraciones Públicas
+debían realizar un importante
+ esfuerzo, a ﬁn de detectar ,
+rastrear y aislar lo antes posible6. El desarrollo ha sido
+muy
+ dispar . En cuanto al diagnóstico, en Espa˜na se pasó de
+realizar
+ 191,8 PCR/100.000 hab en la semana 12 (23 marzo)
+a
+ 558,4 en la semana 29 (20 julio) y 1.445,4 en la semana
+41 (12 octubre) en la misma línea que otros países de la
+Unión
+ Europea (documento de ecdc), salvo quizás Grecia y
+Alemania,
+ en extremos opuestos7. Este hecho provoca una
+situación
+ paradójica, ya que, si bien mejora la detección y
+el control de la pandemia, al mismo tiempo se dispararon
+las
+ incidencias acumuladas de casos, principal indicador
+de
+ gestión de la pandemia. Una situación similar viven en
+Bélgica
+ con 2.679 pruebas PCR/100.000 hab o Francia con
+1.484
+ PCR/100.000 hab7.
+Los
+ casos asintomáticos detectados con esta nueva estra-
+tegia
+ han pasado de ser anecdóticos a suponer el 51,6% de
+todos
+ los casos5. La mejora del rastreo habría permitido
+la
+ detección de casos asintomáticos causantes de transmi-
+sión
+ comunitaria silente. Pero desgraciadamente, la lentitud
+o
+ incluso desidia en su implementación ha hecho imposi-
+ble
+ realizar un control efectivo de una 2a onda pandémica
+debido
+ c contratos con empresas privadas sin experiencia
+en
+ la materia, un escaso o nulo aumento de plantillas en
+Atención
+ Primaria (AP) o servicios de Salud Pública e incluso,
+cierto
+ corporativismo a la hora de adoptar diferentes perﬁles
+de rastreadores, no han sido las mejores herramientas para
+la
+ optimización del rastreo, junto a un inexistente rastreo
+retrospectivo.
+Como
+ factor a˜nadido, la mejora en los datos de la pri-
+mera onda, entendida como la ausencia de enfermedad,
+ha
+ provocado un aumento de movilidad e interacción social
+hasta
+ niveles anteriores a la pandemia. Prueba de ello es
+el
+ diferente perﬁl de los casos detectados (edad más joven
+con perﬁl clínico de menor gravedad)4,5 que diﬁculta, más si
+cabe, el correcto seguimiento de los aislamientos, cuaren-
+tenas
+ o rastreo de contactos.
+Finalmente,
+ si bien la transmisión entre profesionales
+en
+ la 2a onda ha tenido una mejor evolución (4,1% de los
+casos)5, sin duda por una mejor previsión en el material de
+protección,
+ este control no ha sido del todo así en relación
+con
+ las residencias. La falta de criterios (incluso a nivel euro-
+peo)
+ para cribados periódicos y seriados de usuarios y pro-
+fesionales,
+ ha impedido blindar los centros sociosanitarios.
+En
+ relación con la pandemia, nuestro país ha soportado
+uno
+ de los mayores costes económico, social y sanitario.
+Tras
+ el levantamiento de restricciones de la fase de con-
+ﬁnamiento
+ se produjo un rápido resurgimiento del virus.
+Diferentes
+ organizaciones e instituciones han cuestionado
+la
+ eﬁcacia/eﬁciencia en la gestión de las autoridades sani-
+tarias,
+ se˜nalando los errores cometidos y repetidos en
+la
+ 2a onda: descoordinación entre administraciones, falta
+de
+ indicadores epidemiológicos sensibles para establecer
+el
+ nivel de alerta, retraso en el diagnóstico de casos y
+en
+ el rastreo de contactos, insuﬁciente número de ras-
+treadores
+ y de recursos en Atención Primaria (AP), y
+fracaso en la comunicación y la sensibilización de la pobla-
+ción
+ en el cumplimiento de las medidas preventivas8- - -10
+(Tabla 2)
+Los
+ profesionales y las sociedades cientíﬁcas vienen
+reclamado
+ al gobierno de Espa˜na y de las CC.AA una eva-
+luación
+ independiente de la gestión del coronavirus en
+nuestro
+ país11. También solicitan una toma de decisiones
+coordinadas, equitativas, basadas en criterios cientíﬁ-
+cos
+ comunes y transparentes, desligadas del continuo
+enfrentamiento 12.
+Es
+ previsible que la pandemia se prolongue 2-3 a˜nos y que
+responder
+ adecuadamente a sus exigencias suponga un gran
+desafío
+ para el sistema sanitario; debiéndose adoptar unas
+medidas
+ factibles, aceptadas por la población y sostenibles
+en el tiempo. Siendo las intervenciones tempranas, proac-
+tivas
+ y estrictas fundamentales y apoyadas en experiencias
+previas
+ ya evaluadas (Tabla 2).
+
+EDITORIAL 679
+En la 1a onda, la AP se responsabilizó de atender a más
+de
+ un millón de casos sospechosos y de contactos; siendo
+en
+ el 80-85% el primer contacto del paciente con el ser-
+vicio
+ público de salud. Esta actividad está siendo aún más
+intensa
+ en la 2a onda, pues en muchas CC.AA ha tenido que
+realizar
+ directamente funciones de rastreo y asumir la reali-
+zación de pruebas. Este exceso de actividad recae en una AP
+que
+ previamente ya estaba mermada en recursos humanos y
+materiales
+ y que precisa de un cambio profundo y urgente.
+La
+ pandemia ha agravado extraordinariamente esta situa-
+ción
+ en las diferentes CC.AA, hasta llegar a la sobrecarga y
+la
+ saturación asistencial actual. Se precisan medidas inme-
+diatas
+ por los diferentes servicios de salud para fortalecer la
+AP
+ y mantener su capacidad y potencialidad para que conti-
+núe siendo el principal motor de abordaje clínico-asistencial
+de
+ la COVID-19.
+Bibliografía
+1.
+ Situación actual de COVID-19 en
+ Espa˜na [Internet]. Madrid.
+Ministerio
+ de Sanidad. Madrid: Centro de Coordinación de
+Alertas y Emergencias Sanitarias (CCAES); 2020 [Consul-
+tado 25 octubre 2020]. Disponible en: https://www.mscbs.
+gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov
+/situacionActual.htm
+2. Información estadística para el análisis del impacto de
+la crisis COVID-19. Datos de salud y mortalidad. [Inter-
+net]. Madrid: Instituto Nacional de estadística (INE);
+2020 [Consultado 25 de octubre de 2020]. Disponible en:
+https://www.ine.es/covid/covid salud.htm
+3. Kontis V, Bennett JE, Rashid T, Parks RM, Pearson-Stuttard J,
+Guillot M, et al. Magnitude, demographics and dynamics of
+the effect of the ﬁrst wave of the COVID-19 pandemic on all-
+cause mortality in 21 industrialized countries. Nat Med. 2020,
+http://dx.doi.org/10.1038/s41591-020-1112-0.
+4. Informe n◦ 30. Situación de COVID-19 en Espa˜na
+a 11 de mayo de 2020 [Internet]. Equipo COVID-
+19. RENAVE. CNE. CNM (ISCIII). 2020.[Consultado
+25 octubre 2020]. Disponible en: https://www.
+isciii.es/QueHacemos/Servicios/VigilanciaSaludPublicaRENAVE
+/EnfermedadesTransmibes/Documents/INFORMES/Informes
+%20COVID-19/Informe%20n%c2%ba%2030.%20Situaci%c3%b3n
+%20de%20COVID19%20en%20Espa%c3%b1a%20a%2011%20de%
+20mayo%20de%202020.pdf
+.
+5. Informe n◦ 49. Situación de COVID-19 en Espa˜na a 14 de
+octubre de 2020. Casos diagnosticados a partir 10 de mayo
+[Internet]. Equipo COVID-19. RENAVE. CNE. CNM (ISCIII). 2020.
+[Consultado 25 octubre 2020]. Disponible en: https://www.
+isciii.es/QueHacemos/Servicios/VigilanciaSaludPublicaRENAVE
+/EnfermedadesTransmisibles/Documents/INFORMES/Informes
+%20COVID-19/Informe%20COVID-19.%20N%C2%BA%2049
+ 21
+%20de%20octubre%20de%202020.pdf.
+6. Plan de respuesta temprana en un escenario de con-
+trol de la pandemia por COVID-19 del Sistema Nacional
+de Salud. [Internet]. Madrid Ministerio de Sanidad. Con-
+sejo Interterritorial del Sistema Nacional de Salud. 16
+julio 2020. [Consultado 25 octubre 2020]. Disponible en:
+https://www.mscbs.gob.es/profesionales/saludPublica/ccayes
+/alertasActual/nCov/documentos/COVID19
+ Plan de respuesta
+temprana escenario control.pdf.
+7. Weekly updated dat. Data on testing for COVID-19 by
+week and country Data on testing for COVID-19 by week
+and country. [Internet]. Solna: European Centre for Disease
+Prevention and Control (ECDC). 2020. [Consultado 25 octu-
+bre 2020]. Disponible en: https://www.ecdc.europa.eu/en/
+publications-data/covid-19-testing.
+8. COVID-19 in Spain: a predictable storm? Lancet Public Health
+2020 Published Online October 16, 2020. DOI: https://doi.
+org/10.1016/S2468-2667(20)30239-5
+https://www.thelancet.com/journals/lanpub/article
+/PIIS2468-2667(20)30239-5/ful
+ ltext.
+9. Debate ANIS: La pandemia que está doblegando a Espa˜na:
+¿qué está fallando?, ¿qué hacemos ahora? [Internet].
+Madrid: Asociación Nacional de Informadores de la Salud
+(ANIS). (6 octubre 2020. [consultado 25 octubre 2020].
+Disponible en: https://www.youtube.com/watch?v=8KUC5IIu-
+eM&trk=organization-update-conte
+nt
+ share-embed-video share-article title.
+10. Minué S,
+ Jaramillo F, Oyarzo A. Evidencias y reﬂexiones sobre
+la
+ COVID-19. AMF .
+ 2020;16(6):335- - -48.
+11. Trias-Llimós S, Alustiza A, Prats C, Tobias A, Riffe T. The
+need for detailed COVID-19 data in Spain. Lancet. 2020,
+http://dx.doi.org/10.1016/S2468-2667(20)30234-6. Published
+Online October 9.
+12. Maniﬁesto de 55 sociedades cientíﬁcas dirigido a la clase política
+por la gestión de la COVID-19: ‘‘En salud, ustedes mandan, pero
+no saben’’ [Internet] Madrid, 4 de octubre de 2020. [Consultado
+25 octubre 2020]. Disponible en: https://cutt.ly/ef5ATAd.
+José María Molero Garcíaa,∗, Javier Arranz Izquierdob
+y María Isabel Gutiérrez Pérezc
+a Médico de familia. CS San Andrés. DAC. SERMAS. Madrid,
+Grupo
+ de trabajo de enfermedades infecciosas de SemFYC
+b Médico de familia, Instituto de Investigación Sanitaria de
+Illes
+ Balears (Idisba), CS Escola Graduada. Ibsalut. Palma
+de
+ Mallorca. Illes Balears, Grupo de trabajo de
+enfermedades
+ infecciosas de SemFYC
+c Médico de familia., CS Delicias I (GAP Oeste) Valladolid,
+Coordinadora del Grupo de trabajo de enfermedades
+infecciosas
+ de SemFYC
+∗ Autor para correspondencia. Dirección actual: Calle
+ábrego
+ N◦ 29, 2◦-D, 28223-Pozuelo de Alarcón (Madrid).
+Correo
+ electrónico: jmolerog@gmil.com (J.M.M. García).
+30
+ de octubre de 2020 30 de octubre de 2020

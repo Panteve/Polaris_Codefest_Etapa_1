@@ -1,0 +1,331 @@
+tipo: informacion_amplia_sobre_inteligencia_artificial
+
+nota: Este contenido combina información general, ejemplos ilustrativos y algunos escenarios hipotéticos. Los elementos marcados como hipotéticos no representan hechos comprobados.
+
+tema_principal: Inteligencia Artificial
+
+definicion: La inteligencia artificial es un campo de la informática dedicado a crear sistemas capaces de realizar tareas que normalmente requieren capacidades humanas, como reconocer patrones, comprender lenguaje, aprender de datos, tomar decisiones, generar contenido y resolver problemas.
+
+caracteristicas_principales[0].nombre: Aprendizaje automático
+
+caracteristicas_principales[0].descripcion: Permite que un sistema encuentre patrones en grandes cantidades de datos y mejore su desempeño sin recibir instrucciones específicas para cada caso.
+
+caracteristicas_principales[1].nombre: Procesamiento del lenguaje natural
+
+caracteristicas_principales[1].descripcion: Permite analizar, traducir, resumir y generar textos escritos o hablados por seres humanos.
+
+caracteristicas_principales[2].nombre: Vision artificial
+
+caracteristicas_principales[2].descripcion: Permite identificar objetos, rostros, movimientos, documentos y situaciones dentro de imágenes o videos.
+
+caracteristicas_principales[3].nombre: Razonamiento automatizado
+
+caracteristicas_principales[3].descripcion: Permite utilizar reglas, relaciones y conocimientos almacenados para llegar a conclusiones o recomendaciones.
+
+caracteristicas_principales[4].nombre: Generacion de contenido
+
+caracteristicas_principales[4].descripcion: Permite crear textos, imágenes, sonidos, videos, diseños, código y otros materiales a partir de instrucciones.
+
+tipos_de_ia[0].tipo: IA estrecha
+
+tipos_de_ia[0].descripcion: Está diseñada para realizar una tarea específica o un grupo limitado de tareas.
+
+tipos_de_ia[0].ejemplos[0]: Sistemas de recomendación
+
+tipos_de_ia[0].ejemplos[1]: Filtros de correo no deseado
+
+tipos_de_ia[0].ejemplos[2]: Asistentes virtuales
+
+tipos_de_ia[0].ejemplos[3]: Detectores de fraude
+
+tipos_de_ia[0].ejemplos[4]: Programas de reconocimiento de voz
+
+tipos_de_ia[1].tipo: IA general
+
+tipos_de_ia[1].descripcion: Es un concepto teórico relacionado con sistemas capaces de realizar una gran variedad de tareas intelectuales con flexibilidad comparable a la humana.
+
+tipos_de_ia[1].estado: Concepto de investigación y debate
+
+tipos_de_ia[2].tipo: IA superinteligente
+
+tipos_de_ia[2].descripcion: Es una idea hipotética sobre una inteligencia artificial que superaría ampliamente las capacidades humanas en prácticamente todos los ámbitos intelectuales.
+
+tipos_de_ia[2].estado: Escenario hipotético
+
+como_aprende_un_modelo[0].nombre: Recoleccion de datos
+
+como_aprende_un_modelo[0].descripcion: Se reúnen textos, imágenes, sonidos, registros numéricos u otros ejemplos relacionados con el problema que se desea resolver.
+
+como_aprende_un_modelo[1].nombre: Preparacion de datos
+
+como_aprende_un_modelo[1].descripcion: Los datos se limpian, organizan, clasifican y convierten en un formato que pueda ser procesado por algoritmos.
+
+como_aprende_un_modelo[2].nombre: Entrenamiento
+
+como_aprende_un_modelo[2].descripcion: El modelo analiza numerosos ejemplos y ajusta sus parámetros internos para reducir la diferencia entre sus respuestas y las respuestas esperadas.
+
+como_aprende_un_modelo[3].nombre: Evaluacion
+
+como_aprende_un_modelo[3].descripcion: El sistema se prueba con datos que no utilizó durante el entrenamiento para comprobar si puede generalizar lo aprendido.
+
+como_aprende_un_modelo[4].nombre: Implementacion
+
+como_aprende_un_modelo[4].descripcion: El modelo se integra en una aplicación, página web, robot, sistema empresarial u otra herramienta.
+
+como_aprende_un_modelo[5].nombre: Supervision
+
+como_aprende_un_modelo[5].descripcion: Se revisa su funcionamiento, se detectan errores y se actualiza cuando cambian los datos, las necesidades o el contexto.
+
+tecnologias_relacionadas[0].nombre: Redes neuronales artificiales
+
+tecnologias_relacionadas[0].descripcion: Modelos matemáticos inspirados de manera simplificada en la estructura de las neuronas biológicas.
+
+tecnologias_relacionadas[1].nombre: Aprendizaje profundo
+
+tecnologias_relacionadas[1].descripcion: Método que utiliza redes neuronales con muchas capas para detectar representaciones complejas en los datos.
+
+tecnologias_relacionadas[2].nombre: Modelos de lenguaje
+
+tecnologias_relacionadas[2].descripcion: Sistemas entrenados para analizar y producir lenguaje mediante relaciones estadísticas entre palabras, frases y conceptos.
+
+tecnologias_relacionadas[3].nombre: Aprendizaje supervisado
+
+tecnologias_relacionadas[3].descripcion: Utiliza ejemplos que incluyen una respuesta correcta o una etiqueta conocida.
+
+tecnologias_relacionadas[4].nombre: Aprendizaje no supervisado
+
+tecnologias_relacionadas[4].descripcion: Busca estructuras, grupos o patrones en datos que no tienen etiquetas previamente definidas.
+
+tecnologias_relacionadas[5].nombre: Aprendizaje por refuerzo
+
+tecnologias_relacionadas[5].descripcion: Un agente aprende mediante acciones, recompensas y penalizaciones dentro de un entorno.
+
+tecnologias_relacionadas[6].nombre: IA multimodal
+
+tecnologias_relacionadas[6].descripcion: Puede trabajar con varias formas de información, como texto, imágenes, audio y video.
+
+aplicaciones.educacion[0]: Creación de tutores virtuales
+
+aplicaciones.educacion[1]: Generación de ejercicios personalizados
+
+aplicaciones.educacion[2]: Corrección preliminar de textos
+
+aplicaciones.educacion[3]: Traducción de materiales
+
+aplicaciones.educacion[4]: Detección de temas que requieren refuerzo
+
+aplicaciones.educacion[5]: Creación de simulaciones educativas
+
+aplicaciones.medicina[0]: Análisis de imágenes médicas
+
+aplicaciones.medicina[1]: Apoyo en la clasificación de síntomas
+
+aplicaciones.medicina[2]: Descubrimiento de posibles relaciones entre variables
+
+aplicaciones.medicina[3]: Automatización de tareas administrativas
+
+aplicaciones.medicina[4]: Seguimiento de pacientes
+
+aplicaciones.medicina[5]: Investigación de nuevos tratamientos
+
+aplicaciones.finanzas[0]: Detección de transacciones inusuales
+
+aplicaciones.finanzas[1]: Evaluación de riesgos
+
+aplicaciones.finanzas[2]: Predicción de demanda
+
+aplicaciones.finanzas[3]: Automatización de atención al cliente
+
+aplicaciones.finanzas[4]: Análisis de documentos financieros
+
+aplicaciones.finanzas[5]: Identificación de posibles fraudes
+
+aplicaciones.agricultura[0]: Monitoreo del estado de los cultivos
+
+aplicaciones.agricultura[1]: Detección de plagas
+
+aplicaciones.agricultura[2]: Predicción de necesidades de riego
+
+aplicaciones.agricultura[3]: Análisis de imágenes tomadas por drones
+
+aplicaciones.agricultura[4]: Optimización del uso de fertilizantes
+
+aplicaciones.agricultura[5]: Estimación de cosechas
+
+aplicaciones.industria[0]: Mantenimiento predictivo
+
+aplicaciones.industria[1]: Inspección automatizada de productos
+
+aplicaciones.industria[2]: Control de calidad
+
+aplicaciones.industria[3]: Optimización de cadenas de suministro
+
+aplicaciones.industria[4]: Robótica colaborativa
+
+aplicaciones.industria[5]: Reducción de desperdicios
+
+aplicaciones.entretenimiento[0]: Recomendación de películas y música
+
+aplicaciones.entretenimiento[1]: Creación de efectos visuales
+
+aplicaciones.entretenimiento[2]: Generación de personajes
+
+aplicaciones.entretenimiento[3]: Personalización de videojuegos
+
+aplicaciones.entretenimiento[4]: Producción de guiones preliminares
+
+aplicaciones.entretenimiento[5]: Restauración de audio y video
+
+aplicaciones.transporte[0]: Optimización de rutas
+
+aplicaciones.transporte[1]: Predicción del tráfico
+
+aplicaciones.transporte[2]: Sistemas de asistencia al conductor
+
+aplicaciones.transporte[3]: Gestión de flotas
+
+aplicaciones.transporte[4]: Mantenimiento de vehículos
+
+aplicaciones.transporte[5]: Planificación del transporte público
+
+ventajas[0]: Puede procesar grandes volúmenes de información en poco tiempo.
+
+ventajas[1]: Ayuda a automatizar tareas repetitivas.
+
+ventajas[2]: Puede funcionar durante largos periodos sin cansancio físico.
+
+ventajas[3]: Permite personalizar servicios y contenidos.
+
+ventajas[4]: Puede detectar patrones difíciles de observar manualmente.
+
+ventajas[5]: Apoya la toma de decisiones mediante análisis de datos.
+
+ventajas[6]: Puede mejorar la accesibilidad para personas con diferentes necesidades.
+
+ventajas[7]: Facilita la creación rápida de prototipos y contenidos.
+
+limitaciones[0]: Puede producir información incorrecta con apariencia convincente.
+
+limitaciones[1]: Su rendimiento depende de la calidad de los datos.
+
+limitaciones[2]: Puede reproducir prejuicios presentes en los datos de entrenamiento.
+
+limitaciones[3]: No posee necesariamente comprensión humana, conciencia o intención.
+
+limitaciones[4]: Puede fallar cuando se enfrenta a situaciones nuevas o ambiguas.
+
+limitaciones[5]: Requiere infraestructura tecnológica y recursos computacionales.
+
+limitaciones[6]: Puede presentar dificultades para explicar con claridad algunas decisiones.
+
+limitaciones[7]: No debe sustituir automáticamente el criterio de profesionales en situaciones críticas.
+
+riesgos_y_desafios[0].riesgo: Desinformacion
+
+riesgos_y_desafios[0].detalle: La IA puede utilizarse para crear textos, imágenes, audios o videos falsos que parezcan auténticos.
+
+riesgos_y_desafios[1].riesgo: Privacidad
+
+riesgos_y_desafios[1].detalle: El uso inadecuado de datos personales puede provocar exposición, vigilancia o decisiones no autorizadas.
+
+riesgos_y_desafios[2].riesgo: Sesgo algorítmico
+
+riesgos_y_desafios[2].detalle: Un sistema puede tratar de forma desigual a determinados grupos si los datos utilizados son incompletos o injustos.
+
+riesgos_y_desafios[3].riesgo: Desplazamiento laboral
+
+riesgos_y_desafios[3].detalle: Algunas tareas pueden automatizarse, lo que puede transformar empleos y exigir nuevas habilidades.
+
+riesgos_y_desafios[4].riesgo: Dependencia tecnologica
+
+riesgos_y_desafios[4].detalle: Una organización puede volverse demasiado dependiente de sistemas automatizados y perder capacidad de revisión humana.
+
+riesgos_y_desafios[5].riesgo: Seguridad
+
+riesgos_y_desafios[5].detalle: Los modelos pueden ser manipulados mediante instrucciones maliciosas, datos contaminados o accesos no autorizados.
+
+buenas_practicas[0]: Verificar la información importante con fuentes confiables.
+
+buenas_practicas[1]: No ingresar datos personales, contraseñas o información confidencial sin autorización.
+
+buenas_practicas[2]: Utilizar supervisión humana en decisiones médicas, legales, financieras o laborales.
+
+buenas_practicas[3]: Probar el sistema con distintos grupos, idiomas, edades y escenarios.
+
+buenas_practicas[4]: Registrar cuándo y cómo se utilizó la inteligencia artificial.
+
+buenas_practicas[5]: Informar a los usuarios cuando interactúan con un sistema automatizado.
+
+buenas_practicas[6]: Revisar periódicamente los resultados para detectar errores y sesgos.
+
+buenas_practicas[7]: Establecer límites claros sobre las tareas que la IA puede ejecutar.
+
+ejemplo_de_uso.situacion: Una biblioteca desea recomendar libros a sus visitantes.
+
+ejemplo_de_uso.datos_utilizados[0]: Libros consultados
+
+ejemplo_de_uso.datos_utilizados[1]: Categorías seleccionadas
+
+ejemplo_de_uso.datos_utilizados[2]: Calificaciones voluntarias
+
+ejemplo_de_uso.datos_utilizados[3]: Edad aproximada, si fue autorizada
+
+ejemplo_de_uso.datos_utilizados[4]: Historial de préstamos anonimizado
+
+ejemplo_de_uso.proceso[0]: El sistema identifica patrones entre libros y preferencias.
+
+ejemplo_de_uso.proceso[1]: Agrupa obras con características similares.
+
+ejemplo_de_uso.proceso[2]: Compara los intereses de cada usuario con los grupos encontrados.
+
+ejemplo_de_uso.proceso[3]: Genera una lista de recomendaciones.
+
+ejemplo_de_uso.proceso[4]: Permite que el usuario acepte, rechace o ajuste las sugerencias.
+
+ejemplo_de_uso.precauciones[0]: Solicitar consentimiento para usar datos personales.
+
+ejemplo_de_uso.precauciones[1]: Permitir eliminar el historial.
+
+ejemplo_de_uso.precauciones[2]: Evitar recomendar únicamente contenidos populares.
+
+ejemplo_de_uso.precauciones[3]: Revisar que las recomendaciones no discriminen a ningún grupo.
+
+ejemplo_de_uso.precauciones[4]: Mostrar que las sugerencias son automáticas y pueden contener errores.
+
+escenario_futuro_hipotetico.descripcion: En un futuro posible, los sistemas de IA podrían colaborar con equipos humanos para analizar problemas científicos, diseñar materiales, optimizar ciudades y crear herramientas adaptadas a cada persona.
+
+escenario_futuro_hipotetico.posibles_cambios[0]: Interfaces más naturales mediante voz, gestos y realidad aumentada.
+
+escenario_futuro_hipotetico.posibles_cambios[1]: Asistentes capaces de coordinar tareas entre diferentes aplicaciones.
+
+escenario_futuro_hipotetico.posibles_cambios[2]: Sistemas educativos que ajusten el ritmo de aprendizaje individual.
+
+escenario_futuro_hipotetico.posibles_cambios[3]: Robots especializados para tareas peligrosas o repetitivas.
+
+escenario_futuro_hipotetico.posibles_cambios[4]: Mayor uso de simulaciones para estudiar fenómenos complejos.
+
+escenario_futuro_hipotetico.posibles_cambios[5]: Nuevas profesiones relacionadas con supervisión, auditoría y diseño de sistemas inteligentes.
+
+escenario_futuro_hipotetico.condicion: Estos resultados dependerán de la investigación, las regulaciones, la seguridad, la disponibilidad de recursos y las decisiones de la sociedad.
+
+glosario.algoritmo: Conjunto de instrucciones o procedimientos utilizados para resolver un problema.
+
+glosario.modelo: Sistema matemático o computacional que identifica relaciones en los datos y produce resultados.
+
+glosario.dato_de_entrenamiento: Ejemplo utilizado para que un modelo aprenda patrones.
+
+glosario.parametro: Valor interno que el modelo ajusta durante el entrenamiento.
+
+glosario.prompt: Instrucción o solicitud que una persona proporciona a un sistema de IA.
+
+glosario.inferencia: Proceso mediante el cual un modelo utiliza lo aprendido para producir una respuesta nueva.
+
+glosario.sesgo: Tendencia sistemática que puede producir resultados injustos o desequilibrados.
+
+glosario.alucinacion: Respuesta generada por una IA que parece correcta, pero contiene información inventada o incorrecta.
+
+glosario.automatizacion: Uso de tecnología para realizar una tarea con poca o ninguna intervención humana directa.
+
+glosario.multimodalidad: Capacidad de trabajar con varios tipos de información, como texto, imágenes y audio.
+
+conclusion: La inteligencia artificial es una herramienta poderosa para analizar información, automatizar tareas y crear nuevas soluciones. Sin embargo, sus resultados deben evaluarse con criterio, especialmente cuando afectan la seguridad, la privacidad, la economía o los derechos de las personas. El uso responsable combina tecnología, supervisión humana, transparencia y revisión constante.
