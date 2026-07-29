@@ -1,0 +1,5 @@
+[The Data Visualisation Catalogue](https://datavizcatalogue.com)
+[D3js](https://d3js.org)
+[Geo Json map of Colombia](https://gist.github.com/john-guerra/43c7656821069d00dcbc)
+[Sentences transformers](https://huggingface.co/models?other=bert)
+[Encoders](https://huggingface.co/models?other=encoder)

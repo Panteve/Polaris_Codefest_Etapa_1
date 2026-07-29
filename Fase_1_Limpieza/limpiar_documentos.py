@@ -118,7 +118,7 @@ def extract_html(path: Path) -> Extraction:
 
 TEXT_KEYS = {
     "title", "titulo", "headline", "body", "body_text", "body_paragraphs",
-    "paragraphs", "content", "text", "article", "abstract", "summary",
+    "paragraphs", "content", "text", "article", "abstract", "summary", "section",
 }
 METADATA_KEYS = {"url", "date", "published", "authors", "author", "tags", "id", "source"}
 
