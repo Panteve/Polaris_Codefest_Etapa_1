@@ -1,0 +1,241 @@
+Aten Primaria. 2020;52(10):792- - -793
+www.elsevier.es/ap
+Atención Primaria
+CARTA CIENTÍFICA
+Cuestionario SCOFF en espa˜nol y guaraní: una
+alternativa de prevención primaria en Paraguay
+The SCOFF Questionnaire in Spanish and Guarani: An alternative of primary
+prevention
+ in Paraguay
+Celeste Doldán
+Tesis de posgrado en Psicopatología Clínica, Universidad de Barcelona, Espa˜na
+Recibido
+ el 22 de noviembre de 2019; aceptado el 3 de marzo de 2020
+Disponible
+ en Internet el 19 de mayo de 2020
+Objetivos
+La delgadez como estereotipo de belleza actual trae apa-
+rejado
+ desorden de la imagen corporal y desequilibrio
+alimentario. Las mujeres reportan mayor insatisfacción con
+su
+ cuerpo y, aunque los trastornos de la conducta alimen-
+taria
+ (TCA) son menos comunes en varones, revisten trazos
+similares1.
+En
+ los países desarrollados su prevalencia oscila entre 1
+y
+ 8%, siendo más frecuente la bulimia que la anorexia. Los
+pocos
+ estudios sistematizados en América Latina apuntan a
+conﬁrmar
+ dichas cifras2.
+Un estudio de 2005, en Asunción, sobre 208 estudiantes
+del
+ nivel básico y medio, halló alto nivel de perfeccionismo
+en
+ 68,24% de las mujeres, alto nivel de insatisfacción con
+la
+ imagen corporal en 38,82% y 52,94% de obsesión por la
+delgadez,
+ siendo todos factores predisponentes al desarrollo
+de
+ TCA3.
+El
+ cuestionario SCOFF es un instrumento breve y senci-
+llo,
+ factible de ser administrado en instituciones sanitarias y
+educativas,
+ con sensibilidad y especiﬁcidad adecuadas para
+cribar
+ pacientes con TCA en población inglesa4.
+Correo electrónico: clinica.celestedoldan@gmail.com
+Lo expresado sirve de base e interés para desarrollar los
+objetivos:
+ i) traducir el cuestionario SCOFF al guaraní, para
+administrarlo
+ en la lengua materna del evaluado; ii) veriﬁcar
+si el punto de corte especíﬁco del cuestionario original es
+aplicable
+ a Paraguay.
+Método
+El instrumento consta del cuestionario SCOFF , datos demo-
+gráﬁcos,
+ educativos, personales (como talla y peso) para
+veriﬁcar
+ objetivamente el cumplimiento del criterio A
+para
+ anorexia nerviosa del DSM-IV: «rechazo a mantener el
+peso
+ corporal igual o por encima del valor mínimo normal
+considerando
+ la edad y la talla», que implica el aspecto
+cognitivo-emocional
+ de una conducta maniﬁesta de restric-
+ción.
+ El peso corporal se clasiﬁcó con relación al índice de
+masa
+ corporal (IMC) y su percentil5. La versión en guaraní fue
+consensuada
+ por tres traductores independientes. El marco
+muestral
+ surgió de la proyección de población 2000-2025 y
+de
+ este la muestra aleatoria simple de 470 unidades, 30%
+hombres
+ y 329 mujeres de 13-23 a˜nos6.
+El
+ estudio se considera transversal, retrospectivo, no
+experimental
+ y descriptivo.
+Se
+ estimó
+ la conﬁabilidad con alfa de Cronbach; se descri-
+bió
+ la puntuación de la escala SCOFF y sus componentes; se
+https://doi.org/10.1016/j.aprim.2020.03.006
+0212-6567/© 2020 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Cuestionario SCOFF en espa˜nol y guaraní: una alternativa de prevención primaria 793
+1,0
+1,0
+1 - Especificidad
+Sensibilidad
+0,9
+0,9
+0,8
+0,8
+0,7
+0,7
+0,6
+0,6
+0,5
+0,5
+0,4
+0,4
+0,3
+0,3
+0,2
+0,2
+0,1
+0,1
+0,0
+0,0
+Figura 1
+comparó por
+ grupo clínico, idioma, sexo, edad y actividad
+física aceptándose diferencias signiﬁcativas con p < 0,05;
+como características diagnósticas se calcularon la sensibili-
+dad,
+ la especiﬁcidad y el área bajo la curva ROC (Receiver
+Operating
+ Characteristic) con IC al 95%.
+Resultados
+El 82,6% contestó en
+ espa˜nol; la edad promedio fue
+19,5 a˜nos
+ (DE: 3,5 a˜nos); 90,2% estudiaba entre nivel básico
+y universidad y 62% realizaba actividad física.
+La escala SCOFF es sesgada por acumulación del 68% de
+los
+ casos en los valores 0 y 1. El elemento 5 correlaciona
+signiﬁcativamente
+ con los restantes, el elemento 2 con el 1
+y
+ el 4, resultando una conﬁabilidad de 0,4.
+Hay
+ mayor frecuencia de respuesta aﬁrmativa en los
+elementos
+ 2 (temor a la ingesta descontrolada 36,17%); 4
+(alteración
+ de la imagen corporal 34,26%) y 5 (la comida
+domina
+ mi vida 23,62%) en general, los grupos no clínico y
+clínico,
+ la versión en espa˜nol, hombres, participantes que
+realizan
+ actividad física, los de 18 o 20-23 a˜nos. En cambio,
+se
+ invierte el orden de los primeros elementos en la versión
+guaraní,
+ los de 13-17 o 19 a˜nos y quienes no realizan activi-
+dad
+ física, pero 39,82% de las mujeres contestó ambos por
+igual.
+Hay
+ diferencia signiﬁcativamente mayor del grupo clínico
+(p
+ < 0,01) en la escala SCOFF y sus elementos 1, 2, 4 y 5; de
+mujeres
+ (p < 0,05) en la escala y los elementos 1, 2, 4;
+de
+ los que no realizan actividad física (p < 0,01) en el ele-
+mento
+ 4 y signiﬁcativamente menor de los jóvenes con 13-17
+a˜nos
+ (p < 0,05) en la escala.
+De
+ 64 participantes no clínicos y con IMC bajo, 12 dieron
+positivo
+ al SCOFF . Agregados al grupo clínico, la ROC (ﬁg. 1)
+cubre un área de 0,86 (IC 95%: 0,81-0,91); el valor 1,5 puntos
+o
+ mayor arroja sensibilidad 92,31% y especiﬁcidad 73,09%.
+Conclusión
+La aplicación oral del SCOFF resultó fácil y rápida. La conﬁa-
+bilidad
+ resultó aceptable. Como el área bajo la curva ROC es
+superior
+ a 0,75, ambas versiones idiomáticas tienen capaci-
+dad
+ diagnóstica. En el punto de corte dos o superior se logró
+muy
+ buena sensibilidad, mayor al 90% como se espera en
+pruebas de cribado. La especiﬁcidad inferior a la esperada
+podría
+ deberse a que los jóvenes se someten más a las dietas
+que los adultos3. El cuestionario SCOFF (en espa˜nol y gua-
+raní) es un instrumento adecuado para cribar casos de TCA
+en el Paraguay.
+Conﬂicto de intereses
+La autora declara no tener ningún conﬂicto de intereses.
+Agradecimientos
+Por su apoyo y colaboración, al Dr . Moisés García; por la tra-
+ducción
+ al guaraní, a Silvia Caputo y María Teresa Ramírez;
+por
+ el trabajo de campo a Jeffrey Schuhbaum, María Teresa
+Ramírez,
+ Paola
+ Paredes; por aportarme la muestra clínica a
+Karina
+ Fadlala, María Teresa Galeano, Adriana Vargas, Caro-
+lina Sosky y
+ Natalia Stipanovich.
+Bibliografía
+1. Tiggemann M, Kuring JK. The role of body objectiﬁcation in
+disordered eating and depressed mood. Br J Clin Psychol.
+2004;43:299- - -311.
+2. Unikel Santoncini C, Villatoro Velázquez JA, Medina-Mora Icaza
+ME, Fleiz Bautista C, Alcántar Molinar EN, Hernández Rosario
+SA. High-risk
+ eating behaviour in Mexican adolescents Data on
+the student population in the Federal District. Rev Invest Clin.
+2000;52:140- - -7.
+3. Holz S, Buongermini A. Predisposición al desarrollo de trastor-
+nos de la conducta alimentaria en adolescentes de 12 a 18 a˜nos,
+alumnos de un colegio privado de Asunción. [Grado]. Universidad
+Nacional de Asunción; 2005.
+4. Solmi F, Hatch SL, Hotopf M, Treasure J, Micali N. Validation of the
+SCOFF questionnaire for eating disorders in a multiethnic general
+population sample. Int J Eat Disord. 2015;48:312- - -6.
+5. Centers for Disease Control and Prevention. Healthy Weight.
+Assessing Your Weight. http://cdc.gv/healthyweight/assessing/
+index.html; 2017.
+6. Dirección General de Estadísticas, Encuestas y Censo. Proyec-
+ción de la Población por Sexo y Edad, según Departamento,
+2000-2025. Asunción: DGEEC; 2015. https://www.dgeec.gov .py/
+Publicaciones/Biblioteca/proyeccion%20nacional/Proyeccion
+%20Distrital.pdf.

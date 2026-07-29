@@ -1,0 +1,1026 @@
+Aten Primaria. 2020;52(10):750- - -758
+www.elsevier.es/ap
+Atención Primaria
+ORIGINAL
+Lenguajes enfermeros estandarizados y planes de
+cuidados. Percepción de su empleo y utilidad en
+atención primaria
+Ana-María Rios Jimeneza, Montserrat Artigas Lagea,∗, Marta Sancho Gómezb,
+Carmen
+Blanco Aguilarc, Mateo Acedo Antab, Gemma Calvet T orta,
+Eduardo
+Hermosilla Perezd, Jordi Adamuz-T omáse,f y Maria-Eulàlia Juvé-Udinaa,e,f
+a Dirección de Cuidados, Institut Català de la Salut, Barcelona, Espa˜na
+b Dirección de Atención Primaria Metropolitana Sud, Institut Català de la Salut, L’Hospitalet de Llobregat, Barcelona, Espa˜na
+c Dirección de Atención Primaria Metropolitana Nord, Institut Català de la Salut, Sabadell, Barcelona, Espa˜na
+d Institut Universitari d’Investigació en Atenció Primària Jordi Gol (IDIAP Jordi Gol), Barcelona, Espa˜na
+e Instituto de Investigación Biomédica de Bellvitge (IDIBELL) , L’Hospitalet de Llobregat, Barcelona, Espa˜na
+f Escuela Universitaria de Enfermería, Facultad de Medicina y Ciencias de la Salud, Universidad de Barcelona, Barcelona, Espa˜na
+Recibido
+el 4 de marzo de 2019; aceptado el 21 de octubre de 2019
+Disponible
+en Internet el 13 de mayo de 2020
+PALABRAS CLAVE
+Planes de cuidados;
+Lenguajes
+enfermeros
+estandarizados;
+Historia
+clínica
+electrónica;
+Atención
+primaria;
+Cuidados
+enfermeros
+Resumen
+Objetivo:
+Identiﬁcar la opinión de las enfermeras de atención primaria sobre el uso y la utilidad
+de
+los planes de cuidados y los lenguajes estandarizados tradicionales en la práctica asistencial.
+Dise˜no:
+Estudio descriptivo, transversal, multicéntrico.
+Emplazamiento:
+Equipos y dispositivos de atención primaria en Catalu˜na.
+Participantes:
+Se estimó una muestra necesaria de 1.668 enfermeras y se aplicó una técnica
+de
+muestreo consecutivo.
+Intervenciones:
+Cuestionario de acceso on-line con preguntas sobre la percepción de facilidad,
+utilidad
+y uso de los planes de cuidados y los lenguajes estandarizados tradicionales.
+Mediciones:
+Estadísticos descriptivos con proporciones, medidas de tendencia central y de
+dispersión.
+La signiﬁcación estadística se estableció si p ≤ 0,05.
+Resultados:
+Se analizaron 1.813 cuestionarios. Las participantes opinaron que los planes de
+cuidados
+tienen
+un valor a˜nadido medio, aunque su uso es con frecuencia incorrecto. Reﬁrieron
+un nivel de conocimientos adecuado sobre los lenguajes estandarizados, y en su mayoría (81%)
+opinaron
+que son difíciles de emplear en la práctica y que son poco útiles para representar la
+prestación
+de cuidados y sus resultados (78%). Independientemente de su nivel académico y
+de
+los a˜nos de experiencia, valoraron como insuﬁciente la claridad (p = 0,058), facilidad de uso
+(p
+= 0,240) y utilidad de los lenguajes estandarizados (p = 0,039).
+∗ Autor para correspondencia.
+Correo electrónico: montse.artigas@gencat.cat (M. Artigas Lage).
+https://doi.org/10.1016/j.aprim.2019.10.005
+0212-6567/© 2019 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Lenguajes enfermeros estandarizados y planes de cuidados en atención primaria 751
+Conclusiones: Las enfermeras urgen a introducir cambios en el uso de los planes de cuidados,
+incluyendo
+el cambio de lenguaje, para mejorar los datos y la información que revierta posi-
+tivamente
+la prestación de cuidados para la mejora de los resultados de salud de las personas
+beneﬁciarias
+de los servicios de atención primaria.
+©
+2019 Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia
+CC
+BY-NC-ND (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+KEYWORDS
+Care plans;
+Standardised
+nursing
+languages;
+Electronic
+health
+record;
+Primary
+Healthcare;
+Nursing
+care
+Standardized nursing languages and care plans. Perception of use and utility in
+primary
+healthcare
+Abstract
+Objective:
+To identify opinions of Primary Healthcare nurses on the use and usefulness of stan-
+dardised
+nursing care plans and traditional nursing language systems in the practice settings.
+Design:
+Multicentre, observational, cross-sectional study.
+Setting:
+Primary Healthcare centres in Catalonia.
+Participants:
+Sample size was estimated at 1,668 registered nurses. Consecutive sampling was
+applied.
+Interventions:
+On-line survey containing questions on ease, usefulness, and use of nursing care
+plans
+and standardised nursing language systems.
+Measurements:
+Descriptive statistics, including percentages, central tendency, and dispersion
+measures.
+Statistical signiﬁcance was set at P ≤ .05.
+Results:
+The ﬁnal analysis included 1,813 questionnaires. Participants stated that care plans
+have
+a medium added value, however their use is frequently incorrect. They stated to have
+a fair level of knowledge on traditional standardised nursing languages, and most were of the
+opinion
+that these languages are difﬁcult to use in practice (81%) and not useful to represent
+nursing care provision
+and its outcomes (78%). Regardless of their education level and years of
+experience, the
+participants assessed as insufﬁcient the clarity (P = .058), ease of use (P = .240),
+and usefulness (P = .039) of these language systems in practice.
+Conclusions: Nurses say
+that urgent changes are required in the use of care plans. This includes
+changing the language systems,
+and improving data and information that positively impacts
+on the provision
+of nursing care, as well as to enhance the health outcomes of the individuals
+receiving Primary Healthcare services.
+©
+2019 Published by Elsevier Espa˜na, S.L.U. This is an open access article under the CC BY-NC-ND
+license
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Introducción
+El informe The future of nursing1 recomienda que debe
+avanzarse
+en el despliegue del ejercicio profesional de
+las
+enfermeras para afrontar los retos de salud, en
+todos los niveles del modelo ecológico - - - -del individual al
+poblacional2---- , y concluye que deben poder realizar su ejer-
+cicio
+profesional en toda la extensión de sus ámbitos de
+responsabilidad,
+tener la oportunidad de conseguir los nive-
+les
+académicos más altos, participar , junto con los médicos,
+en
+el redise˜no de los sistemas de salud y mejorar ostensi-
+blemente
+los datos y la información que generan sobre el
+proceso
+de prestación de cuidados y sus resultados1.
+En
+el Sistema Nacional de Salud (SNS), las herramientas
+de
+historia clínica electrónica (HCE) son diversas y se avanza
+progresivamente en términos de interoperabilidad tecnoló-
+gica
+a nivel nacional y europeo. Pero a pesar de que casi la
+mitad
+de los profesionales que trabajan en el SNS son enfer-
+meras
+(49%), la información sobre indicadores del proceso
+de
+prestación de cuidados y sus resultados es escasa3.
+El
+proceso de prestación de cuidados enfermeros, deno-
+minado
+habitualmente proceso de atención de enfermería
+o proceso enfermero, se describe en 5 etapas: valora-
+ción,
+diagnóstico, planiﬁcación, ejecución y evaluación.
+Las
+fases de diagnóstico, planiﬁcación y ejecución sue-
+len
+incluirse bajo el concepto de plan de cuidados (PC)4,
+que
+es una herramienta de conocimiento disciplinar; «No
+es
+una entidad independiente donde se listan tareas;
+es
+un tipo de ‘‘contrato’’ de cuidados entre la enfer-
+mera
+y la persona/familia, en el que en función de su
+situación
+y en base a la experiencia de la enfermera
+se
+emite un juicio clínico y se prescriben, se recomien-
+dan
+y se pactan los cuidados en forma de objetivos
+y/o
+intervenciones para, una vez realizadas, reevaluar el
+estado
+de la persona y cerrar o reiniciar este proceso
+circular»5.
+En
+Espa˜na desde los a˜nos 90, el uso de PC en los
+distintos
+ámbitos de la práctica asistencial, así como el
+empleo
+de las clasiﬁcaciones de diagnósticos (North Ameri-
+can Nursing Diagnosis Association [NANDA] Internacional6),
+intervenciones
+(Nursing Interventions Classiﬁcation [NIC])7
+y resultados (Nursing Outcomes Classiﬁcation [NOC])8, que
+conjuntamente
+se representan como NNN, han ido incorpo-
+rándose
+de forma progresiva y extendiéndose en la década
+
+752 A.-M. Rios Jimenez et al.
+posterior , coincidiendo mayoritariamente con la implanta-
+ción
+de los sistemas de HCE9- - -12.
+La
+literatura sobre el uso y la efectividad del PC en
+atención
+primaria (AP) es relativamente escasa. La bús-
+queda en Pubmed con los términos nursing care plans o
+nursing
+diagnosis y primary care (community care o pri-
+mary
+health care) genera resultados exiguos, y solo algunos
+estudios
+recientes con el uso de NNN empiezan a tener
+cierta
+relevancia13- - -15. Sin embargo, una revisión sistemá-
+tica
+y diversos estudios sobre la calidad de la documentación
+enfermera
+identiﬁcan déﬁcits e imprecisiones en los regis-
+tros
+y diﬁcultades en el uso de NNN, así como controversias
+sobre
+su utilidad como lenguajes para representar el proceso
+de prestación de cuidados y sus resultados16- - -20.
+El objetivo principal de este estudio fue evaluar la per-
+cepción
+de las enfermeras de AP sobre el uso y la utilidad
+del
+PC y los lenguajes estandarizados NNN en la práctica
+asistencial.
+Como objetivos secundarios se planteó anali-
+zar
+si existen
+diferencias por razón de a˜nos de experiencia
+profesional y formación de las enfermeras.
+Material y método
+Se planteó un estudio descriptivo, observacional, transversal
+y
+multicéntrico, que se llevó a cabo en el Institut Català de
+la
+Salut (ICS), con 286 equipos de atención primaria (EAP),
+líneas pediátricas y otros dispositivos asistenciales de
+atención
+a la salud sexual y reproductiva, salud penitencia-
+ria,
+salud mental, cuidados paliativos, equipos de atención a
+la
+cronicidad y atención urgente de AP . El estudio se realizó
+con la autorización de la Dirección Gerencia del ICS.
+Se
+incluyeron enfermeras asistenciales generalistas y
+especialistas
+(matronas, enfermeras especialistas en salud
+familiar
+y comunitaria y especialistas en enfermería pediá-
+trica).
+Se excluyeron las enfermeras directivas. El tama˜no de
+la
+muestra se calculó partiendo de un tama˜no poblacional de
+4.820
+sujetos, con una variabilidad máxima del 50% (p = 50),
+un
+nivel de conﬁanza del 99% (/H9251 = 0,01) y una precisión del
+3%
+(i = 0,3%). El tama˜no resultante de la muestra necesaria
+fue
+de 1.334 sujetos. Asumiendo un 20% de posibles pérdi-
+das,
+se incrementó a 1.668 participantes. Para su selección,
+se
+aplicó una técnica de muestreo no probabilístico de tipo
+consecutivo.
+Se
+dise˜nó una encuesta estructurada, de carácter anó-
+nimo
+y
+cumplimentación voluntaria, que contenía un
+apartado
+introductorio
+de información general y modo de
+cumplimentación, otro con las variables demográﬁcas gene-
+rales
+y otro sobre la percepción del uso y la utilidad del PC y
+los
+lenguajes estandarizados NNN, con 13 preguntas estruc-
+turadas
+que empleaban una escala de medida ordinal de 0
+a
+10 (0: muy deﬁciente; 10: excelente), con una opción de
+respuesta
+No sabe/No contesta.
+Para
+evaluar la percepción sobre el PC, se consideraron
+las
+variables: aplicabilidad, utilidad percibida por las propias
+enfermeras,
+utilidad percibida por los médicos en opinión de
+las
+enfermeras, percepción de uso correcto, percepción de
+grado
+de seguridad y percepción de valor a˜nadido.
+Para
+analizar la opinión sobre los lenguajes estandari-
+zados
+NNN se incluyeron las variables: frecuencia, utilidad
+para
+reﬂejar los problemas de salud, las intervenciones y
+los
+resultados, claridad del lenguaje, facilidad de uso, nivel
+autopercibido de conocimientos, preferencia de cambio y
+percepción
+de necesidad de uso de un lenguaje único en los
+distintos
+ámbitos.
+Se
+informó de la posibilidad de participar en el estudio a
+todas
+las enfermeras por correo electrónico, que incluía un
+enlace al cuestionario cargado en la aplicación de encues-
+tas
+on-line (AskPeopleTM, Reino Unido) y que se mantuvo en
+acceso
+abierto durante un mes. La cumplimentación y envío
+del cuestionario implicaba el consentimiento informado.
+Los
+datos fueron exportados a una hoja de cálculo Excel
+(Microsoft
+Ofﬁce©, Microsoft, Redmon, EE. UU.) y analiza-
+dos
+con el programa SPSS v .18 (IBM SPSS Statistics, Chicago,
+EE.
+UU.). La estrategia de análisis incluyó esencialmente
+estadísticos
+descriptivos: proporciones, medidas de ten-
+dencia central y medidas de dispersión. Para analizar las
+diferencias
+se emplearon las pruebas chi-cuadrado para las
+variables
+categóricas y t-Student para las continuas. La sig-
+niﬁcación
+estadística se estableció si p ≤ 0,05. Se determinó
+el
+intervalo
+de conﬁanza al 95% (IC 95%).
+Resultados
+Un total de 1.839 enfermeras respondieron la encuesta (tasa
+de
+respuesta del 38,15%). Se descartaron 26 casos por falta
+de
+cumplimentación, por lo que ﬁnalmente se analizaron los
+datos
+de 1.813 cuestionarios.
+El
+91% de participantes eran mujeres, con una media de
+edad
+de 45,4 a˜nos (rango: 22-64). Un 24% refería disponer
+de
+titulación de máster (n = 435) y un 11% eran enfermeras
+especialistas
+(n = 191). El 74% de participantes se situaban
+en la franja de más de 15 a˜nos de experiencia profesional y
+un
+49% tenían también más de 15 a˜nos de experiencia como
+enfermeras
+en AP . La mayoría de participantes reﬁrieron tra-
+bajar
+en un EAP (91%) en Girona (16,7%) Barcelona (58,2%),
+Tarragona
+(9,8%) y Lleida (15,1%).
+El
+66,7% de las participantes respondieron que el PC es
+aplicable
+en cualquier ámbito de prestación de cuidados
+en
+AP , que aporta un valor a˜nadido relativo (5,4; IC 95%:
+5,1-5,6)
+y un grado de seguridad (5,8; IC 95%: 5,2-6) y uti-
+lidad
+suﬁcientes (5,3; IC 95%: 5,1-5,4). Solo un 9,9% de las
+enfermeras
+opinan que los médicos de familia consideran
+notablemente
+útil el PC. A su vez, la mayoría (96,6%) reﬁere
+que
+el PC se emplea de forma incorrecta (3,7; IC 95%: 3,4-
+3,9).
+Las
+encuestadas
+consideran tener un conocimiento nota-
+ble
+o
+suﬁciente (75,2%) de los lenguajes NNN. Del mismo
+modo, un 67,7% de las enfermeras consideran que son len-
+guajes
+poco o nada comprensibles, y un 81,8% opina que
+son
+difíciles, muy difíciles o imposibles de emplear en la
+práctica
+asistencial en AP . Sobre la utilidad de los lenguajes
+NNN
+para representar la prestación de cuidados - - - -problemas
+de
+salud, intervenciones y resultados---- un 75,4% los consi-
+deran
+poco o muy poco útiles. La utilidad media otorgada
+a
+las clasiﬁcaciones NNN es de 4,4 (IC 95%: 4,1-4,6) (tabla
+1).
+La
+mayoría de participantes expresaron preferencia por
+realizar
+un cambio a otro lenguaje (83,4%) y que es con-
+veniente
+emplear el mismo lenguaje entre los distintos
+ámbitos
+de la práctica (94,1%) (tabla 2).
+En
+relación con las cuestiones sobre la utilidad, segu-
+ridad
+y valor a˜nadido que ofrece el trabajo con PC, las
+
+Lenguajes enfermeros estandarizados y planes de cuidados en atención primaria 753
+Esquema del estudio. Estudio descriptivo mediante cuestionario de la opinión de las enfermeras sobre los planes de cuidados y
+los
+lenguajes enfermeros estandarizados. EAP: Equipos de Atención Primaria; ICS: Institut Català de la Salut.
+T abla 1 Opinión de las participantes sobre la aplicabilidad, el valor a˜nadido, la seguridad, la utilidad y el uso de los planes de
+cuidados
+en AP
+Planes de cuidados n Media / (%) DE IC 95%
+Aplicabilidad 1.813
+5,4 3 4,9-5,8
+Valor
+a˜nadido 1.813 5,4 2,9 5,1-5,6
+Seguridad
+1.813
+5,8 3 5,2-6,0
+Utilidad
+(enfermeras) 1.788
+5,3 2,1 5,1-5,4
+Muy útiles (9-10) 207 (11,5)
+Útiles
+(7-8) 238 (13,2)
+Moderadamente
+útiles (5-6) 292 (16,2)
+Poco
+útiles (3-4) 488 (27,3)
+Muy
+poco útiles (0-2) 563 (31,4)
+Utilidad
+(médicos) 1.737 4,4 2,6 4,1-4,6
+Muy
+útiles (9-10) 2 (0,1)
+Útiles
+(7-8) 3 (0,1)
+Moderadamente
+útiles (5-6) 172 (9,9)
+Poco
+útiles (3-4) 250 (14,4)
+Muy
+poco útiles (0-2) 1.310 (75,4)
+Uso
+correcto 1.751 3,7 2,3 3,4-3,9
+Correcto
+(8-10) 311 (17,7)
+Moderadamente correcto (5-7) 626 (35,6)
+Incorrecto
+(0-4) 814 (46,5)
+AP: atención primaria; DE: desviación estándar; IC: intervalo de conﬁanza.
+puntuaciones medias en el grupo de enfermeras especia-
+listas,
+máster o doctoras son ligeramente superiores con
+relación
+a las diplomadas o grado. No se observan diferencias
+en
+la opinión de las enfermeras de ambos niveles formati-
+vos
+sobre la percepción de utilidad del PC por parte de los
+médicos
+de familia.
+Independientemente de su nivel académico o espe-
+cialidad,
+las enfermeras de ambos grupos coinciden en
+valorar
+como insuﬁciente la claridad, la facilidad de
+uso
+y la utilidad de NNN para representar el pro-
+ceso
+de prestación de cuidados y sus resultados. No
+se
+observan diferencias estadísticamente signiﬁcativas en
+
+754 A.-M. Rios Jimenez et al.
+T abla 2 Opinión de las enfermeras sobre los lenguajes estandarizados NNN
+Lenguajes estandarizados n Media / (%) DE IC 95%
+Nivel de conocimientos autopercibido 1.802 6,1 2,5 5,8-6,3
+Sobresaliente
+(9-10) 152 (8,4)
+Notable
+(7-8) 729 (40,4)
+Suﬁciente (5-6) 639 (35,4)
+Insuﬁciente
+(3-4) 189 (10,4)
+Muy
+deﬁciente (0-2) 93 (5,1)
+Claridad
+(comprensibles) 1.794 4,2 2,6 3,9-4,4
+Muy
+comprensibles (9-10) 62 (3,5)
+Comprensibles
+(7-8) 330 (18,4)
+Moderadamente
+comprensibles (5-6) 188 (10,4)
+Poco
+claros (3-4) 493 (27,5)
+Incomprensibles
+(0-2) 721 (40,2)
+Facilidad
+de uso en la práctica 1.791 4,1 2,5 3,8-4,3
+Muy
+fáciles (9-10) 4 (0,2)
+Fáciles
+(7-8) 326 (18,2)
+Difíciles
+(5-6) 530 (29,6)
+Muy difíciles (3-4) 401 (22,4)
+Imposibles
+de emplear (0-2) 530 (29,6)
+Frecuencia
+de uso 1.796
+Habitual
+(9-10) 182 (10,1)
+Con
+relativa frecuencia (7-8) 393 (21,8)
+Ocasionalmente
+(5-6) 425 (23,6)
+Casi
+nunca (3-4) 419 (23,3)
+Nunca
+(0-2) 377 (21)
+Utilidad
+1.783 4,4 2,7 4,1-4,6
+Alta
+(8-10) 432 (24,4)
+Baja
+(5-7) 865 (48,3)
+Nula
+(0-4) 486 (27,1)
+Predisposición
+a un cambio de lenguaje 1.792
+Muy
+alta (9-10) 502 (28)
+Alta
+(7-8) 579
+(32,3)
+Media
+(5-6) 415 (23,1)
+Baja
+(3-4) 130 (7,2)
+Muy
+baja (0-2) 166 (9,2)
+Necesidad
+de uniﬁcar lenguaje AP-AH 1.791
+Muy
+necesario (9-10) 988 (55,1)
+Necesario
+(7-8) 537 (30)
+Relativamente necesario (5-6) 178 (9,9)
+Poco
+necesario (3-4) 49 (2,7)
+Totalmente
+innecesario (0-2) 39 (2,2)
+AH: atención hospitalaria; AP: atención primaria; DE: desviación estándar; IC: intervalo de conﬁanza; NNN: NANDA-NIC-NOC.
+la mayoría de cuestiones planteadas sobre los lengua-
+jes
+estandarizados NNN. Solo en los resultados sobre
+el
+nivel de conocimientos de NNN de las participantes
+se
+evidencia una diferencia estadísticamente signiﬁca-
+tiva
+(p = 0,001), con un valor ligeramente superior en el
+grupo
+de enfermeras especialistas, máster y doctoras (tabla
+3).
+En
+el análisis por estratos de a˜nos de experiencia pro-
+fesional,
+en relación con la percepción de utilidad, uso,
+seguridad
+y valor a˜nadido del trabajo con PC, los resultados
+son
+más favorables en el grupo de enfermeras con menos
+de
+5 a˜nos de experiencia; solo las enfermeras principiantes
+(<
+5 a˜nos) valoran como suﬁciente la utilidad, la claridad y la
+facilidad
+de uso de los lenguajes estandarizados. La puntua-
+ción
+media de estos parámetros de evaluación de NNN por
+parte de las enfermeras de más de 5 a˜nos de experiencia es
+inferior
+a 4,7 (tabla 4).
+Discusión
+Los resultados de este estudio indican que las enfermeras
+participantes
+de AP valoran de forma moderada la aplica-
+bilidad,
+el valor a˜nadido y la utilidad del PC y consideran
+que,
+hasta ahora, se ha empleado de forma medianamente
+correcta
+o incorrecta. Así mismo, a pesar de que la mayoría
+de encuestadas perciben tener un nivel de conocimientos
+suﬁciente
+sobre los lenguajes estandarizados NNN, opinan
+que
+estas clasiﬁcaciones son poco comprensibles, difíciles
+de
+emplear en la práctica asistencial y poco útiles para
+
+Lenguajes enfermeros estandarizados y planes de cuidados en atención primaria 755
+T abla 3 Resultados por nivel académico/formativo
+Formación Diplomatura/Grado Especialidad/Máster/Doctorado
+n Media DE IC 95% n Media DE IC 95% p
+Planes de cuidados
+Valor a˜nadido 1.225 5,2 2,9 5,1-5,4 561 5,8 3,0 5,5-6,0 < 0,001
+Seguridad
+1.214 5,1 2,7 4,9-5,2 559 5,5 2,9 5,3-5,8 0,002
+Utilidad
+(enfermeras) 1.228 5,2 2,8 5,0-5,3 561 5,6 3,0 5,4-5,9 0,001
+Utilidad
+(médicos) 1.203 2,4 2,6 2,3-2,6 535 2,5 2,7 2,3-2,7 0,45
+Uso
+correcto 1.209 4,3 2,3 4,2-4,5 544 4,5 2,3 4,3-4,7 0,12
+Lenguajes
+NNN
+Nivel
+de conocimientos autopercibido 1.235 6,0 2,0 5,9-6,1 569 6,4 2,2 6,2-6,5 0,001
+Claridad (comprensibles) 1.233 4,1 2,6 4,0-4,3 563 4,4 2,7 4,1-4,6 0,058
+Facilidad de uso en la práctica 1.232 4,1 2,4 3,9-4,2 562 4,2 2,6 4,0-4,4 0,24
+Frecuencia
+de uso 1.230 4,6 2,9 4,4-4,7 569 4,8 3,2 4,5-5,0 0,17
+Utilidad
+1.227 4,3 2,6 4,2-4,5 558 4,6 2,8 4,4-4,8 0,04
+Predisposición
+a un cambio de lenguaje 1.192 6,8 2,6 6,6-7,0 543 6,6 2,9 6,4-6,8 0,189
+Necesidad de
+uniﬁcar lenguaje AP-AH 1.227 8,2 2,2 8,1-8,3 567 8,4 2,1 8,2-8,6 0,09
+AH: atención hospitalaria; AP: atención primaria; DE: desviación estándar; IC: intervalo de conﬁanza; NNN: NANDA-NIC-NOC.
+reﬂejar el proceso de prestación de cuidados y sus resul-
+tados.
+Estos hallazgos son consistentes con los de distintos
+estudios.
+Los
+resultados de un estudio sobre PC y lenguajes estan-
+darizados
+en
+AP en Suecia indicaban que las enfermeras, así
+como
+sus colegas médicos, se sentían francamente insatisfe-
+chas con sus registros. La mayoría coincidía en la necesidad
+de
+que
+la documentación de historia clínica debía incluir
+toda
+la representación del proceso de prestación de cui-
+dados,
+pero solo
+un tercio de las enfermeras registraban
+algunas intervenciones, menos de
+un 20% registraban datos
+de valoración, y
+el registro de diagnósticos y resultados era
+ínﬁmo21. Estudios posteriores indicaban que los registros de
+HCE de las enfermeras de AP eran de baja calidad, con inde-
+pendencia
+del apoyo recibido por parte de los gestores22,23.
+Más
+recientemente, los estudios sobre uso y opinión
+de
+las enfermeras acerca de los vocabularios controlados
+realizados
+en Estados Unidos evidencian que NNN es el len-
+guaje
+menos utilizado y al que otorgan la valoración más
+baja24.
+De
+forma similar , en un estudio realizado en Chile se con-
+cluye
+que un 73% de las enfermeras no emplean los lenguajes
+estandarizados
+NIC y NOC en la práctica asistencial25. En un
+análisis
+sobre el uso de lenguajes enfermeros estandariza-
+dos,
+por parte de las enfermeras de práctica avanzada, los
+resultados
+indican que solo el 17% de estas enfermeras de
+AP
+utilizan NNN26.
+En
+un estudio sobre las creencias y las actitudes de 239
+enfermeras
+de AP en Catalu˜na, acerca del uso de los diagnós-
+ticos
+NANDA-I, se observan tendencias más positivas hacia
+su
+uso por parte de las enfermeras gestoras que de las
+asistenciales27. Nuestro estudio excluyó a las enfermeras
+directivas
+de AP por lo que, en este sentido, los resulta-
+dos
+no pueden compararse, pero el citado análisis27 también
+aporta
+datos sobre la relación con los a˜nos de experiencia
+indicando
+que, a mayor experiencia y edad de las enfer-
+meras
+asistenciales, mayor utilización de los diagnósticos
+enfermeros. Estos resultados son contrarios a los hallados
+en
+nuestra muestra de más de 1.800 enfermeras de AP .
+En
+Espa˜na, el incremento del uso de los lenguajes NNN en
+el
+ámbito
+asistencial se ha producido en paralelo al desplie-
+gue
+de los sistemas de HCE12,28. La regulación del Conjunto
+mínimo
+básico de datos enfermeros (CMBD-E) en la legisla-
+ción
+nacional probablemente marcó un punto de inﬂexión en
+este
+sentido29.
+Pero, aunque este Real Decreto indica que los
+datos del informe de cuidados de enfermería para el CMBD-
+E
+deben
+incluir los diagnósticos, intervenciones y resultados
+con
+las clasiﬁcaciones NNN, ello no implica que el registro
+en la HCE
+deba hacerse con estos vocabularios. En este sen-
+tido, la
+armonización semántica o los mapeos entre sistemas
+de
+lenguaje deben permitir ajustar las distintas necesidades
+de información.
+Por
+otro lado, además de las inherentes a las de un dise˜no
+descriptivo
+transversal, la principal limitación de este estu-
+dio
+es que, a pesar de la elevada participación - - - -casi un
+40%
+del total de las enfermeras que trabajan en AP en
+Catalunya---- ,
+el análisis no permite identiﬁcar claramente
+qué
+otros sistemas de lenguaje conocen las enfermeras de
+AP
+y cuál es el ranquin de preferencias, para lo que se reque-
+rirían
+otros estudios.
+Para
+avanzar y mejorar los datos y la información sobre
+el
+proceso de prestación de cuidados y sus resultados,
+se
+requieren herramientas tecnológicas y de conocimiento
+útiles,
+válidas y factibles, así como la pericia clínica y
+la
+predisposición profesional. Pero también son necesarias
+estrategias
+de gestión, de las políticas sanitarias y de los
+sistemas
+de información que lo impulsen. No se trata de un
+asunto
+exclusivamente interno de la profesión enfermera.
+Se
+trata de una cuestión de impacto en la gestión de un
+sistema
+sanitario probablemente necesitado de información
+veraz
+sobre la prestación de cuidados, su gestión y sus cos-
+tes.
+Los
+planes de cuidados y los lenguajes enfermeros no
+son un ﬁn en sí mismo, sino herramientas que deben contri-
+buir
+a facilitar el registro, la comunicación interprofesional,
+la
+seguridad clínica y la continuidad de la atención. En opi-
+nión de las encuestadas, los lenguajes estandarizados NNN
+son
+poco claros, de baja utilidad y difícil aplicación práctica,
+por
+lo que urge introducir cambios en el uso de los planes de
+
+756 A.-M. Rios Jimenez et al.
+T abla 4 Valores por estratos de a˜nos de experiencia profesional
+Experiencia profesional < 5 a˜nos 5-10 a˜nos 11-15 a˜nos > 15 a˜nos
+Planes de cuidados n Media DE IC 95% n Media DE IC 95% n Media DE IC 95% n Media DE IC 95% p
+Valor a˜nadido 48 6,7 2,2 6,0-7,3 88 5,7 3,1 5,1-6,4 323 5,3 2,9 5,0-5,7 1.327 5,4 2,9 5,2-5,5 0,015
+Seguridad
+49 6,6 2,2 6,0-7,3 87 5,8 2,7 5,2-6,4 317 5,2 2,9 4,9-5,6 1.320 5,1 2,8 5,0-5,3 < 0,001
+Utilidad
+(enfermeras) 46 6,8 2,2 6,2-7,5 89 5,7 2,8 5,1-6,3 323 5,1 2,9 4,8-5,4 1.331 5,3 2,8 5,1-5,4 0,001
+Utilidad (médicos) 46 3,5 2,9 2,6-4,3 85 3,4 2,9 2,8-4,1 314 2,2 2,7 1,9-2,5 1.293 2,4 2,5 2,3-2,5 < 0,001
+Uso
+correcto 46 5,1 1,9 4,5-5,7 89 4,8 2,4 4,3-5,3 316 4,3 2,3 4,0-4,5 1.302 4,3 2,3 4,2-4,5 0,04
+Experiencia profesional < 5 a˜nos 5-10 a˜nos 11-15 a˜nos > 15 a˜nos
+Lenguajes NNN n Media DE IC 95% n Meda DE IC 95% n Media DE IC 95% n Media DE IC 95% p
+Nivel de conocimientos autopercibido 49 7,0 1,9 6,4-7,6 90 5,9 2,1 5,5-6,4 326 6,1 2,0 5,8-6,3 1.339 6,1 2,0 6,0-6,2 0,015
+Claridad
+(comprensibles) 49 5,7 2,8 4,9-6,5 89 4,7 2,7 4,1-5,2 324 4,3 2,5 4,0-4,6 1.334 4,1 2,6 3,9-4,2 < 0,001
+Facilidad
+de uso en la práctica 49 5,5 2,4 4,8-6,2 89 4,6 2,4 4,1-5,1 324 4,0 2,5 3,7-4,3 1.332 4,0 2,5 3,9-4,2 < 0,001
+Frecuencia
+de uso 48 5,3 3,2 4,3-6,2 88 4,8 3,1 4,1-5,5 325 4,6 3,1 4,2-4,9 1.338 4,6 3,0 4,5-4,8 0,42
+Utilidad
+49 5,8 2,5 5,0-6,5 89 4,9 2,7 4,3-5,4 319 4,3 2,7 4,0-4,6 1.328 4,4 2,7 4,2-4,5 0,001
+Predisposición
+a un cambio de lenguaje 47 5,1 2,9 4,2-5,9 82 6,4 2,9 5,8-7,1 313 6,7 2,8 6,4-7,1 1.293 6,8 2,6 6,7-7,0 < 0,001
+Necesidad
+de uniﬁcar lenguaje AP-AH 48 8,8 1,6 8,3-9,3 90 8,2 2,2 7,7-8,6 324 8,2 2,2 8,0-8,5 1.332 8,2 2,2 8,1-8,4 0,37
+AH: atención hospitalaria; AP: atención primaria; DE: desviación estándar; IC: intervalo de conﬁanza; NNN: NANDA-NIC-NOC.
+
+Lenguajes enfermeros estandarizados y planes de cuidados en atención primaria 757
+cuidados, así como del lenguaje, para mejorar los datos y
+la información que revierta positivamente en el sistema de
+salud
+y sobre todo, en el proceso de prestación de cuidados
+para
+la mejora de los resultados de salud de las personas
+beneﬁciarias
+de los servicios de AP .
+Lo conocido sobre el tema
+• El uso de la historia clínica electrónica se ha genera-
+lizado
+en el ámbito de la atención primaria.
+•
+La representación de la prestación de cuidados
+enfermeros
+y sus resultados en la historia clínica
+electrónica
+suele realizarse empleando los lenguajes
+estandarizados
+tradicionales NANDA, NOC, NIC.
+•
+Existe controversia sobre el uso y la utilidad de los
+planes
+de cuidados y de las clasiﬁcaciones tradi-
+cionales para la representación de la prestación de
+cuidados
+enfermeros.
+Qué aporta este estudio
+• Las enfermeras encuestadas otorgan un valor medio
+a la utilidad del plan de cuidados y consideran que en
+general
+se emplea de forma medianamente correcta.
+•
+Consideran que los lenguajes estandarizados NANDA,
+NOC,
+NIC no son útiles para representar la prestación
+de
+cuidados en atención primaria.
+•
+Urge introducir cambios para mejorar la calidad de
+los
+datos y de la información de la historia clínica
+electrónica
+sobre
+el proceso de prestación de cuida-
+dos
+y sus resultados.
+Autoría
+Los autores han contribuido a la elaboración de este trabajo
+y
+han aprobado el manuscrito.
+Conﬂicto de intereses
+Los autores declaran no tener ningún conﬂicto de intereses
+relacionado
+con la publicación de este trabajo.
+Bibliografía
+1. Institute of Medicine. The future of nursing. Leading change,
+advancing health. Institute of Medicine of the Natio-
+nal Academies, 2010 [consultado 20 Jul 2019]. Disponible
+en: https://www.ic4n.org/wp-content/uploads/2018/03/The-
+Future-of-Nursing- Report-2010.pdf
+2. Richard L, Gauvin L, Raine K. Ecological model revisited: Their
+uses and evolution in health promotion over two decades. Annu
+Rev Public Health. 2011;32:307- - -26.
+3. VVAA. Informe. Las TIC en el Sistema Nacional de Salud. El
+programa Sanidad en línea. Ministerio de Sanidad y Consumo
+[consultado 20 Jul 2019]. Disponible en: http://www.
+salud-e.cl/wp-content/uploads/2013/08/Sanidad+en+
+Linea+-+Espa%C3%B1a.pdf
+4. Alfaro-Lefevre R. Applying nursing process: The foundation for
+clinical reasoning. 8.a ed Philadelphia, PA: Lippincott Williams
+& Wilkins; 2014.
+5. Juvé ME. Evaluación inductiva de la estructura de una termi-
+nología enfermera de interfase: conceptualización del proceso
+enfermero. Nursing (Ed Espa˜nola). 2012;30:62- - -6.
+6. North American Nursing Diagnosis Association (NANDA Interna-
+tional). Diagnósticos enfermeros. Deﬁniciones y Clasiﬁcación
+2015-2017. Barcelona: Elsevier; 2015.
+7. Bulechek G, Butcher H, Dochterman J, Wagner CH. Clasiﬁcación
+de intervenciones de enfermería (NIC). 6.a ed Madrid: Elsevier;
+2013.
+8. Moorhead S, Johnson M, Maas M, Swanson E. Clasiﬁcación de
+resultados de enfermería (NOC). 5.a ed Madrid: Elsevier; 2013.
+9. Puig González L, Martí Sotus M, Farras Salles C. Diagnósticos de
+enfermería en atención primaria. Situación actual en la provin-
+cia de Lérida. Enf Cientíﬁca. 1995;164-165:47- - -53.
+10. Novo Mu˜noz M, Rodríguez Gómez JA, Sicilia Sosvilla I, Izquierdo
+Mora D, Daroqui Agusti P. Proceso de implantación de diagnós-
+ticos de enfermería en EAP de la provincia de Santa Cruz de
+Tenerife. Index Enferm. 1995;4:92.
+11. Perez FJ, Ochandorena M, Santamaría JM, García M, Solano V,
+Beamud M. Aplicación de la metodología enfermera en atención
+primaria. Rev Calid Asist. 2006;21:247- - -54.
+12. Brito Brito PR, de Armas Felipe JM, Crespo-Gómez A, Aguirre
+Jaime
+A. Factores asociados
+al incremento en el uso de la
+metodología enfermera
+en Atención Primaria. Enferm Glob.
+2011;10:189- - -99.
+13. Perez FJ, Martín S, Pacheco JL, Minguet C, García M, Bamud M.
+Effectiveness of the nursing process use in primary care. Int J
+Nurs Know. 2015;27:43- - -8.
+14. Cárdenas J, Salinero MA, Gómez P, de Burgos C, Abánes C,
+Arnal R, et al. Effectiveness of standardized nursing care
+plans in health outcomes in patients with type 2 diabetes
+mellitus: A two-year prospective follow-up study. PLoS One.
+2012;7:e43870.
+15. Company-Sancho MC, Estupi˜nán-Ramírez M, Sánchez-Janáriz H,
+Tristancho-Ajamil R. The connection between nursing diagnosis
+and the use of healthcare resources. Enf Clin. 2017;27:214- - -21.
+16. Wang N, Hailey D, Yu P. Quality of nursing documentation
+and approaches to its evaluation: a mixed-method systematic
+review. J Adv Nurs. 2011;67:1858- - -75.
+17. Carrington JM. The usefulness of nursing languages to commu-
+nicate a clinical event. Comput Inform Nurs. 2012;30:82- - -8.
+18. Cachon JM, Alvarez C, Palacios D. El signiﬁcado del lenguaje
+estandarizado NANDA-NIC-NOC en las enfermeras de cuidados
+intensivos madrile˜nas: abordaje fenomenológico. Enferm Inten-
+siva. 2012;23:68- - -76.
+19. Giménez-Maroto A, Serrano-Gallardo P. Imprecisiones del pro-
+ceso diagnóstico enfermero. Metas Enferm. 2008;11:57- - -63.
+20. Ra˜na CD, Pita R, Conceiro A, Fernández I, García CM. Opinión
+de las enfermeras de atención primaria en el área sanitaria de
+A Coru˜na sobre la utilización de los diagnósticos de enfermería.
+Enf Clin. 2004;14:77- - -82.
+21. Törnkvist L, Gardulf A, Strender LE. The opinions of nursing
+documentation held by district nurses and by nurses at primary
+health care centers. Vard Nord Utveckl Forsk. 1997;17:18- - -25.
+22. Törnvall E, Wilhelmsson S, Wahren LK. Electronic nursing
+documentation in primary health care. Scand J Caring Sci.
+2004;18:310- - -7.
+23. Törnvall E, Wahren LK, Wilhelmsson S. Impact of primary
+care management on nursing documentation. J Nurs Manag.
+2007;15:634- - -42.
+24. Thede L, Schwirian P. The Standardized Nursing Termi-
+nologies: A National Survey of Nurses’ Experience and
+Attitudes
+- SURVEY II: Evaluation of Standardized Nursing
+Terminologies. Online J Issues Nurs. 2015;21:13, http://dx.
+doi.org/10.3912/OJIN.Vol21No01InfoCol01.
+
+758 A.-M. Rios Jimenez et al.
+25. Campos C, Jaimovich S, Wigodski J, Aedo V. Conocimientos y
+uso clínico de la metodología enfermera (NANDA, NIC NOC) en
+enfermeras/os que trabajan en Chile. Rev Iberoam Educ Investi
+Enferm. 2017;7:33- - -42.
+26. Conrad D, Hanson PA, Hasenau SM, Stocker-Schneider J.
+Identifying the barriers to use of standardized nursing lan-
+guage in the electronic health record by the ambulatory
+care nurse practitioner . J Am Acad Nurs Pract. 2012;24:
+443- - -51.
+27. Lumillo-Gutierrez I, Romero-Sánchez JM, d’Agostino F, Paramio-
+Cuevas
+JC, Fabrellas N, Moreno-Corral LJ, et al. Nur-
+ses’characteristics and practice environments: comparison
+between clusters with different attitude and utilisation proﬁles
+regarding nursing diagnosis. J Nurs Manag. 2019;7:93- - -102.
+28. Novo Mu˜noz M, Rodríguez Novo N, Rodríguez Novo YM,
+Rodríguez Gómez JA, Ortega Benítez AM, Rey Luque
+O. Análisis de la implantación de lenguaje enfermero
+en centros con historia clínica electrónica. ENE Enf.
+2018;12 [consultado 20 Jul 2019]. Disponible en: http://
+ene-enfermeria.org/ojs/index.php/ENE/article/view/747/
+1988-348X-ene-
+12-01-747
+29. Boletín Oﬁcial del Estado. Real Decreto 1093/2010, de 16 de
+septiembre, por el que se aprueba el conjunto mínimo de datos
+de los informes clínicos en el Sistema Nacional de Salud.

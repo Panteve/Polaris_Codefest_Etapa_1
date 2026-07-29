@@ -1,0 +1,1158 @@
+Aten Primaria. 2020;52(10):722- - -730
+www.elsevier.es/ap
+Atención Primaria
+ORIGINAL
+Efecto de una intervención multidimensional
+en personas mayores autovalentes para el manejo
+del riesgo de caídas
+Claudia Bustamante-T roncosoa, Luz María Herrera-Lópeza, Hugo Sánchezb,
+J.
+Carola Pérezc, Francisca Márquez-Dorena,∗ y Sara Leivad
+a Escuela de Enfermería,
+Pontiﬁcia Universidad Católica de Chile, Santiago de Chile, Chile
+b Servicio
+de Salud Metropolitano Sur, Santiago de Chile, Chile
+c Facultad de Psicología,
+Universidad del Desarrollo, Santiago de Chile, Chile
+d Centro de Salud Familiar Félix de Amesti, Departamento de Salud Municipalidad de Macul, Santiago de Chile, Chile
+Recibido
+el 17 de diciembre de 2018; aceptado el 29 de julio de 2019
+Disponible
+en Internet el 15 de noviembre de 2019
+PALABRAS CLAVE
+Accidentes por
+caídas;
+Prevención
+de
+accidentes;
+Anciano;
+Promoción
+de la salud
+Resumen
+Objetivo:
+Evaluar el efecto de una intervención multidimensional en la percepción y el manejo
+de
+factores de riesgo intrínsecos y extrínsecos de caídas y en la frecuencia de caídas en personas
+mayores
+autovalentes que viven en la comunidad.
+Dise˜no:
+Ensayo clínico aleatorizado controlado.
+Emplazamiento:
+Centro público de salud familiar , nivel primario de atención.
+Participantes:
+Personas mayores autovalentes que viven en la comunidad.
+Intervención:
+Intervención educativa multidimensional de visita domiciliaria y seguimiento
+telefónico
+mensual
+por 5 meses para el grupo intervenido (GI, n = 77) y los asignados al grupo
+control (GC, n = 77) atención habitual en su centro de salud.
+Mediciones
+principales: Percepción de riesgo de caídas, número de factores de riesgo caídas y
+número
+de caídas en el periodo.
+Resultados:
+En ambos grupos aumenta la percepción de los factores de riesgo de caídas
+asociadas
+con la deambulación (GI: p ≤ 0,001 y GC: p ≤ 0,001). Pertenecer al GI se asocia sig-
+niﬁcativamente
+con una disminución en los factores de riesgo asociados con las superﬁcies
+(r = 0,25) y los zapatos (r = 0,24); un aumento en la percepción de riesgo de caídas asociadas a
+la
+deambulación (r = 0,21) y la presencia de objetos o muebles (r = 0,36). En GI, 5 participantes
+(7,9%)
+sufrieron al menos una caída en el periodo de 5 meses y en el GC 18 (27,7%) (p = 0,004).
+Conclusiones:
+La intervención multidimensional fue efectiva para reducir la frecuencia de
+caídas
+y para el manejo de factores de riesgo extrínsecos asociados con las superﬁcies, la
+iluminación
+y los dispositivos de apoyo.
+©
+2019 Los Autores. Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo
+la
+licencia CC BY-NC-ND (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+∗ Autor para correspondencia.
+Correo
+electrónico: fmarquez@uc.cl (F . Márquez-Doren).
+https://doi.org/10.1016/j.aprim.2019.07.018
+0212-6567/© 2019 Los Autores. Publicado por Elsevier Espa˜na, S.L.U. Este es un art´ıculo Open Access bajo la licencia CC BY-NC-ND (http://
+creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Efecto de una intervención multidimensional en personas mayores autovalentes 723
+KEYWORDS
+Accidental falls;
+Falls prevention;
+Aged;
+Health
+services for
+the aged
+Effect of a multidimensional intervention for prevention of falls in the eldery
+Abstract
+Objective:
+To evaluate the effect of a multidimensional intervention on the perception and
+management
+of risk factors and frequency of falls in independent elderly people living in the
+community.
+Design:
+Randomised clinical trial.
+Setting:
+Family health centre, primary care.
+Participants:
+Independent elderly people living in the community.
+Intervention:
+For intervention group (IG) a multidimensional intervention, consisting of home
+visits
+and telephone follow-up was carried out for 5 months (n = 77), and those assigned to the
+control group (CG, n = 77) received usual care in the family health centre.
+Main
+measurements: Perception of risk of falls, number of risk factors and number of falls in
+the
+study period.
+Results:
+In both groups there were increases in the perception of risk factors for falling associa-
+ted
+with walking (IG: P < .001 and CG: P < .001). Belonging to the IG was signiﬁcantly associated
+with
+a decrease in the risk factors associated with surfaces (r = 0.25) and shoes (r = 0.24), as
+well
+as an increase in the perception of risk of falls associated with walking (r = 0.21) and the
+presence
+of
+objects or furniture (r = 0.36). In the IG, 5 participants (7.9%) suffered at least one
+fall
+in the 5-month period and 18 (27.7%) patients in the CG (P = .004).
+Conclusions:
+The multidimensional intervention was effective in reducing the frequency of falls
+and in the management
+of extrinsic risk factors associated with surfaces, lighting, and support
+devices.
+©
+2019 The Authors. Published by Elsevier Espa˜na, S.L.U. This is an open access article under
+the CC
+BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Introducción
+Las caídas en las personas mayores (PM) son un problema de
+salud
+frecuente, con consecuencias en la morbimortalidad
+y
+la autovalencia, que condicionan incluso la dependencia
+y
+la necesidad de institucionalización1,2. En Chile, la pre-
+valencia
+de caídas con fractura en PM de 65 a˜nos y más es
+de
+un 27,8%3. Diversos estudios reportan que una de cada
+PM presenta al menos una caída durante el último a˜no4,5.
+Las
+caídas comportan elevados costes para la persona, la
+familia
+y las instituciones involucradas en la asistencia de
+las
+consecuencias6. El informe de altas hospitalarias por
+traumatismos
+en PM indica que el 26,8% tienen fractura de
+fémur7. La hospitalización promedio en este caso es de 5 a
+días y el costo directo de la atención oscila entre 2.000-
+7.000
+dólares estadounidenses8.
+Las
+caídas en PM son el resultado de la interacción
+de
+múltiples factores, como: peligros del entorno físico
+(factores
+extrínsecos), una mayor susceptibilidad individual
+(factores
+intrínsecos) y conductas de riesgo, la mayoría
+de
+ellos
+potencialmente modiﬁcables o manejables con
+medidas
+preventivas9. Entre los factores intrínsecos más fre-
+cuentes se encuentran los trastornos neurológicos, cardíacos
+u otras afecciones incapacitantes, los efectos adversos de
+los
+medicamentos, la inactividad física y la pérdida de equi-
+librio,
+y los problemas cognitivos, visuales y de movilidad2,10.
+Los
+factores extrínsecos principales son el hacinamiento, la
+falta
+de seguridad de la vivienda y la del entorno o barrio9,11.
+En
+este escenario, los programas de reducción de caídas
+más
+efectivos son aquellos que consideran una valoración
+multidimensional
+del riesgo, incluyendo la inspección del
+entorno11. En la prevención de las caídas es relevante la
+percepción del riesgo, es decir , la creencia o valoración
+subjetiva de la probabilidad (susceptibilidad) y de las con-
+secuencias
+negativas (gravedad) de sufrir una caída12.
+El
+objetivo del estudio es evaluar la efectividad de una
+intervención
+preventiva multidimensional en la frecuencia
+de
+caídas, así como también en la percepción y el manejo
+de
+factores de riesgo de caídas de PM autovalentes usuarias
+del
+nivel primario de atención.
+Material y métodos
+Dise˜no: ensayo clínico aleatorizado y controlado. Fue apro-
+bado
+por los comités de ética de la Escuela de Enfermería
+de
+la Pontiﬁcia Universidad Católica de Chile y del Servicio
+de
+Salud Metropolitano Oriente.
+Población:
+el universo fueron 2.010 PM autovalentes ins-
+critas
+en el Centro de Atención Primaria (CAP) en el a˜no
+2012.
+Ámbito
+del estudio: el CAP pertenece al sistema público
+de
+salud
+en la Comuna de Macul en el área urbana de San-
+tiago,
+que es la que reporta una mayor proporción de PM en
+Chile.
+Se
+utilizó la variable riesgo de caídas para la estimación
+del
+tama˜no muestral. Los estudios indican heterogeneidad
+en
+los resultados10,13- - -15, por lo que se estimó una dismi-
+nución
+en los factores de riesgo de caídas de tama˜no de
+efecto
+peque˜no (/Delta1 = 0,5, DE = 1,5). Así, con una potencia de
+0,80,
+un error alfa de 0,05 y un tama˜no de efecto peque˜no
+(f
+= 0,12), se estimó un tama˜no muestral de 140 personas,
+
+724 C. Bustamante-Troncoso et al.
+distribuidos en grupo intervenido (GI) = 70 y grupo control
+(GC)
+= 70.
+Los
+criterios de inclusión fueron: adultos de 65 a˜nos y
+más,
+autovalentes en el momento de la selección, ser usua-
+rios del CAP y residir en el territorio asignado al CAP . Los
+criterios
+de exclusión fueron: cambio de domicilio previsto
+en
+los próximos 6 meses y pérdida de autovalencia en el
+momento
+de la selección. Cada grupo quedó conformado por
+personas, considerando la posibilidad de pérdida durante
+el
+transcurso del estudio.
+Variables
+e instrumentos: percepción de riesgo de caída
+(valoración
+subjetiva que tiene el participante de sufrir
+una
+caída ante determinadas situaciones). Para su medición
+se utilizó un set de 5 láminas dise˜nadas para este efecto,
+basadas en el trabajo de Justiniano et al.16. Cada lámina
+contiene
+una imagen de una habitación de una vivienda
+(estar ,
+dormitorio) en la cual se presentan condiciones de
+riesgo
+habituales en dicho contexto. Los participantes obser-
+van
+detenidamente cada
+lámina y mencionan los riesgos de
+caídas que identiﬁcan. Las imágenes del set fueron validadas
+por
+expertos y aplicadas en un piloto con 12 PM. El análisis
+de la estructura
+factorial de esta escala fue realizado a tra-
+vés del análisis factorial exploratorio, utilizando el método
+de extracción WLSMV
+para variables dicotómicas (detección
+o no del
+riesgo), con rotación GIOMIN (software M-plus). Con
+base en este análisis, la escala distingue 2 dimensiones: a)
+percepción de riesgo de caídas asociadas a la deambula-
+ción (15 ítems, 0,84-0,80 K-R20 en medición basal y ﬁnal del
+estudio), y
+b) percepción de riesgo de caídas asociadas a la
+presencia de objetos o muebles (11 ítems, 0,54-0,58 K-R20
+en medición basal y ﬁnal del estudio).
+- Caídas: se consideró caída el evento inesperado en el cual
+los
+participantes dan con el cuerpo en el suelo, piso, o
+nivel
+más bajo13. A ambos grupos se les solicitó llevar un
+registro
+prospectivo de toda caída, en un calendario ad
+hoc,
+desde la incorporación al proyecto hasta la medición
+ﬁnal.
+-
+Manejo de los factores de riesgo de caídas: pauta de cotejo
+de
+factores de riesgo de caídas elaborada por el equipo.
+Esta
+fue sometida a la opinión de expertos temáticos y
+probada
+en un piloto en 12 personas mayores. Contiene
+un
+listado de 41 factores de riesgo, 9 intrínsecos (antece-
+dentes
+de caídas previas, cambios en la visión, la marcha
+o
+el equilibrio, uso de medicamentos asociados a caídas
+y
+procesos patológicos) y 32 extrínsecos (características
+del
+mobiliario, superﬁcie del suelo, iluminación, entorno
+físico,
+zapatos, dispositivos de seguridad y mascotas).
+Cada
+participante responde las preguntas de la pauta con
+un
+sí o un no según si presenta o no el factor .
+Selección:
+de la base de datos de PM de 65 a˜nos y más
+inscritas
+en el CAP (2.010 PM), autovalentes y que se habían
+atendido
+en el 2012, se confeccionó un listado inicial de
+500 PM al azar , para invitar a participar vía telefónica, lo
+que
+ﬁnalizó al completar el tama˜no muestral requerido. Las
+personas
+que aceptaron, acudieron a una entrevista reali-
+zada
+por los investigadores. Para evaluar la autovalencia se
+aplicó
+la Parte A del Examen Funcional del Adulto Mayor ,
+que
+evalúa el riesgo de pérdida de funcionalidad. Es un ins-
+trumento
+estandarizado que forma parte del Examen Anual
+de Medicina Preventiva del Adulto Mayor en Chile. Permite
+clasiﬁcar a las PM según el grado de funcionalidad en: auto-
+valente
+sin riesgo, autovalente con riesgo y en riesgo de
+dependencia17. Una vez conﬁrmados los criterios de inclu-
+sión,
+las personas que aceptaron participar en el estudio
+ﬁrmaron
+un consentimiento informado.
+-
+Medición basal: Se realizó en el CAP según protocolo. Se
+aplicó el set de láminas de evaluación de la percepción de
+riesgo
+de caídas en el hogar , pauta de cotejo de factores de
+riesgo
+de caídas y se entregó el calendario para el registro
+de
+caídas. Una vez ﬁnalizada la aplicación de todos los
+instrumentos,
+se procedió a la asignación al azar al GC o
+GI.
+A las personas asignadas al GI se les indicó la fecha de
+la
+intervención en el domicilio.
+-
+Medición ﬁnal: se realizó en el domicilio de la persona. Se
+aplicaron los mismos instrumentos de la medición basal y
+se
+retiró el calendario de registro de caídas. En el GI se
+registró
+el grado de cumplimiento del plan de manejo de
+riesgos,
+indicando los motivos del cumplimiento parcial o
+el
+no cumplimiento.
+Intervención:
+duró 5
+meses. El GI, además de la atención
+habitual en el CAP ,
+recibió visita domiciliaria integral para la
+prevención de caídas en el adulto mayor , plan de manejo de
+riesgos
+de caídas y seguimiento telefónico (tabla 1). El GC
+recibió
+la atención habitual del CAP y al ﬁnalizar el periodo,
+como
+medida compensatoria por su participación, una visita
+domiciliaria.
+Análisis
+de datos: se describe la muestra utilizando
+estadística
+descriptiva, comparando las variables sociode-
+mográﬁcas
+y del estudio en la medición basal a través de la
+prueba
+de Mann-Whitney o la t de Student (variables conti-
+nuas),
+y la chi-cuadrado (variables categóricas). La prueba
+de
+Mann-Whitney se utilizó para comparar los resultados de
+la
+escala de percepción y los factores de riesgo entre gru-
+pos
+(GI vs. GC) en la medición ﬁnal. La comparación de las
+PM
+que sufren caídas se realizó a través de la diferencia de
+proporciones.
+Se
+elaboró un modelo de regresión logística binaria múl-
+tiple
+para estimar el riesgo relativo de caídas de los sujetos
+que
+no participaron del modelo de intervención. Se consi-
+deró
+variable dependiente las caídas (presencia/ausencia).
+El
+modelo se controló por variables sociodemográﬁcas que
+tuvieran
+relación con las caídas.
+Se
+estimaron las correlaciones (con IC 95% a través de
+bias-corrected
+boostrapping) entre la adscripción al grupo
+(GI
+vs. GC) y el cambio en las dimensiones de la percepción
+de
+riesgo y los factores extrínsecos de riesgo asociados a
+las
+caídas (ambos, focos de la intervención), y se estimaron
+los
+«puntajes de diferencia» para dar cuenta de la dirección
+esperada
+de los resultados. El cambio en la percepción de
+riesgo
+fue estimado restando los valores al inicio de la inter-
+vención
+de la medición ﬁnal (M2 − M1), de manera que un
+mayor
+puntaje implica un mayor aumento de la percepción
+de
+riesgo. En cambio, los puntajes de cambio de los facto-
+res
+de riesgo fueron estimados restando los valores ﬁnales
+de
+la medición inicial (M1 − M2), de manera que un mayor
+puntaje
+implica una mayor disminución en los factores de
+riesgo.
+El
+nivel de signiﬁcación adoptado fue de /H9251 < 0,05. Se uti-
+lizó
+el software estadístico SPSS v .15.
+
+Efecto de una intervención multidimensional en personas mayores autovalentes 725
+T abla 1
+Componentes de la intervención preventiva multidimensional de riesgo de caídas de personas mayores que viven en
+la comunidad
+Componente Deﬁnición Descripción
+Visita domiciliaria integral para
+prevención
+de caídas en adultos
+mayores
+(VDI-PreCAM)
+Intervención
+educativa en
+domicilio
+para mejorar la
+percepción
+y el manejo de los
+factores
+de riesgo intrínsecos y
+extrínsecos
+de caídas
+Primera
+fase: evaluación de
+Factores
+de riesgo intrínsecos y extrínsecos de caídas
+Percepción
+del riesgo de caídas
+Acciones
+realizadas por el participante y su familia para
+prevenir
+caída
+Segunda
+fase, intervención educativa para mejorar la
+percepción
+de riesgo relacionada con los factores de riesgo
+detectados
+con base en las creencias de los participantes y
+en elaborar un plan de manejo de los riesgos consensuado y
+asumido por el participante y su familia
+Seguimiento telefónico Contacto con la familia para
+apoyar
+la implementación del
+plan
+de manejo de riesgo de
+caídas
+Contacto
+telefónico mensual con el adulto mayor durante
+meses posterior a la VDI-PreCAM, para el seguimiento de
+los
+acuerdos del plan de manejo. Incluye:
+Actualización
+de la situación, consignación de cambios
+importantes
+en relación con el contacto anterior
+Evaluación
+de caídas en el periodo
+En
+relación con el plan acordado: avances, diﬁcultades,
+ajuste
+del plan, uso del calendario de registro de caídas
+SEGUIMIENTO RECLUTAMIENTOASIGNACIÓNANÁLISIS
+Evaluados para selección (n=162)
+Excluidos (n=15)
+No cumplen criterios de selección (n=5)
+Renuncian a participar (n= 10)
+Aleatorizados (n= 15 4)
+GRUPO EX PERIMENTAL
+Asignados a la intervención (n= 77)
+Recibieron la intervención asignada (n= 77)
+GRU PO CONTROL
+Asignados (n= 77)
+Reciben la atención habitual del centro de salud
+Pérdida experimental: n=14 (18 ,2%)
+D e s eguimiento: por cambio de domicilio
+(n= 2)
+Interr umpen la intervención por retiro
+volun tario (n=10) y por defun ción (n=2)
+Pérdida experimental: n: 12 (15,6%)
+De seguimiento: por retiro volun tario (n= 12 )
+A n a l i z a d o s ( n = 63) Ana lizad os (n= 65)
+Esquema general del estudio. Estudio aleatorizado y controlado para evaluar el efecto de una intervención multidimensional
+en
+personas mayores autovalentes para manejo del riesgo de caídas.
+
+726 C. Bustamante-Troncoso et al.
+Resultados
+Se analizaron los resultados de 154 participantes, con una
+edad
+promedio de 75 a˜nos (DE 5,9; rango 65-93 a˜nos). Un
+56,1%
+de los participantes eran mujeres.
+El 31,2% de los participantes cuenta con menos de 8 a˜nos
+de
+educación, un 14,9% vive solo, el promedio de ingreso
+familiar
+mensual fue de 550 dólares estadounidenses y el
+34,2%
+presentaron una o más caídas durante los 12 meses
+previos
+al estudio. Las características sociodemográﬁcas y
+la
+percepción de riesgo en la medición basal se describen en
+la
+tabla 2. No se presentaron diferencias estadísticamente
+signiﬁcativas
+entre el GC y el GI en la mayoría de las varia-
+bles demográﬁcas y de salud. La prevalencia de hipertensión
+arterial fue mayor en el GI que en el GC (87 vs. 75,3%;
+p
+= 0,049). En la medición basal no se presentan diferencias
+signiﬁcativas
+entre los grupos al considerar la percepción
+y
+los factores de riesgo detectados por la pauta de cotejo
+(tabla 3).
+En
+la medición ﬁnal hay diferencias signiﬁcativas entre
+ambos
+grupos en la percepción de riesgo de caída asociada
+a la deambulación
+(MGI = 13,83 vs. MGC = 12,40) y a la presen-
+cia de objetos o muebles (MGI = 4,31 vs. MGC = 2,64), siendo
+la percepción
+de riesgo en ambas dimensiones más alta en
+el GI. En relación con la presencia de factores de riesgo de
+caídas, se
+presentaron diferencias signiﬁcativas en el pro-
+medio del total de factores de
+riesgo intrínsecos (MGI = 3,40
+vs. MGC = 4,21)
+y en los factores de riesgo asociados a super-
+ﬁcies (MGI = 1,90 vs. MGC = 2,66), siendo menores en el GI.
+No
+se presentan diferencias en los factores de riesgo aso-
+ciados
+a mobiliario, iluminación, entorno, uso de zapatos y
+dispositivos
+(tabla 4).
+No
+hubo diferencias signiﬁcativas entre los participantes
+que
+sufren caídas y los que no respecto a la edad (p = 0,50),
+el
+sexo (p = 0,37) y el nivel de instrucción (p = 0,18). En rela-
+ción
+con la frecuencia de caídas en el GI, 5 participantes
+(7,9%)
+sufrieron al menos una caída en el periodo de 5 meses
+y
+18 en el GC (27,7%), siendo estas más frecuentes en el
+GC
+(/Delta1P = 19,8%, IC 95% 6,56-32,5; p = 0,004). El lugar donde
+ocurrieron las caídas en el GI fue el domicilio (2), el trans-
+porte
+público (2) y en el entorno inmediato (1). Por su parte,
+en
+el GC 10 caídas ocurrieron en la casa, 5 en el entorno y 3
+en
+el transporte público. En el GI las caídas no produjeron
+lesiones
+graves, a diferencia del GC, en el cual 2 de los 18
+presentaron
+fractura.
+El
+riesgo relativo de caer de los sujetos que no par-
+ticiparon
+en el modelo de intervención fue de 5,69
+(IC
+95% 1,70-19,01; p = 0,005). El modelo de regresión logís-
+tica
+incorporó la edad, el sexo, el nivel educacional, vivir
+solo,
+ser una
+persona activa, el número de medicamentos
+y el número de enfermedades como variables de control
+(tabla 5).
+Los
+resultados de las correlaciones parciales (controlando
+la
+edad, el sexo, el nivel educacional, la cantidad de enfer-
+medades
+totales, la presencia de caídas durante los últimos
+meses y factores de riesgo intrínsecos en el momento
+de
+iniciar la intervención) indican que la pertenencia al GI
+se asocia signiﬁcativamente con una disminución de los fac-
+tores
+de riesgo asociados a las superﬁcies (r = 0,25, IC 95%
+0,03
+a 0,40) y a los zapatos (r = 0,2, IC 95% 0,04 a 0,47); a
+un
+
+aumento
+en la percepción de riesgo de caídas asociadas
+a la deambulación (r = 0,21, IC 95% −0,05 a 0,45) y a la pre-
+sencia
+de objetos o muebles (r = 0,36, IC 95% 0,11 a 0,54).
+Las
+correlaciones entre la pertenencia al GI y el cambio en
+los
+factores de riesgo asociados a la iluminación (r = 0,01, IC
+95%
+−0,22 a,22), al entorno (r = 0,14, IC 95% −0,13 a 0,31)
+y
+al uso de dispositivos (r = −0,03, IC 95% −0,29 a 0,14) no
+fueron
+estadísticamente signiﬁcativas.
+Discusión
+La intervención multidimensional redujo la incidencia de
+caídas
+en el GI en un 20% respecto del GC. Estos hallazgos son
+concordantes
+con los de Goodwin et al., que en su revisión
+sistemática sobre intervenciones efectivas en caídas obser-
+varon que las intervenciones de carácter multidimensional
+presentan
+una mayor efectividad18. Cabe destacar que el
+efecto
+obtenido fue en un periodo de 5 meses de interven-
+ción,
+aunque en otras intervenciones el periodo fue de un
+a˜no
+o más19.
+Gillespie
+et al. reportan que este tipo de intervencio-
+nes
+(multidimensionales) disminuyen la tasa de caídas y
+se˜nalan
+que no tienen el mismo efecto sobre el riesgo de las
+mismas20. En nuestro estudio se observó en el GI una mayor
+percepción
+de riesgo relacionada con objetos/muebles y
+deambulación
+y en el manejo de los factores de riesgo aso-
+ciados
+a las superﬁcies que en el GC, coincidiendo con Kamei
+et
+al.21.
+Aplicando
+la perspectiva del Modelo de Creencias en
+Salud
+de Rosenstock et al.22, la percepción de riesgo de caí-
+das
+permitiría a las personas evaluar la amenaza o el riesgo
+de
+presentar
+una caída, siempre que se sientan susceptibles
+y
+las consideren graves. Esta noción los dispone a iniciar o
+mantener
+conductas preventivas, siempre que la percepción
+de
+beneﬁcios
+sea mayor que la percepción de las barreras.
+Desde
+la perspectiva del equipo, la suma de estos facto-
+res
+permitió la variación de la percepción de riesgo y la
+activación
+para el manejo
+de estos.
+El eje del programa
+fue el trabajo en domicilio, con-
+siderando la evidencia sobre el efecto positivo de las
+intervenciones en dicho contexto para el manejo de los
+riesgos
+de caídas23, al mismo tiempo que contar con instru-
+mentos
+que permitan evaluar los riesgos del ambiente que
+condicionan
+riesgo de caídas en espacios como las escaleras
+y
+los ba˜nos24. El contexto domiciliario permite valorar con
+precisión
+los factores de riesgo reales y lograr acuerdos rea-
+listas
+para el control de estos, ya que se basan en la realidad
+familiar
+cotejada por el profesional.
+El
+seguimiento telefónico fue un elemento sinérgico para
+promover
+y facilitar la implementación de los acuerdos
+sobre
+el manejo de los factores de riesgo detectados en
+la
+visita. Diversos autores han demostrado la eﬁcacia de
+incorporar
+esta estrategia para el logro de objetivos tera-
+péuticos
+en temas tan diversos como el cese del hábito
+tabáquico25 o el manejo de condiciones crónicas26,27, donde
+el
+denominador común es aportar continuidad en la atención
+de
+los usuarios a través del contacto remoto. Se conﬁrma
+que
+el uso de tecnologías de la comunicación es aceptado
+por
+las PM, lo que en nuestro país no ha sido incorporado
+suﬁcientemente28.
+La
+intervención ayudó a mejorar las condiciones de
+seguridad
+del hogar y a abordar los principales facto-
+
+Efecto de una intervención multidimensional en personas mayores autovalentes 727
+T abla
+2 Características
+sociodemográﬁcas
+y
+de
+salud
+basales
+de los participantes según el
+grupo
+Variable Ambos grupos (N
+= 154) Grupo control
+(n
+= 77)
+(%,
+IC 95%)
+Grupo
+intervenido
+(n
+= 77)
+(%,
+IC
+95%)
+p
+Edad (en a˜nos),
+M
+(DE) 75
+(5,9) 75,2 (6,2)[73,8,
+76,6] 74,6 (5,6) [73,3,
+75,8] p =
+0,541a
+Sexo, n (%)
+Masculino
+67 (43%) 32 (41,6%)[31,2; 52,7] 36 (46,8%)
+[36,0; 57,8] p = 0,313b
+Femenino
+87 (56,1%) 45 (58,4%)[47,3; 68,8] 41 (53,2%)[42,2; 64,0%]
+A˜nos
+de
+estudio, n (%)
+Menos de 84 8 (31,2%) 18 (23,4%)[15,3;
+34,0] 30 (39,0%) [28,8; 50,1] p = 0,112c
+8 a 12 76 (49,4%) 42 (54,5%)[43,5; 65,2] 34 (44,2%) [33,6; 55,3]
+Más
+de 12 30 (19,5%) 17 (22,1%)[14,3; 32,6] 13 (16,9%) [10,1; 26,8]
+Vive
+solo, n (%) 23 (14,9%) 15 (19,5%)[12,2; 29,7] 8 (10,4%) [5,4; 19,2] p = 0,087
+Hipertensión
+arterial, n
+(%)
+125 (81,2%) 58 (75,3%)[64,6; 83,6] 67 (87,0%) [77,7; 92,8] p = 0,049
+Diabetes
+mellitus tipo 2,
+n
+(%)
+(37%) 27 (35,1%)[25,3; 46,2] 30 (39,0%) [28,8; 50,1] p = 0,369
+Artritis/artrosis,
+n (%) 34 (22,1%) 18 (23,4%)[15,3; 34,0] 16 (20,8%) [13,2; 31,1] p = 0,423
+Promedio
+de ingresos
+mensuales
+en dólares
+estadounidenses,
+M (DE)
+(320) 570 (403) [480; 660] 530 (308) [461; 599] p = 0,505a
+Una o más caídas en los
+últimos
+12 meses, n (%)
+(34,2%) 30 (39,0%)[28,8; 50,1] 22 (29,3%) [19,7; 39,5] p = 0,140
+a Se presenta signiﬁcación de la prueba t de Student.
+b Se
+presenta
+signiﬁcación
+del
+contraste
+
+de
+proporciones a través de la prueba exacta de Fisher (unilateral).
+c Se presenta signiﬁcación del contraste de proporciones a través de prueba chi-cuadrado.
+
+728 C. Bustamante-Troncoso et al.
+T abla
+3 Percepción y factores de riesgo en la medición basal según grupos
+Medición basal Comparación
+Grupo intervenido Grupo control
+M [IC 95%] DE n M [IC 95%] DE n Z, pa
+Percepción de riesgo
+Deambulación
+11,01 [10,3; 11,7] 3,02 77 11,09 [10,3; 11,9] 3,57 75 −0,81, p = 0,42
+Presencia de objetos/muebles 3,99 [3,61; 4,37] 1,70 77 4,01 [3,57; 4,45] 1,96 76 −0,03, p = 0,98
+Factores
+de riesgo intrínsecos
+Intrínsecos 3,78 [3,36; 4,20] 1,86 76 4,21 [3,83; 4,59] 1,62 71 −1,73, p = 0,09
+Factores
+de riesgo extrínsecos
+Mobiliario 0,63 [0,44; 0,82] 0,84 77 0,64 [0,45; 0,83] 0,83 76 −0,11, p = 0,91
+Superﬁcie
+2,78 [2,70; 2,86] 2,00 71 2,74 [2,36; 3,12] 1,56 66 −0,28, p = 0,78
+Iluminación
+0,34 [0,18; 0,51] 0,74 77 0,22 [0,11; 0,33] 0,48 74 −0,76, p = 0,45
+Entorno
+0,82 [0,62; 1,02] 0,87 74 0,88 [0,69; 1,07] 0,86 76 −0,47, p = 0,64
+Zapatos
+1,12 [0,94; 1,30] 0,81 77 0,86 [0,72; 1,00] 0,64 76 −1,84, p = 0,07
+Dispositivos
+2,20 [1,87; 2,53] 1,49 77 2,20 [1,86; 2,54] 1,53 77 −0,09, p = 0,93
+a Se presenta el valor Z y probabilidad asociada del contraste U de Mann-Whitney.
+T abla 4 Percepción y factores de riesgo en la medición ﬁnal según grupos
+Medición ﬁnal Comparación
+Grupo intervenido Grupo control
+M [IC 95%] DE n M [IC 95%] DE n Z, pa
+Percepción de riesgo
+Deambulación
+13,83 [13,4; 14,3] 1,84 60 12,40 [11,6; 13,2] 3,27 63 −2,34, p = 0,02
+Presencia
+de
+objetos/muebles
+4,31 [3,73; 4,89] 2,31 61 2,64 [2,12; 3,16] 2,13 64 −4,30, p ≤ 0,001
+Factores de riesgo intrínsecos
+Intrínsecos
+3,40
+[3,05; 3,75] 1,38 60 4,21 [3,97; 4,45] 1,75 65 −2,51, p = 0,01
+Factores
+de riesgo extrínsecos
+Mobiliario
+0,63 [0,40; 0,86] 0,92 63 0,60 [0,43; 0,78] 0,72 65 −0,39, p = 0,69
+Superﬁcie
+1,90 [1,58; 2,22] 1,30 63 2,66 [2,32; 3,00] 1,41 65 −3,16, p = 0,01
+Iluminación
+0,08 [−0,00; 0,16] 0,33 62 0,06 [0,00; 0,12] 0,24 65 −0,09, p = 0,93
+Entorno 0,68 [0,47; 0,89] 0,84 63 0,90 [0,70; 1,10] 0,82 65 −1,77, p = 0,08
+Zapatos
+0,89 [0,73; 1,05] 0,65 63 1,01 [0,82; 1,20] 0,80 65 −0,80, p = 0,43
+Dispositivos
+1,32 [1,00; 1,64] 1,28 63 1,57 [1,23; 1,91] 1,41 65 −0,92, p = 036
+Número
+de personas con al
+menos
+una caída en el
+periodo,
+n (%)
+(7,9%) [3,4%; 7,3%] - 63 18 (27,7%) [18,3%; 39,6%] - 65 19,8%b, p = 0,004
+a Se presenta el valor Z y la probabilidad asociada del contraste U de Mann-Whitney.
+b En el caso de diferencia de proporciones.
+res que contribuyen a la producción de caídas, a través
+de
+un enfoque centrado en las necesidades especíﬁcas
+de
+la persona y su familia21, que favorece el rol activo
+del
+usuario29 y sitúa al equipo de salud en su rol de
+facilitador
+y de acompa˜namiento, favoreciendo la toma
+de
+decisiones adecuadas para la salud y la implementa-
+ción
+de los cambios. Las intervenciones multidimensionales
+enfocadas
+en las PM han demostrado tener un impacto
+considerable
+en la reducción de caídas, la inversión en
+salud
+para su cuidado y la mejora en su calidad de
+vida13,18,20.
+En cuanto a las limitaciones del estudio, existe un poten-
+cial
+sesgo de selección al contar solo con los participantes
+que
+aceptaron participar en el estudio, aunque dicho sesgo
+afectaría
+a ambos grupos (GI y GC). Otra limitación es la
+baja
+potencia estadística para evaluar eventos infrecuen-
+tes
+(caídas); pese a ello, se encuentran diferencias para esa
+variable
+en este estudio.
+Un
+posible sesgo es no tener posibilidad de enmas-
+caramiento (doble ciego), aunque se dise˜nó así por la
+imposibilidad
+de aislar la efectividad especíﬁca de los dife-
+rentes
+componentes de la intervención.
+
+Efecto de una intervención multidimensional en personas mayores autovalentes 729
+T abla 5 Riesgo de caídas. Regresión logística
+Riesgo de caídas B Error OR IC 95% p
+Grupo control 1,74 0,62 5,69 1,70 19,01 0,005
+Edad (a˜nos) 0,04 0,04 1,04 0,96 1,13 0,301
+Sexo
+femenino 0,48 0,55 1,62 0,54 4,80 0,384
+Ocho
+y más a˜nos de educación 0,42 0,61 1,51 0,46 5,00 0,497
+Vive
+solo −0,96 0,80 0,38 0,08 1,83 0,230
+Prevalencia
+de enfermedades (número) 0,47 0,23 1,61 1,03 2,50 0,035
+Persona
+activa −1,74 1,15 0,18 0,02 1,66 0,129
+Consumo
+de 3 o más medicamentos −0,75 0,57 0,47 0,15 1,44 0,188
+Variable dependiente 1 = presenta una o más caídas en el periodo evaluado vs. 0 = no presenta caídas. Modelo no presenta la constante.
+Aunque el dato sobre caídas es por autorreporte, se buscó
+minimizar
+esta limitación solicitando a todos los participan-
+tes
+que llevaran un calendario de caídas.
+Lo conocido
+sobre el tema
+• La autovalencia y la funcionalidad de las personas
+mayores
+son potentes predictores de su calidad de
+vida.
+•
+Las caídas en personas mayores son un problema de
+salud
+de graves consecuencias para la persona y su
+familia.
+•
+Las caídas en personas mayores son el resultado de
+la
+interacción de factores intrínsecos y extrínsecos,
+la
+mayoría de ellos potencialmente modiﬁcables o
+manejables.
+Qué aporta este estudio
+• Una intervención dirigida a población adulta mayor
+autovalente
+que ayuda a proteger su funcionalidad.
+•
+Una forma novedosa de medir la percepción de riesgo
+de
+caídas.
+•
+Una estrategia de prevención aplicable en la aten-
+ción
+primaria de salud.
+Financiación
+El proyecto fue ﬁnanciado por el Concurso de Integración
+Docente
+Asistencial IDA201104.
+Conﬂicto de intereses
+Los autores declaran no tener ningún conﬂicto de intereses.
+Agradecimientos
+A las enfermeras y los ayudantes de investigación que cola-
+boraron
+en la selección, las visitas y el seguimiento de los
+pacientes,
+en especial a María Waleska Aliaga por su aporte
+crucial en la ejecución del proyecto. A Helga, auxiliar para-
+médico
+del centro de salud por su aporte en el contacto
+inicial
+e invitación de los participantes. Al director y los fun-
+cionarios
+del centro de salud por facilitar la selección de los
+participantes
+y la participación de las autoras que traba-
+jan
+en
+él. A cada una de las personas mayores participantes
+y
+sus familias, que conﬁaron en el proyecto y abrieron sus
+domicilios
+para
+ejecutar la intervención. Todos los instru-
+mentos
+utilizados
+en el estudio están disponibles para ser
+compartidos,
+solo deben ser solicitados a través del autor
+de
+correspondencia del artículo.
+Bibliografía
+1. Peel NM. Epidemiology of falls in older age. Can J Aging.
+2011;30:7- - -19.
+2. Da Silva Gama ZA, Gómez-Conesa A. Factores de riesgo de
+caídas en ancianos?: revisión sistemática. Rev Saude Publica.
+2008;42:946- - -56.
+3. Departamento de Salud Pública de la Facultad de Medicina de
+la Pontiﬁcia Universidad Católica de Chile. Encuesta Nacional
+de Salud ENS Chile 2009-2010. Santiago: MINSAL; 2010. p. 1-143
+[consultado 12 Dic 2018]. Disponible en: https://www.minsal.
+cl/portal/url/item/bcb03d7bc28b64dfe040010165012d23.pdf.
+4. Lavedán A, Jürschik P, Botigué T, Nuin C, Viladrosa M. Prevalen-
+cia y factores asociados a caídas en adultos mayores que viven
+en la comunidad. Aten Primaria [Internet]. 2015;47:367- - -75. Dis-
+ponible en: https://doi.org/10.1016/j.aprim.2014.07.012.
+5. Michael YL, Whitlock EP , Lin JS, Fu R, O’Connor EA, Gold R.
+Primary care-relevant interventions to prevent falling in older
+adults: A systematic evidence review for the U.S. Preventive
+Services Task Force. Ann Intern Med. 2010;153:815- - -25.
+6. Varas-Fabra F, Castro-Martín E, Pérula de Torres L, Fernán-
+dez Fernández M, Ruiz Moral R, Enciso Berge I. Caídas en
+ancianos de la comunidad. Prevalencia, consecuencias y fac-
+tores. Aten Primaria [Internet]. 2006;38:450- - -5. Disponible en:
+https://dialnet.unirioja.es/servlet/articulo?codigo=2149638.
+7. Departamento de Estadísticas e Información de Salud (DEIS MIN-
+SAL). Egresos hospitalarios [Internet]. Egresos por causa, edad
+y días de estada, 2001-2017. Santiago: DEIS; 2011. Disponible
+en: http://www.deis.cl/estadisticas-egresoshospitalarios/.
+8. Zanchetta J. The Latin America Regional Audit. Epidemidemio-
+logy, cost & burden of osteoporosis in 2012 [Internet]. Buenos
+Aires: International Osteoporosis Foundation; 2012 [consultado
+5 Dic 2018]. Disponible en: https://www.iofbonehealth.
+org/sites/default/ﬁles/media/PDFs/Regional%20Audits/2012-
+Latin
+America Audit-ES 0 0.pdf
+9. World Health Organization. WHO global report on falls
+prevention in older age. [Internet]. Geneva: WHO; 2007
+
+730 C. Bustamante-Troncoso et al.
+[consultado 21 Nov 2018]. Disponible en: http://www.who.
+int/ageing/publications/Falls prevention7March.pdf.
+10. Michael YL, Lin JS, Whitlock EP , Gold R, Fu R, O’Connor EA,
+et al. Interventions to prevent falls in older adults: An updated
+systematic review. Evidence Synthesis No. 80. Rockville, MD:
+Agency for Healthcare Research and Quality.; 2010.
+11. Perell-Gerson KL, Nelson A, Goldman RL, Luther SL, Prieto-Lewis
+N, Rubenstein LZ. Fall risk assessment measures: An analytic
+review. J Gerontol A Biol Sci Med Sci. 2002;56:M761- - -6.
+12. Vivrette RL, Rubenstein LZ, Martin JL, Josephson KR, Kramer
+BJ. Development of a fall-risk self-assessment for community-
+dwelling seniors. J Aging Phys Act. 2011;19:16- - -29.
+13. Cumming RG, Thomas M, Szonyi G, Salkeld G, O’Neill E,
+Westbury C, et al. Home visits by an occupational therapist
+for assessment and modiﬁcation of environmental hazards:
+A randomized trial of falls prevention. J Am Geriatr Soc.
+1999;47:1397- - -402.
+14. Pighills AC, Torgerson DJ, Sheldon TA, Drummond AE, Bland JM.
+Environmental assessment and modiﬁcation to prevent falls in
+older people. J Am Geriatr Soc. 2011;59:26- - -33.
+15. Tinetti ME. Preventing falls in elderly persons. N
+Engl J Med [Internet]. 2003;348:42- - -9. Disponible en:
+http://www.nejm.org/doi/abs/10.1056/NEJMcp020719.
+16. Justiniano C, Puga E, Campos S, Comigual P. Manual del
+taller de habitabilidad «Hacemos de la casa nuestro hogar»
+[Internet]. Santiago de Chile: FOSIS; 2005. p. 50. Disponible
+en:
+https://es.scribd.com/document/261306677/Manual-Del-
+Taller-de-Habitabilidad.
+17. División de Prevención y Control de Enfermedades. Manual de
+Aplicación del Examen de Medicina Preventiva del Adulto Mayor .
+2010 [consultado 12 Dic 2018]. Disponible en: https://www.
+minsal.cl/portal/url/item/ab1f81f43ef0c2a6e04001011e011907.
+pdf.
+18.
+Goodwin VA, Abbott RA, Whear R, Bethel A, Ukoumunne OC,
+Thompson-Coon J, et al. Multiple component interventions for
+preventing falls and fall-related injuries among older people:
+Systematic review and meta-analysis. BMC Geriatr . 2014;14:15.
+19. Lee HC, Chang KC, Tsauo JY , Hung JW, Huang YC, Lin SI. Effects
+of a multifactorial fall prevention program on fall incidence
+and physical function in community-dwelling older adults with
+risk of falls. Arch Phys Med Rehabil [Internet]. 2013;94:606- - -15.
+Disponible en: https://doi.org/10.1016/j.apmr .2012.11.037.
+20. Gillespie LD, Robertson MC, Gillespie WJ, Sherrington C, Gates
+S, Clemson LM, et al. Interventions for preventing falls in older
+people living in the community. Cochrane Database Syst Rev.
+2012;12:CD007146.
+21. Kamei T, Kajii F, Yamamoto Y, Irie Y, Kozakai R, Sugimoto T,
+et al. Effectiveness of a home hazard modiﬁcation program
+for reducing falls in urban community-dwelling older adults: A
+randomized controlled trial. Japan J Nurs Sci. 2015;12:184- - -97.
+22. Rosenstock IM, Strecher VJ, Becker MH. Social learning
+theory and the health belief model. Health Educ Behav .
+1988;15:175- - -83.
+23. Panel on Prevention of Falls in Older Persons, American Geria-
+trics Society and British Geriatrics Society. Summary of the
+Updated American Geriatrics Society/British Geriatrics Society
+clinical practice guideline for prevention of falls in older per-
+sons. J Am Geriatr Soc. 2011;59:148-57.
+24. Blanchet R, Edwards N. A need to improve the assess-
+ment of environmental hazards for falls on stairs and
+in bathrooms: Results of a scoping review. BMC Geriatr
+[Internet]. 2018;18:272. Disponible en: https://bmcgeriatr .
+biomedcentral.com/track/pdf/10.1186/s12877-018-0958-1.
+25. Stead L, Hartmann-Boyce J, Perera R, Lancaster T.
+Telephone counselling for smoking cessation (Review).
+Cochrane Database Syst Rev [Internet]. 2013;8:CD002850.
+Disponible en: http://cochranelibrary-wiley.com/doi/10.
+1002/14651858.CD002850.pub3/full%0A.
+26. Kim HS, Oh JA. Adherence to diabetes control recom-
+mendations: Impact of nurse telephone calls. J Adv Nurs.
+2003;44:256- - -61.
+27. Fritsch R, Araya R, Solís J, Montt E, Pilowsky D, Rojas G. Un
+ensayo clínico aleatorizado de farmacoterapia con monitoriza-
+ción telefónica para mejorar el tratamiento de la depresión
+en la atención primaria en Santiago, Chile. Rev Med Chil.
+2007;135:587- - -95.
+28. Joe J, Demiris G. Older adults and mobile phones for health: A
+review. J Biomed Inform. 2013;46:947- - -54.
+29. Nakamura-Thomas H, Kyougoku M, Bonsaksen T. Japanese
+community-living older adults’ perceptions and solutions regar-
+ding their physical home environments. Home Health Care
+Manag Pract. 2019;31:16- - -22.
