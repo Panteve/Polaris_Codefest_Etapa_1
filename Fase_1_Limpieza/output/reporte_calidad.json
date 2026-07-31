@@ -1,8 +1,0 @@
-{
-  "total": 30,
-  "estados": {
-    "procesado": 29,
-    "fallido": 1
-  },
-  "version_pipeline": "1.1.0"
-}
