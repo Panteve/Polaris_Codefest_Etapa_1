@@ -13,8 +13,7 @@ El pipeline hace lo siguiente:
 
 1. Recorre un directorio de entrada de forma recursiva.
 2. Trata cada archivo como un documento independiente.
-3. Calcula un checksum SHA-256.
-4. Asigna o reutiliza un `doc_id` estable.
+3. Asigna un `doc_id` según la posición del documento en la entrada.
 5. Extrae texto según el formato.
 6. Guarda la extracción bruta sin modificarla.
 7. Normaliza y limpia el texto.
@@ -62,9 +61,16 @@ silenciosamente: el manifiesto registra la advertencia y el estado resultante.
 python .\limpiar_documentos.py `
   .\datos\originales `
   .\datos\procesados `
+  --formatos pdf,json `
   --fenomeno 1 `
   --verbose
 ```
+
+`--formatos` acepta una lista separada por comas, por ejemplo `pdf,json`.
+El identificador de cada documento se calcula según su posición global en la
+entrada, incluso cuando su formato no fue seleccionado. Así, en el orden
+`pdf, json, pdf`, al procesar solo `pdf` se asignan `DOC-000001` y
+`DOC-000003`.
 
 `--fenomeno` es opcional. Úsalo cuando todos los archivos de la entrada
 pertenezcan al mismo fenómeno. Si todavía no conoces esa asignación, omítelo;
@@ -80,69 +86,71 @@ python .\limpiar_documentos.py --help
 
 ```text
 procesados/
-├── extraidos/
-│   └── DOC-000001.txt       # extracción bruta
-├── limpios/
-│   └── DOC-000001.txt       # texto listo para chunking
-├── manifiesto.jsonl         # un objeto JSON por documento
+├── misma/
+│   └── estructura/
+│       └── DOC-000001.txt    # texto limpio identificado por doc_id
+├── manifiesto.json          # arreglo JSON con un objeto por documento
 └── reporte_calidad.json     # resumen de estados del lote
 ```
 
 Los originales permanecen en el directorio de entrada y nunca se sobrescriben.
+La carpeta de salida replica las subcarpetas de la entrada y guarda cada
+documento procesado como `DOC-xxxxxx.txt` en su carpeta relativa.
 
 ## Cómo se conserva la trazabilidad
 
-El campo `fuente` es la ruta relativa del archivo respecto al directorio de
-entrada. Esa fuente es la clave que permite reutilizar el mismo `doc_id` en
-ejecuciones posteriores. El checksum permite saber si el archivo original
-cambió.
+El campo `fuente` es el nombre original sin extensión. La ruta relativa del
+original queda en `ruta_original` y la salida limpia en `ruta_limpio`. El
+`doc_id` conserva la
+posición del documento dentro del inventario global, incluso al filtrar
+formatos.
 
 Ejemplo de registro del manifiesto:
 
 ```json
 {
   "doc_id": "DOC-000001",
-  "fuente": "fenomeno_1/informe.pdf",
+  "fuente": "informe",
+  "ruta_original": "fenomeno_1/informe.pdf",
   "formato": "pdf",
   "fenomeno": 1,
-  "checksum": "...",
   "estado": "procesado",
   "idioma": "es",
   "metodo_extraccion": "pypdf",
   "advertencias": [],
-  "archivo_extraido": "extraidos/DOC-000001.txt",
-  "archivo_limpio": "limpios/DOC-000001.txt",
+  "ruta_limpio": "fenomeno_1/DOC-000001.txt",
+  "archivo_limpio": "fenomeno_1/DOC-000001.txt",
   "version_pipeline": "1.0.0"
 }
 ```
 
-El `doc_id` no depende de la posición del archivo en un listado. No debe
-renombrarse después de iniciar la indexación.
+El `doc_id` depende del orden global de la entrada y no cambia al filtrar
+formatos durante esa ejecución.
 
 ## Flujo interno
 
 ```text
 archivo original
       │
-      ├── checksum + fuente + doc_id
+      ├── posición global + fuente + doc_id
       │
       ▼
 extract(path)
       │  selecciona extract_pdf, extract_html, extract_json, etc.
       ▼
-texto bruto ───────────────► extraidos/DOC-xxxxxx.txt
+texto extraído
       │
       ▼
 clean_text(text)
       │  Unicode, saltos, controles, espacios y ruido repetido
       ▼
-texto limpio ──────────────► limpios/DOC-xxxxxx.txt
+texto limpio ──────────────► misma/ruta/relativa/documento.txt
       │
       ▼
 detect_language + métricas + advertencias
       │
       ▼
-manifiesto.jsonl + reporte_calidad.json
+manifiesto.json + reporte_calidad.json
 ```
 
 ## Reglas de limpieza
@@ -215,7 +223,7 @@ PDF sin texto, OCR vacío o formato pendiente.
 ## Revisión recomendada antes del chunking
 
 1. Abrir una muestra de cada formato e idioma.
-2. Comparar el original, `extraidos/` y `limpios/`.
+2. Comparar el original con el archivo `.txt` limpio en la ruta espejo.
 3. Revisar todos los documentos con advertencias.
 4. Revisar PDFs de una y varias columnas.
 5. Confirmar que tablas, cifras, nombres y fechas no cambiaron.

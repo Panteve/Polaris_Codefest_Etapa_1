@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import html as html_lib
 import json
 import logging
@@ -21,7 +20,7 @@ import unicodedata
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 
 LOGGER = logging.getLogger("limpiar_documentos")
@@ -43,15 +42,6 @@ class Extraction:
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
-def sha256_file(path: Path) -> str:
-    """Calcula el hash SHA-256 leyendo el archivo por bloques."""
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def read_text(path: Path) -> tuple[str, str]:
     """Lee el archivo probando UTF-8, Windows-1252 y Latin-1."""
     raw = path.read_bytes()
@@ -61,6 +51,12 @@ def read_text(path: Path) -> tuple[str, str]:
         except UnicodeDecodeError:
             continue
     return raw.decode("utf-8", errors="replace"), "utf-8-replace"
+
+
+def sanitize_unicode(text: str) -> tuple[str, int]:
+    """Reemplaza surrogates aislados que no pueden serializarse como UTF-8."""
+    sanitized = text.encode("utf-8", errors="replace").decode("utf-8")
+    return sanitized, sum(1 for char in text if unicodedata.category(char) == "Cs")
 
 
 def format_for(path: Path) -> str:
@@ -262,7 +258,7 @@ def quality_warnings(text: str, format_name: str) -> list[str]:
         return ["[CRITICO] El PDF contiene unicamente una linea repetida; requiere OCR o reemplazo."]
     return []
 
-def clean_text(text: str) -> tuple[str, list[str]]:
+def clean_text(text: str, format_name: str = "") -> tuple[str, list[str]]:
     """Normaliza texto sin resumir, traducir ni reescribir su contenido.
 
     También conserva párrafos, elimina caracteres de control y retira ruido de
@@ -273,7 +269,8 @@ def clean_text(text: str) -> tuple[str, list[str]]:
     if repaired:
         warnings.append(f"Se repararon {repaired} secuencias de codificacion sospechosas.")
     text = unicodedata.normalize("NFC", text.replace("\r\n", "\n").replace("\r", "\n").replace("\u00a0", " "))
-    text = "".join(char for char in text if char in "\n\t" or not unicodedata.category(char).startswith("C"))
+    # Conservamos el separador de página hasta retirar cabeceras y pies repetidos.
+    text = "".join(char for char in text if char in "\n\t\f" or not unicodedata.category(char).startswith("C"))
     pages = re.split(r"\n\f\n|\f", text)
     if len(pages) > 1:
         text, removed = remove_repeated_page_lines(pages)
@@ -281,6 +278,11 @@ def clean_text(text: str) -> tuple[str, list[str]]:
             warnings.append(f"Se eliminaron {removed} líneas repetitivas de páginas.")
     else:
         text = "\n".join(remove_page_number_lines(text.split("\n")))
+    if format_name == "pdf":
+        text = "\n".join(
+            line for line in text.split("\n")
+            if not re.fullmatch(r"!\s*!|!\s*\d{1,4}", line.strip())
+        )
     lines = []
     blank_pending = False
     for raw_line in text.split("\n"):
@@ -340,57 +342,62 @@ def detect_language(text: str) -> str:
         return best if scores[best] >= 2 else "unknown"
 
 
-def load_manifest(path: Path) -> dict[str, dict[str, Any]]:
-    """Carga el manifiesto anterior indexado por fuente relativa."""
-    if not path.exists():
-        return {}
-    result: dict[str, dict[str, Any]] = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            item = json.loads(line)
-            result[item["fuente"]] = item
-    return result
+def write_manifest(path: Path, entries: list[dict[str, Any]]) -> None:
+    """Escribe el manifiesto completo con formato JSON legible."""
+    path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def next_doc_id(manifest: Iterable[dict[str, Any]]) -> str:
-    """Obtiene el siguiente identificador estable con formato DOC-000001."""
-    numbers = [int(match.group(1)) for item in manifest if (match := re.fullmatch(r"DOC-(\d{6})", item.get("doc_id", "")))]
-    return f"DOC-{max(numbers, default=0) + 1:06d}"
+def process(
+    input_dir: Path,
+    output_dir: Path,
+    fenomeno: int | None = None,
+    formatos: set[str] | None = None,
+) -> dict[str, int]:
+    """Procesa formatos seleccionados y replica la estructura de entrada.
 
-
-def process(input_dir: Path, output_dir: Path, fenomeno: int | None = None) -> dict[str, int]:
-    """Procesa archivos, escribe textos y genera manifiesto y reporte.
-
-    Los originales solo se leen. Si una fuente ya existe en el manifiesto,
-    conserva su doc_id para que las ejecuciones posteriores sean reproducibles.
+    Los doc_id se asignan según la posición global de cada documento reconocido
+    en el orden ordenado de la entrada, aunque el formato quede filtrado.
     """
     original_root = input_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "extraidos").mkdir(exist_ok=True)
-    (output_dir / "limpios").mkdir(exist_ok=True)
-    old_manifest = load_manifest(output_dir / "manifiesto.jsonl")
     entries: list[dict[str, Any]] = []
-    files = sorted(path for path in input_dir.rglob("*") if path.is_file() and path.suffix.lower() in SUPPORTED)
-    existing = list(old_manifest.values())
+    manifest_path = output_dir / "manifiesto.json"
+    write_manifest(manifest_path, entries)
+    all_files = sorted(
+        path for path in input_dir.rglob("*")
+        if path.is_file() and path.suffix.lower() in SUPPORTED
+    )
+    for directory in input_dir.rglob("*"):
+        if directory.is_dir():
+            (output_dir / directory.relative_to(input_dir)).mkdir(parents=True, exist_ok=True)
+    positions = {path: position for position, path in enumerate(all_files, start=1)}
+    files = [path for path in all_files if not formatos or format_for(path) in formatos]
     counters = Counter()
-    for path in files:
+    total_files = len(files)
+    for position, path in enumerate(files, start=1):
+        original_position = positions[path]
+        doc_id = f"DOC-{original_position:06d}"
+        print(f"[{position}/{total_files}] Procesando: {path.name} ({doc_id})", flush=True)
         source = path.resolve().relative_to(original_root).as_posix()
-        previous = old_manifest.get(source)
-        doc_id = previous["doc_id"] if previous else next_doc_id(existing + entries)
         extraction = extract(path)
-        raw_path = output_dir / "extraidos" / f"{doc_id}.txt"
-        raw_path.write_text(extraction.text, encoding="utf-8")
-        cleaned, clean_warnings = clean_text(extraction.text)
-        clean_path = output_dir / "limpios" / f"{doc_id}.txt"
+        extraction.text, surrogate_count = sanitize_unicode(extraction.text)
+        if surrogate_count:
+            extraction.warnings.append(
+                f"Se reemplazaron {surrogate_count} caracteres no válidos para UTF-8."
+            )
+        cleaned, clean_warnings = clean_text(extraction.text, format_for(path))
+        relative_source = Path(source)
+        clean_path = output_dir / relative_source.parent / f"{doc_id}.txt"
+        clean_path.parent.mkdir(parents=True, exist_ok=True)
         clean_path.write_text(cleaned, encoding="utf-8")
         warnings = extraction.warnings + clean_warnings + quality_warnings(cleaned, format_for(path))
         entry = {
             "doc_id": doc_id,
-            "fuente": source,
+            "fuente": path.stem,
+            "ruta_original": source,
             "formato": format_for(path),
             "fenomeno": fenomeno,
             "tamano_bytes": path.stat().st_size,
-            "checksum": sha256_file(path),
             "estado": "fallido" if not cleaned or any(w.startswith("[CRITICO]") for w in warnings) else ("procesado_con_advertencias" if warnings else "procesado"),
             "idioma": detect_language(cleaned),
             "metodo_extraccion": extraction.method,
@@ -402,17 +409,32 @@ def process(input_dir: Path, output_dir: Path, fenomeno: int | None = None) -> d
                 "palabras_limpio": len(cleaned.split()),
                 "lineas_limpio": len(cleaned.splitlines()),
             },
-            "archivo_extraido": f"extraidos/{doc_id}.txt",
-            "archivo_limpio": f"limpios/{doc_id}.txt",
+            "ruta_limpio": clean_path.relative_to(output_dir).as_posix(),
+            "archivo_limpio": clean_path.relative_to(output_dir).as_posix(),
             "version_pipeline": "1.1.0",
             **extraction.metadata,
         }
         entries.append(entry)
         counters[entry["estado"]] += 1
-    entries.sort(key=lambda item: item["fuente"])
-    (output_dir / "manifiesto.jsonl").write_text("".join(json.dumps(item, ensure_ascii=False) + "\n" for item in entries), encoding="utf-8")
+        entries.sort(key=lambda item: item["doc_id"])
+        write_manifest(manifest_path, entries)
     (output_dir / "reporte_calidad.json").write_text(json.dumps({"total": len(entries), "estados": counters, "version_pipeline": "1.1.0"}, ensure_ascii=False, indent=2, default=dict), encoding="utf-8")
     return dict(counters)
+
+
+def parse_formats(value: str) -> set[str]:
+    """Convierte --formatos en nombres lógicos normalizados."""
+    aliases = {"htm": "html", "markdown": "md", "xls": "xls", "jpg": "image", "jpeg": "image", "png": "image", "tif": "image", "tiff": "image"}
+    formats = {item.strip().lower().lstrip(".") for item in value.split(",") if item.strip()}
+    formats = {aliases.get(item, item) for item in formats}
+    valid = TEXT_FORMATS
+    invalid = formats - valid
+    if invalid:
+        raise argparse.ArgumentTypeError(
+            f"Formatos no soportados: {', '.join(sorted(invalid))}. "
+            f"Usa: {', '.join(sorted(valid))}."
+        )
+    return formats
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -420,6 +442,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Extrae y limpia documentos para CODEFEST AD ASTRA.")
     parser.add_argument("input_dir", type=Path, help="Directorio con archivos originales.")
     parser.add_argument("output_dir", type=Path, help="Directorio de salida del pipeline.")
+    parser.add_argument(
+        "--formatos",
+        type=parse_formats,
+        help="Formatos a procesar, separados por coma. Ejemplo: pdf,json. Por defecto, todos.",
+    )
     parser.add_argument("--fenomeno", type=int, choices=(1, 2, 3), help="Fenómeno aplicado a todos los documentos, si corresponde.")
     parser.add_argument("--verbose", action="store_true", help="Muestra información de procesamiento.")
     return parser.parse_args(argv)
@@ -432,7 +459,7 @@ def main(argv: list[str] | None = None) -> int:
     if not args.input_dir.is_dir():
         LOGGER.error("El directorio de entrada no existe: %s", args.input_dir)
         return 2
-    summary = process(args.input_dir, args.output_dir, args.fenomeno)
+    summary = process(args.input_dir, args.output_dir, args.fenomeno, args.formatos)
     LOGGER.info("Procesamiento terminado: %s", summary)
     return 0
 
