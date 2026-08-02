@@ -93,6 +93,68 @@ Para consultar la ayuda:
 python .\limpiar_documentos.py --help
 ```
 
+## Segunda pasada asistida
+
+DespuÃ©s de generar los `.txt` iniciales en `output/`, se puede ejecutar una
+segunda pasada de limpieza con `limpiar_con_subagente.py`. Esta pasada conserva
+tÃ­tulos, encabezados y secciones estructurales para que la fase de chunking
+pueda usarlos como seÃ±ales de segmentaciÃ³n, pero sigue eliminando boilerplate,
+bibliografÃ­a, referencias, notas, DOI y URLs cuando funcionen como metadatos o
+ruido editorial.
+
+Muestra local sin consumir API:
+
+```powershell
+python .\limpiar_con_subagente.py --sample-size 6 --seed 20260801 --sin-api
+```
+
+Corpus completo con DeepSeek:
+
+```powershell
+$env:DEEPSEEK_API_KEY="tu_api_key"
+python .\limpiar_con_subagente.py --formatos pdf
+```
+
+El filtro `--formatos` usa el formato original registrado en el manifiesto.
+Por ejemplo, `--formatos pdf` limita la segunda pasada a los PDF aunque en
+`output/` ya existan TXT provenientes de JSON. Se pueden indicar varios
+formatos separados por coma, como `--formatos pdf,json`.
+
+Por defecto la salida se guarda en `.\output_post_limpieza` y solo se crea el
+manifiesto consolidado. Para generar tambien un JSON detallado por documento,
+usa `--con-reportes-limpieza`.
+
+Si la ejecucion se interrumpe, puedes volver a lanzar el mismo comando. Los
+`.txt` que ya existan en la salida se omiten y se continua con los faltantes.
+Para reprocesar todo desde cero, usa `--sobrescribir-salida`.
+
+Para procesar en paralelo, abre tres consolas en `Fase_1_Limpieza` y ejecuta:
+
+```powershell
+python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 0
+python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 1
+python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 2
+```
+
+Cada particion escribe un manifiesto propio para evitar choques entre procesos.
+Cuando las tres terminen, une los manifiestos y agrega al consolidado los
+documentos procesados por la limpieza inicial que no pasaron por el subagente
+(por ejemplo, los JSON):
+
+```powershell
+python .\limpiar_con_subagente.py --unir-manifiestos-shards
+```
+
+El comando lee los manifiestos de `output/`, copia los TXT iniciales faltantes
+a `output_post_limpieza/` y los marca como `procesado_inicial`. Los documentos
+con estado `fallido` no se incorporan.
+
+Si la segunda pasada se limito a PDF, puedes conservar ese filtro al unirlos:
+
+```powershell
+python .\limpiar_con_subagente.py --formatos pdf --unir-manifiestos-shards
+```
+
 ## Estructura de salida
 
 ```text
@@ -203,6 +265,13 @@ formularios, barras laterales y SVG. El título HTML se conserva como metadata.
 
 No se vuelca el objeto completo. Se buscan claves textuales como `title`,
 `body_text`, `body_paragraphs`, `content`, `text`, `abstract` y `summary`.
+También se conservan estructuras narrativas anidadas, como `sections.heading`,
+`sections.paragraphs` y `lists`, respetando su orden. Se omiten metadata y
+ramas auxiliares de páginas web como `links` y `pdf_links`, además de URLs
+técnicas en `src` y `href`, para evitar contaminar el texto con navegación y
+recursos gráficos. Si una imagen contiene texto alternativo (`alt`), este se
+conserva porque puede aportar una descripción semántica. El manifiesto registra
+los campos de metadata detectados.
 Campos como URL, fecha, autores, etiquetas e IDs se tratan como metadata cuando
 están en el nivel principal.
 
@@ -232,6 +301,11 @@ Cada documento termina con uno de estos estados:
 
 Las advertencias no se ocultan. Ejemplos: dependencia ausente, JSON inválido,
 PDF sin texto, OCR vacío o formato pendiente.
+
+Los reportes y catálogos técnicos del scraper que no aportan contenido de
+conocimiento se conservan en los originales y el manifiesto, pero se marcan
+como `excluido_no_contenido` con `apto_para_indice: false`. No generan TXT,
+chunks ni embeddings.
 
 ## Revisión recomendada antes del chunking
 

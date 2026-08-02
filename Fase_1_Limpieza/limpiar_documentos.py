@@ -32,6 +32,14 @@ SUPPORTED = {
     ".pbf",
 }
 TEXT_FORMATS = {"pdf", "html", "md", "txt", "json", "csv", "xlsx", "xls", "image", "pbf"}
+EXCLUDED_KNOWLEDGE_PATHS = {
+    "DAIO/daio_pdfs/DAIO_catalog-2.json",
+    "Defensa21_LatAm/defensa21_data/DEFENSA21_articulos-2.json",
+    "Defensa21_LatAm/defensa21_data/DEFENSA21_catalog-2.json",
+    "RutaN_GEIAL/rutan_pdfs/RUTAN_catalog-2.json",
+    "CSIS_Aerospace/csis_pdfs/CSIS_catalog-2.json",
+    "SWF_Counterspace/swf_counterspace_2026/SWF_report-data.json",
+}
 
 
 @dataclass
@@ -125,12 +133,16 @@ TEXT_KEYS = {
 }
 METADATA_KEYS = {
     "url", "date", "published", "authors", "author", "tags", "id", "source",
-    "license", "language", "lang", "created_at", "updated_at",
+    "license", "language", "lang", "created_at", "updated_at", "src", "href",
 }
+JSON_IGNORED_KEYS = {"links", "pdf_links"}
 
 
 def json_text(value: Any, key: str = "", path: str = "") -> list[str]:
     """Convierte un JSON en l?neas textuales etiquetadas y trazables."""
+    normalized_key = key.lower()
+    if normalized_key in JSON_IGNORED_KEYS:
+        return []
     if isinstance(value, str):
         if not value.strip() or key.lower() in METADATA_KEYS:
             return []
@@ -145,7 +157,7 @@ def json_text(value: Any, key: str = "", path: str = "") -> list[str]:
     if isinstance(value, dict):
         result: list[str] = []
         for child_key, child in value.items():
-            if child_key.lower() in METADATA_KEYS:
+            if child_key.lower() in METADATA_KEYS or child_key.lower() in JSON_IGNORED_KEYS:
                 continue
             child_path = f"{path}.{child_key}" if path else child_key
             result.extend(json_text(child, child_key, child_path))
@@ -160,9 +172,23 @@ def extract_json(path: Path) -> Extraction:
         data = json.loads(source)
     except json.JSONDecodeError as exc:
         return Extraction("", "json", [f"JSON inválido: {exc.msg} en posición {exc.pos}."], {"encoding": encoding})
-    pieces = json_text(data)
+    raw_pieces = json_text(data)
+    pieces: list[str] = []
+    seen_values: set[str] = set()
+    for piece in raw_pieces:
+        value = piece.split(": ", 1)[1] if ": " in piece else piece
+        normalized_value = re.sub(r"\s+", " ", value.strip()).casefold()
+        if normalized_value and normalized_value in seen_values:
+            continue
+        if normalized_value:
+            seen_values.add(normalized_value)
+        pieces.append(piece)
     warnings = [] if pieces else ["No se identificaron campos textuales conocidos en el JSON."]
-    metadata = {"encoding": encoding, "campos_textuales": sorted(TEXT_KEYS)}
+    metadata = {
+        "encoding": encoding,
+        "campos_textuales": sorted(TEXT_KEYS),
+        "duplicados_textuales_omitidos": len(raw_pieces) - len(pieces),
+    }
     if isinstance(data, dict):
         metadata["campos_metadata"] = sorted(k for k in data if k.lower() in METADATA_KEYS)
     return Extraction("\n\n".join(pieces), "json_estructurado", warnings, metadata)
@@ -459,6 +485,37 @@ def process(
         original_position = positions[path]
         doc_id = f"DOC-{start_id + original_position - 1:06d}"
         source = path.resolve().relative_to(original_root).as_posix()
+        if source in EXCLUDED_KNOWLEDGE_PATHS:
+            print(f"[{position}/{total_files}] Excluido del indice: {path.name} ({doc_id})", flush=True)
+            excluded_entry = {
+                "doc_id": doc_id,
+                "fuente": path.stem,
+                "ruta_original": source,
+                "ruta_global": f"{input_dir.name}/{source}",
+                "formato": format_for(path),
+                "fenomeno": fenomeno,
+                "tamano_bytes": path.stat().st_size,
+                "estado": "excluido_no_contenido",
+                "apto_para_indice": False,
+                "motivo_exclusion": "Reporte o catalogo tecnico del scraper; no contiene contenido de conocimiento para vectorizar.",
+                "advertencias": [],
+                "version_pipeline": "1.1.0",
+            }
+            entries = [item for item in entries if item.get("ruta_original") != source]
+            entries.append(excluded_entry)
+            global_entry = dict(excluded_entry)
+            global_entry["ruta_original"] = excluded_entry["ruta_global"]
+            global_entries = [
+                item for item in global_entries
+                if item.get("ruta_original") != global_entry["ruta_original"]
+            ]
+            global_entries.append(global_entry)
+            counters[excluded_entry["estado"]] += 1
+            entries.sort(key=lambda item: item["doc_id"])
+            global_entries.sort(key=lambda item: item["doc_id"])
+            write_manifest(manifest_path, entries)
+            write_manifest(global_manifest_path, global_entries)
+            continue
         if source in completed:
             print(f"[{position}/{total_files}] Omitido, ya procesado: {path.name} ({doc_id})", flush=True)
             completed_entry = completed[source]
