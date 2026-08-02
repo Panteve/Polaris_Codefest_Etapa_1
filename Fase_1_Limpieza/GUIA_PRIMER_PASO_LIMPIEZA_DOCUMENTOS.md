@@ -321,7 +321,8 @@ datos/
 │   └── ruta/documento.txt  # Texto normalizado listo para chunking
 ├── metadata/            # Un registro por documento
 ├── reportes_calidad/    # Métricas, advertencias y muestras de revisión
-└── manifiesto.json      # Mapeo estable de documentos
+├── manifiesto_global.json # Mapeo global de documentos
+└── F1_.../manifiesto.json # Mapeo granular por fenómeno
 ```
 
 Ejemplo de registro de documento:

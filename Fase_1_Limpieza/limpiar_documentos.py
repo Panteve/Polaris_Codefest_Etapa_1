@@ -24,6 +24,8 @@ from typing import Any
 
 
 LOGGER = logging.getLogger("limpiar_documentos")
+YELLOW = "\033[93m"
+RESET = "\033[0m"
 SUPPORTED = {
     ".pdf", ".html", ".htm", ".md", ".markdown", ".txt", ".json",
     ".csv", ".xlsx", ".xls", ".png", ".jpg", ".jpeg", ".tif", ".tiff",
@@ -80,14 +82,19 @@ def extract_pdf(path: Path) -> Extraction:
     except ImportError:
         return Extraction("", "pypdf", ["Falta la dependencia opcional 'pypdf'."])
 
-    reader = PdfReader(str(path))
     pages: list[str] = []
     warnings: list[str] = []
-    for number, page in enumerate(reader.pages, start=1):
-        text = page.extract_text() or ""
-        if not text.strip():
-            warnings.append(f"La página {number} no produjo texto; podría requerir OCR.")
-        pages.append(text.strip())
+    try:
+        reader = PdfReader(str(path))
+        for number, page in enumerate(reader.pages, start=1):
+            text = page.extract_text() or ""
+            if not text.strip():
+                warnings.append(f"La página {number} no produjo texto; podría requerir OCR.")
+            pages.append(text.strip())
+    except Exception as exc:
+        warnings.append(
+            f"No se pudo extraer completamente el PDF ({type(exc).__name__}): {exc}"
+        )
     return Extraction("\n\f\n".join(pages), "pypdf", warnings, {"paginas": len(pages)})
 
 
@@ -344,7 +351,70 @@ def detect_language(text: str) -> str:
 
 def write_manifest(path: Path, entries: list[dict[str, Any]]) -> None:
     """Escribe el manifiesto completo con formato JSON legible."""
-    path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
+    try:
+        temporary.replace(path)
+    except PermissionError as exc:
+        raise PermissionError(
+            f"No se puede actualizar {path}; cierra el manifiesto si está abierto en otro programa."
+        ) from exc
+
+
+def supported_files(input_dir: Path) -> list[Path]:
+    """Devuelve los documentos reconocidos en orden estable."""
+    return sorted(
+        path for path in input_dir.rglob("*")
+        if path.is_file() and path.suffix.lower() in SUPPORTED
+    )
+
+
+def automatic_start_id(input_dir: Path, fenomeno: int | None) -> int:
+    """Calcula el primer ID contando los fenómenos anteriores del mismo nivel."""
+    if fenomeno is None:
+        return 1
+    previous_total = 0
+    for sibling in input_dir.parent.iterdir():
+        if not sibling.is_dir():
+            continue
+        match = re.match(r"^F(\d+)(?:_|$)", sibling.name, re.IGNORECASE)
+        if match and int(match.group(1)) < fenomeno:
+            previous_total += len(supported_files(sibling))
+    return previous_total + 1
+
+
+def read_manifest(path: Path) -> list[dict[str, Any]]:
+    """Lee el progreso anterior; devuelve una lista vacía si no existe."""
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    return data if isinstance(data, list) else []
+
+
+def merge_phenomenon_manifests(output_dir: Path) -> list[dict[str, Any]]:
+    """Reconstruye el global desde los manifiestos granulares sin borrar datos."""
+    global_entries = read_manifest(output_dir / "manifiesto_global.json")
+    merged = {item.get("ruta_original"): item for item in global_entries if item.get("ruta_original")}
+    for phenomenon_dir in output_dir.iterdir():
+        if not phenomenon_dir.is_dir() or not re.match(r"^F\d+(?:_|$)", phenomenon_dir.name, re.IGNORECASE):
+            continue
+        manifest_path = phenomenon_dir / "manifiesto.json"
+        if not manifest_path.exists():
+            continue
+        phenomenon_name = phenomenon_dir.name
+        for item in read_manifest(manifest_path):
+            local_source = item.get("ruta_original")
+            if not local_source:
+                continue
+            global_source = item.get("ruta_global") or f"{phenomenon_name}/{local_source}"
+            global_item = dict(item)
+            global_item["ruta_original"] = global_source
+            global_item["ruta_global"] = global_source
+            merged[global_source] = global_item
+    return sorted(merged.values(), key=lambda item: item.get("doc_id", ""))
 
 
 def process(
@@ -352,6 +422,7 @@ def process(
     output_dir: Path,
     fenomeno: int | None = None,
     formatos: set[str] | None = None,
+    id_inicial: int | None = None,
 ) -> dict[str, int]:
     """Procesa formatos seleccionados y replica la estructura de entrada.
 
@@ -360,25 +431,47 @@ def process(
     """
     original_root = input_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
-    entries: list[dict[str, Any]] = []
-    manifest_path = output_dir / "manifiesto.json"
+    phenomenon_output_dir = output_dir / input_dir.name
+    phenomenon_output_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = phenomenon_output_dir / "manifiesto.json"
+    global_manifest_path = output_dir / "manifiesto_global.json"
+    entries = read_manifest(manifest_path)
+    global_entries = merge_phenomenon_manifests(output_dir)
     write_manifest(manifest_path, entries)
-    all_files = sorted(
-        path for path in input_dir.rglob("*")
-        if path.is_file() and path.suffix.lower() in SUPPORTED
-    )
+    write_manifest(global_manifest_path, global_entries)
+    all_files = supported_files(input_dir)
     for directory in input_dir.rglob("*"):
         if directory.is_dir():
-            (output_dir / directory.relative_to(input_dir)).mkdir(parents=True, exist_ok=True)
+            (phenomenon_output_dir / directory.relative_to(input_dir)).mkdir(parents=True, exist_ok=True)
     positions = {path: position for position, path in enumerate(all_files, start=1)}
     files = [path for path in all_files if not formatos or format_for(path) in formatos]
+    start_id = id_inicial if id_inicial is not None else automatic_start_id(input_dir, fenomeno)
+    print(f"Inicio de numeración global: DOC-{start_id:06d}", flush=True)
+    completed = {
+        entry["ruta_original"]: entry
+        for entry in entries
+        if entry.get("estado") in {"procesado", "procesado_con_advertencias"}
+        and (output_dir / entry.get("ruta_limpio", "")).is_file()
+    }
     counters = Counter()
     total_files = len(files)
     for position, path in enumerate(files, start=1):
         original_position = positions[path]
-        doc_id = f"DOC-{original_position:06d}"
-        print(f"[{position}/{total_files}] Procesando: {path.name} ({doc_id})", flush=True)
+        doc_id = f"DOC-{start_id + original_position - 1:06d}"
         source = path.resolve().relative_to(original_root).as_posix()
+        if source in completed:
+            print(f"[{position}/{total_files}] Omitido, ya procesado: {path.name} ({doc_id})", flush=True)
+            completed_entry = completed[source]
+            global_source = f"{input_dir.name}/{source}"
+            if not any(item.get("ruta_original") == global_source for item in global_entries):
+                global_entry = dict(completed_entry)
+                global_entry["ruta_original"] = global_source
+                global_entries.append(global_entry)
+                global_entries.sort(key=lambda item: item["doc_id"])
+                write_manifest(global_manifest_path, global_entries)
+            counters[completed_entry["estado"]] += 1
+            continue
+        print(f"[{position}/{total_files}] Procesando: {path.name} ({doc_id})", flush=True)
         extraction = extract(path)
         extraction.text, surrogate_count = sanitize_unicode(extraction.text)
         if surrogate_count:
@@ -387,7 +480,7 @@ def process(
             )
         cleaned, clean_warnings = clean_text(extraction.text, format_for(path))
         relative_source = Path(source)
-        clean_path = output_dir / relative_source.parent / f"{doc_id}.txt"
+        clean_path = phenomenon_output_dir / relative_source.parent / f"{doc_id}.txt"
         clean_path.parent.mkdir(parents=True, exist_ok=True)
         clean_path.write_text(cleaned, encoding="utf-8")
         warnings = extraction.warnings + clean_warnings + quality_warnings(cleaned, format_for(path))
@@ -395,6 +488,7 @@ def process(
             "doc_id": doc_id,
             "fuente": path.stem,
             "ruta_original": source,
+            "ruta_global": f"{input_dir.name}/{source}",
             "formato": format_for(path),
             "fenomeno": fenomeno,
             "tamano_bytes": path.stat().st_size,
@@ -414,11 +508,28 @@ def process(
             "version_pipeline": "1.1.0",
             **extraction.metadata,
         }
+        entries = [item for item in entries if item.get("ruta_original") != source]
         entries.append(entry)
+        global_entry = dict(entry)
+        global_entry["ruta_original"] = entry["ruta_global"]
+        global_entries = [
+            item for item in global_entries
+            if item.get("ruta_original") != global_entry["ruta_original"]
+        ]
+        global_entries.append(global_entry)
         counters[entry["estado"]] += 1
         entries.sort(key=lambda item: item["doc_id"])
+        global_entries.sort(key=lambda item: item["doc_id"])
         write_manifest(manifest_path, entries)
-    (output_dir / "reporte_calidad.json").write_text(json.dumps({"total": len(entries), "estados": counters, "version_pipeline": "1.1.0"}, ensure_ascii=False, indent=2, default=dict), encoding="utf-8")
+        write_manifest(global_manifest_path, global_entries)
+        if warnings:
+            print(
+                f"{YELLOW}  Advertencias en {doc_id} ({len(warnings)}):{RESET}",
+                flush=True,
+            )
+            for warning in warnings:
+                print(f"{YELLOW}    - {warning}{RESET}", flush=True)
+    (phenomenon_output_dir / "reporte_calidad.json").write_text(json.dumps({"total": len(entries), "estados": counters, "version_pipeline": "1.1.0"}, ensure_ascii=False, indent=2, default=dict), encoding="utf-8")
     return dict(counters)
 
 
@@ -447,6 +558,12 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         type=parse_formats,
         help="Formatos a procesar, separados por coma. Ejemplo: pdf,json. Por defecto, todos.",
     )
+    parser.add_argument(
+        "--id-inicial",
+        type=int,
+        default=None,
+        help="Sobrescribe el primer doc_id. Por defecto se calcula usando los fenómenos anteriores.",
+    )
     parser.add_argument("--fenomeno", type=int, choices=(1, 2, 3), help="Fenómeno aplicado a todos los documentos, si corresponde.")
     parser.add_argument("--verbose", action="store_true", help="Muestra información de procesamiento.")
     return parser.parse_args(argv)
@@ -459,7 +576,10 @@ def main(argv: list[str] | None = None) -> int:
     if not args.input_dir.is_dir():
         LOGGER.error("El directorio de entrada no existe: %s", args.input_dir)
         return 2
-    summary = process(args.input_dir, args.output_dir, args.fenomeno, args.formatos)
+    if args.id_inicial is not None and args.id_inicial < 1:
+        LOGGER.error("--id-inicial debe ser mayor o igual que 1.")
+        return 2
+    summary = process(args.input_dir, args.output_dir, args.fenomeno, args.formatos, args.id_inicial)
     LOGGER.info("Procesamiento terminado: %s", summary)
     return 0
 

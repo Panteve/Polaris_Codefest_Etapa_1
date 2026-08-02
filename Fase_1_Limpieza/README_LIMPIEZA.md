@@ -72,6 +72,17 @@ entrada, incluso cuando su formato no fue seleccionado. Así, en el orden
 `pdf, json, pdf`, al procesar solo `pdf` se asignan `DOC-000001` y
 `DOC-000003`.
 
+Cuando la entrada es una carpeta `F1_...`, `F2_...` o `F3_...`, el script
+calcula automáticamente el inicio global usando `--fenomeno` y contando todos
+los formatos reconocidos de los fenómenos anteriores. Si el último documento
+global anterior fue `DOC-000287`, la siguiente carpeta comenzará en `DOC-000288`.
+
+`--id-inicial` queda disponible solo para sobrescribir manualmente ese cálculo:
+
+```powershell
+--id-inicial 288
+```
+
 `--fenomeno` es opcional. Úsalo cuando todos los archivos de la entrada
 pertenezcan al mismo fenómeno. Si todavía no conoces esa asignación, omítelo;
 el manifiesto dejará `fenomeno` como `null` para completarlo después.
@@ -86,11 +97,13 @@ python .\limpiar_documentos.py --help
 
 ```text
 procesados/
-├── misma/
-│   └── estructura/
-│       └── DOC-000001.txt    # texto limpio identificado por doc_id
-├── manifiesto.json          # arreglo JSON con un objeto por documento
-└── reporte_calidad.json     # resumen de estados del lote
+├── manifiesto_global.json   # todos los fenómenos
+├── F1_.../
+│   ├── DOC-000001.txt       # textos limpios del fenómeno
+│   ├── manifiesto.json       # manifiesto granular de F1
+│   └── reporte_calidad.json
+└── F2_.../
+    └── ...
 ```
 
 Los originales permanecen en el directorio de entrada y nunca se sobrescriben.
@@ -150,7 +163,7 @@ texto limpio ──────────────► misma/ruta/relativa/d
 detect_language + métricas + advertencias
       │
       ▼
-manifiesto.json + reporte_calidad.json
+manifiesto.json de fenómeno + manifiesto_global.json
 ```
 
 ## Reglas de limpieza
