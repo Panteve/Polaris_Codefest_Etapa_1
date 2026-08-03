@@ -91,8 +91,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--formatos",
         type=parse_formats,
-        default=None,
-        help="Filtra por formato original segun el manifiesto, por ejemplo: pdf o pdf,json.",
+        default={"pdf"},
+        help="Formatos que procesa el subagente. Por defecto: pdf. Usa pdf,json para incluir mas.",
     )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--sample-size", type=int, default=0, help="Selecciona N documentos aleatorios.")
@@ -563,7 +563,7 @@ def main() -> int:
     if args.shard_index < 0 or args.shard_index >= args.shard_count:
         raise SystemExit("--shard-index debe estar entre 0 y --shard-count - 1.")
     if args.unir_manifiestos_shards:
-        return merge_shard_manifests(args.output_dir, args.input_dir, args.formatos)
+        return merge_shard_manifests(args.output_dir, args.input_dir)
 
     source_metadata: dict[str, dict] = {}
     for manifest_path in args.input_dir.glob("F*/manifiesto.json"):

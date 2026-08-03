@@ -112,13 +112,20 @@ Corpus completo con DeepSeek:
 
 ```powershell
 $env:DEEPSEEK_API_KEY="tu_api_key"
-python .\limpiar_con_subagente.py --formatos pdf
+python .\limpiar_con_subagente.py
 ```
 
 El filtro `--formatos` usa el formato original registrado en el manifiesto.
-Por ejemplo, `--formatos pdf` limita la segunda pasada a los PDF aunque en
-`output/` ya existan TXT provenientes de JSON. Se pueden indicar varios
-formatos separados por coma, como `--formatos pdf,json`.
+Por defecto la segunda pasada procesa solo PDF aunque en `output/` ya existan
+TXT provenientes de JSON, CSV u otros formatos. Se pueden indicar varios
+formatos separados por coma, como `--formatos pdf,json`, si se quiere ampliar
+explicitamente el alcance del subagente.
+
+Esta limitacion a PDF es una decision operativa por costo de API y tiempo de
+ejecucion. Lo ideal, si hay presupuesto suficiente, seria mejorar el script para
+permitir que el subagente revise todos los formatos y ayude a organizar mejor
+boilerplate, metadata y estructura tambien en JSON, CSV, XLSX, HTML, imagenes u
+otros textos ya extraidos.
 
 Por defecto la salida se guarda en `.\output_post_limpieza` y solo se crea el
 manifiesto consolidado. Para generar tambien un JSON detallado por documento,
@@ -131,9 +138,9 @@ Para reprocesar todo desde cero, usa `--sobrescribir-salida`.
 Para procesar en paralelo, abre tres consolas en `Fase_1_Limpieza` y ejecuta:
 
 ```powershell
-python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 0
-python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 1
-python .\limpiar_con_subagente.py --formatos pdf --shard-count 3 --shard-index 2
+python .\limpiar_con_subagente.py --shard-count 3 --shard-index 0
+python .\limpiar_con_subagente.py --shard-count 3 --shard-index 1
+python .\limpiar_con_subagente.py --shard-count 3 --shard-index 2
 ```
 
 Cada particion escribe un manifiesto propio para evitar choques entre procesos.
@@ -149,16 +156,14 @@ El comando lee los manifiestos de `output/`, copia los TXT iniciales faltantes
 a `output_post_limpieza/` y los marca como `procesado_inicial`. Los documentos
 con estado `fallido` no se incorporan.
 
-Si la segunda pasada se limito a PDF, puedes conservar ese filtro al unirlos:
+No uses `--formatos pdf` al unir manifiestos si quieres una salida final
+completa: el comando de union debe incorporar tambien los TXT de JSON, CSV,
+XLSX, imagenes u otros formatos que ya estaban limpios desde la primera pasada.
 
-```powershell
-python .\limpiar_con_subagente.py --formatos pdf --unir-manifiestos-shards
-```
-
-## Estructura de salida
+## Estructura de salida inicial
 
 ```text
-procesados/
+output/  # ejemplo generico de primera limpieza
 ├── manifiesto_global.json   # todos los fenómenos
 ├── F1_.../
 │   ├── DOC-000001.txt       # textos limpios del fenómeno
@@ -170,7 +175,73 @@ procesados/
 
 Los originales permanecen en el directorio de entrada y nunca se sobrescriben.
 La carpeta de salida replica las subcarpetas de la entrada y guarda cada
-documento procesado como `DOC-xxxxxx.txt` en su carpeta relativa.
+documento procesado como `DOC-xxxxxx.txt` en su carpeta relativa. La forma
+real esperada de `Fase_1_Limpieza/` se describe en la siguiente seccion.
+
+## Forma esperada de las carpetas
+
+La Fase 1 debe quedar organizada en tres niveles: originales, primera limpieza
+y salida final para chunking.
+
+```text
+Fase_1_Limpieza/
+  input/
+    F1_IA_y_Capacidades_Estrategicas/
+      ...
+    F2_Seguridad_Entorno_Espacial/
+      ...
+    F3_Dinamicas_Territoriales/
+      ...
+
+  output/
+    manifiesto_global.json
+    F1_IA_y_Capacidades_Estrategicas/
+      manifiesto.json
+      reporte_calidad.json
+      fuente/subcarpeta/DOC-000001.txt
+    F2_Seguridad_Entorno_Espacial/
+      manifiesto.json
+      reporte_calidad.json
+      fuente/subcarpeta/DOC-000288.txt
+    F3_Dinamicas_Territoriales/
+      manifiesto.json
+      reporte_calidad.json
+      fuente/subcarpeta/DOC-000646.txt
+
+  output_post_limpieza/
+    manifiesto_post_limpieza.json
+    manifiesto_post_limpieza_shard_0_de_3.json
+    manifiesto_post_limpieza_shard_1_de_3.json
+    manifiesto_post_limpieza_shard_2_de_3.json
+    F1_IA_y_Capacidades_Estrategicas/
+      fuente/subcarpeta/DOC-000001.txt
+    F2_Seguridad_Entorno_Espacial/
+      fuente/subcarpeta/DOC-000288.txt
+    F3_Dinamicas_Territoriales/
+      fuente/subcarpeta/DOC-000646.txt
+```
+
+`input/` contiene los originales y nunca se sobrescribe. `output/` contiene los
+`.txt` de la primera limpieza para todos los formatos procesados.
+`output_post_limpieza/` es la salida final que debe alimentar el chunking:
+incluye los PDF procesados por el subagente y los TXT de JSON, CSV, XLSX,
+imagenes u otros formatos copiados tal cual desde `output/`.
+
+La estructura relativa se conserva en todas las fases. Si un documento aparece
+en:
+
+```text
+output/F2_Seguridad_Entorno_Espacial/CSIS_Aerospace/pdfs_full/DOC-000615.txt
+```
+
+su version final queda en:
+
+```text
+output_post_limpieza/F2_Seguridad_Entorno_Espacial/CSIS_Aerospace/pdfs_full/DOC-000615.txt
+```
+
+El nombre `DOC-xxxxxx.txt` no cambia. Ese identificador viene de la primera
+limpieza y se conserva durante la segunda pasada y el chunking.
 
 ## Cómo se conserva la trazabilidad
 
@@ -280,6 +351,10 @@ están en el nivel principal.
 Cada fila se convierte en una unidad estructural. El nombre de la columna se
 mantiene junto al valor para que una futura búsqueda semántica no pierda el
 contexto. En XLSX también se conserva el nombre de la hoja.
+En CSV se respetan campos entre comillas, comas y saltos de línea internos,
+se detecta el delimitador cuando es posible y se registran filas cuyo número
+de columnas no coincide con el encabezado. Las filas irregulares no se borran
+silenciosamente.
 
 ### Imágenes
 

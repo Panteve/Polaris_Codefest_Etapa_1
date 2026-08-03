@@ -432,7 +432,34 @@ Un documento se considera listo para chunking cuando:
 
 El corpus completo está listo cuando todos los originales aparecen en el manifiesto y cada uno tiene estado `procesado`, `procesado_con_advertencias_aceptadas` o `excluido_con_justificacion`.
 
-## 14. Relación con el paso siguiente
+## 14. Segunda pasada asistida para PDF
+
+Despues de la primera limpieza, el directorio `output/` contiene los `.txt`
+limpios iniciales y sus manifiestos por fenomeno. Sobre esa salida se puede
+ejecutar una segunda pasada con `limpiar_con_subagente.py`.
+
+Esta segunda pasada esta pensada principalmente para PDF, porque son los
+documentos donde aparecen con mas frecuencia portadas, pies de pagina,
+bibliografias, DOI, creditos editoriales y bloques repetidos derivados de la
+maquetacion. Por defecto el subagente procesa solo documentos cuyo `formato`
+original sea `pdf`.
+
+La limitacion a PDF es una decision operativa por costo de API y tiempo de
+ejecucion. En una version ideal del pipeline, el script deberia permitir pasar
+todos los formatos al subagente para revisar y organizar mejor boilerplate,
+metadata y estructura en JSON, CSV, XLSX, HTML, imagenes u otros textos ya
+extraidos.
+
+Los `.txt` de JSON, CSV, XLSX, imagenes u otros formatos que ya quedaron limpios
+en `output/` no necesitan pasar por el subagente. Al unir los manifiestos de la
+segunda pasada, esos archivos se copian tal cual a `output_post_limpieza/`,
+conservando su ruta relativa, su `doc_id` y la metadata original. En el
+manifiesto final quedan marcados como `procesado_inicial`.
+
+La salida que debe alimentar el chunking es `output_post_limpieza/` junto con
+`output_post_limpieza/manifiesto_post_limpieza.json`.
+
+## 15. Relación con el paso siguiente
 
 El texto aprobado será la entrada del chunking. En esa etapa se deberá:
 
@@ -447,7 +474,7 @@ El texto aprobado será la entrada del chunking. En esa etapa se deberá:
 
 Aunque la salida final limita cada fragmento reportado a 250 palabras, ese requisito no debe resolverse destruyendo oraciones durante la limpieza. Los límites se controlarán al diseñar el chunking y al construir la salida de recuperación.
 
-## 15. Checklist breve
+## 16. Checklist breve
 
 ### Antes
 

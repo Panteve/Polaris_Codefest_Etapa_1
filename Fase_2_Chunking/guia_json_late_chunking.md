@@ -1,15 +1,14 @@
 # Guia de chunking para JSON estructurado de F1
 
 Este documento fija como se deben tratar en Fase 2 los archivos JSON
-estructurados del Fenomeno 1 (F1), Inteligencia artificial e innovacion en
-entornos militares. Las reglas descritas aqui aplican a los JSON de F1 que
-contienen paginas web o articulos estructurados; no sustituyen las reglas
-especificas de PDF, CSV, XLSX, imagenes o PBF, ni las de F2 y F3.
+estructurados de F1, F2 y F3. Las reglas aplican a JSON que contienen paginas
+web, articulos, alertas o reportes estructurados; no sustituyen las reglas
+especificas de PDF, CSV, XLSX, imagenes o PBF.
 
 ## Entrada esperada
 
-Para los JSON de F1, Fase 1 entrega un archivo `.txt` en texto plano. No
-conserva la sintaxis JSON,
+Para los JSON de los tres fenomenos, Fase 1 entrega un archivo `.txt` en texto
+plano. No conserva la sintaxis JSON,
 pero mantiene etiquetas que representan la estructura original, por ejemplo:
 
 ```text
@@ -53,6 +52,49 @@ Para estos documentos se evaluara late chunking como metodo de vectorizacion:
 Late chunking no reemplaza la estrategia de decidir donde cortar. Puede
 combinarse con chunking estructural y oracional. Su uso debe validarse contra
 la estrategia convencional con las mismas consultas y metricas.
+
+## Reglas por tipo de JSON
+
+### Articulos y paginas web de F1 y F2
+
+Se deben mantener el titulo, resumen o excerpt, cuerpo, parrafos, secciones,
+topics y keywords. Cuando `body_paragraphs` y `body_text` repitan el mismo
+contenido, se conserva una sola copia. Las fechas y autores pueden conservarse
+como metadata del documento y no deben convertirse en ruido repetido dentro de
+cada chunk.
+
+### Alertas y reportes territoriales de F3
+
+Los parrafos del cuerpo deben permanecer vinculados a su contexto. En una
+alerta, campos como `codigo`, `tipo`, `fecha_emision`, `tema_clave`,
+`municipios` y poblaciones afectadas son contexto semantico util y pueden
+formar un bloque de contexto junto al cuerpo de la alerta. No se deben separar
+municipio, tipo de riesgo o fecha del texto que describe la alerta si caben en
+el mismo fragmento.
+
+### Campos tecnicos excluidos
+
+No deben formar parte del texto vectorizado las URLs tecnicas (`url`,
+`detail_url`, `pdf_url`, `src`, `href`), enlaces de navegacion, DOI, SVG o
+imagenes embebidas, ni catalogos o registros del scraper marcados como
+`excluido_no_contenido`. Estos archivos se conservan solo para trazabilidad.
+
+## Secuencia recomendada para late chunking
+
+1. Leer el `.txt` completo y conservar el orden de sus etiquetas estructurales.
+2. Agrupar titulo, etiquetas semanticas, metadata contextual y cuerpo en
+   bloques logicos.
+3. Pasar el documento completo al encoder de contexto largo, si cabe en su
+   ventana.
+4. Definir los limites despues de la contextualizacion, usando bloques,
+   parrafos, listas y oraciones completas.
+5. Calcular el vector de cada chunk con los embeddings de tokens de su rango.
+6. Conservar en cada chunk la seccion o bloque de origen junto con la metadata
+   obligatoria.
+
+Si un documento excede la ventana del encoder, se debe registrar la situacion
+y aplicar una particion previa por bloques estructurales completos. No se debe
+cortar arbitrariamente un JSON largo por caracteres.
 
 ## Reglas de corte
 

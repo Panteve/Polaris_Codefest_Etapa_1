@@ -11,7 +11,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import html as html_lib
+import io
 import json
 import logging
 import re
@@ -34,11 +36,37 @@ SUPPORTED = {
 TEXT_FORMATS = {"pdf", "html", "md", "txt", "json", "csv", "xlsx", "xls", "image", "pbf"}
 EXCLUDED_KNOWLEDGE_PATHS = {
     "DAIO/daio_pdfs/DAIO_catalog-2.json",
+    "DAIO/daio_pdfs/DAIO_catalog-2.csv",
     "Defensa21_LatAm/defensa21_data/DEFENSA21_articulos-2.json",
     "Defensa21_LatAm/defensa21_data/DEFENSA21_catalog-2.json",
     "RutaN_GEIAL/rutan_pdfs/RUTAN_catalog-2.json",
+    "RutaN_GEIAL/rutan_pdfs/RUTAN_catalog-2.csv",
     "CSIS_Aerospace/csis_pdfs/CSIS_catalog-2.json",
+    "CSIS_Aerospace/csis_pdfs/CSIS_catalog-2.csv",
     "SWF_Counterspace/swf_counterspace_2026/SWF_report-data.json",
+    "SWF_Counterspace/swf_counterspace_2026/SWF_report-data.csv",
+    "Amazon_Underworld/AMAZONUW_tiles-index.json",
+    "CEEEP/ceeep_catalogo.json",
+    "CEEEP/ceeep_registro.json",
+    "CEOBS/ceobs_full_catalogo.json",
+    "CEOBS/ceobs_full_registro.json",
+    "MAPP_OEA/mapp_catalogo.json",
+    "MAPP_OEA/mapp_registro.json",
+    "MAPP_OEA/oea/mapp_oea_informes/MAPPOEA_mapp-catalog.json",
+    "MAPP_OEA/oea/mapp_oea_informes/MAPPOEA_mapp-catalog.csv",
+    "RESDAL/resdal_catalogo.json",
+    "RESDAL/resdal_registro.json",
+    "RESDAL/resdal_atlas/RESDAL_catalog-2.json",
+    "RESDAL/resdal_atlas/RESDAL_catalog-2.csv",
+    "SIPRI/sipri_full_catalogo.json",
+    "SIPRI/sipri_full_registro.json",
+    "SIPRI/sipri_data/SIPRI_catalog-2.json",
+    "SIPRI/sipri_data/SIPRI_publicaciones-2.csv",
+    "CEOBS/ceobs_data/CEOBS_publicaciones-2.csv",
+    "AI_Index_Stanford/recursos/Healthcare_Medicine/datasets/AIINDEX_lit-covid-ai-covid-literature-xlsx.xlsx",
+    "AI_Index_Stanford/recursos/Research_Development/datasets/AIINDEX_mag-author-lifecycle-xlsx.xlsx",
+    "AI_Index_Stanford/recursos/Research_Development/datasets/AIINDEX_mag-conferences-list-xlsx.xlsx",
+    "AI_Index_Stanford/recursos/Research_Development/datasets/AIINDEX_mag-publications-fields-xlsx.xlsx",
 }
 
 
@@ -134,8 +162,9 @@ TEXT_KEYS = {
 METADATA_KEYS = {
     "url", "date", "published", "authors", "author", "tags", "id", "source",
     "license", "language", "lang", "created_at", "updated_at", "src", "href",
+    "detail_url", "pdf_url", "doi",
 }
-JSON_IGNORED_KEYS = {"links", "pdf_links"}
+JSON_IGNORED_KEYS = {"links", "pdf_links", "doc_links"}
 
 
 def json_text(value: Any, key: str = "", path: str = "") -> list[str]:
@@ -144,10 +173,15 @@ def json_text(value: Any, key: str = "", path: str = "") -> list[str]:
     if normalized_key in JSON_IGNORED_KEYS:
         return []
     if isinstance(value, str):
-        if not value.strip() or key.lower() in METADATA_KEYS:
+        stripped_value = value.strip()
+        if (
+            not stripped_value
+            or key.lower() in METADATA_KEYS
+            or stripped_value.lower().startswith(("data:image/", "data:application/"))
+        ):
             return []
         label = path or key
-        return [f"{label}: {value.strip()}" if label else value.strip()]
+        return [f"{label}: {stripped_value}" if label else stripped_value]
     if isinstance(value, list):
         result: list[str] = []
         for index, item in enumerate(value):
@@ -197,16 +231,157 @@ def extract_json(path: Path) -> Extraction:
 def extract_csv(path: Path) -> Extraction:
     """Convierte cada fila CSV en pares explícitos columna-valor."""
     source, encoding = read_text(path)
-    rows = list(csv.reader(source.splitlines()))
+    warnings: list[str] = []
+    delimiter = ","
+    try:
+        delimiter = csv.Sniffer().sniff(source[:8192], delimiters=",;\t|").delimiter
+    except csv.Error:
+        warnings.append("No se pudo detectar el delimitador; se uso coma.")
+    try:
+        rows = list(csv.reader(io.StringIO(source, newline=""), delimiter=delimiter))
+    except csv.Error as exc:
+        return Extraction(
+            "",
+            "csv",
+            warnings + [f"CSV invalido: {exc}"],
+            {"encoding": encoding, "delimitador": delimiter},
+        )
     if not rows:
         return Extraction("", "csv", ["CSV vacío."], {"encoding": encoding})
     headers = [cell.strip() or f"columna_{i + 1}" for i, cell in enumerate(rows[0])]
+    max_columns = max((len(row) for row in rows), default=len(headers))
+    headers.extend(f"columna_{i + 1}" for i in range(len(headers), max_columns))
     lines: list[str] = []
+    irregular_rows: list[int] = []
     for row_number, row in enumerate(rows[1:], start=2):
-        values = [f"{header}: {value.strip()}" for header, value in zip(headers, row) if value.strip()]
+        if not row or not any(value.strip() for value in row):
+            continue
+        if len(row) != len(headers):
+            irregular_rows.append(row_number)
+        values = [
+            f"{header}: {row[index].strip()}"
+            for index, header in enumerate(headers)
+            if index < len(row) and row[index].strip()
+        ]
         if values:
             lines.append(f"[fila {row_number}] " + " | ".join(values))
-    return Extraction("\n".join(lines), "csv", [], {"encoding": encoding, "columnas": headers, "filas": max(0, len(rows) - 1)})
+    if irregular_rows:
+        warnings.append(
+            "Filas con numero de columnas distinto al encabezado: "
+            + ", ".join(str(row) for row in irregular_rows[:20])
+            + (" ..." if len(irregular_rows) > 20 else ".")
+        )
+    metadata = {
+        "encoding": encoding,
+        "delimitador": delimiter,
+        "columnas": headers,
+        "filas": len(lines),
+        "filas_irregulares": len(irregular_rows),
+    }
+    return Extraction("\n".join(lines), "csv", warnings, metadata)
+
+
+def pbf_tile_coordinates(path: Path) -> tuple[str, str, str] | None:
+    """Infiere z/x/y desde rutas tipo tiles/<z>/<x>/PREFIJO_<y>.pbf."""
+    if len(path.parts) < 4:
+        return None
+    try:
+        tiles_index = [part.lower() for part in path.parts].index("tiles")
+    except ValueError:
+        return None
+    if tiles_index + 2 >= len(path.parts):
+        return None
+    match = re.search(r"_(\d+)$", path.stem)
+    if not match:
+        return None
+    return path.parts[tiles_index + 1], path.parts[tiles_index + 2], match.group(1)
+
+
+def pbf_companion_csv(path: Path) -> Path | None:
+    """Busca un CSV decodificado junto al directorio tiles de la fuente."""
+    try:
+        tiles_index = [part.lower() for part in path.parts].index("tiles")
+    except ValueError:
+        return None
+    source_root = Path(*path.parts[:tiles_index])
+    candidates = sorted(source_root.glob("*amazonunderworld-data.csv"))
+    if candidates:
+        return candidates[0]
+    candidates = sorted(source_root.glob("*data.csv"))
+    return candidates[0] if candidates else None
+
+
+def row_to_pairs(row: dict[str, str], skip_fields: set[str] | None = None) -> str:
+    """Convierte una fila estructurada a pares columna: valor, omitiendo vacios."""
+    skip_fields = skip_fields or set()
+    pairs = []
+    for key, value in row.items():
+        if key in skip_fields or not value or not str(value).strip():
+            continue
+        clean_value = re.sub(r"\s+", " ", str(value).strip())
+        pairs.append(f"{key}: {clean_value}")
+    return " | ".join(pairs)
+
+
+def extract_pbf_from_companion_csv(path: Path) -> Extraction | None:
+    """Usa CSV hermano ya decodificado para representar un tile PBF como filas."""
+    coordinates = pbf_tile_coordinates(path)
+    companion = pbf_companion_csv(path)
+    if not coordinates or not companion or not companion.is_file():
+        return None
+    z, x, y = coordinates
+    source, encoding = read_text(companion)
+    rows = csv.DictReader(io.StringIO(source, newline=""))
+    lines: list[str] = []
+    for row in rows:
+        if row.get("tile_zoom") != z or row.get("tile_x") != x or row.get("tile_y") != y:
+            continue
+        line = row_to_pairs(row, {"tile_zoom", "tile_x", "tile_y"})
+        if not line:
+            continue
+        lines.append(line)
+    warnings = [] if lines else [f"No se encontraron filas en {companion.name} para tile z={z}, x={x}, y={y}."]
+    return Extraction(
+        "\n".join(lines),
+        "pbf_csv_decodificado",
+        warnings,
+        {
+            "encoding": encoding,
+            "csv_companero": companion.name,
+            "tile_zoom": z,
+            "tile_x": x,
+            "tile_y": y,
+            "filas": len(lines),
+        },
+    )
+
+
+def extract_pbf_direct(path: Path) -> Extraction:
+    """Decodifica Mapbox Vector Tiles si la dependencia opcional existe."""
+    try:
+        import mapbox_vector_tile
+    except ImportError:
+        return Extraction(
+            "",
+            "pbf_pendiente",
+            ["PBF requiere 'mapbox-vector-tile' o un CSV companero decodificado; no se proceso automaticamente."],
+        )
+    try:
+        decoded = mapbox_vector_tile.decode(path.read_bytes())
+    except Exception as exc:
+        return Extraction("", "mapbox_vector_tile", [f"No se pudo decodificar PBF ({type(exc).__name__}): {exc}"])
+    lines: list[str] = []
+    for layer_name, layer in decoded.items():
+        features = layer.get("features", []) if isinstance(layer, dict) else []
+        for feature in features:
+            properties = dict(feature.get("properties") or {})
+            if feature.get("id") is not None:
+                properties = {"fid": str(feature["id"]), **properties}
+            line = row_to_pairs({"layer": layer_name, **{k: str(v) for k, v in properties.items()}})
+            if line:
+                lines.append(line)
+    warnings = [] if lines else ["El PBF se decodifico, pero no produjo atributos textuales utiles."]
+    return Extraction("\n".join(lines), "mapbox_vector_tile", warnings, {"filas": len(lines)})
 
 
 def extract_xlsx(path: Path) -> Extraction:
@@ -260,7 +435,15 @@ def extract(path: Path) -> Extraction:
     if kind == "image":
         return extract_image(path)
     if kind == "pbf":
-        return Extraction("", "pbf_pendiente", ["PBF requiere un lector geoespacial; no se procesó automáticamente."])
+        direct = extract_pbf_direct(path)
+        if direct.text.strip() or direct.method != "pbf_pendiente":
+            return direct
+        fallback = extract_pbf_from_companion_csv(path)
+        if fallback:
+            fallback.warnings = direct.warnings + fallback.warnings
+            fallback.metadata["fallback_de"] = direct.method
+            return fallback
+        return direct
     return Extraction("", "no_soportado", [f"Formato no soportado: {path.suffix or '(sin extensión)'}"])
 
 
@@ -443,6 +626,52 @@ def merge_phenomenon_manifests(output_dir: Path) -> list[dict[str, Any]]:
     return sorted(merged.values(), key=lambda item: item.get("doc_id", ""))
 
 
+def normalized_content_hash(text: str) -> str:
+    """Hash estable para detectar salidas textuales equivalentes."""
+    normalized = re.sub(r"\s+", " ", text.strip()).casefold()
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest() if normalized else ""
+
+
+def pbf_line_hash(line: str) -> str:
+    """Hash de fila PBF sin depender de saltos o espacios incidentales."""
+    return normalized_content_hash(line)
+
+
+def pbf_field_value(line: str, field: str) -> str:
+    """Extrae un valor de una fila tipo campo: valor | campo: valor."""
+    pattern = rf"(?:^|\|)\s*{re.escape(field)}:\s*(.*?)(?=\s*\|\s*[^|]+:\s*|$)"
+    match = re.search(pattern, line)
+    return match.group(1).strip() if match else ""
+
+
+def pbf_entity_key(line: str) -> str:
+    """Clave estable para no repetir la misma entidad territorial entre tiles."""
+    for field in ("au_ID_concatenated", "b_ID_concatenated"):
+        value = pbf_field_value(line, field)
+        if value:
+            return f"{field}:{value.casefold()}"
+    adm1 = pbf_field_value(line, "b_ADM1_PCODE")
+    adm2 = pbf_field_value(line, "b_ADM2_PCODE")
+    if adm1 or adm2:
+        return f"admin:{adm1.casefold()}:{adm2.casefold()}"
+    layer = pbf_field_value(line, "layer")
+    fid = pbf_field_value(line, "fid")
+    if layer or fid:
+        return f"feature:{layer.casefold()}:{fid.casefold()}"
+    return pbf_line_hash(line)
+
+
+def pbf_context_key(path: Path, original_root: Path) -> str:
+    """Agrupa tiles PBF por la fuente que contiene el directorio tiles."""
+    source = path.resolve().relative_to(original_root).as_posix()
+    parts = source.split("/")
+    lowered = [part.lower() for part in parts]
+    if "tiles" in lowered:
+        tiles_index = lowered.index("tiles")
+        return "/".join(parts[:tiles_index]) or "."
+    return str(Path(source).parent).replace("\\", "/")
+
+
 def process(
     input_dir: Path,
     output_dir: Path,
@@ -479,6 +708,27 @@ def process(
         if entry.get("estado") in {"procesado", "procesado_con_advertencias"}
         and (output_dir / entry.get("ruta_limpio", "")).is_file()
     }
+    rebuild_pbf = not formatos or "pbf" in formatos
+    seen_content_hashes: dict[str, dict[str, Any]] = {}
+    seen_pbf_rows: set[str] = set()
+    for entry in entries:
+        if entry.get("estado") not in {"procesado", "procesado_con_advertencias"}:
+            continue
+        if rebuild_pbf and entry.get("formato") == "pbf":
+            continue
+        clean_file = output_dir / entry.get("ruta_limpio", "")
+        if not clean_file.is_file():
+            continue
+        content = clean_file.read_text(encoding="utf-8")
+        content_hash = entry.get("contenido_hash") or normalized_content_hash(content)
+        if content_hash:
+            seen_content_hashes.setdefault(content_hash, entry)
+        if entry.get("formato") == "pbf":
+            for line in content.splitlines():
+                entity_key = pbf_entity_key(line)
+                if entity_key:
+                    seen_pbf_rows.add(entity_key)
+    pbf_consolidates: dict[str, dict[str, Any]] = {}
     counters = Counter()
     total_files = len(files)
     for position, path in enumerate(files, start=1):
@@ -516,7 +766,7 @@ def process(
             write_manifest(manifest_path, entries)
             write_manifest(global_manifest_path, global_entries)
             continue
-        if source in completed:
+        if source in completed and format_for(path) != "pbf":
             print(f"[{position}/{total_files}] Omitido, ya procesado: {path.name} ({doc_id})", flush=True)
             completed_entry = completed[source]
             global_source = f"{input_dir.name}/{source}"
@@ -535,18 +785,212 @@ def process(
             extraction.warnings.append(
                 f"Se reemplazaron {surrogate_count} caracteres no válidos para UTF-8."
             )
-        cleaned, clean_warnings = clean_text(extraction.text, format_for(path))
+        format_name = format_for(path)
+        cleaned, clean_warnings = clean_text(extraction.text, format_name)
+        content_hash = normalized_content_hash(cleaned)
         relative_source = Path(source)
         clean_path = phenomenon_output_dir / relative_source.parent / f"{doc_id}.txt"
         clean_path.parent.mkdir(parents=True, exist_ok=True)
+        warnings = extraction.warnings + clean_warnings + quality_warnings(cleaned, format_name)
+        if format_name == "pbf":
+            context_key = pbf_context_key(path, original_root)
+            unique_lines: list[str] = []
+            duplicate_rows = 0
+            for line in cleaned.splitlines():
+                entity_key = pbf_entity_key(line)
+                if not entity_key:
+                    continue
+                if entity_key in seen_pbf_rows:
+                    duplicate_rows += 1
+                    continue
+                seen_pbf_rows.add(entity_key)
+                unique_lines.append(line)
+            if duplicate_rows:
+                warnings.append(f"Se omitieron {duplicate_rows} filas PBF duplicadas ya vistas en tiles anteriores.")
+            group = pbf_consolidates.get(context_key)
+            if group and unique_lines:
+                group["lines"].extend(unique_lines)
+                group["sources"].append(source)
+                group["tiles"] += 1
+                group["raw_chars"] += len(extraction.text)
+                group["raw_words"] += len(extraction.text.split())
+                consolidated_text = "\n".join(group["lines"])
+                group["clean_path"].write_text(consolidated_text, encoding="utf-8")
+                group_entry = group["entry"]
+                group_entry["conteo"] = {
+                    "caracteres_bruto": group["raw_chars"],
+                    "caracteres_limpio": len(consolidated_text),
+                    "palabras_bruto": group["raw_words"],
+                    "palabras_limpio": len(consolidated_text.split()),
+                    "lineas_limpio": len(consolidated_text.splitlines()),
+                }
+                group_entry["contenido_hash"] = normalized_content_hash(consolidated_text)
+                group_entry["filas_unicas_limpias"] = len(group["lines"])
+                group_entry["pbf_tiles_consolidados"] = group["tiles"]
+                group_entry["pbf_fuentes_cubiertas"] = group["sources"]
+                entries = [item for item in entries if item.get("ruta_original") != group_entry["ruta_original"]]
+                entries.append(group_entry)
+                global_entry = dict(group_entry)
+                global_entry["ruta_original"] = group_entry["ruta_global"]
+                global_entries = [
+                    item for item in global_entries
+                    if item.get("ruta_original") != global_entry["ruta_original"]
+                ]
+                global_entries.append(global_entry)
+            if group:
+                if clean_path.exists():
+                    clean_path.unlink()
+                covered_entry = {
+                    "doc_id": doc_id,
+                    "fuente": path.stem,
+                    "ruta_original": source,
+                    "ruta_global": f"{input_dir.name}/{source}",
+                    "formato": format_name,
+                    "fenomeno": fenomeno,
+                    "tamano_bytes": path.stat().st_size,
+                    "estado": "excluido_duplicado",
+                    "apto_para_indice": False,
+                    "motivo_exclusion": "Contenido PBF cubierto por el TXT consolidado del primer tile de la misma fuente/contexto.",
+                    "duplicado_de_doc_id": group["entry"]["doc_id"],
+                    "duplicado_de_fuente": group["entry"]["fuente"],
+                    "deduplicacion": "consolidado_pbf",
+                    "idioma": detect_language("\n".join(unique_lines)),
+                    "metodo_extraccion": extraction.method,
+                    "advertencias": warnings,
+                    "version_pipeline": "1.1.0",
+                    "pbf_contexto": context_key,
+                    "pbf_consolidado_en": group["entry"]["doc_id"],
+                    "filas_duplicadas_omitidas": duplicate_rows,
+                    "filas_agregadas_al_consolidado": len(unique_lines),
+                    **extraction.metadata,
+                }
+                entries = [item for item in entries if item.get("ruta_original") != source]
+                entries.append(covered_entry)
+                global_entry = dict(covered_entry)
+                global_entry["ruta_original"] = covered_entry["ruta_global"]
+                global_entries = [
+                    item for item in global_entries
+                    if item.get("ruta_original") != global_entry["ruta_original"]
+                ]
+                global_entries.append(global_entry)
+                counters[covered_entry["estado"]] += 1
+                entries.sort(key=lambda item: item["doc_id"])
+                global_entries.sort(key=lambda item: item["doc_id"])
+                write_manifest(manifest_path, entries)
+                write_manifest(global_manifest_path, global_entries)
+                print(f"[{position}/{total_files}] Cubierto por consolidado PBF: {path.name} ({doc_id})", flush=True)
+                continue
+            if extraction.text.strip() and not unique_lines:
+                print(f"[{position}/{total_files}] Excluido por duplicado: {path.name} ({doc_id})", flush=True)
+                if clean_path.exists():
+                    clean_path.unlink()
+                duplicate_entry = {
+                    "doc_id": doc_id,
+                    "fuente": path.stem,
+                    "ruta_original": source,
+                    "ruta_global": f"{input_dir.name}/{source}",
+                    "formato": format_name,
+                    "fenomeno": fenomeno,
+                    "tamano_bytes": path.stat().st_size,
+                    "estado": "excluido_duplicado",
+                    "apto_para_indice": False,
+                    "motivo_exclusion": "Todas las filas utiles del PBF ya estaban representadas en fuentes anteriores.",
+                    "duplicado_de_doc_id": None,
+                    "duplicado_de_fuente": None,
+                    "deduplicacion": "filas_pbf",
+                    "idioma": "unknown",
+                    "metodo_extraccion": extraction.method,
+                    "advertencias": warnings,
+                    "version_pipeline": "1.1.0",
+                    "pbf_contexto": context_key,
+                    "filas_duplicadas_omitidas": duplicate_rows,
+                    "filas_unicas_limpias": 0,
+                    **extraction.metadata,
+                }
+                entries = [item for item in entries if item.get("ruta_original") != source]
+                entries.append(duplicate_entry)
+                global_entry = dict(duplicate_entry)
+                global_entry["ruta_original"] = duplicate_entry["ruta_global"]
+                global_entries = [
+                    item for item in global_entries
+                    if item.get("ruta_original") != global_entry["ruta_original"]
+                ]
+                global_entries.append(global_entry)
+                counters[duplicate_entry["estado"]] += 1
+                entries.sort(key=lambda item: item["doc_id"])
+                global_entries.sort(key=lambda item: item["doc_id"])
+                write_manifest(manifest_path, entries)
+                write_manifest(global_manifest_path, global_entries)
+                continue
+            cleaned = "\n".join(unique_lines)
+            content_hash = normalized_content_hash(cleaned)
+        duplicate_of = seen_content_hashes.get(content_hash) if content_hash else None
+        if duplicate_of:
+            warnings.append(f"Contenido duplicado de {duplicate_of.get('doc_id')} ({duplicate_of.get('ruta_original')}).")
+        if duplicate_of or (format_name == "pbf" and extraction.text.strip() and not cleaned):
+            print(f"[{position}/{total_files}] Excluido por duplicado: {path.name} ({doc_id})", flush=True)
+            row_duplicate_only = not duplicate_of and format_name == "pbf"
+            if clean_path.exists():
+                clean_path.unlink()
+            duplicate_entry = {
+                "doc_id": doc_id,
+                "fuente": path.stem,
+                "ruta_original": source,
+                "ruta_global": f"{input_dir.name}/{source}",
+                "formato": format_name,
+                "fenomeno": fenomeno,
+                "tamano_bytes": path.stat().st_size,
+                "estado": "excluido_duplicado",
+                "apto_para_indice": False,
+                "motivo_exclusion": (
+                    "Todas las filas utiles del PBF ya estaban representadas en tiles anteriores."
+                    if row_duplicate_only else "Contenido ya representado en otro TXT limpio."
+                ),
+                "duplicado_de_doc_id": duplicate_of.get("doc_id") if duplicate_of else None,
+                "duplicado_de_fuente": duplicate_of.get("fuente") if duplicate_of else None,
+                "deduplicacion": "filas_pbf" if row_duplicate_only else "documento_completo",
+                "idioma": detect_language(cleaned),
+                "metodo_extraccion": extraction.method,
+                "advertencias": warnings,
+                "version_pipeline": "1.1.0",
+                **extraction.metadata,
+            }
+            entries = [item for item in entries if item.get("ruta_original") != source]
+            entries.append(duplicate_entry)
+            global_entry = dict(duplicate_entry)
+            global_entry["ruta_original"] = duplicate_entry["ruta_global"]
+            global_entries = [
+                item for item in global_entries
+                if item.get("ruta_original") != global_entry["ruta_original"]
+            ]
+            global_entries.append(global_entry)
+            counters[duplicate_entry["estado"]] += 1
+            entries.sort(key=lambda item: item["doc_id"])
+            global_entries.sort(key=lambda item: item["doc_id"])
+            write_manifest(manifest_path, entries)
+            write_manifest(global_manifest_path, global_entries)
+            continue
+        if format_name == "pbf":
+            extraction.metadata.update(
+                {
+                    "pbf_consolidado": True,
+                    "pbf_contexto": context_key,
+                    "pbf_fuente_principal": source,
+                    "pbf_tiles_consolidados": 1,
+                    "pbf_fuentes_cubiertas": [source],
+                    "filas_duplicadas_omitidas": duplicate_rows,
+                    "filas_unicas_limpias": len(cleaned.splitlines()),
+                }
+            )
         clean_path.write_text(cleaned, encoding="utf-8")
-        warnings = extraction.warnings + clean_warnings + quality_warnings(cleaned, format_for(path))
+        if content_hash:
+            seen_content_hashes.setdefault(content_hash, {"doc_id": doc_id, "fuente": path.stem, "ruta_original": source})
         entry = {
             "doc_id": doc_id,
             "fuente": path.stem,
             "ruta_original": source,
             "ruta_global": f"{input_dir.name}/{source}",
-            "formato": format_for(path),
+            "formato": format_name,
             "fenomeno": fenomeno,
             "tamano_bytes": path.stat().st_size,
             "estado": "fallido" if not cleaned or any(w.startswith("[CRITICO]") for w in warnings) else ("procesado_con_advertencias" if warnings else "procesado"),
@@ -562,9 +1006,20 @@ def process(
             },
             "ruta_limpio": clean_path.relative_to(output_dir).as_posix(),
             "archivo_limpio": clean_path.relative_to(output_dir).as_posix(),
+            "contenido_hash": content_hash,
             "version_pipeline": "1.1.0",
             **extraction.metadata,
         }
+        if format_name == "pbf":
+            pbf_consolidates[context_key] = {
+                "entry": entry,
+                "clean_path": clean_path,
+                "lines": cleaned.splitlines(),
+                "sources": [source],
+                "tiles": 1,
+                "raw_chars": len(extraction.text),
+                "raw_words": len(extraction.text.split()),
+            }
         entries = [item for item in entries if item.get("ruta_original") != source]
         entries.append(entry)
         global_entry = dict(entry)
