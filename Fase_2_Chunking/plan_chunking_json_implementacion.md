@@ -1,41 +1,54 @@
-# Plan de implementación: chunking de todos los JSON mediante script Python
+# Plan de preparación de textos JSON para metadata
 
 **Proyecto:** CODEFEST AD ASTRA 2026 — Etapa 1  
-**Alcance:** exclusivamente los documentos JSON estructurados entregados por
-Fase 1 como archivos `.txt`  
-**Responsables:** una persona define/valida el algoritmo; una IA apoya la
-generación del script Python  
-**Decisión fija:** los JSON se procesarán con late chunking
+**Alcance:** archivos `.txt` provenientes de JSON procesados en Fase 1  
+**Objetivo:** limpiar y consolidar el texto en metadata  
+**Fuera de alcance general:** chunking, embeddings, FAISS y generación de
+vectores.  
+**Excepción:** los documentos cuyo texto limpio supere 250 palabras deben
+prepararse para late chunking.
 
-## 1. Propósito del plan
+## 1. Propósito
 
-El objetivo no es leer manualmente todos los documentos. El objetivo es darle a
-una IA una especificación suficientemente precisa para que genere un script
-Python que:
+El script debe recorrer automáticamente todos los TXT provenientes de JSON y
+generar registros de metadata con texto limpio y legible.
 
-1. recorra automáticamente todos los `.txt` provenientes de JSON;
-2. reconozca las etiquetas estructurales;
-3. construya bloques semánticos de forma determinista;
-4. prepare los offsets de caracteres y tokens para el late chunking posterior;
-5. produzca chunks, metadata y un informe de calidad;
-6. registre los casos que requieran revisión humana, sin detener todo el lote.
+La IA será apoyo para diseñar y generar el script Python. No debe leer ni
+procesar manualmente todos los documentos, ni resumir, traducir o reescribir su
+contenido.
 
-La IA no debe resumir, traducir, reescribir ni decidir manualmente el contenido
-de cada documento. Su función es generar y mejorar el programa.
+El resultado de esta fase será un corpus limpio y estructurado. Normalmente se
+generará un registro por documento. La única excepción serán los documentos
+que superen 250 palabras después de la limpieza: esos deberán quedar divididos
+en unidades preparadas para late chunking antes de la fase de encoder.
 
-## 2. Patrones estructurales que el script debe reconocer
+## 2. Qué debe hacer el script
 
-La revisión preliminar de algunos TXT permitió identificar que los archivos
-estructurados no conservan la sintaxis JSON original, pero sí conservan
-etiquetas que permiten reconstruirla. El script debe detectar estos patrones en
-**todos los archivos del corpus**, sin asumir que todos aparecen en cada
-documento:
+Para cada TXT debe:
+
+1. leer el archivo completo;
+2. identificar y eliminar las etiquetas estructurales del TXT;
+3. conservar el texto semánticamente útil en su orden original;
+4. eliminar campos técnicos y ruido de navegación;
+5. evitar duplicar contenido repetido;
+6. detectar idioma cuando sea posible;
+7. calcular número de palabras y tokens;
+8. guardar un registro de metadata por documento;
+9. registrar advertencias y errores en un reporte global.
+
+No debe dividir el texto en chunks ni crear `chunk_id` para documentos de hasta
+250 palabras. Para documentos que superen ese límite se aplicará la excepción
+descrita en la Sección 10.
+
+## 3. Patrones que debe reconocer
+
+Los TXT pueden contener etiquetas como:
 
 ```text
 title: ...
 excerpt: ...
+body_text: ...
 body_paragraphs[0]: ...
-body_paragraphs[1]: ...
 sections[0].heading: ...
 sections[0].paragraphs[0]: ...
 lists[0]: ...
@@ -43,46 +56,168 @@ images[0].alt: ...
 [fila n] ...
 ```
 
-También hay archivos muy pequeños que contienen solamente títulos, fechas o
-texto alternativo de imágenes. El script debe conservarlos para trazabilidad,
-pero marcarlos como `contenido_insuficiente` si no aportan texto recuperable.
+Las etiquetas sirven para identificar el tipo de contenido, pero no deben
+aparecer en el texto final de metadata.
 
-Por lo tanto, el chunking debe operar por bloques etiquetados cuando existan,
-con una ruta de respaldo para archivos sin estructura suficiente. No debe
-depender de una lista fija de documentos ni de una revisión manual completa.
+Ejemplo:
 
-## 3. Resultado esperado del script
+Entrada:
 
-El programa debe recibir una carpeta raíz y producir, como mínimo:
+```text
+title: Example article
+excerpt: Short summary.
+body_paragraphs[0]: First paragraph.
+body_paragraphs[1]: Second paragraph.
+```
+
+Texto limpio:
+
+```text
+Example article
+Short summary.
+First paragraph.
+Second paragraph.
+```
+
+La persona responsable, apoyada por la IA, debe definir reglas generales para
+reconocer etiquetas nuevas sin depender de nombres específicos de un único
+proveedor.
+
+## 4. Reglas de limpieza
+
+### Conservar
+
+- título y subtítulo cuando tengan contenido informativo;
+- resumen, excerpt o abstract;
+- encabezados y cuerpo textual, sin sus etiquetas técnicas;
+- listas cuando sus elementos tengan significado;
+- fechas, cifras, códigos, nombres propios, municipios y nombres de entidades;
+- contexto de alertas: código, tipo, fecha, tema, municipios y población
+  afectada, siempre que aporte significado;
+- registros tabulares completos, manteniendo la relación columna–valor.
+
+### Eliminar
+
+- prefijos como `title:`, `excerpt:`, `body_paragraphs[0]:`,
+  `sections[0].heading:` y equivalentes;
+- URLs técnicas: `url`, `detail_url`, `pdf_url`, `src`, `href`;
+- enlaces de navegación, menús y botones;
+- DOI y referencias técnicas que no aporten contenido al texto;
+- SVG, HTML embebido, imágenes embebidas y etiquetas de scraper;
+- campos marcados como `excluido_no_contenido`;
+- información repetida por aparecer simultáneamente en `body_text` y
+  `body_paragraphs`;
+- espacios redundantes, caracteres de control y saltos de línea artificiales.
+
+La limpieza no debe corregir el contenido con una IA generativa. Si hay
+caracteres dañados por la extracción, se registra una advertencia.
+
+## 5. Regla para contenido duplicado
+
+Cuando existan varias representaciones del mismo cuerpo:
+
+- comparar `body_text` con la concatenación de `body_paragraphs`;
+- conservar una sola versión;
+- preferir la representación que conserve mejor el orden de párrafos;
+- no duplicar título, resumen ni cuerpo;
+- registrar en el reporte qué documentos tenían contenido repetido.
+
+La comparación debe ser determinista mediante normalización y hash o similitud
+textual controlada, no mediante un modelo generativo.
+
+## 6. Metadata de salida
+
+El script debe producir un registro por documento, no por chunk:
+
+```json
+{
+  "doc_id": "DOC-000001",
+  "fuente": "archivo_original.json",
+  "formato": "json",
+  "fenomeno": 1,
+  "texto": "Texto limpio consolidado...",
+  "num_tokens": 850,
+  "num_palabras": 620,
+  "idioma": "es",
+  "advertencias": []
+}
+```
+
+Campos obligatorios de esta fase:
+
+- `doc_id`;
+- `fuente`;
+- `formato`;
+- `fenomeno`;
+- `texto`;
+- `num_tokens`;
+- `num_palabras`.
+
+`idioma` y `advertencias` son campos recomendados para control de calidad.
+No deben incluirse `chunk_id`, `posicion`, offsets de tokens, embeddings ni
+atributos como `title`, `body_text` o `sections` dentro del registro final.
+
+## 7. Idiomas
+
+El texto debe conservarse en su idioma original. El script debe permitir, como
+mínimo, español, inglés, portugués, chino y japonés.
+
+La detección de idioma debe ser una ayuda de metadata, no una razón para
+descartar un documento. Si el texto es demasiado corto o mixto, usar un valor
+como `unknown` o `mixed` y registrar una advertencia.
+
+No se debe traducir el contenido ni normalizarlo hacia español o inglés.
+
+## 8. Conteo de palabras y tokens
+
+### Palabras
+
+El script debe usar una regla estable y documentada para contar palabras. Debe
+conservar cifras y términos con guion cuando representen una unidad semántica.
+En chino y japonés, donde los espacios no delimitan palabras de la misma forma,
+la regla debe quedar documentada y aplicarse consistentemente.
+
+### Tokens
+
+El conteo de tokens debe realizarse con el tokenizer del encoder elegido para la
+fase posterior. Si el encoder aún no está definitivamente seleccionado, el
+script debe recibir el tokenizer como configuración y registrar su nombre y
+versión en el reporte.
+
+El conteo no implica generar embeddings ni hacer chunking.
+
+## 9. Archivos de salida
+
+El script debe producir únicamente:
 
 ```text
 salida_json/
-├── metadata_chunks.json
-├── metadata_chunks.jsonl
-└── reporte_chunking.json
+├── metadata_json.json
+├── metadata_json.jsonl
+└── reporte_limpieza_json.json
 ```
 
-`metadata_chunks.jsonl` contendrá una línea JSON válida por cada chunk. En esta
-fase cada línea contiene el texto y la metadata del chunk; todavía no contiene
-vectores ni requiere un archivo `.npy`.
+### `metadata_json.json`
 
-`metadata_chunks.json` contendrá esos mismos registros dentro de un arreglo
-JSON. Las dos versiones deben representar exactamente los mismos chunks,
-metadata, orden y valores; solo cambia el formato de almacenamiento.
+Arreglo JSON con un objeto por documento.
 
-`reporte_chunking.json` contendrá el resumen global del procesamiento,
-incluyendo documentos procesados, chunks generados, documentos vacíos,
-advertencias y errores. No se generará un archivo de errores separado.
+### `metadata_json.jsonl`
 
-Su estructura puede seguir este esquema:
+Un objeto JSON válido por línea, con exactamente los mismos registros y el mismo
+orden que `metadata_json.json`.
+
+### `reporte_limpieza_json.json`
+
+Debe incluir, como mínimo:
 
 ```json
 {
   "resumen": {
     "documentos_leidos": 0,
     "documentos_procesados": 0,
-    "chunks_generados": 0,
-    "documentos_con_error": 0
+    "documentos_vacios": 0,
+    "documentos_con_error": 0,
+    "documentos_con_duplicados": 0
   },
   "advertencias": [],
   "errores": [],
@@ -90,273 +225,121 @@ Su estructura puede seguir este esquema:
 }
 ```
 
-Metadata mínima por chunk:
+No se deben generar archivos de chunks, vectores, embeddings, índices FAISS ni
+un archivo separado de errores.
+
+## 10. Excepción: documentos que superan 250 palabras
+
+El límite de 250 palabras se evalúa después de limpiar y consolidar el texto.
+
+Si el texto limpio tiene 250 palabras o menos:
+
+- se conserva como un único registro de metadata;
+- no se hace chunking;
+- no se crea `chunk_id` ni `posicion`.
+
+Si el texto limpio supera 250 palabras:
+
+1. el reporte debe marcar el documento como `requiere_late_chunking`;
+2. el texto debe dividirse en unidades de máximo 250 palabras;
+3. los cortes deben respetar oraciones completas y límites estructurales cuando
+   existan;
+4. cada unidad debe conservar el orden original;
+5. cada unidad debe recibir `chunk_id` y `posicion` para que la fase posterior
+   pueda aplicar el encoder mediante late chunking;
+6. deben conservarse los offsets de caracteres y tokens de cada unidad;
+7. el reporte debe indicar cuántas unidades se generaron y qué advertencias
+   surgieron.
+
+En esta excepción, el script prepara los fragmentos y sus offsets, pero no
+genera embeddings ni ejecuta mean pooling. La aplicación del encoder ocurre en
+la fase posterior.
+
+Para estos registros excepcionales se pueden añadir los siguientes campos:
 
 ```json
 {
-  "doc_id": "DOC-000001",
   "chunk_id": "DOC-000001-CH-0000",
-  "fuente": "archivo_original.json",
-  "formato": "json",
-  "fenomeno": 1,
   "posicion": 0,
-  "texto": "...",
-  "num_tokens": 180,
-  "num_palabras": 132,
-  "idioma": "es",
   "char_start": 0,
   "char_end": 950,
   "token_start": 0,
-  "token_end": 180,
-  "advertencias": []
+  "token_end": 180
 }
 ```
 
-`posicion` comienza en `0`. `chunk_id` debe ser estable si se vuelve a
-procesar el mismo documento con la misma configuración.
+## 11. Casos especiales
 
-## 4. Flujo automático que debe implementar el script
+### Documentos muy cortos
 
-### Paso 1: descubrir archivos
-
-- Recorrer recursivamente la carpeta de entrada.
-- Procesar solo `.txt` que provengan de la ruta JSON de Fase 1.
-- No procesar PDF, CSV, XLSX, imágenes ni PBF en este script.
-- Obtener el `doc_id` desde el nombre o metadata existente y conservar la ruta
-  original completa como `ruta_origen`.
-- Si falta el `doc_id`, generar uno determinista a partir de la ruta y dejar
-  una advertencia.
-
-### Paso 2: leer sin destruir estructura
-
-El lector debe conservar:
-
-- el orden de aparición;
-- la etiqueta completa;
-- el índice de listas, secciones y párrafos;
-- el texto asociado;
-- offsets de caracteres y, posteriormente, offsets de tokens.
-
-No se debe convertir todo el archivo a un párrafo único antes de analizarlo.
-
-### Paso 3: clasificar etiquetas
-
-El script debe reconocer, como mínimo:
-
-| Etiqueta | Tratamiento |
-|---|---|
-| `title` | Encabezado principal; asociarlo con el primer bloque |
-| `excerpt`, `summary`, `abstract` | Contexto inicial del documento |
-| `sections[i].heading` | Inicio de sección |
-| `sections[i].paragraphs[j]` | Párrafo de la sección correspondiente |
-| `body_paragraphs[i]` | Párrafo narrativo en orden |
-| `body_text` | Cuerpo alternativo; usarlo solo si no duplica párrafos |
-| `lists[i]` | Lista; conservar relación entre elementos |
-| `codigo`, `tipo`, `fecha`, `tema_clave` | Contexto de alertas |
-| `municipios`, `poblaciones_afectadas` | Contexto territorial de alertas |
-| `images[i].alt` | Usarlo solo si contiene información semántica real |
-| `url`, `detail_url`, `pdf_url`, `src`, `href`, DOI | Excluir del texto vectorizado |
-
-El parser debe ser extensible mediante un archivo de configuración, no mediante
-decisiones codificadas para un solo proveedor.
-
-### Paso 4: eliminar duplicados y ruido
-
-- Si existen `body_paragraphs` y `body_text` con el mismo contenido, conservar
-  una sola versión.
-- Normalizar espacios, saltos de línea y caracteres de control.
-- No eliminar cifras, fechas, códigos, nombres propios ni unidades.
-- Excluir enlaces técnicos, navegación, SVG, imágenes embebidas y registros
-  marcados como `excluido_no_contenido`.
-- Conservar el valor excluido en metadata de trazabilidad si estaba presente.
-
-### Paso 5: diseñar y construir bloques lógicos
-
-Este paso no queda fijado por una receta única. La persona responsable, con
-apoyo de la IA, debe diseñar reglas generales que funcionen para todos los
-JSON. El script debe descubrir la estructura disponible en cada archivo y
-seleccionar la regla correspondiente de forma determinista.
-
-La decisión debe considerar, como mínimo:
-
-- si el título y el resumen deben acompañar al primer bloque o conservarse
-  únicamente como contexto separado;
-- cuándo un encabezado debe permanecer unido al primer párrafo;
-- cómo mantener relacionadas las listas y sus encabezados;
-- cómo unir los campos contextuales de una alerta con el texto que describen;
-- cuándo `body_text` es una alternativa a `body_paragraphs` y cuándo es un
-  duplicado;
-- cómo tratar bloques demasiado pequeños o documentos que solo contienen
-  metadata;
-- cómo evitar mezclar secciones temáticamente distintas.
-
-La IA debe ayudar a comparar y documentar estas alternativas, pero no debe
-introducir una decisión semántica arbitraria ni consultar un modelo generativo
-para clasificar cada documento. La decisión final debe quedar escrita en la
-configuración y en el informe técnico del responsable de JSON.
-
-El resultado del análisis debe ser una estrategia determinista: dado el mismo
-TXT y la misma configuración, el script debe producir los mismos bloques y los
-mismos `chunk_id`.
-
-## 5. Segmentación multilingüe
-
-El corpus puede contener español, inglés, portugués, chino, japonés y otros
-idiomas. El script debe:
-
-- detectar idioma por bloque, no solo por documento completo;
-- registrar idioma y script;
-- conservar el texto original;
-- reconocer `。`, `！`, `？`, `｡`, `！`, `？`, `.`, `!` y `?` como posibles
-  terminadores según el idioma;
-- no depender de espacios para separar oraciones en chino o japonés;
-- conservar abreviaturas, decimales, URLs excluidas y siglas sin crear cortes
-  incorrectos;
-- marcar bloques demasiado cortos para una detección confiable;
-- permitir una revisión manual únicamente de las advertencias, no de todo el
-  corpus.
-
-La segmentación debe ocurrir antes de calcular los offsets de tokens. Si una
-oración no puede segmentarse con seguridad, se conserva completa y se registra
-`segmentacion_incierta`.
-
-## 6. Preparación para late chunking
-
-El responsable de JSON llega únicamente hasta preparar los chunks y alinear
-caracteres con tokens. El encoder se aplicará en una fase posterior.
-
-El flujo de esta fase es:
-
-```text
-Documento completo
-        ↓
-Tokenizer + offsets
-```
-
-El script debe conservar el documento completo, calcular los límites de cada
-chunk y obtener la correspondencia entre caracteres y tokens. No debe generar
-embeddings todavía.
-
-### 6.1 Tokenizador definido para la fase posterior
-
-Usar inicialmente el tokenizador compatible con `BAAI/bge-m3`, porque el
-encoder definido para la fase posterior declara licencia MIT, soporte para más
-de 100 idiomas, vectores de 1024 dimensiones y hasta 8192 tokens de contexto.
-
-Fuente: [BAAI/bge-m3 en Hugging Face](https://huggingface.co/BAAI/bge-m3).
-
-Para cada documento que quepa en la ventana, esta fase debe:
-
-1. tokenizar el documento estructurado completo;
-2. obtener los offsets de caracteres de cada token;
-3. guardar el mapeo de cada chunk a sus tokens;
-4. guardar la metadata y los offsets en `.json` y `.jsonl`.
-
-No corresponde en esta fase:
-
-- pasar el documento por el encoder;
-- obtener embeddings contextualizados;
-- aplicar mean pooling;
-- normalizar vectores;
-- crear índices FAISS.
-
-### 6.2 Documentos que exceden la ventana
-
-Los TXT de JSON que superen 8192 tokens no deben truncarse silenciosamente.
-Tampoco deben dividirse automáticamente en ventanas consecutivas por cantidad
-de caracteres o tokens. Antes de tokenizar para la fase posterior, el script
-debe aplicar una estrategia de partición basada en la estructura del documento
-o en quiebres semánticos. La persona responsable, con apoyo de la IA, debe
-decidir cuál de las dos funciona mejor para cada tipo de JSON y dejar esa
-decisión documentada.
-
-La partición debe:
-
-1. conservar secciones, párrafos, listas y registros completos cuando sea
-   posible;
-2. evitar separar un encabezado de su contenido inmediato;
-3. evitar separar elementos que dependan del mismo contexto;
-4. usar límites de oración como frontera de seguridad;
-5. producir segmentos que puedan procesarse dentro del contexto del encoder;
-6. registrar en el reporte qué documentos requirieron esta partición;
-7. guardar los offsets de cada chunk dentro de su segmento;
-8. registrar `documento_supera_contexto`.
-
-La partición por estructura o semántica debe ocurrir antes de la fase de
-aplicación del encoder. En esta fase solo se preparan los segmentos, chunks,
-tokens y offsets; el encoder se aplicará posteriormente sobre cada segmento
-válido.
-
-### 6.3 Tamaño de los chunks
-
-Para la primera configuración usar:
-
-- objetivo: 160–200 palabras;
-- máximo de salida: 230 palabras;
-- límite operativo: 384 tokens;
-- solapamiento: 0;
-- corte: únicamente al final de una oración o unidad de lista completa.
-
-El máximo de 230 palabras deja margen frente al límite de 250 palabras exigido
-en la salida del reto. El límite de tokens tiene prioridad sobre el de palabras.
-
-## 7. Casos especiales
-
-### Artículos y páginas web
-
-Conservar `title`, `excerpt`, secciones y párrafos. No repetir el título en cada
-chunk: solo incluirlo en el contexto inicial o como metadata de sección.
-
-### Alertas territoriales
-
-Mantener en el mismo bloque, cuando quepa, el código, tipo de alerta, fecha,
-tema, municipios, población afectada y el párrafo que describe el riesgo.
-
-### Listas
-
-No dividir una lista si sus elementos dependen de un encabezado o si perderían
-su relación. Si la lista excede el límite, dividir entre elementos completos y
-repetir únicamente el encabezado asociado como contexto, sin duplicar el cuerpo.
-
-### Archivos mínimos o sin contenido
-
-No inventar texto. Crear un registro dentro de la lista `errores` de
-`reporte_chunking.json` con estados como:
+No inventar contenido. Mantener el texto disponible y registrar estados como:
 
 - `contenido_insuficiente`;
 - `solo_metadata`;
 - `solo_imagen_alt`;
-- `sin_bloques_narrativos`;
-- `segmentacion_incierta`.
+- `sin_contenido_narrativo`.
 
-## 8. Qué debe pedirle la persona a la IA programadora
+### Alertas territoriales
 
-La solicitud a la IA debe exigir que genere:
+Conservar los campos contextuales útiles junto con el texto de la alerta. No
+separar ni eliminar municipios, fechas, tipos de riesgo o población afectada si
+son parte del significado.
 
-1. un script Python configurable por argumentos de línea de comandos;
-2. funciones separadas para descubrimiento, parsing, deduplicación,
-   segmentación, tokenización, alineación de offsets, metadata y reporte;
-3. procesamiento por lotes, sin cargar todo el corpus en memoria;
-4. reanudación o salida determinista por documento;
-5. logs y errores por archivo;
-6. validaciones automáticas de límites y correspondencia entre texto, offsets y metadata;
-7. una opción `--dry-run` que solo genere el reporte de documentos y bloques;
-8. un modo de muestra para procesar primero 20 documentos;
-9. configuración externa para patrones de etiquetas y campos excluidos;
-10. documentación de instalación, uso y formato de salida.
+### Listas y registros
 
-La IA no debe generar un algoritmo que llame a un LLM para resumir, clasificar,
-traducir o decidir dónde cortar. Todas las decisiones deben depender de
-etiquetas, reglas, tokenizer, límites y metadata.
+Conservar los elementos en orden. En registros tabulares, mantener los nombres
+de columna junto a sus valores:
 
-## 9. Entregables del responsable de JSON
+```text
+Year: 2020 | Count: 6828
+```
 
-1. `chunk_json.py` o nombre equivalente.
-2. Archivo de configuración de campos y etiquetas.
-3. `metadata_chunks.json` con la metadata completa en un arreglo JSON.
-4. `metadata_chunks.jsonl` con la misma metadata, una línea por chunk.
-5. `reporte_chunking.json` con documentos procesados, chunks, advertencias y
-   errores.
-5. Documento breve con encoder, versión, parámetros y comando de reproducción.
-6. Registro del lote piloto de 20 documentos y de los ajustes realizados antes
-   del procesamiento total.
+### Texto con idiomas no latinos
+
+No descartar chino o japonés por ausencia de espacios. Conservar los caracteres
+originales y calcular `num_palabras` mediante una regla específica y
+documentada.
+
+## 12. Requisitos para la IA que genere el script
+
+La persona responsable puede pedirle a la IA que genere un script que incluya:
+
+1. argumentos de entrada y salida configurables;
+2. procesamiento recursivo de todos los TXT;
+3. funciones separadas para lectura, extracción de texto, limpieza,
+   deduplicación, conteo y escritura;
+4. procesamiento por lotes sin cargar todo el corpus en memoria;
+5. salida determinista;
+6. `--dry-run` para revisar conteos sin escribir resultados finales;
+7. logs integrados en `reporte_limpieza_json.json`;
+8. configuración externa de campos excluidos y patrones de etiquetas;
+9. validación de que JSON y JSONL contienen los mismos registros;
+10. documentación del tokenizer utilizado para `num_tokens`;
+11. una opción para ejecutar pruebas sobre una cantidad configurable de TXT
+    seleccionados aleatoriamente, por ejemplo `--sample-size 20`;
+12. una opción `--seed` para poder repetir la misma selección aleatoria cuando
+    sea necesario comparar resultados.
+
+La selección de prueba debe hacerse sin reemplazo y el reporte debe registrar
+los archivos seleccionados. Si no se proporciona `--sample-size`, el script
+procesará todos los documentos. Si se proporciona `--seed`, la muestra será
+reproducible.
+
+La IA no debe usar un LLM para resumir, traducir, clasificar semánticamente o
+decidir qué contenido conservar documento por documento.
+
+## 13. Validación inicial
+
+Antes de procesar todo el corpus, se puede ejecutar el script sobre un lote
+piloto de 20 documentos para verificar:
+
+- eliminación correcta de etiquetas;
+- ausencia de duplicación entre `body_text` y `body_paragraphs`;
+- conservación de cifras, fechas y nombres propios;
+- tratamiento de alertas, listas y filas;
+- conservación de chino, japonés y otros idiomas;
+- igualdad entre JSON y JSONL;
+- coherencia de `num_tokens` y `num_palabras`.
+
+Este lote solo sirve para validar el programa. Las reglas deben funcionar para
+todo el corpus.
