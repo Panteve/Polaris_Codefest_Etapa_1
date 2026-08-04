@@ -1,0 +1,222 @@
+# Experimentos de chunking para PDF
+
+Este documento se fundamenta en la documentación técnica y en el plan del
+encoder disponibles en el contexto del proyecto CODEFEST AD ASTRA 2026.
+
+El objetivo es preparar cuatro configuraciones comparables para los 759 TXT
+provenientes de PDF. El script de esta fase solo limpia la estructura mínima,
+divide en oraciones completas y genera metadata. La generación de embeddings,
+FAISS y la evaluación pertenecen a Fase 3.
+
+## Reglas comunes
+
+Todos los experimentos usan:
+
+- objetivo de 200 palabras por chunk;
+- máximo absoluto de 250 palabras;
+- cortes únicamente después de oraciones completas;
+- documentos PDF registrados en `manifiesto_post_limpieza.json`;
+- salida separada por configuración;
+- `metadata.json`, `metadata.jsonl` y `reporte_chunking.json`.
+
+Para comparar BGE-M3 y Granite de forma válida, las configuraciones 1 y 2
+deben conservar exactamente los mismos chunks, textos, `chunk_id` y posiciones.
+Solo debe cambiar el encoder.
+
+Los comandos se ejecutan desde la raíz del proyecto:
+
+```powershell
+cd D:\dev\Polaris_Codefest_Etapa_1
+```
+
+## Experimento 1 — Línea base BGE-M3
+
+### Configuración
+
+```text
+standard + 200 palabras + 0 solapamiento + BGE-M3
+```
+
+### Ejecución
+
+```powershell
+python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
+  --mode standard `
+  --target-words 200 `
+  --max-words 250 `
+  --overlap-sentences 0 `
+  --label bge_m3
+```
+
+### Salida esperada
+
+```text
+Fase_2_Chunking/chunking-pdfs/
+└── pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3/
+    ├── metadata.json
+    ├── metadata.jsonl
+    └── reporte_chunking.json
+```
+
+### Por qué se hace
+
+Es la línea base más simple, reproducible y recomendada por la documentación:
+chunks de tamaño medio, sin redundancia y respetando oraciones completas.
+Permite medir la recuperación de BGE-M3 sin que el solapamiento introduzca
+duplicados en el top-10.
+
+En Fase 3 se generan los embeddings BGE-M3 y el índice FAISS correspondiente.
+
+## Experimento 2 — Granite con los mismos chunks
+
+### Configuración
+
+```text
+standard + 200 palabras + 0 solapamiento + Granite
+```
+
+### Ejecución
+
+```powershell
+python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
+  --mode standard `
+  --target-words 200 `
+  --max-words 250 `
+  --overlap-sentences 0 `
+  --label granite
+```
+
+### Por qué se hace
+
+Este experimento aísla la variable encoder. Granite y BGE-M3 deben recibir el
+mismo texto fragmentado para que una diferencia en `NDCG@10` o `F1@3` pueda
+atribuirse al modelo y no a otra estrategia de chunking.
+
+La carpeta se genera de nuevo para conservar una configuración explícita,
+pero antes de indexar se debe comprobar que sus `metadata.jsonl` sean
+equivalentes al experimento 1 en `doc_id`, `chunk_id`, `posicion` y `texto`.
+
+En Fase 3 se genera un índice separado, por ejemplo:
+
+```text
+base_vectorial/encoder_granite_pdf/
+├── index.faiss
+└── metadata.jsonl
+```
+
+## Experimento 3 — BGE-M3 con una oración de solapamiento
+
+### Configuración
+
+```text
+standard + 200 palabras + 1 oración de solapamiento + BGE-M3
+```
+
+### Ejecución
+
+```powershell
+python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
+  --mode standard `
+  --target-words 200 `
+  --max-words 250 `
+  --overlap-sentences 1 `
+  --label bge_m3_overlap_1
+```
+
+### Salida esperada
+
+```text
+Fase_2_Chunking/chunking-pdfs/
+└── pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_bge_m3_overlap_1/
+    ├── metadata.json
+    ├── metadata.jsonl
+    └── reporte_chunking.json
+```
+
+### Por qué se hace
+
+Una oración repetida puede conservar continuidad entre dos ideas que quedaron
+en la frontera de un chunk. Se prueba solo una oración porque un solapamiento
+mayor aumentaría el tamaño del índice y el riesgo de recuperar fragmentos
+duplicados.
+
+Este resultado se compara contra el experimento 1. Si no mejora la calidad o
+produce demasiados duplicados, se conserva la línea base sin solapamiento.
+
+Este experimento no debe compararse directamente contra Granite para decidir
+qué encoder es mejor: cambia simultáneamente la segmentación. Si demuestra una
+mejora clara, puede repetirse con Granite como experimento adicional.
+
+## Experimento 4 — Late chunking con Granite
+
+### Configuración
+
+```text
+late_chunking + 200 palabras + 0 solapamiento + Granite
+```
+
+### Ejecución
+
+```powershell
+python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
+  --mode late_chunking `
+  --target-words 200 `
+  --max-words 250 `
+  --overlap-sentences 0 `
+  --label granite_pdf
+```
+
+### Salida esperada
+
+```text
+Fase_2_Chunking/chunking-pdfs/
+└── pdfs_late_chunking_objetivo-200palabras_max-250_solapamiento-0_granite_pdf/
+    ├── metadata.json
+    ├── metadata.jsonl
+    └── reporte_chunking.json
+```
+
+Los registros de `metadata.jsonl` incluyen además:
+
+```json
+{
+  "chunking_mode": "late_chunking",
+  "char_start": 0,
+  "char_end": 1240,
+  "offsets_base": "texto_normalizado_del_documento"
+}
+```
+
+### Por qué se hace
+
+Granite admite una ventana de contexto mayor y, según el plan de Fase 3, es el
+candidato más adecuado para probar contexto distribuido en PDF largos.
+
+El script todavía no calcula embeddings de tokens. En esta etapa solo deja
+preparados los límites y offsets. En Fase 3 se debe:
+
+1. cargar el texto completo del PDF limpio;
+2. procesarlo con Granite dentro de su ventana de contexto;
+3. obtener embeddings a nivel de token;
+4. aplicar mean pooling sobre los tokens de cada rango `char_start`–`char_end`;
+5. normalizar los vectores;
+6. construir el índice FAISS.
+
+`late_chunking` debe compararse inicialmente contra el experimento 2, usando
+Granite en ambos casos. Así se aísla el efecto del método de vectorización.
+
+## Orden recomendado de ejecución conceptual
+
+1. Preparar el experimento 1.
+2. Reutilizar o verificar sus mismos chunks para el experimento 2.
+3. Comparar el experimento 3 contra el experimento 1 usando BGE-M3.
+4. Comparar el experimento 4 contra el experimento 2 usando Granite.
+5. Medir `NDCG@10`, `F1@3`, duplicados, tiempo, memoria y tamaño del índice.
+
+## Nota sobre tokens
+
+El script registra una estimación determinista de tokens mientras no se haya
+seleccionado definitivamente el tokenizer. Cuando Fase 3 defina el tokenizer
+de BGE-M3 y Granite, se debe validar el conteo real antes de construir los
+índices. No se debe cambiar silenciosamente el límite de palabras entre los
+experimentos comparables.
