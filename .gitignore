@@ -218,6 +218,15 @@ __marimo__/
 .streamlit/secrets.toml
 
 Fase_1_limpieza/input/
-Fase_1_limpieza/output/
+Fase_1_limpieza/outputs_historicos/
+Fase_1_limpieza/output_final_limpio/
 Fase_1_limpieza/output_post_limpieza/
 *.rar
+Fase_1_limpieza/cambio de extractor pdf/
+Fase_1_limpieza/output final/
+
+Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3
+
+# Salidas generadas de chunking y metadata; conservar scripts y documentación
+Fase_2_Chunking/chunking-pdfs/pdfs_*/
+Fase_2_Chunking/salida_pdf/

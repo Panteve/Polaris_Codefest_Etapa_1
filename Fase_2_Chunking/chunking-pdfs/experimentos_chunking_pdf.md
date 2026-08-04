@@ -3,7 +3,7 @@
 Este documento se fundamenta en la documentación técnica y en el plan del
 encoder disponibles en el contexto del proyecto CODEFEST AD ASTRA 2026.
 
-El objetivo es preparar cuatro configuraciones comparables para los 759 TXT
+El objetivo es preparar cuatro configuraciones comparables para los documentos PDF
 provenientes de PDF. El script de esta fase solo limpia la estructura mínima,
 divide en oraciones completas y genera metadata. La generación de embeddings,
 FAISS y la evaluación pertenecen a Fase 3.
@@ -13,11 +13,25 @@ FAISS y la evaluación pertenecen a Fase 3.
 Todos los experimentos usan:
 
 - objetivo de 200 palabras por chunk;
+- minimo de 16 palabras por chunk; los chunks de 15 palabras o menos se omiten;
 - máximo absoluto de 250 palabras;
 - cortes únicamente después de oraciones completas;
-- documentos PDF registrados en `manifiesto_post_limpieza.json`;
+- documentos cuyo formato original es PDF, registrados en
+  `Fase_1_Limpieza/output_final_limpio/manifiesto_final_limpio.json`;
 - salida separada por configuración;
-- `metadata.json`, `metadata.jsonl` y `reporte_chunking.json`.
+- `metadata.json`, `metadata.jsonl` y `reporte_chunking_pdf.json`.
+
+La salida separada por configuración se crea automáticamente con el nombre de
+la configuración. No es necesario agregar un argumento especial para crear la
+subcarpeta del experimento.
+
+El reporte agrupa las alertas en `alertas_por_documento`, usando el `doc_id`
+del documento padre. Cada alerta incluye el `chunk_id` correspondiente.
+
+Los parrafos consecutivos de una misma seccion se acumulan antes de fragmentar.
+Por eso un parrafo corto no se convierte automaticamente en un chunk aislado;
+el corte se realiza al aproximarse al objetivo de palabras y siempre despues
+de una oracion completa. Las secciones diferentes no se mezclan.
 
 Para comparar BGE-M3 y Granite de forma válida, las configuraciones 1 y 2
 deben conservar exactamente los mismos chunks, textos, `chunk_id` y posiciones.
@@ -40,22 +54,22 @@ standard + 200 palabras + 0 solapamiento + BGE-M3
 ### Ejecución
 
 ```powershell
-python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
-  --mode standard `
-  --target-words 200 `
-  --max-words 250 `
-  --overlap-sentences 0 `
-  --label bge_m3
+python .\Fase_2_Chunking\chunk_pdfs.py `
+  --modo standard `
+  --objetivo 200 `
+  --maximo 250 `
+  --solapamiento 0 `
+  --etiqueta bge_m3
 ```
 
 ### Salida esperada
 
 ```text
-Fase_2_Chunking/chunking-pdfs/
+Fase_2_Chunking/salida_pdf/
 └── pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3/
     ├── metadata.json
     ├── metadata.jsonl
-    └── reporte_chunking.json
+    └── reporte_chunking_pdf.json
 ```
 
 ### Por qué se hace
@@ -78,12 +92,12 @@ standard + 200 palabras + 0 solapamiento + Granite
 ### Ejecución
 
 ```powershell
-python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
-  --mode standard `
-  --target-words 200 `
-  --max-words 250 `
-  --overlap-sentences 0 `
-  --label granite
+python .\Fase_2_Chunking\chunk_pdfs.py `
+  --modo standard `
+  --objetivo 200 `
+  --maximo 250 `
+  --solapamiento 0 `
+  --etiqueta granite
 ```
 
 ### Por qué se hace
@@ -115,22 +129,22 @@ standard + 200 palabras + 1 oración de solapamiento + BGE-M3
 ### Ejecución
 
 ```powershell
-python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
-  --mode standard `
-  --target-words 200 `
-  --max-words 250 `
-  --overlap-sentences 1 `
-  --label bge_m3_overlap_1
+python .\Fase_2_Chunking\chunk_pdfs.py `
+  --modo standard `
+  --objetivo 200 `
+  --maximo 250 `
+  --solapamiento 1 `
+  --etiqueta bge_m3_overlap_1
 ```
 
 ### Salida esperada
 
 ```text
-Fase_2_Chunking/chunking-pdfs/
+Fase_2_Chunking/salida_pdf/
 └── pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_bge_m3_overlap_1/
     ├── metadata.json
     ├── metadata.jsonl
-    └── reporte_chunking.json
+    └── reporte_chunking_pdf.json
 ```
 
 ### Por qué se hace
@@ -158,22 +172,22 @@ late_chunking + 200 palabras + 0 solapamiento + Granite
 ### Ejecución
 
 ```powershell
-python .\Fase_2_Chunking\chunking-pdfs\chunkear_txt_pdf.py `
-  --mode late_chunking `
-  --target-words 200 `
-  --max-words 250 `
-  --overlap-sentences 0 `
-  --label granite_pdf
+python .\Fase_2_Chunking\chunk_pdfs.py `
+  --modo late_chunking `
+  --objetivo 200 `
+  --maximo 250 `
+  --solapamiento 0 `
+  --etiqueta granite_pdf
 ```
 
 ### Salida esperada
 
 ```text
-Fase_2_Chunking/chunking-pdfs/
+Fase_2_Chunking/salida_pdf/
 └── pdfs_late_chunking_objetivo-200palabras_max-250_solapamiento-0_granite_pdf/
     ├── metadata.json
     ├── metadata.jsonl
-    └── reporte_chunking.json
+    └── reporte_chunking_pdf.json
 ```
 
 Los registros de `metadata.jsonl` incluyen además:
