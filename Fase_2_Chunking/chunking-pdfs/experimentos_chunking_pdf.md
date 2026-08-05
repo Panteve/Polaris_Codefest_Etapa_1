@@ -284,23 +284,6 @@ generativos ni modifica el texto original. `--umbral-semantic` controla la
 sensibilidad: un valor menor genera mas cortes y uno mayor exige un cambio
 tematico mas fuerte.
 
-## Recuperacion de documentos vacios
-
-Antes de comparar experimentos, los documentos reportados como vacios pueden
-reprocesarse con el extractor PDF Inspector. Si PDF Inspector no produce
-Markdown, el flujo aplica OCRmyPDF sobre una copia temporal del PDF y vuelve a
-extraerlo. Luego actualiza el Markdown oficial, el manifiesto y la metadata de
-chunks:
-
-```powershell
-python ".\Fase_1_Limpieza\cambio de extractor pdf\recuperar_documentos_vacios.py" `
-  --reporte ".\Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3\reporte_chunking_pdf.json"
-```
-
-La selección se toma de `documentos_vacios`, por lo que no vuelve a procesar
-innecesariamente todo el corpus. El reporte de recuperación indica qué
-documentos se recuperaron, en cuáles se aplicó OCR y cuáles requieren revisión.
-
 ## Nota sobre tokens
 
 El script registra una estimación determinista de tokens mientras no se haya

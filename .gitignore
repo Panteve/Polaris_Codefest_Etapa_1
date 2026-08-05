@@ -225,7 +225,6 @@ Fase_1_limpieza/output_post_limpieza/
 Fase_1_limpieza/cambio de extractor pdf/
 !Fase_1_limpieza/cambio de extractor pdf/
 Fase_1_limpieza/cambio de extractor pdf/*
-!Fase_1_limpieza/cambio de extractor pdf/recuperar_documentos_vacios.py
 !Fase_1_limpieza/cambio de extractor pdf/package.json
 Fase_1_limpieza/output final/
 
@@ -234,3 +233,4 @@ Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapam
 # Salidas generadas de chunking y metadata; conservar scripts y documentación
 Fase_2_Chunking/chunking-pdfs/pdfs_*/
 Fase_2_Chunking/salida_pdf/
+Fase_1_limpieza/ocr_recuperacion_temp/
