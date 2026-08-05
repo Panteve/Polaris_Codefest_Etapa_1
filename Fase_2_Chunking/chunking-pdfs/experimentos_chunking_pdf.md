@@ -14,6 +14,11 @@ Todos los experimentos usan:
 
 - objetivo de 200 palabras por chunk;
 - minimo de 16 palabras por chunk; los chunks de 15 palabras o menos se omiten;
+- se filtran tablas de contenido, índices y entradas de navegación con números de página;
+- también se filtran índices aplanados por el extractor, aunque no conserven la sección `Table of Contents`;
+- las tablas informativas no se eliminan por su formato; deben mostrar además señales de índice y números de página para ser filtradas;
+- se eliminan duplicados consecutivos generados por callouts o repeticiones de formato cuando un bloque es igual o está contenido en el anterior;
+- se omiten chunks compuestos solo por números sin porcentaje, moneda, fecha/año o unidad contextual;
 - máximo absoluto de 250 palabras;
 - cortes únicamente después de oraciones completas;
 - documentos cuyo formato original es PDF, registrados en
@@ -28,10 +33,11 @@ subcarpeta del experimento.
 El reporte agrupa las alertas en `alertas_por_documento`, usando el `doc_id`
 del documento padre. Cada alerta incluye el `chunk_id` correspondiente.
 
-Los parrafos consecutivos de una misma seccion se acumulan antes de fragmentar.
-Por eso un parrafo corto no se convierte automaticamente en un chunk aislado;
-el corte se realiza al aproximarse al objetivo de palabras y siempre despues
-de una oracion completa. Las secciones diferentes no se mezclan.
+Los parrafos consecutivos solo se agrupan cuando existe una señal de
+continuidad tematica, por ejemplo conectores como "ademas" o "asimismo",
+referencias anaforicas o terminos relevantes compartidos. Si el siguiente
+parrafo introduce un tema nuevo o usa un conector de cambio, queda separado
+aunque tenga pocas palabras. Esta regla aplica con y sin solapamiento.
 
 Para comparar BGE-M3 y Granite de forma válida, las configuraciones 1 y 2
 deben conservar exactamente los mismos chunks, textos, `chunk_id` y posiciones.
@@ -226,6 +232,74 @@ Granite en ambos casos. Así se aísla el efecto del método de vectorización.
 3. Comparar el experimento 3 contra el experimento 1 usando BGE-M3.
 4. Comparar el experimento 4 contra el experimento 2 usando Granite.
 5. Medir `NDCG@10`, `F1@3`, duplicados, tiempo, memoria y tamaño del índice.
+
+## Experimento 5 - Fragmentacion semantica
+
+### Configuracion
+
+```text
+semantic + BAAI/bge-m3 + 200 palabras objetivo + 250 maximo + 0 solapamiento
+```
+
+### Ejecucion
+
+```powershell
+python .\Fase_2_Chunking\chunking-pdfs\chunk_pdfs.py `
+  --modo semantic `
+  --objetivo 200 `
+  --maximo 250 `
+  --solapamiento 0 `
+  --encoder BAAI/bge-m3 `
+  --umbral-semantic 0.80 `
+  --etiqueta bge_m3_semantic
+```
+
+La salida se crea automaticamente en:
+
+```text
+Fase_2_Chunking/chunking-pdfs/
+└── pdfs_semantic_objetivo-200palabras_max-250_solapamiento-0_bge_m3_semantic/
+    ├── metadata.json
+    ├── metadata.jsonl
+    └── reporte_chunking_pdf.json
+```
+
+### Metodo
+
+El script divide cada seccion en oraciones, genera un embedding por oracion y
+calcula la similitud coseno entre oraciones consecutivas. Cuando la distancia
+`1 - coseno` supera el umbral y el chunk ya alcanzo el tamano objetivo, se
+propone un corte. Siempre se impone el maximo de 250 palabras y los cortes se
+realizan unicamente despues de una oracion completa.
+
+`BAAI/bge-m3` es el encoder recomendado para esta prueba porque su ficha
+oficial documenta soporte multilingue de mas de 100 idiomas y hasta 8192 tokens.
+Como comparacion posterior puede usarse `intfloat/multilingual-e5-large`, que
+soporta 94 idiomas y esta entrenado con datos multilingues de similitud y
+recuperacion. La eleccion final debe hacerse con las metricas propias del
+corpus, no asumir que existe un encoder universalmente mejor.
+
+El modo semantic requiere `sentence-transformers` y `numpy`. No usa modelos
+generativos ni modifica el texto original. `--umbral-semantic` controla la
+sensibilidad: un valor menor genera mas cortes y uno mayor exige un cambio
+tematico mas fuerte.
+
+## Recuperacion de documentos vacios
+
+Antes de comparar experimentos, los documentos reportados como vacios pueden
+reprocesarse con el extractor PDF Inspector. Si PDF Inspector no produce
+Markdown, el flujo aplica OCRmyPDF sobre una copia temporal del PDF y vuelve a
+extraerlo. Luego actualiza el Markdown oficial, el manifiesto y la metadata de
+chunks:
+
+```powershell
+python ".\Fase_1_Limpieza\cambio de extractor pdf\recuperar_documentos_vacios.py" `
+  --reporte ".\Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3\reporte_chunking_pdf.json"
+```
+
+La selección se toma de `documentos_vacios`, por lo que no vuelve a procesar
+innecesariamente todo el corpus. El reporte de recuperación indica qué
+documentos se recuperaron, en cuáles se aplicó OCR y cuáles requieren revisión.
 
 ## Nota sobre tokens
 

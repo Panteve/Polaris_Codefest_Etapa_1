@@ -122,3 +122,19 @@ Los PDF que quedaron como `.txt` no deben descartarse: son documentos PDF para
 los cuales el extractor nuevo no produjo Markdown, y su TXT anterior es el
 respaldo autorizado dentro del producto final.
 
+## Recuperacion de documentos vacios
+
+Si el reporte de Fase 2 lista documentos en `documentos_vacios`, se pueden
+reprocesar solo esos PDF con PDF Inspector y, cuando no haya Markdown, con
+OCRmyPDF:
+
+```powershell
+python ".\Fase_1_Limpieza\cambio de extractor pdf\recuperar_documentos_vacios.py" `
+  --reporte ".\Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3\reporte_chunking_pdf.json"
+```
+
+El script actualiza el Markdown en `output_final_limpio`, el manifiesto final
+y vuelve a generar `metadata.json`, `metadata.jsonl` y el reporte de chunks en
+la carpeta del reporte de entrada. Los PDF originales no se modifican. El
+detalle de cada recuperación queda en
+`output_final_limpio/reporte_recuperacion_documentos_vacios.json`.
