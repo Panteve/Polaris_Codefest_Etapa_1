@@ -54,9 +54,16 @@ HEADING_RE = re.compile(r"^\s{0,3}#{1,6}\s+(.+?)\s*$")
 URL_RE = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 HTML_TAG_RE = re.compile(r"</?[A-Za-z][^>]*>")
 MARKDOWN_LINK_RE = re.compile(r"!?\[([^\]]+)\]\([^)]*\)")
+PDF_PAGE_MARKER_RE = re.compile(
+    r"^\s*\*?\s*<!--\s*(?:p[áa]gina|page)\s+\d+\s*-->\s*\*?\s*$",
+    re.IGNORECASE,
+)
 TOC_ENTRY_RE = re.compile(
     r"^(?:[-*+•]\s+)?(?:\d+(?:\.\d+)*[.)]?\s+)?"
     r".+?(?:\.{2,}|\s)\s*\d{1,4}\s*$"
+)
+TOC_NUMBERED_ENTRY_RE = re.compile(
+    r"^\s*\d+(?:\.\d+)*[.)]?\s+.{2,100}(?:\s+\d{1,4})?\s*$"
 )
 TOC_HEADING_NAMES = {
     "table of contents", "contents", "content", "index of contents",
@@ -84,9 +91,35 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
+def remove_pdf_artifacts(text: str) -> str:
+    """Quita marcadores de página y encabezados/pies claramente repetidos."""
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    lines = text.split("\n")
+    counts: dict[str, int] = {}
+    for line in lines:
+        value = re.sub(r"[ \t]+", " ", line).strip()
+        if value:
+            key = value.casefold()
+            counts[key] = counts.get(key, 0) + 1
+
+    def repeated_page_line(line: str) -> bool:
+        value = re.sub(r"[ \t]+", " ", line).strip()
+        if not value or counts.get(value.casefold(), 0) < 3 or len(value) > 140:
+            return False
+        if URL_RE.search(value) or re.fullmatch(r"(?:p[áa]gina|page)?\s*\d{1,4}", value, re.IGNORECASE):
+            return True
+        letters = re.sub(r"[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]", "", value)
+        return bool(letters) and letters.upper() == letters and len(letters) >= 5
+
+    return "\n".join(
+        line for line in lines
+        if not PDF_PAGE_MARKER_RE.fullmatch(line) and not repeated_page_line(line)
+    )
+
+
 def normalise_text(text: str) -> str:
     """Quita solo ruido de formato, conservando cifras y contenido textual."""
-    text = text.replace("\ufeff", "")
+    text = remove_pdf_artifacts(text).replace("\ufeff", "")
     text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", text)
     # Une palabras cortadas por salto de línea en la extracción de PDF.
     text = re.sub(r"(?<=\w)-\s*\n\s*(?=\w)", "", text)
@@ -114,6 +147,10 @@ def is_toc_entry(line: str, toc_mode: bool) -> bool:
     if not stripped:
         return False
     if TOC_ENTRY_RE.match(stripped):
+        return True
+    if toc_mode and TOC_NUMBERED_ENTRY_RE.match(stripped):
+        return True
+    if toc_mode and word_count(stripped) <= 14 and not re.search(r"[.!?。！？]$", stripped):
         return True
     # En muchos PDFs el índice conserva cada entrada como encabezado Markdown
     # sin puntos guía. Mientras estamos dentro del bloque TOC, esos encabezados
@@ -222,7 +259,7 @@ def blocks_from_markdown(text: str) -> list[tuple[str, str | None]]:
                 toc_mode = True
                 section = None
                 continue
-            if toc_mode and is_toc_entry(line, toc_mode):
+            if toc_mode and (TOC_ENTRY_RE.match(heading) or TOC_NUMBERED_ENTRY_RE.match(heading)):
                 continue
             toc_mode = False
             if heading:
@@ -231,8 +268,12 @@ def blocks_from_markdown(text: str) -> list[tuple[str, str | None]]:
         if toc_mode:
             if is_toc_entry(line, toc_mode):
                 continue
-            if line.strip():
+            if line.strip() and (
+                word_count(line) >= 18 or re.search(r"[.!?。！？]$", line.strip())
+            ):
                 toc_mode = False
+            else:
+                continue
         if not line.strip():
             flush()
             continue

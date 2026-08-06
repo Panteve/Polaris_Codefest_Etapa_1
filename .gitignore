@@ -223,9 +223,9 @@ Fase_1_limpieza/output_final_limpio/
 Fase_1_limpieza/output_post_limpieza/
 *.rar
 Fase_1_limpieza/cambio de extractor pdf/
-!Fase_1_limpieza/cambio de extractor pdf/
-Fase_1_limpieza/cambio de extractor pdf/*
 !Fase_1_limpieza/cambio de extractor pdf/package.json
+!Fase_1_limpieza/cambio de extractor pdf/*.py
+!Fase_1_limpieza/cambio de extractor pdf/*.mjs
 Fase_1_limpieza/output final/
 
 Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3
