@@ -1,0 +1,26 @@
+{
+  "limites": {
+    "palabras_objetivo_min": 160,
+    "palabras_objetivo_max": 200,
+    "palabras_limite_absoluto": 250
+  },
+  "etiquetas_excluidas": [
+    "url",
+    "detail_url",
+    "pdf_url",
+    "src",
+    "href",
+    "doi"
+  ],
+  "etiquetas_contexto_inicial": [
+    "title",
+    "excerpt",
+    "summary",
+    "abstract",
+    "tema_clave",
+    "tipo",
+    "fecha",
+    "municipios",
+    "poblaciones_afectadas"
+  ]
+}

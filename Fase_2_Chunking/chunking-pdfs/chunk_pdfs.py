@@ -54,6 +54,11 @@ HEADING_RE = re.compile(r"^\s{0,3}#{1,6}\s+(.+?)\s*$")
 URL_RE = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 HTML_TAG_RE = re.compile(r"</?[A-Za-z][^>]*>")
 MARKDOWN_LINK_RE = re.compile(r"!?\[([^\]]+)\]\([^)]*\)")
+EXTRACTION_MARKER_RE = re.compile(r"^\s*(?:!+\s*\d+|!{2,}|[~`^]+)\s*$")
+PAGE_NUMBER_RE = re.compile(
+    r"^\s*(?:\*\*|__|\*|_)?(?:\d{1,4}|[ivxlcdm]{1,12})(?:\*\*|__|\*|_)?\s*$",
+    re.IGNORECASE,
+)
 PDF_PAGE_MARKER_RE = re.compile(
     r"^\s*\*?\s*<!--\s*(?:p[áa]gina|page)\s+\d+\s*-->\s*\*?\s*$",
     re.IGNORECASE,
@@ -71,11 +76,39 @@ TOC_HEADING_NAMES = {
     "índice de contenidos", "índice", "indice", "sommaire", "sumário",
     "sumario", "目次",
 }
+END_MATTER_HEADING_NAMES = {
+    "references", "reference", "bibliography", "bibliographies",
+    "referencias", "referencia", "bibliografía", "bibliografías",
+    "works cited", "literatura citada", "fuentes consultadas",
+    "acknowledgements", "acknowledgments", "agradecimientos",
+    "how to cite", "cómo citar", "como citar", "citation", "citations",
+    "credits", "créditos", "creditos", "about the authors",
+    "author biographies", "biografías de los autores", "glossary", "glosario",
+    "index", "índice analítico", "indice analitico",
+}
 TOC_CONTENT_TERMS = (
     "table of contents", "contents", "indice", "índice", "introduction",
     "acknowledgements", "acknowledgments", "appendix", "methodology",
     "references", "chapter", "annex", "tabla de contenido", "agradecimientos",
     "apéndice", "metodología", "referencias", "capítulo",
+)
+
+TOC_HEADING_EXTRA_NAMES = {
+    "sumário", "tabela de conteúdos", "tabela de conteudos",
+    "table des matières", "table des matieres", "index des matières",
+    "index des matieres",
+}
+END_MATTER_EXTRA_NAMES = {
+    "referências", "bibliografia", "obras citadas", "fontes consultadas",
+    "références", "bibliographie", "ouvrages cités", "ouvrages cites",
+    "sources consultées", "sources consultees", "agradecimentos",
+    "remerciements", "comment citer", "sobre os autores", "a propos des auteurs",
+    "à propos des auteurs", "biografias dos autores", "glossário", "glossario",
+    "glossaire",
+}
+TOC_CONTENT_TERMS_EXTRA = (
+    "referências", "bibliografia", "tabela de conteúdos", "sumário",
+    "références", "bibliographie", "table des matières", "sommaire",
 )
 
 ABBREVIATIONS = {
@@ -113,7 +146,10 @@ def remove_pdf_artifacts(text: str) -> str:
 
     return "\n".join(
         line for line in lines
-        if not PDF_PAGE_MARKER_RE.fullmatch(line) and not repeated_page_line(line)
+        if not PDF_PAGE_MARKER_RE.fullmatch(line)
+        and not EXTRACTION_MARKER_RE.fullmatch(line)
+        and not PAGE_NUMBER_RE.fullmatch(line)
+        and not repeated_page_line(line)
     )
 
 
@@ -133,13 +169,27 @@ def normalise_text(text: str) -> str:
 
 def is_toc_heading(text: str) -> bool:
     value = re.sub(r"\s+", " ", normalise_text(text)).casefold().strip(" .:-")
-    if value in TOC_HEADING_NAMES:
+    if value in TOC_HEADING_NAMES | TOC_HEADING_EXTRA_NAMES:
         return True
     return bool(re.match(
         r"^(?:table\s+of\s+content|tabla\s+de\s+conten|indice\s+de\s+conten|"
         r"índice\s+de\s+conten|table\s+content|contents\s+and\s+)",
         value,
     )) and word_count(value) <= 10
+
+
+def is_end_matter_heading(text: str) -> bool:
+    value = re.sub(r"\s+", " ", normalise_text(text)).casefold().strip(" .:-")
+    if value in END_MATTER_HEADING_NAMES | END_MATTER_EXTRA_NAMES:
+        return True
+    return value in {
+        "how to cite this report", "cómo citar este informe", "como citar este relatório",
+        "como citar este relatorio", "comment citer ce rapport",
+        "references and further reading", "referencias y lecturas adicionales",
+        "referências e leituras adicionais", "références et lectures complémentaires",
+        "references / bibliography", "referencias / bibliografía",
+        "referências / bibliografia", "références / bibliographie",
+    }
 
 
 def is_toc_entry(line: str, toc_mode: bool) -> bool:
@@ -181,7 +231,7 @@ def is_toc_content_noise(text: str, section: str | None = None) -> bool:
         return True
     value = text.casefold()
     page_numbers = re.findall(r"(?<!\w)\d{1,3}(?!\w)", value)
-    term_count = sum(term in value for term in TOC_CONTENT_TERMS)
+    term_count = sum(term in value for term in TOC_CONTENT_TERMS + TOC_CONTENT_TERMS_EXTRA)
     # El formato de tabla por sí solo no es ruido: puede contener datos
     # relevantes. Se exige además vocabulario típico de índice y páginas.
     table_shape = (
@@ -242,10 +292,14 @@ def blocks_from_markdown(text: str) -> list[tuple[str, str | None]]:
     pending: list[str] = []
     section: str | None = None
     toc_mode = False
+    discard_end_matter = False
 
     def flush() -> None:
         nonlocal pending
-        value = normalise_text(" ".join(pending))
+        # Conserva los saltos de fila de tablas para poder dividirlas por
+        # filas después. En texto narrativo los saltos se normalizan más
+        # adelante al segmentar oraciones.
+        value = normalise_text("\n".join(pending))
         if value:
             raw_blocks.append((value, section))
         pending = []
@@ -253,10 +307,19 @@ def blocks_from_markdown(text: str) -> list[tuple[str, str | None]]:
     for line in lines:
         match = HEADING_RE.match(line)
         if match:
+            if discard_end_matter:
+                # La sección editorial terminó; el siguiente encabezado vuelve
+                # a ser contenido normal.
+                discard_end_matter = False
             flush()
             heading = normalise_text(match.group(1))
             if is_toc_heading(heading):
                 toc_mode = True
+                section = None
+                continue
+            if is_end_matter_heading(heading):
+                discard_end_matter = True
+                toc_mode = False
                 section = None
                 continue
             if toc_mode and (TOC_ENTRY_RE.match(heading) or TOC_NUMBERED_ENTRY_RE.match(heading)):
@@ -265,15 +328,28 @@ def blocks_from_markdown(text: str) -> list[tuple[str, str | None]]:
             if heading:
                 section = heading
             continue
+        # Algunos extractores pierden el prefijo Markdown del encabezado del
+        # índice. Reconocerlo como señal estructural evita que sus entradas se
+        # acumulen en el bloque anterior.
+        if not toc_mode and is_toc_heading(line):
+            flush()
+            toc_mode = True
+            section = None
+            continue
+        if not toc_mode and is_end_matter_heading(line):
+            flush()
+            discard_end_matter = True
+            section = None
+            continue
+        if discard_end_matter:
+            continue
         if toc_mode:
             if is_toc_entry(line, toc_mode):
                 continue
-            if line.strip() and (
-                word_count(line) >= 18 or re.search(r"[.!?。！？]$", line.strip())
-            ):
-                toc_mode = False
-            else:
-                continue
+            # El TOC puede venir aplanado en una línea larga sin puntos guía.
+            # Se descarta todo hasta el siguiente encabezado Markdown; ese
+            # encabezado es el límite confiable del índice.
+            continue
         if not line.strip():
             flush()
             continue
@@ -340,7 +416,11 @@ def group_continuous_paragraphs(
         can_join = (
             section == previous_section
             and word_count(previous) + word_count(value) <= max_words
-            and paragraph_continues(previous, value)
+            and (
+                paragraph_continues(previous, value)
+                or word_count(previous) <= MIN_CHUNK_WORDS
+                or word_count(value) <= MIN_CHUNK_WORDS
+            )
         )
         if can_join:
             grouped[-1] = (f"{previous}\n\n{value}", section)
@@ -390,13 +470,159 @@ def deduplicate_adjacent_blocks(
     return result, removed
 
 
+TABLE_SEPARATOR_RE = re.compile(
+    r"^\s*\|?\s*:?-{2,}:?\s*(?:\|\s*:?-{2,}:?\s*)+\|?\s*$"
+)
+
+
+def is_table_block(text: str) -> bool:
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    return len(lines) >= 2 and (
+        any(TABLE_SEPARATOR_RE.fullmatch(line) for line in lines)
+        or sum(line.startswith("|") for line in lines) >= 2
+    )
+
+
+def structured_rows(text: str) -> list[str]:
+    """Conserva filas de tablas, excluyendo solo la fila separadora Markdown."""
+    rows = []
+    for line in text.splitlines():
+        value = line.strip()
+        if not value or TABLE_SEPARATOR_RE.fullmatch(value):
+            continue
+        rows.append(value)
+    return rows
+
+
+def hard_split_words(text: str, max_words: int) -> list[str]:
+    words = text.split()
+    return [" ".join(words[index:index + max_words]) for index in range(0, len(words), max_words)]
+
+
+def split_long_unit(text: str, max_words: int) -> list[tuple[str, str]]:
+    """Divide una unidad que no cabe, priorizando suboraciones y luego palabras."""
+    clauses = [part.strip() for part in re.split(r"(?<=[,;:])\s+|\s+[—–-]\s+", text) if part.strip()]
+    if len(clauses) <= 1:
+        return [(part, "limite_palabras") for part in hard_split_words(text, max_words)]
+    result: list[tuple[str, str]] = []
+    current: list[str] = []
+    current_words = 0
+    for clause in clauses:
+        count = word_count(clause)
+        if count > max_words:
+            if current:
+                result.append((" ".join(current), "suboracion"))
+                current, current_words = [], 0
+            result.extend((part, "limite_palabras") for part in hard_split_words(clause, max_words))
+            continue
+        if current and current_words + count > max_words:
+            result.append((" ".join(current), "suboracion"))
+            current, current_words = [], 0
+        current.append(clause)
+        current_words += count
+    if current:
+        result.append((" ".join(current), "suboracion"))
+    return result
+
+
+def chunks_for_structured_block(
+    text: str,
+    section: str | None,
+    target: int,
+    max_words: int,
+    annotate_split: bool = False,
+) -> tuple[list[dict], list[str]]:
+    """Agrupa tablas por filas y evita convertirlas en una falsa oración."""
+    rows = structured_rows(text)
+    chunks: list[dict] = []
+    warnings: list[str] = []
+    current: list[str] = []
+    current_words = 0
+    limit = min(target, max_words)
+
+    def close() -> None:
+        nonlocal current, current_words
+        if current:
+            item = {
+                "texto": "\n".join(current).strip(),
+                "seccion": section,
+                "advertencias": [],
+            }
+            if annotate_split:
+                item["separado_por"] = "fila_tabla"
+            chunks.append(item)
+            current = []
+            current_words = 0
+
+    for row in rows:
+        count = word_count(row)
+        if count > max_words:
+            # Una fila de tabla no tiene fronteras oracionales confiables;
+            # dividirla por celdas es menos dañino que emitir un chunk enorme.
+            cells = [cell.strip() for cell in row.strip("|").split("|") if cell.strip()]
+            cell_group: list[str] = []
+            cell_words = 0
+            for cell in cells:
+                cell_count = word_count(cell)
+                if annotate_split and cell_count > max_words:
+                    if cell_group:
+                        item = {
+                            "texto": " | ".join(cell_group),
+                            "seccion": section,
+                            "advertencias": ["fila de tabla dividida por celdas"],
+                            "separado_por": "celda_tabla",
+                        }
+                        chunks.append(item)
+                        cell_group, cell_words = [], 0
+                    for part in hard_split_words(cell, max_words):
+                        chunks.append({
+                            "texto": part,
+                            "seccion": section,
+                            "advertencias": ["celda de tabla dividida por límite de palabras"],
+                            "separado_por": "limite_palabras",
+                        })
+                    continue
+                if cell_group and cell_words + cell_count > max_words:
+                    item = {
+                        "texto": " | ".join(cell_group),
+                        "seccion": section,
+                        "advertencias": ["fila de tabla dividida por celdas"],
+                    }
+                    if annotate_split:
+                        item["separado_por"] = "celda_tabla"
+                    chunks.append(item)
+                    cell_group, cell_words = [], 0
+                cell_group.append(cell)
+                cell_words += cell_count
+            if cell_group:
+                item = {
+                    "texto": " | ".join(cell_group),
+                    "seccion": section,
+                    "advertencias": ["fila de tabla dividida por celdas"],
+                }
+                if annotate_split:
+                    item["separado_por"] = "celda_tabla"
+                chunks.append(item)
+            warnings.append(f"fila estructurada de {count} palabras dividida por celdas")
+            continue
+        if current and current_words + count > limit:
+            close()
+        current.append(row)
+        current_words += count
+    close()
+    return chunks, warnings
+
+
 def chunks_for_block(
     text: str,
     section: str | None,
     target: int,
     max_words: int,
     overlap_sentences: int = 0,
+    annotate_split: bool = False,
 ) -> tuple[list[dict], list[str]]:
+    if is_table_block(text):
+        return chunks_for_structured_block(text, section, target, max_words, annotate_split)
     sentences = sentence_parts(text)
     chunks: list[dict] = []
     warnings: list[str] = []
@@ -410,6 +636,19 @@ def chunks_for_block(
             count = word_count(sentence)
             if count > max_words:
                 if not current:
+                    if annotate_split:
+                        for piece, split_kind in split_long_unit(sentence, max_words):
+                            chunks.append({
+                                "texto": piece,
+                                "seccion": section,
+                                "advertencias": ["unidad larga dividida para respetar el máximo de 250 palabras"],
+                                "separado_por": split_kind,
+                            })
+                        index += 1
+                        warnings.append(
+                            f"oración de {count} palabras dividida para respetar el máximo"
+                        )
+                        continue
                     current.append(sentence)
                     current_words = count
                     index += 1
@@ -424,6 +663,9 @@ def chunks_for_block(
             index += 1
 
         if not current:
+            if index >= len(sentences):
+                # La última oración larga ya fue dividida y agregada arriba.
+                break
             # Salvaguarda para no bloquear el proceso ante un caso inesperado.
             current = [sentences[index]]
             current_words = word_count(sentences[index])
@@ -432,7 +674,13 @@ def chunks_for_block(
         chunks.append({
             "texto": value,
             "seccion": section,
-            "advertencias": [],
+            **({
+                "separado_por": (
+                    "oracion_larga_conservada"
+                    if any(word_count(sentence) > max_words for sentence in current)
+                    else "oracion"
+                )
+            } if annotate_split else {}),
         })
 
         if overlap_sentences and index < len(sentences):
@@ -573,7 +821,8 @@ def process_record(
             block_words = word_count(block)
             if block_words > max_words:
                 made, block_warnings = chunks_for_block(
-                    block, section, target, max_words, overlap_sentences
+                    block, section, target, max_words, overlap_sentences,
+                    annotate_split=(mode == "standard"),
                 )
                 output.extend(made)
                 warnings.extend(block_warnings)
@@ -589,21 +838,35 @@ def process_record(
         # experimental basado en oraciones.
         for block, section in blocks:
             made, block_warnings = chunks_for_block(
-                block, section, target, max_words, overlap_sentences
+                block, section, target, max_words, overlap_sentences,
+                annotate_split=(mode == "standard"),
             )
             output.extend(made)
             warnings.extend(block_warnings)
     if mode == "late_chunking":
         cursor = 0
         for part in output:
-            candidate = part["texto"].replace("\n\n", " ")
-            start = text.find(candidate, cursor)
-            if start < 0:
-                start = cursor
+            span = find_normalized_span(text, part["texto"], cursor)
+            if span is None:
+                start, end = cursor, cursor + len(part["texto"])
+            else:
+                start, end = span
             part["char_start"] = start
-            part["char_end"] = start + len(candidate)
-            cursor = part["char_end"]
+            part["char_end"] = end
+            cursor = end
     return output, warnings, deduped_count
+
+
+def find_normalized_span(source: str, candidate: str, cursor: int) -> tuple[int, int] | None:
+    """Encuentra un chunk permitiendo diferencias entre espacios y saltos."""
+    tokens = re.findall(r"\S+", candidate)
+    if not tokens:
+        return None
+    pattern = r"\s+".join(re.escape(token) for token in tokens)
+    match = re.search(pattern, source[cursor:], flags=re.DOTALL)
+    if not match:
+        return None
+    return cursor + match.start(), cursor + match.end()
 
 
 def build_chunk(record: dict, part: dict, position: int, mode: str) -> dict:
@@ -620,16 +883,17 @@ def build_chunk(record: dict, part: dict, position: int, mode: str) -> dict:
         "idioma": record.get("idioma", "unknown"),
         "num_palabras": word_count(text),
         "num_tokens": estimated_tokens(text),
-        "num_tokens_metodo": "estimacion_1.3_por_palabra; reemplazar con tokenizer del encoder",
+        "chunking_mode": mode,
         "texto": text,
     }
     if mode == "late_chunking":
         chunk.update({
-            "chunking_mode": "late_chunking",
             "char_start": part.get("char_start", 0),
             "char_end": part.get("char_end", len(text)),
             "offsets_base": "texto_normalizado_del_documento",
         })
+    if part.get("separado_por"):
+        chunk["separado_por"] = part["separado_por"]
     return chunk
 
 
@@ -690,9 +954,13 @@ def run(args: argparse.Namespace) -> int:
         "resumen": {"documentos_en_manifest": len(records), "documentos_procesados": 0,
                     "documentos_vacios": 0, "documentos_con_error": 0,
             "chunks_generados": 0,
+            "chunks_omitidos_total": 0,
             "chunks_omitidos_por_minimo": 0,
             "chunks_omitidos_numericos": 0,
             "chunks_omitidos_toc": 0,
+            "chunks_con_alertas": 0,
+            "advertencias_proceso": 0,
+            "separaciones_forzadas": {},
             "bloques_duplicados_omitidos": 0},
         "alertas_por_documento": {},
         "errores": [],
@@ -709,21 +977,22 @@ def run(args: argparse.Namespace) -> int:
                     semantic_model, args.umbral_semantic
                 )
                 report["resumen"]["bloques_duplicados_omitidos"] += deduped_count
-                parts = [
-                    part for part in raw_parts
-                    if word_count(part["texto"]) > MIN_CHUNK_WORDS
-                    and not is_numeric_noise(part["texto"])
-                    and not is_toc_content_noise(part["texto"], part.get("seccion"))
-                ]
-                omitted = len(raw_parts) - len(parts)
-                report["resumen"]["chunks_omitidos_por_minimo"] += omitted
-                report["resumen"]["chunks_omitidos_numericos"] += sum(
-                    is_numeric_noise(part["texto"]) for part in raw_parts
-                )
-                report["resumen"]["chunks_omitidos_toc"] += sum(
-                    is_toc_content_noise(part["texto"], part.get("seccion"))
-                    for part in raw_parts
-                )
+                parts = []
+                omitted_counts = {"minimo": 0, "numerico": 0, "toc": 0}
+                for part in raw_parts:
+                    if word_count(part["texto"]) <= MIN_CHUNK_WORDS:
+                        omitted_counts["minimo"] += 1
+                    elif is_numeric_noise(part["texto"]):
+                        omitted_counts["numerico"] += 1
+                    elif is_toc_content_noise(part["texto"], part.get("seccion")):
+                        omitted_counts["toc"] += 1
+                    else:
+                        parts.append(part)
+                omitted = sum(omitted_counts.values())
+                report["resumen"]["chunks_omitidos_total"] += omitted
+                report["resumen"]["chunks_omitidos_por_minimo"] += omitted_counts["minimo"]
+                report["resumen"]["chunks_omitidos_numericos"] += omitted_counts["numerico"]
+                report["resumen"]["chunks_omitidos_toc"] += omitted_counts["toc"]
                 if not parts:
                     report["resumen"]["documentos_vacios"] += 1
                     empty_detail = {
@@ -737,14 +1006,39 @@ def run(args: argparse.Namespace) -> int:
                     report["alertas_por_documento"][record["doc_id"]] = [{
                         "chunk_id": None,
                         "mensaje": "documento sin chunks validos despues del filtro minimo",
+                        "tipo": "documento_vacio",
                     }]
-                    report["documentos"].append({"doc_id": record["doc_id"], "chunks": 0, "advertencias": ["texto vacío"]})
+                    report["documentos"].append({
+                        "doc_id": record["doc_id"],
+                        "chunks": 0,
+                        "chunks_omitidos_total": omitted,
+                        "chunks_omitidos_por_minimo": omitted_counts["minimo"],
+                        "chunks_omitidos_numericos": omitted_counts["numerico"],
+                        "chunks_omitidos_toc": omitted_counts["toc"],
+                        "advertencias": ["sin chunks despues de aplicar filtros"],
+                    })
                     continue
                 doc_alertas = []
-                for position, part in enumerate(parts, 1):
+                for position, part in enumerate(parts):
                     chunk = build_chunk(record, part, position, args.modo)
                     all_chunks.append(chunk)
                     handle.write(json.dumps(chunk, ensure_ascii=False) + "\n")
+                    for message in part.get("advertencias", []):
+                        doc_alertas.append({
+                            "chunk_id": chunk["chunk_id"],
+                            "mensaje": message,
+                            "tipo": "advertencia_chunk",
+                        })
+                    split_kind = part.get("separado_por")
+                    if split_kind:
+                        doc_alertas.append({
+                            "chunk_id": chunk["chunk_id"],
+                            "mensaje": f"separado_por={split_kind}",
+                            "tipo": "separacion",
+                        })
+                        report["resumen"]["separaciones_forzadas"][split_kind] = (
+                            report["resumen"]["separaciones_forzadas"].get(split_kind, 0) + 1
+                        )
                     if word_count(part["texto"]) > args.maximo:
                         doc_alertas.append({
                             "chunk_id": chunk["chunk_id"],
@@ -752,17 +1046,26 @@ def run(args: argparse.Namespace) -> int:
                         })
                 report["resumen"]["documentos_procesados"] += 1
                 report["resumen"]["chunks_generados"] += len(parts)
-                if warnings and not doc_alertas:
-                    doc_alertas.append({
-                        "chunk_id": parts[-1].get("chunk_id", f"{record['doc_id']}-CH-{len(parts):04d}"),
-                        "mensaje": warnings[-1],
-                    })
+                if warnings:
+                    for warning in warnings:
+                        doc_alertas.append({
+                            "chunk_id": None,
+                            "mensaje": warning,
+                            "tipo": "advertencia_proceso",
+                        })
+                    report["resumen"]["advertencias_proceso"] += len(warnings)
+                report["resumen"]["chunks_con_alertas"] += len({
+                    item["chunk_id"] for item in doc_alertas if item.get("chunk_id")
+                })
                 if doc_alertas:
                     report["alertas_por_documento"][record["doc_id"]] = doc_alertas
                 report["documentos"].append({
                     "doc_id": record["doc_id"],
                     "chunks": len(parts),
-                    "chunks_omitidos_por_minimo": omitted,
+                    "chunks_omitidos_total": omitted,
+                    "chunks_omitidos_por_minimo": omitted_counts["minimo"],
+                    "chunks_omitidos_numericos": omitted_counts["numerico"],
+                    "chunks_omitidos_toc": omitted_counts["toc"],
                     "alertas": doc_alertas,
                 })
             except (OSError, UnicodeError, KeyError) as exc:

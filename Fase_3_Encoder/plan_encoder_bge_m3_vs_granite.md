@@ -8,6 +8,10 @@ La decisión se tomará con una comparación reproducible sobre el corpus real d
 
 No se deben comparar resultados obtenidos con distintos chunks, distintas limpiezas o distintas reglas de recuperación. La única variable principal debe ser el encoder.
 
+Además de la prueba controlada de Granite sobre PDF, se realizará una prueba
+adicional de Granite sobre todo el corpus para comparar su comportamiento en
+JSON, PDF, CSV, TXT, imágenes con texto extraído y PBF convertido a texto.
+
 ## 2. Requisitos del proyecto
 
 La selección debe respetar las especificaciones disponibles del proyecto:
@@ -148,6 +152,29 @@ Construir un segundo índice únicamente con los chunks PDF, usando exactamente:
 
 La única diferencia será el modelo que genera los vectores.
 
+### 6.3 Comparación Granite para todo el corpus
+
+Como experimento adicional, se construirá un índice Granite para todos los
+formatos disponibles.
+
+Esta prueba debe utilizar exactamente los mismos documentos, textos limpios,
+límites de chunk, `doc_id`, `chunk_id`, posiciones y metadata que la base
+BGE-M3. La única variable que debe cambiar es el encoder.
+
+El índice se guardará de forma independiente:
+
+```text
+base_vectorial/
+└── encoder_granite_corpus/
+    ├── index.faiss
+    └── metadata.jsonl
+```
+
+El experimento permitirá determinar si Granite mejora solamente en PDF o si
+también es competitivo en el corpus completo. Deben medirse por separado
+NDCG@10, F1@3, tiempo de indexación, tiempo de consulta, memoria y tamaño del
+índice.
+
 ## 7. Chunking para la prueba(GUIA NO TOCA SEGUIR AL PIE DE LA LETRA)
 
 Configuración inicial recomendada:
@@ -252,4 +279,3 @@ Si Granite no produce una mejora clara y estable, se recomienda entregar únicam
 - [BGE M3-Embedding — artículo técnico](https://arxiv.org/abs/2402.03216)
 - [Granite Embedding 311M Multilingual R2 — ficha oficial](https://huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2)
 - [Granite Embedding Multilingual R2 — artículo técnico](https://arxiv.org/abs/2605.13521)
-

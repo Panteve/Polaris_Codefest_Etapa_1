@@ -232,5 +232,7 @@ Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapam
 
 # Salidas generadas de chunking y metadata; conservar scripts y documentación
 Fase_2_Chunking/chunking-pdfs/pdfs_*/
+Fase_2_Chunking/chunking-otros/salida_otros/
+Fase_2_Chunking/chunking-jsons/salida_json/
 Fase_2_Chunking/salida_pdf/
 Fase_1_limpieza/ocr_recuperacion_temp/
