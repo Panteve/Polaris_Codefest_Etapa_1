@@ -684,7 +684,13 @@ def chunks_for_block(
         })
 
         if overlap_sentences and index < len(sentences):
-            index = max(start_index + 1, index - min(overlap_sentences, len(current)))
+            next_sentence = sentences[index]
+            related = paragraph_continues(" ".join(current), next_sentence)
+            if related:
+                index = max(
+                    start_index + 1,
+                    index - min(overlap_sentences, len(current)),
+                )
     return chunks, warnings
 
 

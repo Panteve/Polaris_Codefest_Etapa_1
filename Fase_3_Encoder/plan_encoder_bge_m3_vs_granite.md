@@ -175,6 +175,22 @@ también es competitivo en el corpus completo. Deben medirse por separado
 NDCG@10, F1@3, tiempo de indexación, tiempo de consulta, memoria y tamaño del
 índice.
 
+### 6.4 Late chunking con ambos encoders
+
+Late chunking no debe considerarse exclusivo de Granite. También se probará
+con BGE-M3 cuando el documento completo quepa en su ventana de contexto y sea
+posible obtener embeddings a nivel de token.
+
+Las comparaciones controladas serán:
+
+- BGE-M3 convencional contra BGE-M3 con late chunking.
+- Granite convencional contra Granite con late chunking.
+- BGE-M3 contra Granite usando los mismos límites de chunk.
+
+Si un documento supera la ventana de BGE-M3, esa combinación se marcará como
+no aplicable para ese documento. No se debe cortar arbitrariamente el texto
+solo para forzar la prueba.
+
 ## 7. Chunking para la prueba(GUIA NO TOCA SEGUIR AL PIE DE LA LETRA)
 
 Configuración inicial recomendada:
