@@ -36,6 +36,33 @@ COMBINED_OUTPUT_NAMES = {
         "corpus_bge_m3_semantic_pdf",
 }
 
+EXPERIMENT_ALIASES = {
+    "01_bge_m3_corpus":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3",
+    "corpus_bge_m3_standard":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3",
+    "02_hibrido_granite_late_pdf":
+        "pdfs_late_chunking_objetivo-200palabras_max-250_solapamiento-0_granite_pdf",
+    "corpus_bge_m3_granite_late_pdf":
+        "pdfs_late_chunking_objetivo-200palabras_max-250_solapamiento-0_granite_pdf",
+    "03_granite_corpus":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_granite",
+    "corpus_granite_standard":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_granite",
+    "04_bge_m3_overlap_1":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_bge_m3_overlap_1",
+    "corpus_bge_m3_overlap_1":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_bge_m3_overlap_1",
+    "05_granite_overlap_1":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_granite_overlap_1",
+    "corpus_granite_overlap_1":
+        "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_granite_overlap_1",
+    "06_bge_m3_semantic_pdf":
+        "pdfs_semantic_objetivo-200palabras_max-250_solapamiento-0_bge_m3_semantic",
+    "corpus_bge_m3_semantic_pdf":
+        "pdfs_semantic_objetivo-200palabras_max-250_solapamiento-0_bge_m3_semantic",
+}
+
 
 def combined_output_name(pdf_dir: Path) -> str:
     """Devuelve un nombre estable para la metadata combinada."""
@@ -153,6 +180,22 @@ def parse_args() -> argparse.Namespace:
         "--output-root",
         default="Fase_2_Chunking/metadata_general",
     )
+    parser.add_argument(
+        "--experimento",
+        default=None,
+        help=(
+            "experimento PDF a combinar; acepta el nombre de la carpeta, "
+            "un alias como 01_bge_m3_corpus o el nombre corpus_*"
+        ),
+    )
+    parser.add_argument(
+        "--destino",
+        default=None,
+        help=(
+            "carpeta exacta donde escribir metadata.json y metadata.jsonl; "
+            "requiere --experimento"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -168,12 +211,29 @@ def main() -> int:
     if not pdf_dirs:
         raise FileNotFoundError(f"No se encontraron carpetas PDF en {pdf_root}.")
 
+    if args.experimento:
+        requested = EXPERIMENT_ALIASES.get(args.experimento, args.experimento)
+        pdf_dirs = [path for path in pdf_dirs if path.name == requested]
+        if not pdf_dirs:
+            available = "\n".join(path.name for path in sorted(pdf_root.iterdir()) if path.is_dir())
+            raise FileNotFoundError(
+                f"No se encontró el experimento '{args.experimento}'. "
+                f"Opciones disponibles:\n{available}"
+            )
+    elif args.destino:
+        raise ValueError("--destino requiere indicar también --experimento.")
+
     for pdf_dir in pdf_dirs:
         pdf_metadata = pdf_dir / "metadata.jsonl"
         combined = combine(json_path, otros_path, pdf_metadata)
         output_name = combined_output_name(pdf_dir)
-        write_metadata(output_root / output_name, combined)
-        print(f"{pdf_dir.name} -> {output_name}: {len(combined)} registros")
+        destination = (
+            resolve_project_path(args.destino, project_root)
+            if args.destino
+            else output_root / output_name
+        )
+        write_metadata(destination, combined)
+        print(f"{pdf_dir.name} -> {destination}: {len(combined)} registros")
     return 0
 
 
