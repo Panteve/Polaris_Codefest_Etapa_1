@@ -1,3 +1,5 @@
+# Instalar antes: %pip install -q -U sentence-transformers faiss-cpu transformers accelerate
+
 """Genera el índice BGE-M3 en Kaggle usando una o varias GPU CUDA."""
 
 from __future__ import annotations
@@ -144,7 +146,7 @@ def main() -> None:
     parser.add_argument("--checkpoint-dir", type=Path, default=KAGGLE_OUTPUT / ".checkpoint_bge_m3")
     parser.add_argument("--checkpoint-every", type=int, default=10)
     parser.add_argument("--fresh", action="store_true")
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
 
     import torch
     from sentence_transformers import SentenceTransformer
