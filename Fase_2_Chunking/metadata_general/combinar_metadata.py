@@ -18,6 +18,30 @@ DOC_NUMBER_RE = re.compile(r"^(.*?)(\d+)$")
 CHUNK_NUMBER_RE = re.compile(r"-CH-(\d+)$")
 
 
+# El nombre de la carpeta PDF describe solamente la variante de chunking PDF.
+# La salida combinada incluye tambien JSON y otros formatos, por lo que usa un
+# nombre canonico que identifica la configuracion completa del corpus.
+COMBINED_OUTPUT_NAMES = {
+    "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3":
+        "corpus_bge_m3_standard",
+    "pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_granite":
+        "corpus_granite_standard",
+    "pdfs_late_chunking_objetivo-200palabras_max-250_solapamiento-0_granite_pdf":
+        "corpus_bge_m3_granite_late_pdf",
+    "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_bge_m3_overlap_1":
+        "corpus_bge_m3_overlap_1",
+    "pdfs_standard_objetivo-200palabras_max-250_solapamiento-1_granite_overlap_1":
+        "corpus_granite_overlap_1",
+    "pdfs_semantic_objetivo-200palabras_max-250_solapamiento-0_bge_m3_semantic":
+        "corpus_bge_m3_semantic_pdf",
+}
+
+
+def combined_output_name(pdf_dir: Path) -> str:
+    """Devuelve un nombre estable para la metadata combinada."""
+    return COMBINED_OUTPUT_NAMES.get(pdf_dir.name, pdf_dir.name)
+
+
 def resolve_project_path(value: str, project_root: Path) -> Path:
     candidate = Path(value)
     if candidate.is_absolute():
@@ -147,8 +171,9 @@ def main() -> int:
     for pdf_dir in pdf_dirs:
         pdf_metadata = pdf_dir / "metadata.jsonl"
         combined = combine(json_path, otros_path, pdf_metadata)
-        write_metadata(output_root / pdf_dir.name, combined)
-        print(f"{pdf_dir.name}: {len(combined)} registros")
+        output_name = combined_output_name(pdf_dir)
+        write_metadata(output_root / output_name, combined)
+        print(f"{pdf_dir.name} -> {output_name}: {len(combined)} registros")
     return 0
 
 
