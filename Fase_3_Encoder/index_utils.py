@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import re
 import shutil
 import time
 from collections import defaultdict
@@ -242,6 +243,104 @@ def load_document_texts(manifest_path: Path) -> dict[str, str]:
     return result
 
 
+def encode_late_document_windows(
+    *,
+    document: str,
+    items: list[tuple[int, dict]],
+    tokenizer,
+    model,
+    model_device,
+    model_name: str,
+) -> dict[int, np.ndarray]:
+    """Codifica un documento largo por ventanas y conserva sus offsets."""
+    import torch
+
+    tokenized = tokenizer(document, add_special_tokens=True, return_offsets_mapping=True, truncation=False)
+    full_ids = tokenized["input_ids"]
+    offsets = tokenized["offset_mapping"]
+    content = [
+        (position, int(start), int(end))
+        for position, (start, end) in enumerate(offsets)
+        if int(end) > int(start)
+    ]
+    if not content:
+        raise ValueError(f"El documento de {model_name} no contiene tokens con offsets.")
+    max_length = getattr(model.config, "max_position_embeddings", None)
+    if not max_length or max_length > 100000:
+        max_length = tokenizer.model_max_length
+    if not max_length or max_length > 100000:
+        max_length = 512
+    special_count = tokenizer.num_special_tokens_to_add(pair=False)
+    capacity = int(max_length) - int(special_count)
+    if capacity <= 0:
+        raise ValueError(f"La ventana máxima de {model_name} no permite tokens de contenido.")
+    chunk_tokens: dict[int, list[int]] = {}
+    for position, record in items:
+        start = int(record.get("char_start", 0))
+        end = int(record.get("char_end", 0))
+        selected = [index for index, (_, token_start, token_end) in enumerate(content)
+                    if token_end > start and token_start < end]
+        if not selected:
+            raise ValueError(f"No se encontraron tokens para {record.get('chunk_id')}.")
+        chunk_tokens[position] = selected
+
+    sentence_token_ranges = []
+    for match in re.finditer(r"\S.*?(?:[.!?。！？]+(?=\s|$)|$)", document, flags=re.DOTALL):
+        sentence_start, sentence_end = match.span()
+        tokens = [index for index, (_, token_start, token_end) in enumerate(content)
+                  if token_end > sentence_start and token_start < sentence_end]
+        if tokens:
+            start_token, end_token = min(tokens), max(tokens) + 1
+            for piece_start in range(start_token, end_token, capacity):
+                sentence_token_ranges.append((piece_start, min(piece_start + capacity, end_token)))
+    windows: list[tuple[int, int]] = []
+    sentence_index = 0
+    while sentence_index < len(sentence_token_ranges):
+        window_start = sentence_token_ranges[sentence_index][0]
+        window_end = window_start
+        next_index = sentence_index
+        while next_index < len(sentence_token_ranges):
+            candidate_end = sentence_token_ranges[next_index][1]
+            if next_index > sentence_index and candidate_end - window_start > capacity:
+                break
+            window_end = candidate_end
+            next_index += 1
+            if window_end - window_start >= capacity:
+                break
+        windows.append((window_start, window_end))
+        if next_index >= len(sentence_token_ranges):
+            break
+        sentence_index = max(sentence_index + 1, next_index - 2)
+    if not windows:
+        windows = [(0, len(content))]
+
+    accumulators: dict[int, list[np.ndarray]] = {position: [] for position, _ in items}
+    for window_start, window_end in windows:
+        content_ids = [int(full_ids[original_position]) for original_position, _, _ in content[window_start:window_end]]
+        input_ids = tokenizer.build_inputs_with_special_tokens(content_ids)
+        special_mask = tokenizer.get_special_tokens_mask(content_ids, already_has_special_tokens=False)
+        local_content = [index for index, flag in enumerate(special_mask) if flag == 0]
+        model_inputs = {
+            "input_ids": torch.tensor([input_ids], dtype=torch.long, device=model_device),
+            "attention_mask": torch.ones((1, len(input_ids)), dtype=torch.long, device=model_device),
+        }
+        with torch.no_grad():
+            hidden = model(**model_inputs).last_hidden_state[0]
+        for position, selected in chunk_tokens.items():
+            local_indices = [local_content[index - window_start] for index in selected if window_start <= index < window_end]
+            if local_indices:
+                accumulators[position].append(hidden[local_indices].mean(dim=0).cpu().numpy().astype("float32"))
+
+    vectors = {}
+    for position, values in accumulators.items():
+        if not values:
+            raise ValueError(f"No se pudo asignar ninguna ventana al registro {position}.")
+        vector = np.vstack(values).mean(axis=0).astype("float32")
+        vector /= max(float(np.linalg.norm(vector)), 1e-12)
+        vectors[position] = vector
+    return vectors
+
+
 def build_late_index(
     *,
     metadata_path: Path,
@@ -293,33 +392,17 @@ def build_late_index(
         document = texts_by_doc.get(doc_id)
         if document is None:
             raise FileNotFoundError(f"No se encontró el texto fuente para {doc_id}.")
-        encoded = tokenizer(
-            document,
-            return_tensors="pt",
-            return_offsets_mapping=True,
-            truncation=False,
-        )
-        offsets = encoded.pop("offset_mapping")[0].tolist()
         model_device = next(model.parameters()).device
-        max_length = getattr(model.config, "max_position_embeddings", None)
-        if max_length and encoded["input_ids"].shape[1] > max_length:
-            raise ValueError(f"{doc_id} supera la ventana de {max_length} tokens de {model_name}.")
-        model_inputs = {key: value.to(model_device) for key, value in encoded.items()}
-        with torch.no_grad():
-            hidden = model(**model_inputs).last_hidden_state[0]
-        for position, record in items:
-            start = int(record.get("char_start", 0))
-            end = int(record.get("char_end", 0))
-            selected = [
-                index
-                for index, (token_start, token_end) in enumerate(offsets)
-                if token_end > start and token_start < end and token_end > token_start
-            ]
-            if not selected:
-                raise ValueError(f"No se encontraron tokens para {record.get('chunk_id')}.")
-            vector = hidden[selected].mean(dim=0).cpu().numpy().astype("float32")
-            vector /= max(float(np.linalg.norm(vector)), 1e-12)
-            vectors[position] = vector
+        vectors.update(
+            encode_late_document_windows(
+                document=document,
+                items=items,
+                tokenizer=tokenizer,
+                model=model,
+                model_device=model_device,
+                model_name=model_name,
+            )
+        )
         documents_done = document_number + 1
         progress(documents_done, len(grouped), started, label)
         if checkpoint_every > 0 and documents_done % checkpoint_every == 0:

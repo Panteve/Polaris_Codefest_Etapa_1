@@ -1,0 +1,147 @@
+NASA-TM-I I059_
+
+Orbital impacts and the Space Shuttle windshield Karen S. Edelstein NASA/Lyndon B. Johnson Space Center (JSC) ES2/Structures and Dynamics Branch Houston, TX 77058
+
+ABSTRACT
+
+The Space Transportation System (STS) fleet has flown more than sixty missions over the fourteen years since its first flight. As a result of encounters with on-orbit particulates (space debris and micrometeoroids), 177 impact features (chips) have been found on the STS outer windows (through STS-65). Forty-five of the damages were large enough to warrant replacement of the window. NASA's orbital operations and vehicle inspection procedures have changed over the history of the shuttle program, in response to concerns about the orbital environment and the cost of maintaining the space shuttle. These programmatic issues will be discussed, including safety concerns, maintenance issues, inspection procedures and flight rule changes. Examples of orbital debris impacts to the shuttle windows will be provided. There will also be a brief discussion of the impact properties of glass and what design changes have been considered to improve the impact properties of the windows. Keywords: hypervelocity impact, orbital debris, micrometeoroids, space shuttle, glass, windows
+
+1. Background
+
+The Space Shuttle fleet has flown more than sixty missions since the first Shuttle was launched in April 1981. In its wide variety of mission profiles, including satellite launches and repairs, DOD missions, Earth science, microgravity research and astronomy, the windows on the flight deck have functioned as more than the pilot's windscreen. The outer panes of the windshield serve as a critical part of the thermal protection system, keeping the high heat of reentry away from the manned compartment of the vehicle. The inner panes form part of the pressure vessel where the crew lives. thermal pane pressure pane cebin pressure Figure 1
+
+The outer pane, also called the thermal pane, is a .6 inch thick plate of fused silica glass, approximately 35" x 45". There are six thermal panes in the windshield, two in the overhead windows (observation windows) and one in the side hatch. These nine thermal panes have been our "experiment of opporttmity" for evaluating the effects of the low earth orbit micrometeoroid and debris environment on the Shuttle program. This paper will discuss the results of this "experiment" and what we have done and plan to do to deal with the low earth orbit environment and its interaction with the Shuttle windows. The data for the "experiment" is collected by the window inspectors at Kennedy Space Center (KSC), who examine the thermal panes for damage after every flight.
+
+1.1 Window Inspection
+
+The window inspection is a crucial part of a Shuttle vehicle's turnaround processing. Technicians clean the thermal panes with a soft cloth and water, and polish off deposits from the flight if necessary. Then they examine the entire surface very carefully, using a hand-held magnifying lens and bright lights to f'md features as small as .0006" in depth. A record of each window's surface features is maintained from flight to flight so that new items can be identified. When a scratch, pit or bruise is found, the depth is measured by taking a mold impression of the damage and measuring the mold prof'de with a f'me stylus and microscope. This data is recorded on a Problem Report (PR) form, and the next step in window processing is performed by stress analysts at KSC and JSC.
+
+1.2 Window Damage Analysis
+
+The strength of the thermal pane is important because the pane must remain intact throughout all flight regimes so that it may provide the thermal protection it is designed for. During the launch and entry phase of flight the thermal pane has a pressure load across it; this load provides the design stresses for the window. Since the pane's strength is directly related to its surface condition, any damages on a window can greatly reduce the strength. The purpose of a post-flight stress analysis for a damaged window is to determine whether the pane has enough residual strength to remain installed. Stress analysts use the depth of the flaw in a formula that NASA has determined will give a conservative estimate of the residual strength. The analysis also includes an assessment of the remaining life of the window, since glass strength decreases with time under load. Damaged windows that cannot show adequate life or strength are removed from the vehicle and usually scrapped. In some cases, the window can be flipped over and installed in the opposite position in the vehicle. Each
+
+window costs the Government between $30,000 and $50,000. As of December 1994, 45 windows have
+
+been replaced because of impact damage, at an average rate of one window for every 10.8 days in orbit.
+
+2. Window Impact History
+
+The PR's record all damages above a certain size and usually differentiate between impact pits, scratches and bruises, since the morphology is quite different for these three types of damage. However, very small features (those smaller than .0006" depth) may not be accurately identified all the time. Inspectors are not required to report damages with depth less than .0006". Scratches in a window's surface are caused by handling and tool contact and are not counted in the impact history. Bruises are thought to be caused by impact, but it is believed that they are evidence of low velocity events that occur on the ground or during atmospheric flight. Bruises are not counted in the orbital impact history. Hypervelocityimpactpitsinfusedsilicahaveveryspecificcharacteristics.Thevisiblecrateris roughlycircular,withacentralpitidentifiedbydensercrazing.Figure2 showsasketchof atypical crater. E_ctedMat_w_ M_ Ewt,_'wS,,lac_Spal / C_nh_
+
+2.1 Impact count
+
+Typical hypervelocity crater in fused silica glass Figure 2 A total of 177 impacts has been reported since STS-1. The number of reported impacts per flight day fits a Poisson distribution reasonably well, as shown in Figure 3. All impact events are not reported, because many craters are too small to detect with our current techniques and because flight safety is not affected by impact craters smaller than .0006" in depth. omparison of flight data with Poisson distributior_
+
+..............................................................................___I
+
+._ 25
+
+E
+
+¢- 0 1 2 Irr_etedda y I-- flight data -- poissondistributionI meanrate = .31 impactspermission<lay Figure 3 Figure4 showstheprogramhistoryof impactsandremovals.Thenoticeableincreaseinreported impactsmaybeduetorecentlyimprovedinspectionproceduresatKSC.Someof theimpactsreported inrecentflightsmaybeartifactsfromearliermissions. >_ 20 tY 3 15 [Window Impacts & Removals by Flight I
+
+[ L,,,,.,Je.,.L.,,,.,d............, , ,..1 3 5 7 9 41¢ 41(] 51C 5_ 51P 51.,1 _ 511. 27 80 _ _lm Sll M _1/ 4D d G G 48 _ 5,1 ,_5 51 61 | M
+
+_I 4 6 8 411B 411) 5IA 51/) 51G SU (_L_ 81C M M M :M, SB 41 35 M 43 44 45 MY 47 _ M $7 M M _ 64 M
+
+srs- Figure 4 The impacts are distributed among the windows relative to their position on the vehicle. Assuming the vehicle is flying with its nose in the velocity vector, the forward windows are expected to have the highest impact count, since they have the largest projected area when the Shuttle's longitudinal axis is in the velocity vector. The overhead and side hatch windows are expected to have the fewest impacts. Figure 5 shows the flight data, which demonstrates this expected impact distribution, except for the left middle and side windows, which have more and fewer impacts compared to the right windows, respectfully. A review of the Shuttle program's flight history 1 indicates that the right wing is directed into the velocity vector more frequently than the left, and the nose is in the velocity vector the most of any identifiable direction (see Figure 6). The "other" directions in Figure 6 comprise tail forward, bottom forward, and random or varied orientations. The discrepancies for the left side of the vehicle could be due to inspection errors; possibly the "other" velocity vector orientations are responsible for the unexpected distribution. Impact Distribution[ by Window Location
+
+4O
+
+_3o _. 10 Left OH Left Mid Rt _ Rt Side Left Side I.eft F_ RL Mid Window Figure 5 Velocity vector directions Percentage of time identified 57.6% 147% 14.2% nose fwd rt wing fwd OTHER overhead fwd left wing fwd Velocity Vector Direction Figure 6 IAItitude and Impact Rate I 0"" "" '' "" -" -
+
+120- 140 140- 160 160- 180 180- 210 230- 330
+
+altitude range (miles) I n mean ID standard deviationJ Ilmpactrate andinclinationj i>.0.6 0,4
+
+B
+
+0.2
+
+30 - 50 dog 57 dog 26.5 deg
+
+In©llnatlon J=mean ¢l_andard cleviatlon J Figure 7 Figure 8 Figure 7 and Figure 8 plot the mean impact rates by altitude and inclination. The altitude does not appear to be a factor in determining impact rate, but the high inclination missions have significantly higher impact rates than the 28.5 degree flights. Environment models predict that debris impacts at high inclinations will result in deeper craters than the same particle at a lower inclination, because of the differing relative speeds at the different inclinations.
+
+2.2 Removal count
+
+As shown in Figure 4, the replacement rate has not varied much over the history of the Shuttle program. The rate is plotted in Figure 9, which shows the flight-by-flight variations, the average for the whole program, and the predicted rate. The replacement rate predicted by the contractor at the beginning of the program only considered micro-meteoroid impacts, but used a penetration equation for fused silica that has since been shown to predict much deeper craters than more recently developed equations 2. Therefore, the predicted rate of replacement, which includes consideration of the impact rate as well as the effects of the damage on window strength, is reasonably close to the actual rate, which is due to the micrometeoroid and the man-made debris environments. 0.2 0.15 0.1 0,05 o- 0
+
+LL 0
+
+Orbiter Window Replacement Rate ! J Frequency of Replacement due to Damage I 200 400 Cumulate Days in Orbit through srs-66 6o0 I..g actualrate -- predictedrate ---avg.rate=.092I Figure 9 As stated earlier, whether or not a window is replaced after an impact pit is discovered depends on the stress analysis and life assessment performed by KSC and JSC engineers. Because of the nature of the window system design, the side and overhead windows are the most sensitive to impact damage. Figure10showsthatthesidewindowshavebeenreplacedthemostfrequently.Thesensitivityof these windowsisespeciallyobviousfortheoverheads,wherealmosteveryimpactdaJnagehasresultedina windowreplacement.Figure11showsthedistributionofimpactdepthsforall impactsandforimpact pitsthatresultedin windowreplacement. ...W.._!nd..Owreplac_e_m_e_._sby location I [ lo0 Let OH Let Mid Rt Fwd Let Side LeR Fwd Window Rt Side Rt Mid Figure 10
+
+Rt OH
+
+ID!_![!.b_.__!_0._n__0__[_!.m.Pa° t Depths I 1,1
+
+O
+
+lO o
+
+I 11
+
+i0 |1 /Ill i Ii I* ,ll_l -j 1 , i 1r t i la. _ i _L j i A m -- All impacts
+
+0 0.01 0.02 0.03
+
+Impact depth (In) mean depth of all impacts = .0046" mean depth of impacts resulting in removal = 0059" Figure 11
+
+3.0 Environment analysis
+
+The question is often raised: what was it that hit the window? The normal inspection technique does not go beyond measuring the dimensions of the pit. In most cases, there is no evidence of the original projectile visible in the crater, although there is often dirt on the window that is mistaken for projectile material. The only way to absolutely determine the source of the impact is to perform a Scanning Electron Microscope (SEM) analysis, and this requires destruction of the window in order to get the pit into the microscope stage. For the eleven windows specially analyzed in this way, Table I shows the results. 3 For three of these windows, not enough of the projectile remained in the crater for a determination of the projectile material, but the majority of these impacts were man-made debris. Another way to examine impact pits and determine some facts about the projectile has been developed through research in the JSC Hypervelocity Impact Test Facility (HITF). In this research, 65 disks of fused silica glass were used as targets in a light gas gun. Each disk was shot once, with a varietyof projectilediametersandmaterialsandwithinarangeof velocitiesfrom2km/sto8km/s. Measurementsof thepitdiametersanddepthsweremadewiththesametechniqueusedatKSCon Shuttlewindows.Thediametersanddepthswerethenanalyzedtodetermineapenetrationequationfor fusedsilica.4 Figure 12 shows the spaU diameters plotted as a function of the impact's normal momentum. The equation relating spall diameter to momentum is: DI _-.0184 (mpV*p)._ (1) This equation is 88% correlated. A similar relationship exists between spall diameter and impact energy, but the penetration depth and impact parameters are not yet correlated with any comparable confidence. Mission
+
+STS-7
+
+STS 41D
+
+Window Pit Dia. Right middle .14" Left side .075 STS 41G Left side .053 STS 41G Right forward .089 STS 61B Left side .02
+
+STS-30
+
+STS-31
+
+Right side .10 Right side .055 STS-50 Right forward .28 STS-50 L. Overhead STS-50 Right side .033 .0605 STS-59 side hatch .44 Pit Origin Depth .0171" paint chip .008 debris .007 debris .0113 micrometeoroid .0009 micrometeoroid .0115 unknown .01 unknown .0224 titanium (debris) .00286 unknown .00447 micrometeoroid .0222 paint chip Table I Ispa!!d!ametervs. impact momentumI 0.08 _,._0.06 _0.04 t_ 0.02
+
+• Test data
+
+I
+
+0 5 10 15 20
+
+Normal momentum (g-m/s) Figure 12 By using this well correlated relationship between impact momentum ,and spall diameter, ,an investigator can make certain deductions about the projectile source for any particular impact. The lowearth orbit projectile enviromnent consists of natural material traveling through the solar system and man-made debris orbiting around the earth. The natural material can have velocities relative to the Space Shuttle ranging from 0 to 70 km/s, according to some scientists. The man-made debris is limited to a maximum velocity of two times orbital speed, or about 14 km/s. The two types of projectiles also have different densities in most cases; natural material is low density, and man-made debris is mostly alloy pieces, with densities ranging from aluminum to steel ,and denser metals. SEM analysis of the eleven windows described above has also indicated that the impact velocity range can be deduced from evidence of melted glass in the crater (see [4]). The properties of fused silica give a lower bound for material melting to occur at impacts around 6 krn/s. Faster impacts will result in qualitatively different craters than slower, displaying more molten silica and less cracking and crazing under SEM examination. Figure 13 plots the distribution of the estimated projectile diameters, based on assumptions about the impact parameters of debris particles and micrometeoroids, and using equation (1).
+
+5O
+
+Diameter distribution I Estimatedprojecl_led_me_rs I '_ 30 Q.
+
+*6 2O
+
+IE-07 1E_06 1E-05 00001 0.001
+
+diameter {m) oot assume debns velocity = 10 km/s, density = 2.8 g/cc assume m.meteomid velecity = 20 km/s, density = 5 g/cc -- debris I re.meteoroid J Figure 13
+
+4.0 Remedies and research
+
+4.1 Improving inspection techniques
+
+With the increase in Shuttle mission length and the renewed emphasis on efficient operations at KSC, NASA has been developing an automated, digital inspection technique. This new system will attach to the Orbiter structure outside a window. A camera system will scan the entire surface of the window, recording any defect in the surface that exceeds the appropriate criteria. The images will be recorded digitally for review by a technician and stored in a log of the window pane's history. The equipment necessary to do the scanning and digitizing is widely available; the hardware and software developments for measuring feature depth are the remaining challenges. This new equipment will remove the inspector from the most tedious part of the job, the detailed inspection of the window surfaces. This will hopefully reduce human errors in detecting impacts. It may also replace our current technique of pit measurement, using digital technology instead of mold impressions.Inadditionto theexpectedimprovementinproblemreporting,theimpactdatabasecan thenincludemanysmallerfeatures,insteadofonlythosedeemed"reportable"byourflightsafety concerns.KSCexpectsto implementthenewequipmentsoon.
+
+4.2 Changing mission planning and operations
+
+While tracking the impact data for the Shuttle windows, it became clear that certain missions were more damaging than others. The relationship between impact rate and vehicle attitude was examined. We concluded the obvious: flying with the windows pointing into the ram projectile flux would result in more window impacts. Planning vehicle attitudes for a Shuttle mission involves many considerations other than avoiding window impacts, such as navigation, communications, satellite rendezvous, astronomy, earth observations, thermal conditioning, waste management, etc. However, we found that there were many times when a default orientation was selected, and that frequently this default orientation put the windows into the velocity vector. A flight rule was written requiring a default attitude that protects the windows. Such an orientation is always selected unless other mission requirements supersede the rule. This rule was implemented beginning with STS-53, in December 1992. The effect of this new rule can be seen in Figure 8. STS-53 occurred around 320 cumulative days on that graph, where the replacement rate dropped off slightly. Around the same time of this rule change, the inspection procedures were reviewed and improved (see Figure 4). The possible changes in replacement rate due improvements in flight operations might have been mitigated by the more strenuous inspection. Also, recent mission planning might be precluding window protective attitudes because of other mission requirements.
+
+4.3 Changing analysis techniques
+
+The research effort described in section 3.0 was undertaken partly to derive a better definition of the relationship between impact pits and the window's residual strength. The techniques currently in use predict low strengths and result in more windows being replaced than may be necessary. 5 No change to the current techniques will be made until NASA has confidence that a new analysis method will provide the same level of risk or better. Continuing research is focusing on identifying exactly what part of the impact crater controls the residual strength of the glass, and how this feature is related to known impact parameters. 6
+
+4.4 Retesting removed windows
+
+Because our analysis techniques predict window strength much lower than it actually is, we have initiated a program to recertify scrapped windows for flight. Damaged windows are returned to the vendor and put through a proof test procedure similar to the acceptance testing they experienced before they were delivered to NASA. This new effort should result in more reusable windows for the Shuttle program. It is expected that a very large percentage of damaged windows will pass the screening test and be reinstated into the spares supply.
+
+4.5 Designing a better window
+
+The Shuttle thermal panes function quite well as impact shields for the pressure panes. The small damages found on these external windows are not a danger to crew safety during the flight in which they occur; the windows are replaced during vehicle maintenance because the stresses of the next flight might cause the damaged thermal pane to fracture. It has been suggested several times in the history of this program to use thicker glass in the thermal pane, so that the window would not be as sensitive to suchsmallimpacts.Thismodificationwouldcertainlyresultinfewerwindowreplacements,buta thicker window would just raise the threshold of minimum crater depth before replacement is required. There will always be impacts that damage a window too much. The Shuttle has never experienced an orbital impact that penetrated the windows or caused a through crack in the thermal pane. An impact of this magnitude would penetrate the aluminum skin of the fuselage as well, so the windows are not the most sensitive part of the vehicle. Thicker glass in the thermal pane would not increase the safety of the vehicle to any discemable degree. The Space Station program has designed their windows to have a replaceable sacrificial pane protecting the pressure windows. This fused silica pane does not have to carry any thermal loads or pressure loads, so it is a thinner piece of glass than the Shuttle thermal panes. Space Station maintenance is expected to include replacing this sacrificial pane only as it becomes necessary to improve visibility through the window.
+
+5.0 Summary
+
+This review of the Shuttle windows' impact history has shown that the orbital environment is an important element in the design of a space vehicle. Shuttle maintenance and safety are both affected quite significantly by the number of particles present in low earth orbit and by the operational decisions made when flying through them. High inclination missions are worse than low, as the environment models predict, which indicates, along with Table I, that man-made debris particles are causing the majority of window impacts. NASA is trying several strategies to reduce the maintenance costs generated by this environment.

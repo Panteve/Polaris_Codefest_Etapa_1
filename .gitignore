@@ -237,4 +237,8 @@ Fase_2_Chunking/chunking-jsons/salida_json/
 Fase_2_Chunking/salida_pdf/
 Fase_1_limpieza/ocr_recuperacion_temp/
 Fase_3_Encoder/01_bge_m3_corpus/*.json
-Fase_3_Encoder/01_bge_m3_corpus/*.jsonl
+Fase_3_Encoder/01_bge_m3_corpus/*.json
+
+# Metadata e Ã­ndices FAISS generados
+**/metadata*
+**/*.faiss

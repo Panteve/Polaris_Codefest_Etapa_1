@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import time
 from pathlib import Path
 import faiss
 import numpy as np
@@ -26,12 +27,16 @@ print(f"[{LABEL}] Registros: {len(texts):,} | GPU: {used}", flush=True)
 model = SentenceTransformer(MODEL_NAME, device="cuda:0" if used else "cpu")
 pool = model.start_multi_process_pool(target_devices=[f"cuda:{i}" for i in range(used)]) if used > 1 else None
 vectors = []; step = args.batch_size * max(used, 1)
+started = time.perf_counter()
+next_milestone = 5
 try:
     for start in range(0, len(texts), step):
         batch = texts[start:start + step]
         encoded = model.encode(batch, pool=pool, batch_size=args.batch_size, chunk_size=args.batch_size, show_progress_bar=False, convert_to_numpy=True) if pool else model.encode(batch, batch_size=args.batch_size, show_progress_bar=False, convert_to_numpy=True, normalize_embeddings=True)
         encoded = np.asarray(encoded, dtype="float32"); encoded /= np.maximum(np.linalg.norm(encoded, axis=1, keepdims=True), 1e-12); vectors.append(encoded)
-        print(f"[{LABEL}] {start + len(batch):,}/{len(texts):,}", flush=True)
+        done = start + len(batch); percent = done * 100 / len(texts)
+        while next_milestone <= 100 and percent >= next_milestone:
+            elapsed = max(time.perf_counter() - started, 1e-9); print(f"[{LABEL}] {done:,}/{len(texts):,} ({next_milestone}%) | {done / elapsed:.1f} registros/s | {elapsed:.1f}s", flush=True); next_milestone += 5
 finally:
     if pool: model.stop_multi_process_pool(pool)
 matrix = np.concatenate(vectors); index = faiss.IndexFlatIP(matrix.shape[1]); index.add(matrix); faiss.write_index(index, args.output_index)

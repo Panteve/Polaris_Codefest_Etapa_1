@@ -1,0 +1,81 @@
+[
+  {
+    "query_id": "q001",
+    "documents": [
+      {
+        "rank": 1,
+        "doc_id": "DOC-001779"
+      },
+      {
+        "rank": 2,
+        "doc_id": "DOC-001799"
+      },
+      {
+        "rank": 3,
+        "doc_id": "DOC-000373"
+      }
+    ],
+    "fragments": [
+      {
+        "rank": 1,
+        "chunk_id": "DOC-001799-CH-0051",
+        "doc_id": "DOC-001799",
+        "text": "Intelligence, which highlights the need ‘to better understand and mitigate the risk of AI being misused to assist in development or use’ of chemical, biological, radiological and nuclear (CBRN) threats. In June 2024 the US Department of Homeland Security produced a report that aimed to evaluate ‘the potential for AI to be misused to enable the development or production of CBRN threats’, as well as the ‘benefits and application of AI to counter these threats’. 63 However, the report ‘only addresses nuclear and radiological threats insofar as they share common features in ideation, production, and dissemination with chemical and biological agents and toxins’, rather than focusing on NC3. 64 Beyond threats, the USA also conducts research into beneficial applications of AI– nuclear integration. 65 In March 2024 the National Nuclear Security Administration (US NNSA) within the US Department of Energy (DOE) released the Artificial Intelligence for Nuclear Deterrence Strategy 2023 which explored the use of AI and ML, including in nuclear security."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "DOC-000373-CH-0077",
+        "doc_id": "DOC-000373",
+        "text": "The most powerful AI systems may pose novel national security risks in the near future in areas such as cyberattacks and the development of chemical, biological, radiological, nuclear, or explosives (CBRNE) weapons, as well as novel security vulnerabilities. Because America currently leads on AI capabilities, the risks present in American frontier models are likely to be a preview for what foreign adversaries will possess in the near future. Understanding the nature of these risks as they emerge is vital for national defense and homeland security."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "DOC-000346-CH-0008",
+        "doc_id": "DOC-000346",
+        "text": "Artificial intelligence (AI)1is rapidly changing our world and has significant potential to transform society and people’s lives. According to the National Institute of Standards and Technology (NIST), remarkable surges in AI capabilities have led to a wide range of innovations including autonomous vehicles and Internet of Things devices in our homes.2It also holds substantial promise for improving the operations of government agencies. According to a supplement to the President’s fiscal year 2023 budget submission, agencies have requested $1.8 billion for nondefense research and development investment in AI.3In addition, according to an executive order (EO) issued in December 2020, agencies are already using AI operationally to combat fraud, identify information security threats, and facilitate the review of large datasets, among other uses.4"
+      },
+      {
+        "rank": 4,
+        "chunk_id": "DOC-000327-CH-0114",
+        "doc_id": "DOC-000327",
+        "text": "Governments, without exception, understand the importance of emerging technologies for ensur- ing national security. Unmanned systems have already altered military tactics and by extension, strategy. 1 Artificial intelligence, specifically generative tools, informs everything from law enforce- ment to intelligence analysis. 2 To lack access to the benefits provided by emerging technology is to be at a disadvantage. Yet, unlike past periods of innovation, states, with a few exceptions, are not driving today’s technological advances. It is the private firms of Silicon Valley, Shenzhen, Tokyo, and other urban concentration points that generate progress. To adopt these critical technolo- gies into national security institutions requires partnership with private firms and the associated research and development pipelines. 3 How public-private partnerships will evolve remains unclear. These partnerships, particularly within and among liberal democracies, are not easily accomplished nor sustained. Contemporary governments adopt national security tools through complex and laborious processes for private sector firms already within government systems. For new actors seeking to work with government institutions, the hurdles can often seem impossible. Hesitancy, even outright apprehension, exists for the adoption of technologies even when declared as government policies. This reflects larger apprehensions regarding emerging technologies. In the case of artificial intelligence, research shows that despite the explosion of use of artificial intelligence models, “…trust remains pre- carious – only 62% of business leaders and 52% of employees believe AI is deployed responsibly within their organizations.” 4"
+      },
+      {
+        "rank": 5,
+        "chunk_id": "DOC-001779-CH-0048",
+        "doc_id": "DOC-001779",
+        "text": "The development of AI-enabled non-nuclear weapons with strategic effect may be particularly appealing to states—both nuclear armed and non-nuclear armed—that are technologically less advanced or face resource constraints. AI presents an opportunity to develop asymmetric capabilities that could potentially alter the nuclear balance without requiring a full-scale nuclear arsenal. 61 Amid growing doubts about the cred ibility of US security guarantees and its shifting domestic and international priorities, for instance, US-allied states in East Asia such as Japan may seek to enhance their counter-NC3 capabilities. These include cyber capabilities and electronic attack capabi lities that could extend to efforts to disrupt or neutralize key elements of an adversary’s NC3 systems (e.g. radar and communications systems). 62 However, such moves to fill the vacuum left by weaker US guarantees could heighten strategic instability in the region, being perceived by other nuclear-armed states (e.g. China or North Korea) as escalatory. 63 Notably, AI-guided uncrewed aerial vehicles (UAVs)—with enhanced capabilities in target recognition and navigation in contested environments—that were deployed on a large scale by Ukrainian forces in 2024 and 2025 have targeted and damaged Russian early-warning radar sites, early-warning aircraft and strategic bombers. 64"
+      },
+      {
+        "rank": 6,
+        "chunk_id": "DOC-001779-CH-0092",
+        "doc_id": "DOC-001779",
+        "text": "To translate concern into action, states should develop operational principles and standards at the national level—such as on domestic oversight, life cycle safety protocols and regulation of high-risk AI use. Industry partnerships and built-in safety mechanisms can also promote responsible integration. States might also consider limits or bans on AI use in nuclear-delivery systems and other high-risk platforms, through self-restraint, export controls or arms control initiatives. Targeted CBMs—such as transparency on national policies on the application of AI in nuclear and nuclear- related weapon systems and crisis-communication hotlines focused on AI-enabled systems incidents—can reduce ambiguity and misperception. Given current geopolitical tensions and asymmetries in AI capabilities and risk perceptions, governance at a multilateral level will be challenging. In the near term, leveraging existing forums and inviting states’ submissions constitute pragmatic action that could help build momentum towards a more formal regulatory framework."
+      },
+      {
+        "rank": 7,
+        "chunk_id": "DOC-001779-CH-0088",
+        "doc_id": "DOC-001779",
+        "text": "forward. In the USA, AI already augments key aspects of maintaining the safety, security and reliability of the nuclear stockpile through modelling and simulations; transforming the nuclear weapon life cycle from the discovery of new materials to design optimization, manufacturing and ongoing surveillance; and enhancing non- proliferation through detecting and characterizing illicit nuclear activities worldwide with the analysis of vast quantities of data from diverse sources. 119 Similarly, in India there are indications that AI has aided in missile production; in life cycle management and adaptability upgrades from inertial navigation to laser-guided systems; and to circumvent such countermeasures as electronic jamming and uncrewed systems. 120 Ensuring the reliability of AI in these and other functions (e.g. safeguarding critical facilities) will bolster strategic stability. Moreover, private enterprises can contribute significantly to reducing nuclear risk. For example, some work by OpenAI and Microsoft at the USA’s Los Alamos National Laboratory is ‘focused on reducing the risk of nuclear war and securing nuclear materials and weapons worldwide’. 121 Anthropic, an AI software company, has partnered with the US National Nuclear Security Administration (NNSA) to develop an AI classi fier that identifies potentially harmful nuclear-related conversations."
+      },
+      {
+        "rank": 8,
+        "chunk_id": "DOC-000438-CH-0013",
+        "doc_id": "DOC-000438",
+        "text": "interconnectivity, and growing cyber vulnerabilities. Emerging technologies, including AI, machine learning, big data, IoT, cloud computing, quantum technol- ogy, and 5G, were mainly seen as risk multipliers that enable new forms of hybrid and asymmetric threats. That is why AI was presented not only as a capability for defensive purposes, but also as a tool that can be maliciously exploited by organ- ised crime, cybercriminals, hacktivists, terrorists, and state-linked actors. In this regard, it might be worth noting that AI was framed more as a source of anxiety rather than as an instrument of strategic agency or technological sovereignty. The document also highlighted concerns that AI and related technologies could facilitate more advanced cyberattacks, offensive operations, and coordinated cross-border manipulation. It pointed out that as emerging technologies spread, the threat environment becomes more complex and volatile, especially as non- state actors gain access to advanced capabilities. At the same time, it recognised that AI-driven systems introduce operational challenges for securing large volumes of data circulating within increasingly digital defence ecosystems. The strategy connected technological progress to trends in weapon design, indicating that AI and autonomy will shape future platforms and sensor-rich systems. Essentially, AI was seen mainly as a disruptive, dual-use technology that heightens vulnerabilities, enlarges attack surfaces, and accelerates arms races, underscoring the importance of defensive preparedness rather than providing a clear strategy for leveraging AI as a strategic military asset."
+      },
+      {
+        "rank": 9,
+        "chunk_id": "DOC-001779-CH-0031",
+        "doc_id": "DOC-001779",
+        "text": "For instance, a May 2024 report issued by the USA’s Lawrence Livermore National Laboratory highlights threats to the sea-launched leg of the US nuclear triad due to breakthroughs in anti-submarine warfare technology, enhanced by AI, quantum computing, advanced sensing and autonomous systems. 35 It makes the case for a mobile ICBM system as a means to address vulnerabilities exposed by AI and advanced sensors that threaten the survivability of the USA’s fleet of nuclear-powered ballistic missile submarines (SSBNs). Work by Tsinghua University’s Center for International Security and Strategy (CISS) also suggests that AI technology has the potential to enhance US reconnaissance capabilities, with China and Russia increasingly worried that improved ‘technology for tracking and homing in on mobile missile launchers will, once it"
+      },
+      {
+        "rank": 10,
+        "chunk_id": "DOC-001447-CH-0000",
+        "doc_id": "DOC-001447",
+        "text": "Resumen A medida que la dimensión digital se integra de manera más profunda en la sociedad, también lo hace en las operaciones militares, al identificarse el avance de diversas amenazas y vulnerabilidades en el ciberespacio que, de no ser gestionadas, pueden comprometer los activos críticos de un país. Ante este escenario, la adopción de tecnologías emergentes como la Inteligencia Artificial (IA), se presenta como un elemento estratégico para la seguridad nacional desde el campo de la ciberdefensa. Este artículo explora el impacto y el potencial de la IA en la ciberdefensa, destacando su rol crucial en la protección de activos digitales y en el fortalecimiento de las capacidades militares en un mundo cada vez más digitalizado. Examina cómo la IA permite la automatización de tareas y mejora la respuesta ante ciberamenazas, además de su aplicación en áreas como el reconocimiento de patrones, la toma de decisiones y la logística. Sin embargo, para que los países en desarrollo puedan aprovechar plenamente estas tecnologías, es fundamental adoptar un enfoque holístico que combine la adquisición de herramientas avanzadas con una formación y experimentación adecuadas. AI 11"
+      }
+    ]
+  }
+]
