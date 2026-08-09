@@ -159,7 +159,10 @@ def encode_document_windows(document, items, tokenizer, model, model_device, win
                 and token_start + window_char_start < chunk_end
             ]
             if local:
-                accumulators[position].append(hidden[local].mean(dim=0).cpu().numpy().astype("float32"))
+                # NumPy no soporta directamente bfloat16; normalizamos la
+                # salida del modelo a float32 antes de moverla a CPU.
+                pooled = hidden[local].mean(dim=0).float().cpu().numpy().astype("float32")
+                accumulators[position].append(pooled)
     vectors = {}
     for position, values in accumulators.items():
         if not values:
@@ -177,7 +180,9 @@ def main() -> None:
     parser.add_argument("--input-root", type=Path, default=DEFAULT_INPUT_ROOT)
     parser.add_argument("--output-index", type=Path, default=DEFAULT_OUTPUT_ROOT / "index.faiss")
     parser.add_argument("--device", default="auto", choices=("auto", "cuda", "cpu"))
-    parser.add_argument("--window-tokens", type=int, default=2048)
+    # Granite admite ventanas de hasta 32k tokens. No imponemos la ventana
+    # reducida de 2048 que se usaba como protección de memoria.
+    parser.add_argument("--window-tokens", type=int, default=32768)
     # Kaggle/Colab agrega argumentos internos como -f y --HistoryManager.
     args, _ = parser.parse_known_args()
     input_root = args.input_root.resolve()
@@ -202,6 +207,7 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-embedding-311m-multilingual-r2")
     model = AutoModel.from_pretrained("ibm-granite/granite-embedding-311m-multilingual-r2").to(device)
     model.eval()
+    print("[Granite late] Modelo cargado. Iniciando codificacion de documentos...", flush=True)
     vectors = [None] * len(records)
     total_documents = len(grouped)
     started = time.perf_counter()
@@ -212,9 +218,15 @@ def main() -> None:
             raise FileNotFoundError(f"No hay manifiesto para {doc_id}.")
         source = find_document(Path(source_info["archivo_final"]), manifest_path, input_root)
         document = normalise_text(source.read_text(encoding="utf-8", errors="replace"))
+        print(
+            f"[Granite late] Iniciando documento {document_number:,}/{total_documents:,}: "
+            f"{doc_id} | caracteres: {len(document):,}",
+            flush=True,
+        )
         encoded_vectors = encode_document_windows(document, items, tokenizer, model, device, args.window_tokens)
         for position, vector in encoded_vectors.items():
             vectors[position] = vector
+        print(f"[Granite late] Documento terminado: {doc_id}", flush=True)
         percent = document_number * 100 / total_documents
         while next_milestone <= 100 and percent >= next_milestone:
             elapsed = max(time.perf_counter() - started, 1e-9)
