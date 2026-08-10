@@ -25,6 +25,25 @@ En modo comparativo, las respuestas se mostrarÃ¡n en tarjetas separadas, ident
 
 La comparaciÃ³n debe permitir revisar los 3 documentos y los 10 fragmentos de cada configuraciÃ³n. Si una configuraciÃ³n falla, las demÃ¡s deben seguir mostrando sus resultados.
 
+## 1B. Versiones de los scripts de recuperaciÃ³n
+
+Cada carpeta de recuperaciÃ³n podrÃ¡ contener varias versiones del script, por ejemplo:
+
+```text
+01_bge_m3_corpus/
+├── recuperar_V1.py
+├── recuperar_V2.py
+└── recuperar_V3.py
+```
+
+Node.js debe detectar automÃ¡ticamente los archivos que cumplan el patrÃ³n `recuperar_VN.py` y exponer sus versiones en la lista de configuraciones. La interfaz mostrarÃ¡ un selector de versiÃ³n dentro de cada tarjeta.
+
+El usuario podrÃ¡ elegir una versiÃ³n para la vista individual. En la vista comparativa, cada configuraciÃ³n seleccionada podrÃ¡ usar la versiÃ³n que el usuario elija. Si no se selecciona una versiÃ³n, se usarÃ¡ la mÃ¡s reciente por nÃºmero de versiÃ³n.
+
+Para mantener compatibilidad con las carpetas actuales, un archivo llamado `recuperar.py` sin sufijo se registrarÃ¡ como versiÃ³n `base`.
+
+La versiÃ³n elegida debe aparecer en la tarjeta de resultados y en el historial de la consulta. Node.js debe validar la combinaciÃ³n `configuracion + version` contra los archivos detectados y nunca aceptar rutas de script enviadas directamente por el navegador.
+
 ## 2. Objetivo
 
 Construir un visor local para comparar y revisar visualmente las respuestas producidas por las distintas recuperaciones de la fase 4.1.
@@ -225,6 +244,32 @@ Reglas del adaptador:
 - Se conservarán los identificadores originales; la interfaz no los debe reemplazar.
 - Se podrá mostrar una alerta si no hay exactamente 3 documentos o 10 fragmentos.
 
+## 7A. SelecciÃ³n de versiÃ³n
+
+La respuesta de `GET /api/configuraciones` incluirÃ¡ las versiones encontradas para cada carpeta:
+
+```json
+[
+  {
+    "id": "01_bge_m3_corpus",
+    "nombre": "BGE-M3 — corpus",
+    "versiones": ["V1", "V2", "V3"]
+  }
+]
+```
+
+La peticiÃ³n de ejecuciÃ³n incluirÃ¡ la versiÃ³n elegida:
+
+```json
+{
+  "configuracion": "01_bge_m3_corpus",
+  "version": "V2",
+  "pregunta": "Texto de la pregunta"
+}
+```
+
+Node.js resolverÃ¡ internamente `01_bge_m3_corpus + V2` hacia `recuperar_V2.py`. La interfaz no enviarÃ¡ rutas de archivos ni comandos completos.
+
 ## 8. Requisitos funcionales
 
 ### RF-01 — Carga de configuraciones
@@ -269,6 +314,18 @@ La interfaz debe informar si falta `resultados.json`, si el archivo no es válid
 ### RF-09 — Reinicio local
 
 Debe existir un botón “Recargar datos” para volver a leer los archivos sin reiniciar la aplicación.
+
+### RF-00A — Versiones de recuperador
+
+Cada configuraciÃ³n mostrarÃ¡ las versiones de script detectadas en un selector. El usuario podrÃ¡ escoger la versiÃ³n antes de ejecutar una consulta.
+
+### RF-00B — Versiones en comparaciÃ³n
+
+En una comparaciÃ³n, cada configuraciÃ³n conservarÃ¡ su versiÃ³n seleccionada y la interfaz mostrarÃ¡ esa versiÃ³n en el resultado correspondiente.
+
+### RF-00C — VersiÃ³n predeterminada
+
+Si el usuario no cambia el selector, se usarÃ¡ la versiÃ³n mÃ¡s reciente detectada. Las carpetas que solo tengan `recuperar.py` usarÃ¡n la versiÃ³n `base`.
 
 ## 9. Requisitos no funcionales
 
