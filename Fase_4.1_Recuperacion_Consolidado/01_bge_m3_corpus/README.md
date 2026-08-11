@@ -1,6 +1,6 @@
-# Recuperación con BGE-M3 y FAISS
+﻿# Recuperación con BGE-M3 y FAISS
 
-Este módulo consulta el índice generado en la Fase 3 usando el mismo encoder
+Este módulo consulta el índice disponible en la carpeta actual usando el mismo encoder
 `BAAI/bge-m3`. La metadata se lee en el orden original y se valida contra el
 número de vectores del índice para evitar recuperar un texto equivocado.
 
@@ -8,86 +8,75 @@ número de vectores del índice para evitar recuperar un texto equivocado.
 
 Para cada pregunta, el script realiza este flujo:
 
-1. Recupera una cantidad configurable de chunks candidatos desde FAISS.
-2. Agrupa los chunks recuperados por `doc_id`.
-3. Calcula la puntuación de cada documento usando el promedio (`mean`) de sus
-   3 mejores chunks, o la suma (`sum`) de las puntuaciones de sus chunks
-   candidatos.
-4. Devuelve los 3 documentos con mayor puntuación agregada.
-5. Muestra y guarda únicamente los 10 chunks mejor puntuados.
+1. Codifica la pregunta con el encoder configurado.
+2. Normaliza el embedding de la pregunta, igual que durante la indexación.
+3. Ejecuta una búsqueda directa de los vecinos más cercanos en FAISS.
+4. Conserva el orden y el score entregados por FAISS.
+5. Devuelve hasta 3 documentos distintos y hasta `top-k` fragmentos.
 
-Por defecto se utilizan 20 chunks candidatos y el promedio de puntuaciones:
+No se aplica reranking, agrupación de chunks, promedio de scores, suma de
+scores, expansión de contexto ni generación de texto. Los filtros opcionales
+solo descartan resultados después de la búsqueda y no cambian el ranking.
+
+Por defecto se utilizan:
 
 ```text
-candidate_chunks = 20
-doc_score = mean
-mean_top_chunks = 3
-fragments_in_output = 10
+model = BAAI/bge-m3
+top_k = 20
+threshold = -1.0
+fragments_in_output = hasta 10
 ```
 
-Los 20 chunks se usan para calcular el ranking de documentos, pero nunca se
-entregan completos en la salida. La salida queda limitada a 10 fragmentos.
-Cuando se usa `mean`, un documento con menos de 3 chunks recuperados utiliza
-los que tenga disponibles.
+## Uso
 
 Desde la raíz del proyecto:
 
 ```powershell
-python .\Fase_4_Recuperacion\01_bge_m3_corpus\recuperar.py
+python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V1.py
 ```
 
 El programa abre una consola interactiva. Para una sola pregunta:
 
 ```powershell
-python .\Fase_4_Recuperacion\01_bge_m3_corpus\recuperar.py `
+python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V1.py `
     --query "¿Qué capacidades de inteligencia artificial se destacan?"
 ```
 
-Para guardar las respuestas como JSON Lines:
+Para guardar las respuestas como JSON Lines y JSON normal:
 
 ```powershell
-python .\Fase_4_Recuperacion\01_bge_m3_corpus\recuperar.py `
-    --output .\Fase_4_Recuperacion\resultados.jsonl
+python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V1.py `
+    --output .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\resultado.jsonl `
+    --output-json .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\resultado.json
 ```
 
-El programa genera automáticamente `resultados.json` en esta carpeta, como un
-arreglo JSON normal. Para elegir otra ruta:
-
-```powershell
-python .\Fase_4_Recuperacion\01_bge_m3_corpus\recuperar.py `
-    --output-json .\Fase_4_Recuperacion\resultados.json
-```
-
-Se pueden usar `--output` y `--output-json` al mismo tiempo.
-
-Los filtros opcionales son `--fenomeno 1`, `--idioma es` y `--formato pdf`.
-Por defecto se recuperan 20 chunks candidatos, se agrupan por documento y se
-calcula el promedio de sus puntuaciones. La salida muestra siempre solo los 10
-mejores fragmentos. Estos valores se pueden controlar así:
-
-```powershell
-python .\Fase_4_Recuperacion\01_bge_m3_corpus\recuperar.py `
-    --candidate-chunks 20 `
-    --doc-score mean
-```
-
-Para puntuar cada documento por la suma de sus chunks candidatos usa
-`--doc-score sum`. También se puede aplicar un umbral con `--threshold 0.35` y
-seleccionar dispositivo con `--device cuda`.
-
-Parámetros principales:
+## Parámetros
 
 | Parámetro | Por defecto | Descripción |
-|---|---:|---|
-| `--candidate-chunks` | `20` | Cantidad de chunks usados para puntuar documentos. Debe ser mínimo `10`. |
-| `--doc-score` | `mean` | Agregación por documento: promedio de los 3 mejores chunks (`mean`) o suma de todos los chunks candidatos (`sum`). |
-| salida de fragmentos | `10` | Cantidad fija de fragmentos mostrados y guardados. |
-| `--threshold` | `-1.0` | Umbral mínimo de similitud para aceptar un chunk. |
+|---|---|---|
+| `--query` | interactivo | Ejecuta una sola pregunta y termina. |
+| `--top-k` | `20` | Cantidad máxima de vecinos directos solicitados a FAISS. |
+| `--model` | `BAAI/bge-m3` | Encoder para codificar la consulta. Debe coincidir con el índice. |
+| `--device` | automático | Dispositivo de ejecución, por ejemplo `cpu` o `cuda`. |
+| `--index` | `Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\index.faiss` | Ruta del índice FAISS. |
+| `--metadata` | `Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\metadata.jsonl` | Ruta de la metadata JSONL. |
+| `--output-json` | `resultado.json` | Ruta del arreglo JSON de salida. |
+| `--output` | sin archivo | Ruta opcional para salida JSON Lines. |
+| `--threshold` | `-1.0` | Score mínimo para conservar un vecino. |
+| `--fenomeno` | sin filtro | Filtra por fenómeno `1`, `2` o `3`. |
+| `--idioma` | sin filtro | Filtra por idioma, por ejemplo `es`, `en` o `pt`. |
+| `--formato` | sin filtro | Filtra por formato, por ejemplo `pdf`, `json` o `txt`. |
 
-Por defecto usa los artefactos de `Fase_3_Encoder\01_bge_m3_corpus`:
-`index.faiss` y `metadata.jsonl`.
+Ejemplo con parámetros configurables:
 
-El resto de configuraciones tiene su propia carpeta dentro de
-`Fase_4_Recuperacion`, con un `recuperar.py` y un README independientes. La
-configuración `02_hibrido` usa un único script para combinar BGE-M3 no-PDF y
-Granite late PDF.
+```powershell
+python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V1.py `
+    --top-k 20 `
+    --threshold 0.35 `
+    --device cpu `
+    --idioma es `
+    --formato pdf
+```
+
+Los artefactos usados por defecto son los de
+`Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus`: `index.faiss` y `metadata.jsonl`.
