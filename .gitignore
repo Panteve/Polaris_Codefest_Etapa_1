@@ -216,4 +216,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-Fase_1_Limpieza/input/
+
+Fase_1_limpieza/input/
+Fase_1_limpieza/outputs_historicos/
+Fase_1_limpieza/output_final_limpio/
+Fase_1_limpieza/output_post_limpieza/
+*.rar
+Fase_1_limpieza/cambio de extractor pdf/
+!Fase_1_limpieza/cambio de extractor pdf/package.json
+!Fase_1_limpieza/cambio de extractor pdf/*.py
+!Fase_1_limpieza/cambio de extractor pdf/*.mjs
+Fase_1_limpieza/output final/
+
+Fase_2_Chunking\chunking-pdfs\pdfs_standard_objetivo-200palabras_max-250_solapamiento-0_bge_m3
+
+# Salidas generadas de chunking y metadata; conservar scripts y documentación
+Fase_2_Chunking/chunking-pdfs/pdfs_*/
+Fase_2_Chunking/chunking-otros/salida_otros/
+Fase_2_Chunking/chunking-jsons/salida_json/
+Fase_2_Chunking/salida_pdf/
+Fase_1_limpieza/ocr_recuperacion_temp/
+Fase_3_Encoder/01_bge_m3_corpus/*.json
+Fase_3_Encoder/01_bge_m3_corpus/*.json
+
+# Metadata e Ã­ndices FAISS generados
+**/metadata*
+**/*.faiss
