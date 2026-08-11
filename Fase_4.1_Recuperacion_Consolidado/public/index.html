@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visor de recuperaciones · Fase 4.1</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">Fase 4.1</p><h1>Visor de recuperaciones</h1><p class="subtitle">Explora y compara resultados sin salir de tu equipo.</p></div>
+    <button id="reload" class="button secondary">Recargar datos</button>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="section-heading"><div><p class="eyebrow">Fuentes</p><h2>Configuraciones</h2></div><span id="config-count" class="count">0</span></div>
+      <div class="selection-actions"><button id="select-all" class="link-button">Seleccionar todas</button><button id="clear-all" class="link-button">Limpiar</button></div>
+      <div id="configurations" class="config-list" aria-live="polite"></div>
+      <button id="compare" class="button primary full" disabled>Comparar seleccionadas</button>
+    </aside>
+    <section class="content">
+      <div id="notice" class="notice hidden" role="status"></div>
+      <section class="query-panel">
+        <div class="section-heading"><div><p class="eyebrow">Consulta</p><h2>Pregunta a recuperar</h2></div><span id="mode-label" class="pill">Vista individual</span></div>
+        <div class="query-row"><textarea id="question" rows="2" placeholder="Escribe una pregunta…"></textarea><button id="retrieve" class="button primary">Recuperar</button></div>
+        <div class="validation-source"><div class="saved-queries"><label for="validation-select">Preguntas de validación</label><select id="validation-select"><option value="">Cargando catálogo…</option></select></div><p id="expected-answer" class="expected-answer hidden"></p></div>
+        <div id="saved-queries" class="saved-queries hidden"><label for="query-select">Resultados guardados</label><select id="query-select"></select></div>
+      </section>
+      <section id="results" class="results" aria-live="polite"><div class="empty-state"><span class="empty-icon">✦</span><h2>Selecciona una configuración</h2><p>Elige una fuente para revisar sus resultados o compararla con otras.</p></div></section>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

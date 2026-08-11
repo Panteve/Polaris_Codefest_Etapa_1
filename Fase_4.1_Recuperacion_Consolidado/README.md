@@ -51,3 +51,28 @@ python .\Fase_4.1_Recuperacion_Consolidado\03_granite_corpus\recuperar_V1.py `
 
 Los scripts escriben los resultados en la carpeta de su configuración y no
 importan ningún otro recuperador.
+
+## Visor local
+
+La carpeta incluye un visor local para consultar los `resultados.json` disponibles,
+seleccionar la versión de cada recuperador y comparar dos o más configuraciones.
+No requiere instalar dependencias de Node.js.
+
+Desde esta carpeta, inicia el servidor con:
+
+```powershell
+node server.js
+```
+
+Después abre `http://127.0.0.1:3000`. El servidor solo escucha en la interfaz
+local. La ejecución bajo demanda de los scripts Python usa la combinación de
+configuración y versión detectada por el servidor; el navegador nunca envía una
+ruta de archivo ni un comando.
+
+El visor expone las rutas locales `GET /api/configuraciones`,
+`GET /api/resultados`, `GET /api/preguntas`, `GET /api/preguntas-validacion`,
+`POST /api/recuperar` y `GET /api/health`. El catálogo
+`Validacion_20_Preguntas/preguntas_validacion_20.jsonl` aparece en la interfaz
+como preguntas predefinidas e incluye la respuesta esperada para facilitar la
+revisión de cada recuperación. Las configuraciones sin `resultados.json` se
+pueden consultar bajo demanda si su script y sus dependencias Python están disponibles.
