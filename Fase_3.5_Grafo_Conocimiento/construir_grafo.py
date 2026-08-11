@@ -67,7 +67,7 @@ def load(path: Path):
     return rows
 
 def build(rows, max_entities_per_chunk=30):
-    g = nx.MultiDiGraph(name="CODEFEST AD ASTRA 2026 Knowledge Graph")
+    g = nx.MultiDiGraph(name="Polaris Knowledge Graph")
     phenomena = {}
     counts = Counter()
     for i, row in enumerate(rows):
