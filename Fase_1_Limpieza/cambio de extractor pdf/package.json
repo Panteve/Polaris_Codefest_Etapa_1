@@ -1,0 +1,13 @@
+{
+  "name": "polaris-pdf-inspector-fase-1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependencia Node para extraer Markdown de PDFs con PDF Inspector",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@firecrawl/pdf-inspector": "^1.11.1"
+  }
+}

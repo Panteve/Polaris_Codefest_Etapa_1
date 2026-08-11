@@ -1,0 +1,81 @@
+[
+  {
+    "query_id": "q001",
+    "documents": [
+      {
+        "rank": 1,
+        "doc_id": "DOC-000339"
+      },
+      {
+        "rank": 2,
+        "doc_id": "DOC-000346"
+      },
+      {
+        "rank": 3,
+        "doc_id": "DOC-000001"
+      }
+    ],
+    "fragments": [
+      {
+        "rank": 1,
+        "chunk_id": "DOC-000339-CH-0049",
+        "doc_id": "DOC-000339",
+        "text": "AI provides expertise or experience that may otherwise be hard to come-by. It may be knowledge of many programming languages, knowing the word-for-word contents of a 500-page cybersecurity standard, or the best practices for configuring a firewall. This may be especially applicable to organizations that cannot afford top human talent."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "DOC-000346-CH-0008",
+        "doc_id": "DOC-000346",
+        "text": "Artificial intelligence (AI)1is rapidly changing our world and has significant potential to transform society and people’s lives. According to the National Institute of Standards and Technology (NIST), remarkable surges in AI capabilities have led to a wide range of innovations including autonomous vehicles and Internet of Things devices in our homes.2It also holds substantial promise for improving the operations of government agencies. According to a supplement to the President’s fiscal year 2023 budget submission, agencies have requested $1.8 billion for nondefense research and development investment in AI.3In addition, according to an executive order (EO) issued in December 2020, agencies are already using AI operationally to combat fraud, identify information security threats, and facilitate the review of large datasets, among other uses.4"
+      },
+      {
+        "rank": 3,
+        "chunk_id": "DOC-000001-CH-0084",
+        "doc_id": "DOC-000001",
+        "text": "Stanford, Udacity The importance of recent progress in Artificial Intelligence cannot be overstated. The field of AI has been around for more than 60 years, and it has had significant impact. AI is at the core of Google's search algorithms, Amazon's site design and Netflix's movie recommendations. But the advent of powerful computers paired with data set of unprecedented scale will be a game changer for society. In just the past few years, systems have been developed that rival or even outperform highly skilled people. Deep Mind's AlphaGo beats the world's best go players. In our own lab, we found that AI systems can diagnose skin cancer in images more accurately than some of the best board-certified dermatologists. I have long maintained that the Google self-driving car drives better than average drivers like myself. And the team is now operating these cars on public roads without the need of a safety driver. And Cresta, a start-up company, has shown that AI systems teamed with human specialists can double the efficacy of online sales teams. I believe that in the not-so-distant future, AI will be able to free us from repetitive work. AI systems will be able to watch human experts at work, and gradually acquire the skills we bring to bear in our daily work. As this happens, more and more repetitive work will be done by the machines, freeing us up to pursue more creative work."
+      },
+      {
+        "rank": 4,
+        "chunk_id": "DOC-000009-CH-0995",
+        "doc_id": "DOC-000009",
+        "text": "9.2.2). U.S. adults are more likely than AI experts to anticipate negative effects on metacognition (53% vs. 36%), defined as the ability to think analytically about one’s own thinking process, and decision-making (48% vs. 30%), which refers to problem-solving abilities. For social and emotional intelligence, defined as the ability to understand and manage social interactions, 51% of U.S. adults and 34% of experts expect AI to have a negative impact. Concern about mental well-being is high for both groups, with 55% of adults and 53% of experts saying AI will have a negative effect. **Impact of AI on key human capacities and traits: general public vs. experts** Source: Elon University, 2025 | Chart: 2026 AI Index report Social and emotional intelligence, the ability 55% to understand and manage social interactions 50% Metacognition, the ability to think analytically 53% about thinking 36% Capacity and willingness to think deeply about 53% complex concepts 50% Empathy and application of moral judgment 45% 49% Individual agency, the ability to act 49% independently in the world 44% Decision-making and problem-solving abilities 30% 48% Innovative thinking and creativity 30% 45% Con�dence in their own native abilities 43% 48% Mental well-being 42% 45% Self-identity, meaning, and purpose in life 39% 42% Trust in widely shared values and cultural norms 41% 48% U.S. adults AI experts Curiosity and capacity to learn 29% 38%"
+      },
+      {
+        "rank": 5,
+        "chunk_id": "DOC-000323-CH-0004",
+        "doc_id": "DOC-000323",
+        "text": "As satellites become more capable, major U.S. space stakeholders must integrate artificial intelligence (AI) to preserve operational advantage. In 2020, Russia demonstrated an ability to closely shadow and subsequently test space-based weapons in the vicinity of U.S. satellites. 7 In 2022, China—using its Shijian-class satellites—demonstrated an ability to tow other satellites out of their mission orbits. 8 These activities highlight an emerging threat: the ability of adversaries to exploit norms of behavior in space to gain first-mover advantage. Denying that advantage—through resilient, responsive systems—is central to deterrence in space. AI can help U.S. space forces avoid operational surprise in orbit. While AI has already transformed other space functions—such as intelligence, surveillance, and reconnaissance, two functions in particular stand to gain significant maturity: space domain awareness (SDA) and orbital warfare. These functions are critical to space control, and methodical application of AI to these areas would accelerate tactical decision-making, enhance satellite survivability, and increase orbital responsiveness. This paper examines how AI can augment SDA and orbital warfare capabilities, and outlines the policy recommendations needed to responsibly field such tools in future satellite architectures."
+      },
+      {
+        "rank": 6,
+        "chunk_id": "DOC-000444-CH-0304",
+        "doc_id": "DOC-000444",
+        "text": "|el campo de la inteligencia artificial (IA) se ha|victoria que eran completamente imprevistas|al., 2018), que analiza vídeos para etiquetar la pose|POR IA:| |disparado. Gran parte de la promesa de la IA en las|y clasificadas como conocimientos altamente|de los animales, lo que permite una caracterización|Las simulaciones numéricas de última generación| |ciencias se deriva de su capacidad para descubrir|creativos por expertos en el juego del Go. Uno de|más precisa del comportamiento animal (tanto|utilizadas para validar la teoría frente a| |(o ‘’aprender’’) estructuras en grandes conjuntos|sus sucesores, AlphaFold (Jumper et al., 2021), un|de individuos como de grupos sociales) durante|conjuntos de datos a gran escala en campos| |de datos y utilizar esta estructura para hacer|modelo basado en IA que predice la estructura|grabaciones o perturbaciones neuronales. También|como la climatología, la cosmología, la física de| |predicciones o realizar tareas. Los campos de la IA|3D de las proteínas a partir de la secuencia 1D de|se utilizan algoritmos de segmentación y seguimiento|partículas y la energía de fusión han alcanzado|"
+      },
+      {
+        "rank": 7,
+        "chunk_id": "DOC-000443-CH-0306",
+        "doc_id": "DOC-000443",
+        "text": "|el campo de la inteligencia artificial (IA) se ha|victoria que eran completamente imprevistas|al., 2018), que analiza vídeos para etiquetar la pose|POR IA:| |disparado. Gran parte de la promesa de la IA en las|y clasificadas como conocimientos altamente|de los animales, lo que permite una caracterización|Las simulaciones numéricas de última generación| |ciencias se deriva de su capacidad para descubrir|creativos por expertos en el juego del Go. Uno de|más precisa del comportamiento animal (tanto|utilizadas para validar la teoría frente a| |(o ‘’aprender’’) estructuras en grandes conjuntos|sus sucesores, AlphaFold (Jumper et al., 2021), un|de individuos como de grupos sociales) durante|conjuntos de datos a gran escala en campos| |de datos y utilizar esta estructura para hacer|modelo basado en IA que predice la estructura|grabaciones o perturbaciones neuronales. También|como la climatología, la cosmología, la física de| |predicciones o realizar tareas. Los campos de la IA|3D de las proteínas a partir de la secuencia 1D de|se utilizan algoritmos de segmentación y seguimiento|partículas y la energía de fusión han alcanzado|"
+      },
+      {
+        "rank": 8,
+        "chunk_id": "DOC-000006-CH-0598",
+        "doc_id": "DOC-000006",
+        "text": "**Artificial Intelligence:** AIOps (Artificial Intelligence for IT Operations), Applications of Artificial Intelligence, Artificial General Intelligence, Artificial Intelligence, Artificial Intelligence Development, Artificial Intelligence Markup Language (AIML), Artificial Intelligence Systems, Azure Cognitive Services, Baidu, Cognitive Automation, Cognitive Computing, Computational Intelligence, Cortana, Expert Systems, Intelligent Control, Intelligent Systems, Interactive Kiosk, IPSoft Amelia, Knowledge-Based Configuration, Knowledge-Based Systems, Multi-Agent Systems, Open Neural Network Exchange (ONNX), OpenAI Gym, Reasoning Systems, Soft Computing, Syman, Watson Conversation, Watson Studio, Weka **Artificial Intelligence** **Appendix** **Index Report 2023** **Chapter 4: The Economy** **Autonomous Driving:** Advanced Driver Assistance Systems, Autonomous Cruise Control Systems, Autonomous System, Autonomous Vehicles, Guidance Navigation and Control Systems, Light Detection and Ranging (LiDAR), OpenCV, Path Analysis, Path Finding, Remote Sensing, Unmanned Aerial Systems (UAS) **Natural Language Processing (NLP):** Amazon Textract, ANTLR, BERT (NLP Model), Chatbot, Computational Linguistics, DeepSpeech, Dialog Systems, fastText, Fuzzy Logic, Handwriting Recognition, Hugging Face (NLP Framework), HuggingFace Transformers, Intelligent Agent, Intelligent Software Assistant, Intelligent Virtual Assistant, Kaldi, Latent Dirichlet Allocation, Lexalytics, Machine Translation, Microsoft LUIS, Natural Language Generation, Natural Language Processing, Natural Language Processing Systems, Natural Language Programming, Natural Language Toolkits, Natural Language Understanding, Natural Language User Interface, Nearest Neighbour Algorithm, OpenNLP, Optical Character Recognition (OCR), Screen Reader, Semantic Analysis, Semantic Interpretation for Speech Recognition, Semantic Parsing, Semantic Search, Sentiment Analysis, Seq2Seq, Speech Recognition, Speech Recognition Software, Statistical Language Acquisition, Text Mining, Tokenization, Voice Interaction, Voice User Interface, Word Embedding, Word2Vec Models"
+      },
+      {
+        "rank": 9,
+        "chunk_id": "DOC-000444-CH-0046",
+        "doc_id": "DOC-000444",
+        "text": "dos capacidades principales. En primer lugar, debido a su dependencia de las redes neuronales artificiales, requieren un cálculo paralelo masivo de unidades muy simples: las neuronas artificiales. En segundo lugar, debido a la enorme cantidad de datos utilizados durante la fase de entrenamiento, requieren una transferencia de datos muy rápida entre los recursos de almacenamiento y computación. Estas dos capacidades críticas no están presentes en las instalaciones HPC tradicionales, lo que las hace inadecuadas para implementar modelos de IA. En la actualidad, la principal infraestructura de apoyo a la I+D en IA se basa en las denominadas unidades de procesamiento gráfico o GPU. Las GPU, diseñadas originalmente para satisfacer las limitaciones en tiempo real de las tareas gráficas, como las animaciones visuales, están especialmente concebidas para realizar de forma masiva cálculos sencillos en paralelo. La falta de instalaciones computacionales basadas en GPUs o equipos computacionales similares es actualmente una de las principales debilidades"
+      },
+      {
+        "rank": 10,
+        "chunk_id": "DOC-000443-CH-0047",
+        "doc_id": "DOC-000443",
+        "text": "dos capacidades principales. En primer lugar, debido a su dependencia de las redes neuronales artificiales, requieren un cálculo paralelo masivo de unidades muy simples: las neuronas artificiales. En segundo lugar, debido a la enorme cantidad de datos utilizados durante la fase de entrenamiento, requieren una transferencia de datos muy rápida entre los recursos de almacenamiento y computación. Estas dos capacidades críticas no están presentes en las instalaciones HPC tradicionales, lo que las hace inadecuadas para implementar modelos de IA. En la actualidad, la principal infraestructura de apoyo a la I+D en IA se basa en las denominadas unidades de procesamiento gráfico o GPU. Las GPU, diseñadas originalmente para satisfacer las limitaciones en tiempo real de las tareas gráficas, como las animaciones visuales, están especialmente concebidas para realizar de forma masiva cálculos sencillos en paralelo. La falta de instalaciones computacionales basadas en GPUs o equipos computacionales similares es actualmente una de las principales debilidades"
+      }
+    ]
+  }
+]

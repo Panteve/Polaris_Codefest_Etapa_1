@@ -1,8 +1,10 @@
 # Dependencias recomendadas. El pipeline funciona parcialmente sin ellas y
 # registra advertencias para los formatos que no pueda leer.
 pypdf>=5.0
+cryptography>=3.1
 beautifulsoup4>=4.12
 openpyxl>=3.1
 langdetect>=1.0.9
 pillow>=10.0
 pytesseract>=0.3.10
+openai>=1.0.0

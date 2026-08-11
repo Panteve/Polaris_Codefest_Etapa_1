@@ -105,7 +105,6 @@ Antes de limpiar, se recomienda crear un inventario con una fila por archivo:
 | `formato` | Extensión o tipo real del archivo |
 | `fenomeno` | Fenómeno 1, 2 o 3 |
 | `tamano_bytes` | Tamaño del archivo |
-| `checksum` | Huella para detectar cambios o duplicados exactos |
 | `estado` | Pendiente, procesado, con advertencias o fallido |
 | `idioma` | Idioma predominante detectado |
 | `metodo_extraccion` | Parser, OCR, lector tabular, lector PBF, etc. |
@@ -318,11 +317,12 @@ Conviene conservar tres niveles:
 ```text
 datos/
 ├── originales/          # Archivos entregados por ADL, sin modificar
-├── extraidos/           # Texto bruto obtenido por los parsers u OCR
-├── limpios/             # Texto normalizado listo para chunking
+├── misma/               # Estructura relativa replicada en la salida
+│   └── ruta/documento.txt  # Texto normalizado listo para chunking
 ├── metadata/            # Un registro por documento
 ├── reportes_calidad/    # Métricas, advertencias y muestras de revisión
-└── manifiesto.jsonl     # Mapeo estable de documentos
+├── manifiesto_global.json # Mapeo global de documentos
+└── F1_.../manifiesto.json # Mapeo granular por fenómeno
 ```
 
 Ejemplo de registro de documento:
@@ -335,7 +335,6 @@ Ejemplo de registro de documento:
   "fenomeno": 1,
   "idioma": "es",
   "metodo_extraccion": "parser_pdf",
-  "checksum": "…",
   "estado": "procesado",
   "advertencias": [],
   "version_pipeline": "1.0.0"
@@ -347,7 +346,7 @@ Los campos adicionales son recomendaciones operativas. Los campos obligatorios d
 ## 10. Flujo recomendado de ejecución
 
 1. Congelar una copia de los archivos originales.
-2. Crear el inventario y calcular checksums.
+2. Crear el inventario y asignar los `doc_id` según el orden global.
 3. Asignar los `doc_id`.
 4. Validar que el tipo real de cada archivo coincida con su extensión.
 5. Extraer contenido con un método específico por formato.
@@ -433,7 +432,34 @@ Un documento se considera listo para chunking cuando:
 
 El corpus completo está listo cuando todos los originales aparecen en el manifiesto y cada uno tiene estado `procesado`, `procesado_con_advertencias_aceptadas` o `excluido_con_justificacion`.
 
-## 14. Relación con el paso siguiente
+## 14. Segunda pasada asistida para PDF
+
+Despues de la primera limpieza, el directorio `output/` contiene los `.txt`
+limpios iniciales y sus manifiestos por fenomeno. Sobre esa salida se puede
+ejecutar una segunda pasada con `limpiar_con_subagente.py`.
+
+Esta segunda pasada esta pensada principalmente para PDF, porque son los
+documentos donde aparecen con mas frecuencia portadas, pies de pagina,
+bibliografias, DOI, creditos editoriales y bloques repetidos derivados de la
+maquetacion. Por defecto el subagente procesa solo documentos cuyo `formato`
+original sea `pdf`.
+
+La limitacion a PDF es una decision operativa por costo de API y tiempo de
+ejecucion. En una version ideal del pipeline, el script deberia permitir pasar
+todos los formatos al subagente para revisar y organizar mejor boilerplate,
+metadata y estructura en JSON, CSV, XLSX, HTML, imagenes u otros textos ya
+extraidos.
+
+Los `.txt` de JSON, CSV, XLSX, imagenes u otros formatos que ya quedaron limpios
+en `output/` no necesitan pasar por el subagente. Al unir los manifiestos de la
+segunda pasada, esos archivos se copian tal cual a `output_post_limpieza/`,
+conservando su ruta relativa, su `doc_id` y la metadata original. En el
+manifiesto final quedan marcados como `procesado_inicial`.
+
+La salida que debe alimentar el chunking es `output_post_limpieza/` junto con
+`output_post_limpieza/manifiesto_post_limpieza.json`.
+
+## 15. Relación con el paso siguiente
 
 El texto aprobado será la entrada del chunking. En esa etapa se deberá:
 
@@ -448,7 +474,7 @@ El texto aprobado será la entrada del chunking. En esa etapa se deberá:
 
 Aunque la salida final limita cada fragmento reportado a 250 palabras, ese requisito no debe resolverse destruyendo oraciones durante la limpieza. Los límites se controlarán al diseñar el chunking y al construir la salida de recuperación.
 
-## 15. Checklist breve
+## 16. Checklist breve
 
 ### Antes
 
