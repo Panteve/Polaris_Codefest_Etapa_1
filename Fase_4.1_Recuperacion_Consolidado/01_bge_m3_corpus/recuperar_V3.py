@@ -10,6 +10,7 @@ MODEL_NAME = "BAAI/bge-m3"
 RERANKER_NAME = "BAAI/bge-reranker-v2-m3"
 FOLDER = Path(__file__).resolve().parent
 NEAR_DUPLICATE_THRESHOLD = 0.90
+DEFAULT_QUESTIONS_PATH = FOLDER.parent / "Validacion_20_Preguntas" / "ground_truth_15_preguntas.json"
 
 def read_metadata(path: Path) -> list[dict[str, Any]]:
     records = []
@@ -90,17 +91,15 @@ def load_questions(path: Path) -> list[tuple[str, str]]:
 
 def main():
     parser = argparse.ArgumentParser(description="Recuperacion BGE-M3 V3 con deduplicacion, reranking, MMR y mean pooling.")
-    parser.add_argument("--query"); parser.add_argument("--questions", type=Path, help="Archivo JSON con un arreglo de preguntas."); parser.add_argument("--recall-top-k", type=int, default=50); parser.add_argument("--output-top-k", type=int, default=10); parser.add_argument("--model", default=MODEL_NAME); parser.add_argument("--reranker-model", default=RERANKER_NAME); parser.add_argument("--mmr-lambda", type=float, default=0.7); parser.add_argument("--near-duplicate-threshold", type=float, default=NEAR_DUPLICATE_THRESHOLD); parser.add_argument("--device", default=None); parser.add_argument("--index", type=Path, default=FOLDER / "index.faiss"); parser.add_argument("--metadata", type=Path, default=FOLDER / "metadata.jsonl"); parser.add_argument("--output-json", type=Path, default=FOLDER / "resultado_v3.json"); parser.add_argument("--output", type=Path); parser.add_argument("--threshold", type=float, default=-1.0); parser.add_argument("--fenomeno", type=int, choices=(1, 2, 3)); parser.add_argument("--idioma"); parser.add_argument("--formato")
+    parser.add_argument("--query"); parser.add_argument("--questions", type=Path, default=DEFAULT_QUESTIONS_PATH, help="Archivo JSON con un arreglo de preguntas."); parser.add_argument("--recall-top-k", type=int, default=100); parser.add_argument("--output-top-k", type=int, default=10); parser.add_argument("--model", default=MODEL_NAME); parser.add_argument("--reranker-model", default=RERANKER_NAME); parser.add_argument("--mmr-lambda", type=float, default=0.7); parser.add_argument("--near-duplicate-threshold", type=float, default=NEAR_DUPLICATE_THRESHOLD); parser.add_argument("--device", default=None); parser.add_argument("--index", type=Path, default=FOLDER / "index.faiss"); parser.add_argument("--metadata", type=Path, default=FOLDER / "metadata.jsonl"); parser.add_argument("--output-json", type=Path, default=FOLDER / "resultado_v3.json"); parser.add_argument("--output", type=Path); parser.add_argument("--threshold", type=float, default=-1.0); parser.add_argument("--fenomeno", type=int, choices=(1, 2, 3)); parser.add_argument("--idioma"); parser.add_argument("--formato")
     args = parser.parse_args()
     if args.recall_top_k < 1 or args.output_top_k < 1 or not 0 <= args.mmr_lambda <= 1 or not 0 <= args.near_duplicate_threshold <= 1: raise ValueError("Parametros invalidos.")
     if not args.index.exists() or not args.metadata.exists(): raise FileNotFoundError("No existe el indice o la metadata.")
     index, records = faiss.read_index(str(args.index)), read_metadata(args.metadata)
     if index.ntotal != len(records): raise ValueError("El indice y la metadata no coinciden.")
     encoder, reranker = SentenceTransformer(args.model, device=args.device), CrossEncoder(args.reranker_model, device=args.device)
-    if args.query and args.questions: raise ValueError("Usa --query o --questions, no ambos.")
-    questions = [("q001", args.query)] if args.query else (load_questions(args.questions) if args.questions else None); output_handle = args.output.open("w", encoding="utf-8") if args.output else None; results = []
+    questions = [("q001", args.query)] if args.query else load_questions(args.questions); output_handle = args.output.open("w", encoding="utf-8") if args.output else None; results = []
     try:
-        if questions is None: questions = iter(lambda: ("q001", input("Pregunta> ")), ("q001", "salir"))
         for number, (query_id, question) in enumerate(questions, 1):
             result = retrieve(question, encoder, reranker, index, records, args); result["query_id"] = query_id; results.append(result); print(json.dumps(result, ensure_ascii=False))
             if output_handle: output_handle.write(json.dumps(result, ensure_ascii=False) + "\n")

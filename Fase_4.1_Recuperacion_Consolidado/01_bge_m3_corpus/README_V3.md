@@ -1,6 +1,6 @@
 # Recuperación V3 con BGE-M3 y FAISS
 
-La V3 mantiene el recall ampliado, el reranking, MMR y el mean pooling de la
+La V3 usa por defecto el archivo `Validacion_20_Preguntas/ground_truth_15_preguntas.json` y un recall de **100**. Mantiene el recall ampliado, el reranking, MMR y el mean pooling de la
 V2, y añade deduplicación exacta y semántica para evitar resultados repetidos.
 
 Flujo:
@@ -16,7 +16,7 @@ Flujo:
 ```powershell
 python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V3.py `
   --query "Escribe aquí la consulta" `
-  --recall-top-k 50 `
+  --recall-top-k 100 `
   --output-top-k 10 `
   --near-duplicate-threshold 0.90 `
   --device cpu
@@ -31,7 +31,7 @@ python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V3.py `
 python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V3.py `
   --questions .\ground_truth_15_preguntas.json `
   --output-json .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\resultado_v3_preguntas.json `
-  --recall-top-k 50 `
+  --recall-top-k 100 `
   --output-top-k 10 `
   --device cpu
 ```
@@ -39,3 +39,9 @@ python .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\recuperar_V3.py `
 El archivo debe ser un arreglo JSON de objetos con `query_id` y `query`. La
 salida es un único arreglo JSON con una respuesta por pregunta, en el mismo
 orden de entrada.
+
+Para instalar las dependencias de esta configuración:
+
+```powershell
+pip install -r .\Fase_4.1_Recuperacion_Consolidado\01_bge_m3_corpus\requirements.txt
+```
