@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Métricas de evaluación · Fase 4.1</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/evaluacion.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">Fase 4.1 · Evaluación</p><h1>Métricas de recuperación</h1><p class="subtitle">Lee los reportes NDCG@10 y F1@3 generados por el evaluador.</p></div>
+    <div class="topbar-actions"><a class="button secondary" href="/">← Visor de resultados</a><button id="reload" class="button secondary">Recargar reportes</button></div>
+  </header>
+  <main class="page evaluation-page">
+    <section class="panel"><div class="section-heading"><div><p class="eyebrow">Reportes disponibles</p><h2>Selecciona una evaluación</h2><p class="help">Se detectan archivos <code>evaluacion*.json</code> en la raíz o en las carpetas de configuración.</p></div><span id="report-count" class="pill">0 reportes</span></div><div id="reports" class="report-list" aria-live="polite"></div></section>
+    <section id="notice" class="notice hidden" role="status"></section>
+    <section id="dashboard" class="hidden" aria-live="polite"></section>
+  </main>
+  <script src="/evaluacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+[
+  {
+    "query_id": "qa001",
+    "query": "¿Qué modelo de lenguaje fue el primero en alcanzar el rendimiento humano en la prueba MMLU?",
+    "fenomeno": 1,
+    "idioma_query": "es",
+    "tipo": "cross_lingual",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "texto_verbatim": "Gemini Ultra became the first LLM to reach human- level performance on the Massive Multitask Language Understanding (MMLU) benchmark; performance on the benchmark has improved by 15 percentage points since last year. Additionally, GPT-4 achieved an impressive 0.96 mean win rate score on the comprehensive Holistic Evaluation of Language Models (HELM) benchmark, which includes MMLU among other evaluations.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa002",
+    "query": "¿Cuántos ecosistemas pioneros de GEIAL profundizaron en los niveles de confianza para el trabajo colaborativo?",
+    "fenomeno": 1,
+    "idioma_query": "es",
+    "tipo": "numerico",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "RUTAN_informe-geial-latam.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "RUTAN_informe-geial-latam.pdf", "texto_verbatim": "Todos aquellos que contribuyeron a la construcci\u00f3n de inteli- gencia colectiva contenida en este informe son pioneros en este tipo de iniciativa, a nivel mundial, al haber lanzado un reporte que ofrece no solo nuevos datos y an\u00e1lisis en base a una metodolog\u00eda robusta y reconocida globalmente, sino tambi\u00e9n por haber tra- bajado por el desarrollo de sus ecosistemas a lo largo del proceso llevado a cabo durante 2023. Cada uno de los 17 ecosistemas par- ticipantes han, sin duda, profundizado en los niveles de confianza necesarios para el trabajo colaborativo en base a los resultados de un proceso estructurado.", "idioma": "es"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa003",
+    "query": "How many AI-related regulations were there in the United States in 2023, and how many were there in 2016?",
+    "fenomeno": 1,
+    "idioma_query": "en",
+    "tipo": "numerico",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "texto_verbatim": "The number of AI- related regulations in the U.S. has risen significantly in the past year and over the last five years. In 2023, there were 25 AI-related regulations, up from just one in 2016. Last year alone, the total number of AI-related regulations grew by 56.3%.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa004",
+    "query": "¿Cuál es una de las limitaciones de financiamiento identificadas para los emprendimientos dinámicos en sus primeras etapas?",
+    "fenomeno": 1,
+    "idioma_query": "es",
+    "tipo": "estandar",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "RUTAN_informe-geial-latam.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "RUTAN_informe-geial-latam.pdf", "texto_verbatim": "Igualmente importante es la falta de fondos en etapas iniciales. A excepci\u00f3n de las ciudades en Chile, la falta de apoyo consistente desde el sector p\u00fablico en forma de capital semilla, limita el desarrollo de propuestas de alto potencial que oxigenen el inicio del ciclo de vida de las empresas.", "idioma": "es"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa005",
+    "query": "How did the 2024 AI Index describe generative-AI investment, and what U.S. private AI investment figure did the 2025 report give for 2024?",
+    "fenomeno": 1,
+    "idioma_query": "en",
+    "tipo": "multi_documento",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "relevancia": "alta"},
+        {"fuente": "AIINDEX_ai-index-report-2025.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "AIINDEX_ai-index-report-2024.pdf", "texto_verbatim": "Despite a decline in overall AI private investment last year, funding for generative AI surged, nearly octupling from 2022 to reach $25.2 billion. Major players in the generative AI space, including OpenAI, Anthropic, Hugging Face, and Inflection, reported substantial fundraising rounds.", "idioma": "en"},
+        {"fuente": "AIINDEX_ai-index-report-2025.pdf", "texto_verbatim": "In 2024, U.S. private AI investment grew to $109.1 billion\u2014nearly 12 times China\u2019s $9.3 billion and 24 times the U.K.\u2019s $4.5 billion. Generative AI saw particularly strong momentum, attracting $33.9 billion globally in private investment\u2014an 18.7% increase from 2023.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa006",
+    "query": "¿Cómo define el documento en portugués el primer desafío para la estabilidad del entorno espacial?",
+    "fenomeno": 2,
+    "idioma_query": "es",
+    "tipo": "cross_lingual",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SWF_investimento-respons-vel-no-setor-espacial.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SWF_investimento-respons-vel-no-setor-espacial.pdf", "texto_verbatim": "O crescimento da economia espacial (e a geração de retornos a partir dela) será mais fácil se o ambiente for estável. Existem riscos para essa estabilidade. Esses riscos começam com os perigos naturais; o espaço é um ambiente operacional hostil, no qual fatores naturais (que vão desde o clima solar e a radiação até micrometeoróides) podem afetar negati- vamente as operações de satélites e outros sistemas espaciais. As ativ- idades humanas estão introduzindo riscos adicionais nesse ambiente naturalmente perigoso. O primeiro desafio são os detritos espaciais (space debris), que são os satélites inoperantes, corpos de foguetes e objetos fragmentados no espaço que não têm mais utilidade. Um se- gundo desafio fundamental é o congestionamento orbital e a necessi- dade de coordenação associada a ele.", "idioma": "pt"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa007",
+    "query": "Which five categories does the Spanish counterspace report use to assess capabilities?",
+    "fenomeno": 2,
+    "idioma_query": "en",
+    "tipo": "cross_lingual",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SWF_2025-executive-summary-spanish.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SWF_2025-executive-summary-spanish.pdf", "texto_verbatim": "Este informe recopila y evalúa información disponible públicamente sobre las capacidades contraespaciales que están desarrollando varios países en cinco categorías: ascenso directo, coorbital, guerra electrónica, energía dirigida y cibernética (ciberespacio). El informe evalúa las capacidades actuales y futuras a corto plazo para cada país, junto con su potencial uso militar. La evidencia muestra una importante investigación y desarrollo de una amplia gama de capacidades contraespaciales destructivas y no destructivas en varios países.", "idioma": "es"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa008",
+    "query": "Quanto as empresas espaciais atraíram em investimentos globais em 2025?",
+    "fenomeno": 2,
+    "idioma_query": "pt",
+    "tipo": "numerico",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SWF_investimento-respons-vel-no-setor-espacial.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SWF_investimento-respons-vel-no-setor-espacial.pdf", "texto_verbatim": "Analistas da Space Capital, empresa de capital de risco especializada no setor espacial, estimaram que as empresas espaciais atraíram US$ 55,3 bilhões em*Um Guia de Gestão Responsável para a Geração de Valor Sustentável* investimentos globalmente em 2025, mais do que o dobro do total **2** registrado em 2024 pela mesma empresa.", "idioma": "pt"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa009",
+    "query": "What categories does the 2026 Global Counterspace Capabilities report use in its assessment?",
+    "fenomeno": 2,
+    "idioma_query": "en",
+    "tipo": "estandar",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SWF_gcsr-2026-execsum-eng.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SWF_gcsr-2026-execsum-eng.pdf", "texto_verbatim": "This report compiles and assesses publicly available information on the counterspace capabilities being developed by multiple countries across five categories: co-orbital, direct-ascent, electronic warfare, directed energy, and cyber. It assesses the current and near-term future capabilities for each country, along with their potential military utility. The evidence shows significant research and development of a broad range of destructive and non-destructive counterspace capabilities in multiple countries.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa010",
+    "query": "How many operational electronic-warfare offensive counterspace systems does the report attribute to the United States?",
+    "fenomeno": 2,
+    "idioma_query": "en",
+    "tipo": "numerico",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SWF_gcsr-2026-execsum-eng.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SWF_gcsr-2026-execsum-eng.pdf", "texto_verbatim": "The United States has three operational electronic warfare (EW) off ensive counterspace systems: the Counter Communications System (CCS), which is deployed globally to provide uplink jamming capability against geostationary communications satellites; Meadowlands, an upgrade to CCS; and Remote Modular Terminal (RMT), an EW counterspace system that can be operated remotely.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa011",
+    "query": "¿Qué tres Espacios de Conversación Sociojurídica acompañó la MAPP/OEA en el marco de las iniciativas de paz urbana?",
+    "fenomeno": 3,
+    "idioma_query": "es",
+    "tipo": "estandar",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "MAPPOEA_informe-semestral-36-mappoea-1.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "MAPPOEA_informe-semestral-36-mappoea-1.pdf", "texto_verbatim": "La MAPP/OEA continuó acompañando las iniciativas de Paz urbana, apoyando la formalización de los acercamientos exploratorios a través de la instalación de tres Espacios de Conversación Sociojurídica en Medellín y Valle de Aburrá, Quibdó y Buenaventura, espacios que tienen como objetivo lograr el sometimiento a la justicia y el desmantelamiento de estos grupos. Tanto en Buenaventura como en Medellín y Quibdó, las autoridades regionales y locales, salientes y electas, incluyeron en sus empalmes las agendas de paz y derechos humanos.", "idioma": "es"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa012",
+    "query": "¿Qué PBI, PBI por habitante, número de efectivos y presupuesto de defensa reporta el Atlas 2024 para Colombia?",
+    "fenomeno": 3,
+    "idioma_query": "es",
+    "tipo": "numerico",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|PBI (en US$) 386.076.000.000|", "idioma": "es"},
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|PBI por habitante (en US$) 7.412|", "idioma": "es"},
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|Efectivos Fuerzas Armadas: 267.709|", "idioma": "es"},
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|Presupuesto de defensa (en US$) 8.131.785.035|", "idioma": "es"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa013",
+    "query": "What does SIPRI's report provide a comparative analysis of?",
+    "fenomeno": 3,
+    "idioma_query": "en",
+    "tipo": "estandar",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SIPRI_2025-autonomous-weapon-systems-and-ai-enabled-decision-support-systems-military-targeting-.json", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SIPRI_2025-autonomous-weapon-systems-and-ai-enabled-decision-support-systems-military-targeting-.json", "texto_verbatim": "This report provides a comparative analysis of autonomous weapon systems and artificial intelligence-enabled decision support systems used in in military targeting.", "idioma": "en"},
+        {"fuente": "SIPRI_2025-autonomous-weapon-systems-and-ai-enabled-decision-support-systems-military-targeting-.json", "texto_verbatim": "SIPRI is an independent international institute dedicated to research into conflict, armaments, arms control and disarmament. Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa014",
+    "query": "¿Qué principios del derecho internacional humanitario examina SIPRI al analizar el sesgo en sistemas militares de IA?",
+    "fenomeno": 3,
+    "idioma_query": "es",
+    "tipo": "cross_lingual",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "SIPRI_2025-bias-military-artificial-intelligence-and-compliance-international-humanitarian-law.json", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "SIPRI_2025-bias-military-artificial-intelligence-and-compliance-international-humanitarian-law.json", "texto_verbatim": "Drawing from insights gained during an expert workshop convened by SIPRI, this report explores the implications of bias in military AI for compliance with international humanitarian law (IHL). The report first unpacks what ‘bias in military AI’ refers to and what its causes are. Then, focusing on bias in AI-enabled autonomous weapon systems and AI-enabled decision support systems used for targeting, it examines the implications of bias for compliance with IHL, particularly the principles of distinction, proportionality and precautions in attack. Then, it outlines technical, operational and institutional measures to address bias and strengthen IHL compliance.", "idioma": "en"}
+      ]
+    }
+  },
+  {
+    "query_id": "qa015",
+    "query": "¿Qué PBI y presupuesto de defensa reporta el Atlas 2024 para Colombia y Brasil?",
+    "fenomeno": 3,
+    "idioma_query": "es",
+    "tipo": "multi_documento",
+    "ground_truth": {
+      "documentos_relevantes": [
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "relevancia": "alta"},
+        {"fuente": "RESDAL_03-esp-elpresupuesto.pdf", "relevancia": "alta"}
+      ],
+      "fragmentos_relevantes": [
+        {"fuente": "RESDAL_03-esp-elpresupuesto.pdf", "texto_verbatim": "||PBI (en US$)|Datos Generales Habitantes|Km\u00b2|Presupuesto de defensa (en US$)|", "idioma": "es"},
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|PBI (en US$) 386.076.000.000|", "idioma": "es"},
+        {"fuente": "RESDAL_13-esp-colombia.pdf", "texto_verbatim": "|Presupuesto de defensa (en US$) 8.131.785.035|", "idioma": "es"},
+        {"fuente": "RESDAL_03-esp-elpresupuesto.pdf", "texto_verbatim": "|Brasil|2.331.391.000.000|216.422.400|8.515.770|25.857.311.288|", "idioma": "es"}
+      ]
+    }
+  }
+]

@@ -30,12 +30,33 @@ function versionInfo(fileName) {
   return match ? { label: `V${match[1]}`, number: Number(match[1]), file: fileName } : null;
 }
 
+function resultInfo(fileName) {
+  const match = /^(?:resultado|resultados)(?:_(v\d+))?\.json$/i.exec(fileName);
+  if (!match) return null;
+  return { label: fileName, number: match[1] ? Number(match[1].slice(1)) : -1, file: fileName };
+}
+
+function evaluationInfo(fileName) {
+  return /^evaluacion(?:_.*)?\.json$/i.test(fileName)
+    ? { file: fileName }
+    : null;
+}
+
+function resultFileFor(directory, version = null) {
+  const files = fs.readdirSync(directory, { withFileTypes: true }).filter((item) => item.isFile()).map((item) => resultInfo(item.name)).filter(Boolean);
+  const selected = version ? files.find((item) => item.file === version || item.label === version) : files.sort((a, b) => b.number - a.number || a.file.localeCompare(b.file))[0];
+  if (selected) return { file: path.join(directory, selected.file), relative: selected.file };
+  return { file: path.join(directory, 'resultados.json'), relative: 'resultados.json' };
+}
+
 function discover() {
   return fs.readdirSync(ROOT, { withFileTypes: true })
     .filter(isConfigurationDirectory)
     .map((entry) => {
       const id = entry.name;
       const dir = path.join(ROOT, id);
+      const resultFiles = fs.readdirSync(dir, { withFileTypes: true }).map((item) => item.isFile() ? resultInfo(item.name) : null).filter(Boolean).sort((a, b) => b.number - a.number || a.file.localeCompare(b.file));
+      const result = resultFiles[0] ? { file: path.join(dir, resultFiles[0].file), relative: resultFiles[0].file } : resultFileFor(dir);
       const versions = fs.readdirSync(dir, { withFileTypes: true })
         .filter((item) => item.isFile())
         .map((item) => versionInfo(item.name))
@@ -45,13 +66,52 @@ function discover() {
       return {
         id,
         nombre: id.replace(/^\d+_/, '').replace(/_/g, ' '),
-        rutaResultados: `${id}/resultados.json`,
-        tieneResultados: fs.existsSync(path.join(dir, 'resultados.json')),
+        rutaResultados: `${id}/${result.relative}`,
+        tieneResultados: fs.existsSync(result.file),
         tienePreguntas: fs.existsSync(path.join(dir, 'preguntas.json')),
-        versiones: versions.map((item) => item.label),
-        versionPredeterminada: latest ? latest.label : null
+        versiones: resultFiles.map((item) => item.label),
+        versionPredeterminada: resultFiles[0]?.label || null,
+        archivosResultados: resultFiles.map((item) => item.file)
       };
     });
+}
+
+function discoverEvaluationReports() {
+  const reports = [];
+  const addDirectory = (directory, configurationId = null) => {
+    fs.readdirSync(directory, { withFileTypes: true })
+      .filter((item) => item.isFile() && evaluationInfo(item.name))
+      .forEach((item) => {
+        const relative = path.relative(ROOT, path.join(directory, item.name));
+        reports.push({
+          id: relative.replace(/\\/g, '/'),
+          archivo: item.name,
+          configuracion: configurationId,
+          nombre: configurationId ? configurationId.replace(/^\d+_/, '').replace(/_/g, ' ') : item.name,
+          ruta: relative.replace(/\\/g, '/')
+        });
+      });
+  };
+
+  addDirectory(ROOT);
+  fs.readdirSync(ROOT, { withFileTypes: true })
+    .filter(isConfigurationDirectory)
+    .forEach((entry) => addDirectory(path.join(ROOT, entry.name), entry.name));
+  return reports.sort((a, b) => a.id.localeCompare(b.id));
+}
+
+function getEvaluationReport(id) {
+  const report = discoverEvaluationReports().find((item) => item.id === id);
+  if (!report) return null;
+  return { ...report, file: path.join(ROOT, report.ruta) };
+}
+
+function readEvaluationReport(file) {
+  const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (!report || typeof report !== 'object' || !report.summary || !Array.isArray(report.per_query)) {
+    throw new Error('El reporte debe incluir summary y per_query.');
+  }
+  return report;
 }
 
 function getConfiguration(id) {
@@ -109,27 +169,33 @@ function readBody(req) {
   });
 }
 
-function runRetriever(configuration, version, question) {
+function runRetriever(configuration, version, question, onEvent = () => {}) {
   const script = resolveScript(configuration, version);
   if (!script) return Promise.reject(new Error('La version solicitada no existe para esta configuracion.'));
   return new Promise((resolve, reject) => {
     const child = spawn(process.env.PYTHON || 'python', [script, '--query', question], {
       cwd: path.dirname(script),
       windowsHide: true,
+      env: { ...process.env, PYTHONIOENCODING: 'utf-8', PYTHONUTF8: '1' },
       stdio: ['ignore', 'pipe', 'pipe']
     });
     let stdout = '';
     let stderr = '';
+    const startedAt = Date.now();
     const timer = setTimeout(() => child.kill(), RUN_TIMEOUT);
-    child.stdout.on('data', (chunk) => { stdout += chunk.toString(); });
-    child.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
-    child.on('error', (err) => { clearTimeout(timer); reject(new Error(`No se pudo iniciar Python: ${err.message}`)); });
+    const heartbeat = setInterval(() => onEvent(`En ejecucion... ${Math.round((Date.now() - startedAt) / 1000)} s`), 2000);
+    onEvent(`Proceso iniciado: ${path.basename(script)}`);
+    child.stdout.on('data', (chunk) => { const text = chunk.toString(); stdout += text; text.split(/\r?\n/).filter(Boolean).forEach((line) => onEvent(line)); });
+    child.stderr.on('data', (chunk) => { const text = chunk.toString(); stderr += text; text.split(/\r?\n/).filter(Boolean).forEach((line) => onEvent(`[stderr] ${line}`)); });
+    child.on('error', (err) => { clearTimeout(timer); clearInterval(heartbeat); reject(new Error(`No se pudo iniciar Python: ${err.message}`)); });
     child.on('close', (code) => {
       clearTimeout(timer);
+      clearInterval(heartbeat);
       if (code !== 0) return reject(new Error(stderr.trim() || `El recuperador termino con codigo ${code}.`));
       const lines = stdout.trim().split(/\r?\n/).filter(Boolean);
       try {
         const result = JSON.parse(lines[lines.length - 1]);
+        onEvent('Resultado JSON recibido.');
         resolve({ ...result, version });
       } catch {
         reject(new Error('El recuperador no devolvio un objeto JSON valido.'));
@@ -142,10 +208,23 @@ async function route(req, res) {
   const url = new URL(req.url, `http://${HOST}:${PORT}`);
   if (req.method === 'GET' && url.pathname === '/api/health') return json(res, 200, { ok: true });
   if (req.method === 'GET' && url.pathname === '/api/configuraciones') return json(res, 200, discover());
+  if (req.method === 'GET' && url.pathname === '/api/evaluaciones') {
+    const reports = discoverEvaluationReports();
+    if (!url.searchParams.has('reporte')) {
+      return json(res, 200, reports.map(({ file, ...item }) => item));
+    }
+    const report = getEvaluationReport(url.searchParams.get('reporte'));
+    if (!report || !fs.existsSync(report.file)) return error(res, 404, 'Reporte de evaluacion no encontrado.');
+    try {
+      const { file, ...metadata } = report;
+      return json(res, 200, { ...metadata, reporte: readEvaluationReport(file) });
+    }
+    catch (err) { return error(res, 422, `No se pudo leer el reporte de evaluacion: ${err.message}`); }
+  }
   if (req.method === 'GET' && url.pathname === '/api/resultados') {
     const configuration = getConfiguration(url.searchParams.get('configuracion'));
     if (!configuration) return error(res, 404, 'Configuracion no encontrada.');
-    const file = path.join(ROOT, configuration.id, 'resultados.json');
+    const file = resultFileFor(path.join(ROOT, configuration.id), url.searchParams.get('version')).file;
     if (!fs.existsSync(file)) return error(res, 404, 'Esta configuracion aun no tiene resultados.json.');
     try { return json(res, 200, { configuracion: configuration.id, resultados: normalizeResults(readJsonFile(file)) }); }
     catch (err) { return error(res, 422, `No se pudo leer resultados.json: ${err.message}`); }
@@ -171,11 +250,19 @@ async function route(req, res) {
       if (typeof payload.pregunta !== 'string' || !payload.pregunta.trim()) return error(res, 400, 'La pregunta no puede estar vacia.');
       const version = payload.version || configuration.versionPredeterminada;
       if (!version) return error(res, 422, 'La configuracion no contiene un script de recuperacion.');
+      if (url.searchParams.get('stream') === '1') {
+        res.writeHead(200, { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'Cache-Control': 'no-store', 'Transfer-Encoding': 'chunked' });
+        const send = (type, value) => res.write(`${JSON.stringify({ type, value })}\n`);
+        send('status', `Preparando ${configuration.id} · ${version}`);
+        try { send('result', await runRetriever(configuration, version, payload.pregunta.trim(), (message) => send('log', message))); }
+        catch (err) { send('error', err.message); }
+        return res.end();
+      }
       return json(res, 200, await runRetriever(configuration, version, payload.pregunta.trim()));
     } catch (err) { return error(res, 400, err.message || 'Peticion invalida.'); }
   }
   if (req.method === 'GET') {
-    const requested = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname);
+    const requested = decodeURIComponent(url.pathname === '/' ? '/index.html' : (url.pathname === '/evaluacion' ? '/evaluacion.html' : url.pathname));
     const file = path.resolve(PUBLIC, `.${requested}`);
     if (!file.startsWith(`${PUBLIC}${path.sep}`) || !fs.existsSync(file) || !fs.statSync(file).isFile()) return error(res, 404, 'Recurso no encontrado.');
     const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };

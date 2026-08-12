@@ -1,7 +1,11 @@
-"""Construye un grafo de conocimiento trazable desde metadata.jsonl.
+# En una celda de Kaggle, antes de ejecutar este archivo:
+# %pip install -q "gliner2[local]" networkx
 
-Usa GLiNER2 para detectar entidades y relaciones semánticas. Cada mención y
-cada relación conserva la evidencia del documento y del chunk de origen.
+"""Construye el grafo Polaris de forma autónoma en Kaggle.
+
+Este archivo se puede copiar y pegar sin necesitar construir_grafo.py.
+Busca un único metadata.jsonl en /kaggle/input y escribe el GraphML en
+/kaggle/working/grafo.graphml.
 """
 from __future__ import annotations
 
@@ -14,6 +18,10 @@ from typing import Any
 
 import networkx as nx
 
+
+KAGGLE_INPUT = Path("/kaggle/input")
+KAGGLE_OUTPUT = Path("/kaggle/working")
+MODEL_NAME = "fastino/gliner2-multi-v1"
 
 ENTITY_TYPES = {
     "person": "Persona mencionada en el texto",
@@ -44,81 +52,82 @@ RELATION_TYPES = {
 REQUIRED = {"doc_id", "chunk_id", "fuente", "fenomeno"}
 
 
-def text(value: Any, limit: int = 500) -> str:
+def clean(value: Any, limit: int = 500) -> str:
     return re.sub(r"\s+", " ", "" if value is None else str(value)).strip()[:limit]
 
 
 def node_key(kind: str, label: str) -> str:
-    return f"{kind}:{text(label).casefold()}"
+    return f"{kind}:{clean(label).casefold()}"
 
 
-def add_node(g: nx.MultiDiGraph, node: str, kind: str, label: str, **attrs: Any) -> None:
-    clean_attrs = {key: text(value) for key, value in attrs.items() if value is not None}
-    clean_attrs.update(kind=kind, label=text(label))
-    g.add_node(node, **clean_attrs)
+def add_node(graph: nx.MultiDiGraph, node: str, kind: str, label: str, **attrs: Any) -> None:
+    values = {key: clean(value) for key, value in attrs.items() if value is not None}
+    values.update(kind=kind, label=clean(label))
+    graph.add_node(node, **values)
 
 
-def add_edge_once(g: nx.MultiDiGraph, source: str, target: str, **attrs: Any) -> None:
+def add_edge_once(graph: nx.MultiDiGraph, source: str, target: str, **attrs: Any) -> None:
     relation = attrs.get("relation")
-    for _, target_node, data in g.out_edges(source, data=True):
+    for _, target_node, data in graph.out_edges(source, data=True):
         if target_node == target and data.get("relation") == relation:
             return
-    g.add_edge(source, target, **{key: text(value) for key, value in attrs.items()})
+    graph.add_edge(source, target, **{key: clean(value) for key, value in attrs.items()})
 
 
-def load(path: Path) -> list[dict[str, Any]]:
-    if not path.is_file():
-        raise FileNotFoundError(f"No existe la metadata: {path}")
+def find_metadata(explicit: Path | None) -> Path:
+    if explicit:
+        if not explicit.is_file():
+            raise FileNotFoundError(f"No existe la metadata: {explicit}")
+        return explicit
+    candidates = sorted(KAGGLE_INPUT.rglob("metadata.jsonl"))
+    if len(candidates) == 1:
+        return candidates[0]
+    if not candidates:
+        raise FileNotFoundError("No se encontró metadata.jsonl en /kaggle/input.")
+    raise RuntimeError(
+        "Hay varias metadata.jsonl; indica una con --metadata:\n"
+        + "\n".join(str(path) for path in candidates)
+    )
 
-    rows: list[dict[str, Any]] = []
-    seen_chunks: set[str] = set()
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        if not line.strip():
-            continue
-        try:
-            row = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise ValueError(f"JSON inválido en línea {number}: {exc}") from exc
-        if not isinstance(row, dict):
-            raise ValueError(f"La línea {number} no contiene un objeto JSON.")
 
-        missing = sorted(REQUIRED - set(row))
-        if missing:
-            raise ValueError(f"Línea {number}: faltan campos obligatorios: {', '.join(missing)}")
-        doc_id = text(row.get("doc_id"))
-        chunk_id = text(row.get("chunk_id"))
-        body = row.get("texto") or row.get("text")
-        if not doc_id or not chunk_id:
-            raise ValueError(f"Línea {number}: doc_id y chunk_id no pueden estar vacíos.")
-        if not chunk_id.startswith(f"{doc_id}-"):
-            raise ValueError(f"Línea {number}: chunk_id no trazable a doc_id: {chunk_id}")
-        if chunk_id in seen_chunks:
-            raise ValueError(f"Línea {number}: chunk_id duplicado: {chunk_id}")
-        if not body or not str(body).strip():
-            raise ValueError(f"Línea {number}: el chunk {chunk_id} no tiene texto.")
-        if str(row.get("fenomeno")) not in {"1", "2", "3"}:
-            raise ValueError(f"Línea {number}: fenomeno debe ser 1, 2 o 3.")
+def load_metadata(path: Path) -> list[dict[str, Any]]:
+    rows = []
+    seen_chunks = set()
+    with path.open("r", encoding="utf-8") as handle:
+        for number, line in enumerate(handle, 1):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"JSON inválido en línea {number}: {exc}") from exc
+            if not isinstance(row, dict):
+                raise ValueError(f"Línea {number}: se esperaba un objeto JSON.")
+            missing = sorted(REQUIRED - set(row))
+            if missing:
+                raise ValueError(f"Línea {number}: faltan campos: {', '.join(missing)}")
 
-        seen_chunks.add(chunk_id)
-        rows.append(row)
-
+            doc_id = clean(row.get("doc_id"))
+            chunk_id = clean(row.get("chunk_id"))
+            body = row.get("texto") or row.get("text")
+            if not doc_id or not chunk_id:
+                raise ValueError(f"Línea {number}: doc_id y chunk_id son obligatorios.")
+            if not chunk_id.startswith(f"{doc_id}-"):
+                raise ValueError(f"Línea {number}: chunk_id no trazable: {chunk_id}")
+            if chunk_id in seen_chunks:
+                raise ValueError(f"Línea {number}: chunk_id duplicado: {chunk_id}")
+            if not body or not str(body).strip():
+                raise ValueError(f"Línea {number}: el chunk no tiene texto.")
+            if str(row.get("fenomeno")) not in {"1", "2", "3"}:
+                raise ValueError(f"Línea {number}: fenomeno debe ser 1, 2 o 3.")
+            seen_chunks.add(chunk_id)
+            rows.append(row)
     if not rows:
-        raise ValueError("No hay registros con texto en la metadata.")
+        raise ValueError("No se encontraron registros en la metadata.")
     return rows
 
 
-def load_extractor(model_name: str):
-    try:
-        from gliner2 import GLiNER2
-    except ImportError as exc:
-        raise RuntimeError(
-            "Falta GLiNER2. Instala las dependencias con "
-            "python -m pip install -r requirements-grafo.txt"
-        ) from exc
-    return GLiNER2.from_pretrained(model_name)
-
-
-def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def extract(extractor: Any, body: str, threshold: float):
     entity_result = extractor.extract_entities(
         body, ENTITY_TYPES, threshold=threshold,
         include_confidence=True, include_spans=True,
@@ -128,7 +137,7 @@ def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str,
         include_confidence=True, include_spans=True,
     )
 
-    entities: list[dict[str, Any]] = []
+    entities = []
     for kind, values in entity_result.get("entities", {}).items():
         for value in values or []:
             item = dict(value) if isinstance(value, dict) else {"text": value}
@@ -136,7 +145,7 @@ def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str,
                 item["kind"] = kind
                 entities.append(item)
 
-    relations: list[dict[str, Any]] = []
+    relations = []
     for relation, values in relation_result.get("relation_extraction", {}).items():
         for value in values or []:
             if isinstance(value, dict):
@@ -157,16 +166,16 @@ def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str,
     return entities, relations
 
 
-def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -> nx.MultiDiGraph:
+def build_graph(rows: list[dict[str, Any]], extractor: Any, threshold: float) -> nx.MultiDiGraph:
     graph = nx.MultiDiGraph(name="Polaris Knowledge Graph")
     counts = Counter()
-    entity_index: dict[str, str] = {}
+    entity_index = {}
 
     for row in rows:
-        doc = text(row["doc_id"])
-        chunk = text(row["chunk_id"])
-        source = text(row.get("fuente") or row.get("source") or "unknown")
-        phenomenon = text(row["fenomeno"])
+        doc = clean(row["doc_id"])
+        chunk = clean(row["chunk_id"])
+        source = clean(row.get("fuente") or "unknown")
+        phenomenon = clean(row["fenomeno"])
         body = str(row.get("texto") or row.get("text") or "").strip()
         doc_node, chunk_node = f"doc:{doc}", f"chunk:{chunk}"
         source_node = f"source:{source.casefold()}"
@@ -190,15 +199,15 @@ def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -
         counts["relations"] += len(relations)
 
         for entity in entities:
-            label = text(entity["text"])
-            kind = text(entity["kind"]).lower().replace(" ", "_")
+            label = clean(entity["text"])
+            kind = clean(entity["kind"]).lower().replace(" ", "_")
             entity_node = node_key(kind, label)
             entity_index[label.casefold()] = entity_node
             add_node(graph, entity_node, kind, label, confidence=entity.get("confidence"))
             graph.add_edge(chunk_node, entity_node, relation="mentions", doc_id=doc, chunk_id=chunk)
 
         for item in relations:
-            head_label, tail_label = text(item["head"]), text(item["tail"])
+            head_label, tail_label = clean(item["head"]), clean(item["tail"])
             head_node = entity_index.get(head_label.casefold(), node_key("entity", head_label))
             tail_node = entity_index.get(tail_label.casefold(), node_key("entity", tail_label))
             if head_node not in graph:
@@ -206,7 +215,7 @@ def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -
             if tail_node not in graph:
                 add_node(graph, tail_node, "entity", tail_label)
             graph.add_edge(
-                head_node, tail_node, relation=text(item["relation"]),
+                head_node, tail_node, relation=clean(item["relation"]),
                 doc_id=doc, chunk_id=chunk, confidence=item.get("confidence"),
             )
 
@@ -218,22 +227,36 @@ def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--metadata", type=Path, required=True)
-    parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--model", default="fastino/gliner2-multi-v1")
+    parser = argparse.ArgumentParser(description="Grafo Polaris autónomo para Kaggle.")
+    parser.add_argument("--metadata", type=Path, default=None)
+    parser.add_argument("--output", type=Path, default=KAGGLE_OUTPUT / "grafo.graphml")
+    parser.add_argument("--model", default=MODEL_NAME)
     parser.add_argument("--threshold", type=float, default=0.35)
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
     if not 0 <= args.threshold <= 1:
         parser.error("--threshold debe estar entre 0 y 1")
 
-    extractor = load_extractor(args.model)
-    graph = build(load(args.metadata), extractor, args.threshold)
+    metadata_path = find_metadata(args.metadata)
+    print(f"[Grafo Kaggle] Metadata: {metadata_path}", flush=True)
+    print(f"[Grafo Kaggle] Modelo: {args.model}", flush=True)
+    print(f"[Grafo Kaggle] Umbral: {args.threshold}", flush=True)
+
+    from gliner2 import GLiNER2
+
+    print("[Grafo Kaggle] Cargando modelo...", flush=True)
+    extractor = GLiNER2.from_pretrained(args.model)
+    graph = build_graph(load_metadata(metadata_path), extractor, args.threshold)
+
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix(args.output.suffix + ".tmp")
     nx.write_graphml(graph, temporary)
     temporary.replace(args.output)
-    print(f"Grafo generado: {args.output} | nodos={graph.number_of_nodes()} aristas={graph.number_of_edges()}")
+    print(
+        f"[Grafo Kaggle] Listo: nodos={graph.number_of_nodes():,} "
+        f"aristas={graph.number_of_edges():,}",
+        flush=True,
+    )
+    print(f"[Grafo Kaggle] Salida: {args.output}", flush=True)
 
 
 if __name__ == "__main__":

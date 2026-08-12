@@ -1,1 +1,2 @@
 networkx>=3.0
+gliner2[local]>=0.1.8
