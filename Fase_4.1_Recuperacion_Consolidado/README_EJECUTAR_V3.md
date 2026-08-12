@@ -36,6 +36,10 @@ python .\Fase_4.1_Recuperacion_Consolidado\ejecutar_todas_v3.py `
   --device cpu
 ```
 
+Si vuelves a ejecutar el mismo comando, el orquestador revisa los archivos de
+salida y comienza en la primera configuración que no tenga un arreglo JSON con
+resultados. Las configuraciones que ya tengan resultados se omiten.
+
 Para ejecutar una sola pregunta en los cinco scripts:
 
 ```powershell

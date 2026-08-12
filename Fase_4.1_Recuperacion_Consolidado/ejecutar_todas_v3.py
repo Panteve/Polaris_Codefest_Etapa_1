@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import subprocess
 import sys
 from datetime import datetime
@@ -28,6 +29,17 @@ def utf8_environment() -> dict[str, str]:
     environment["PYTHONIOENCODING"] = "utf-8"
     environment["PYTHONUTF8"] = "1"
     return environment
+
+
+def has_results(output_path: Path) -> bool:
+    """Indica si la salida existente contiene al menos una respuesta JSON."""
+    if not output_path.exists() or output_path.stat().st_size == 0:
+        return False
+    try:
+        value = json.loads(output_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+    return isinstance(value, list) and len(value) > 0
 
 
 def main() -> int:
@@ -92,9 +104,37 @@ def main() -> int:
         log.write(f"Salida: {args.output_top_k}\n")
         log.write(f"Dispositivo: {args.device}\n\n")
 
+        first_pending = None
+        for position, (corpus_name, _) in enumerate(SCRIPTS, 1):
+            output_path = FOLDER / corpus_name / "resultado_v3_preguntas.json"
+            if not has_results(output_path):
+                first_pending = position
+                break
+
+        if first_pending is None:
+            message = "Todas las configuraciones ya tienen resultados; no se ejecutó ningún script."
+            print(message)
+            log.write(message + "\n")
+            return 0
+
+        log.write(f"Primera configuracion pendiente: {first_pending}\n\n")
+
         for position, (corpus_name, script_name) in enumerate(SCRIPTS, 1):
             script_path = FOLDER / corpus_name / script_name
             output_path = FOLDER / corpus_name / "resultado_v3_preguntas.json"
+
+            if position < first_pending:
+                message = f"[{position}/{len(SCRIPTS)}] {corpus_name}: omitido, ya tiene resultados"
+                print(message)
+                log.write(message + "\n")
+                continue
+
+            if has_results(output_path):
+                message = f"[{position}/{len(SCRIPTS)}] {corpus_name}: omitido, ya tiene resultados"
+                print(message)
+                log.write(message + "\n")
+                continue
+
             command = [
                 str(python_executable),
                 str(script_path),
@@ -122,22 +162,30 @@ def main() -> int:
             log.write("Comando: " + " ".join(command) + "\n")
             log.flush()
 
-            result = subprocess.run(
+            process = subprocess.Popen(
                 command,
                 cwd=FOLDER / corpus_name,
                 env=utf8_environment(),
-                stdout=log,
+                stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                check=False,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
             )
+            assert process.stdout is not None
+            for line in process.stdout:
+                log.write(line)
+                log.flush()
+                print(f"{corpus_name}: {line.rstrip()}", flush=True)
+            result_code = process.wait()
 
-            if result.returncode == 0:
+            if result_code == 0:
                 print(f"{header}: terminado -> {output_path}")
                 log.write(f"Estado: terminado; salida: {output_path}\n\n")
             else:
                 failures.append(corpus_name)
-                print(f"{header}: ERROR código {result.returncode}; se continúa")
-                log.write(f"Estado: ERROR código {result.returncode}; se continúa\n\n")
+                print(f"{header}: ERROR código {result_code}; se continúa")
+                log.write(f"Estado: ERROR código {result_code}; se continúa\n\n")
             log.flush()
 
     finished_at = datetime.now().astimezone().isoformat(timespec="seconds")

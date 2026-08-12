@@ -19,6 +19,20 @@ python .\Fase_4.1_Recuperacion_Consolidado\04_bge_m3_overlap_1\recuperar_V3.py `
 
 Las dependencias están en `requirements.txt` de esta carpeta.
 
+## Buscar los archivos en Kaggle
+
+El archivo `buscar_archivos_kaggle.py` se puede copiar completo en una celda
+de Kaggle. Busca recursivamente en `/kaggle/input` los archivos `index.faiss`
+y `metadata.jsonl`, muestra todas las coincidencias y deja disponibles
+`INDEX_PATH` y `METADATA_PATH` con la primera pareja encontrada.
+
+Para ejecutar todo el flujo V3 directamente en Kaggle, copia el contenido de
+`ejecutar_v3_kaggle.py` en una celda. El resultado se guardará en:
+
+```text
+/kaggle/working/resultado_v3_preguntas.json
+```
+
 Para procesar un arreglo JSON de preguntas y generar un único JSON de salida:
 
 ```powershell
