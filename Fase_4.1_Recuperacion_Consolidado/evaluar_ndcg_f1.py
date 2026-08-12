@@ -17,6 +17,7 @@ import argparse
 import csv
 import json
 import math
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
@@ -383,12 +384,91 @@ def write_csv(path: Path, report: dict[str, Any]) -> None:
             )
 
 
+def print_summary(report: dict[str, Any], output: Path) -> None:
+    summary = report["summary"]
+    print(f"Consultas ground truth: {summary['queries_ground_truth']}")
+    print(f"Consultas con resultados: {summary['queries_with_results']}")
+    print(f"NDCG@10: {summary['ndcg_at_10']:.6f}")
+    print(f"F1@3: {summary['f1_at_3']:.6f}")
+    print(f"Reporte: {output}")
+
+
+def find_default_ground_truth(root: Path) -> Path | None:
+    candidates = [
+        root / "Validacion_20_Preguntas" / "ground_truth_15_preguntas.json",
+        root / "Validacion_20_Preguntas" / "ground_truth.json",
+    ]
+    candidates.extend(sorted(root.glob("ground_truth*.json")))
+    return next((path for path in candidates if path.is_file()), None)
+
+
+def is_configuration_directory(path: Path) -> bool:
+    return path.is_dir() and path.name != "Validacion_20_Preguntas" and re.fullmatch(r"[A-Za-z0-9_-]+", path.name) is not None
+
+
+def result_files_in(configuration: Path) -> list[Path]:
+    return sorted(
+        (
+            path
+            for path in configuration.iterdir()
+            if path.is_file() and re.fullmatch(r"(?:resultado|resultados)(?:_.*)?\.json", path.name, re.IGNORECASE)
+        ),
+        key=lambda path: path.name.lower(),
+    )
+
+
+def metadata_file_in(configuration: Path) -> Path | None:
+    exact = configuration / "metadata.jsonl"
+    if exact.is_file():
+        return exact
+    return next(iter(sorted(configuration.glob("metadata*.jsonl"))), None)
+
+
+def evaluate_all(root: Path, ground_truth_path: Path, write_csv_files: bool = True) -> int:
+    """Evalúa cada resultado*.json encontrado en cada configuración."""
+    ground_truth = load_json_or_jsonl(ground_truth_path)
+    configurations = sorted((path for path in root.iterdir() if is_configuration_directory(path)), key=lambda path: path.name)
+    evaluated = 0
+    failures = 0
+
+    for configuration in configurations:
+        results_paths = result_files_in(configuration)
+        if not results_paths:
+            print(f"[OMITIDA] {configuration.name}: no se encontró resultado*.json")
+            continue
+        metadata_path = metadata_file_in(configuration)
+        metadata_sources = load_metadata_sources(metadata_path)
+        for results_path in results_paths:
+            output_path = configuration / f"evaluacion_{results_path.stem}.json"
+            csv_path = configuration / f"evaluacion_{results_path.stem}.csv"
+            try:
+                report = evaluate(ground_truth, load_json_or_jsonl(results_path), metadata_sources)
+                output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                if write_csv_files:
+                    write_csv(csv_path, report)
+                print(f"\n[{configuration.name}] {results_path.name}")
+                print_summary(report, output_path)
+                if metadata_path:
+                    print(f"Metadata: {metadata_path}")
+                evaluated += 1
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                print(f"[ERROR] {configuration.name}/{results_path.name}: {error}")
+                failures += 1
+
+    print(f"\nEvaluaciones completadas: {evaluated}")
+    if failures:
+        print(f"Evaluaciones con error: {failures}")
+    return 1 if failures else 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Evalua resultados V3 con NDCG@10 y F1@3 según la especificación del reto."
     )
-    parser.add_argument("--ground-truth", type=Path, required=True)
-    parser.add_argument("--results", type=Path, required=True)
+    parser.add_argument("--auto", action="store_true", help="Recorre todas las configuraciones y evalúa cada resultado*.json.")
+    parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent, help="Carpeta raíz de la fase para --auto.")
+    parser.add_argument("--ground-truth", type=Path, help="Ground truth para la evaluación manual o automática.")
+    parser.add_argument("--results", type=Path, help="JSON de resultados para la evaluación manual.")
     parser.add_argument(
         "--metadata",
         type=Path,
@@ -400,7 +480,19 @@ def main() -> int:
         default=Path("evaluacion_ndcg_f1.json"),
     )
     parser.add_argument("--csv", type=Path, help="CSV opcional con métricas por consulta.")
+    parser.add_argument("--no-csv", action="store_true", help="En --auto, no genera el CSV por carpeta.")
     args = parser.parse_args()
+
+    if args.auto:
+        root = args.root.resolve()
+        ground_truth_path = args.ground_truth or find_default_ground_truth(root)
+        if ground_truth_path is None or not ground_truth_path.is_file():
+            parser.error("--auto no encontró un ground truth. Usa --ground-truth para indicar su ruta.")
+        print(f"Ground truth: {ground_truth_path}")
+        return evaluate_all(root, ground_truth_path, write_csv_files=not args.no_csv)
+
+    if args.ground_truth is None or args.results is None:
+        parser.error("La evaluación manual requiere --ground-truth y --results, o usa --auto.")
 
     ground_truth = load_json_or_jsonl(args.ground_truth)
     results = load_json_or_jsonl(args.results)
@@ -416,12 +508,7 @@ def main() -> int:
         args.csv.parent.mkdir(parents=True, exist_ok=True)
         write_csv(args.csv, report)
 
-    summary = report["summary"]
-    print(f"Consultas ground truth: {summary['queries_ground_truth']}")
-    print(f"Consultas con resultados: {summary['queries_with_results']}")
-    print(f"NDCG@10: {summary['ndcg_at_10']:.6f}")
-    print(f"F1@3: {summary['f1_at_3']:.6f}")
-    print(f"Reporte: {args.output}")
+    print_summary(report, args.output)
     return 0
 
 

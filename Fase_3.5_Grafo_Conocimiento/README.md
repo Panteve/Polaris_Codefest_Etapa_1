@@ -33,6 +33,53 @@ Las relaciones se guardan como aristas dirigidas con los atributos `relation`,
 python -m pip install -r .\Fase_3.5_Grafo_Conocimiento\requirements-grafo.txt
 ```
 
+## Generar un grafo por cada configuración de Fase 4.1
+
+Para la ejecución local, deja únicamente estas carpetas hermanas dentro del
+directorio padre:
+
+```text
+Fase_3.5_Grafo_Conocimiento/
+Fase_4.1_Recuperacion_Consolidado/
+```
+
+Ejecuta desde `Fase_3.5_Grafo_Conocimiento`:
+
+```powershell
+python .\generar_grafos_4_1.py
+```
+
+El script detecta automáticamente cada subcarpeta de Fase 4.1 que contenga
+`metadata.jsonl`, reutiliza el modelo cargado y genera:
+
+```text
+Fase_4.1_Recuperacion_Consolidado/
+├── 01_bge_m3_corpus/grafo.graphml
+├── 03_granite_corpus/grafo.graphml
+├── 04_bge_m3_overlap_1/grafo.graphml
+├── 05_granite_overlap_1/grafo.graphml
+└── 06_bge_m3_semantic_pdf/grafo.graphml
+```
+
+Para procesar una sola configuración:
+
+```powershell
+python .\generar_grafos_4_1.py --configuracion 06_bge_m3_semantic_pdf
+```
+
+El archivo `generar_grafos_4_1.py` es el ejecutor local oficial de esta fase.
+No depende de las demás fases del proyecto: únicamente necesita encontrar la
+carpeta hermana `Fase_4.1_Recuperacion_Consolidado` y sus archivos
+`metadata.jsonl`. Las carpetas que no tengan metadata son ignoradas. El
+modelo se carga una sola vez y se reutiliza para todas las configuraciones.
+
+Cada GraphML se genera dentro de la configuración de Fase 4.1 correspondiente,
+por lo que conserva una relación directa con el índice FAISS y la metadata que
+acompañan esa configuración.
+
+El archivo `construir_grafo_kaggle.py` es independiente del ejecutor local y
+está destinado exclusivamente a copiarse y pegarse en Kaggle.
+
 ## Ejecución en Kaggle
 
 Puedes copiar y pegar `construir_grafo_kaggle.py` como una celda/archivo único.

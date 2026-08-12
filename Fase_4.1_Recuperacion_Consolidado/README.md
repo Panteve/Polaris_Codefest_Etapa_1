@@ -116,12 +116,34 @@ Para generar un reporte que aparezca en la página:
 
 ```powershell
 python .\evaluar_ndcg_f1.py `
-    --ground-truth .\Validacion_20_Preguntas\preguntas_validacion_20.jsonl `
+    --ground-truth .\Validacion_20_Preguntas\ground_truth_15_preguntas.json `
     --results .\03_granite_corpus\resultado_v2.json `
     --metadata .\03_granite_corpus\metadata.jsonl `
     --output .\03_granite_corpus\evaluacion_ndcg_f1.json `
     --csv .\03_granite_corpus\evaluacion_ndcg_f1.csv
 ```
+
+También existe un modo automático para evaluar todo de una vez. Recorre las
+carpetas de configuración, toma cada archivo `resultado*.json`, busca su
+`metadata.jsonl` y crea los reportes dentro de la misma carpeta:
+
+```powershell
+python .\evaluar_ndcg_f1.py --auto
+```
+
+Por ejemplo, `01_bge_m3_corpus\resultado_v2.json` produce
+`01_bge_m3_corpus\evaluacion_resultado_v2.json` y
+`01_bge_m3_corpus\evaluacion_resultado_v2.csv`. Si el ground truth está en
+otra ubicación, se puede indicar explícitamente:
+
+```powershell
+python .\evaluar_ndcg_f1.py --auto `
+    --ground-truth .\Validacion_20_Preguntas\ground_truth_15_preguntas.json
+```
+
+Para no generar los CSV auxiliares, usa `--no-csv`. La ejecución continúa con
+las demás carpetas si un resultado individual tiene un error y al final indica
+cuántas evaluaciones terminaron correctamente.
 
 La vista muestra el resumen global de `NDCG@10`, `F1@3`, cantidad de consultas
 y cobertura; además presenta tablas agrupadas por `fenomeno` y `tipo`, y el
