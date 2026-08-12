@@ -6,6 +6,10 @@ from typing import Any
 import faiss
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 MODEL_NAME = "BAAI/bge-m3"
 RERANKER_NAME = "BAAI/bge-reranker-v2-m3"
 FOLDER = Path(__file__).resolve().parent
@@ -36,7 +40,7 @@ def deduplicate(scored, vectors, args):
     order = sorted(range(len(scored)), key=lambda i: (-scored[i][0], scored[i][1][0]))
     kept, exact = [], set()
     for index in order:
-        score, recall_rank, record = scored[index]
+        score, (recall_rank, record) = scored[index]
         keys = (record.get("chunk_id"), text_key(record.get("texto")))
         if keys[0] in exact or (keys[1] and keys[1] in exact): continue
         if any(float(vectors[index] @ vectors[other]) >= args.near_duplicate_threshold for other in kept): continue
@@ -46,7 +50,7 @@ def deduplicate(scored, vectors, args):
     return [(scored[i], vectors[i]) for i in kept]
 
 def select_mmr(scored, vectors, args):
-    scores = [item[0] for item, _ in scored]
+    scores = [item[0] for item in scored]
     relevance = normalize(scores)
     ranked = sorted(range(len(scored)), key=lambda i: (-scores[i], scored[i][1][0]))
     selected, remaining = [], set(ranked)

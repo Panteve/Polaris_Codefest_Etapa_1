@@ -5,6 +5,10 @@ from pathlib import Path
 from typing import Any
 import faiss
 from sentence_transformers import CrossEncoder,SentenceTransformer
+
+if hasattr(sys.stdout,"reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8",errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8",errors="replace")
 MODEL_NAME="ibm-granite/granite-embedding-311m-multilingual-r2"; RERANKER_NAME="BAAI/bge-reranker-v2-m3"; FOLDER=Path(__file__).resolve().parent; NEAR_DUPLICATE_THRESHOLD=0.90; DEFAULT_QUESTIONS_PATH=FOLDER.parent/"Validacion_20_Preguntas"/"ground_truth_15_preguntas.json"
 def read_metadata(path:Path)->list[dict[str,Any]]:
     records=[]
