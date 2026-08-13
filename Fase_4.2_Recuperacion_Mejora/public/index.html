@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visor de resultados · Fase 4.1</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar"><div><p class="eyebrow">Fase 4.1 · Recuperación consolidada</p><h1>Visor comparativo de resultados</h1><p class="subtitle">Selecciona todas las configuraciones y versiones que quieras revisar.</p></div><div class="topbar-actions"><a class="button secondary" href="/evaluacion.html">Ver métricas</a><button id="reload" class="button secondary">Recargar datos</button></div></header>
+  <main class="page">
+    <section class="selection-panel panel"><div class="section-heading"><div><p class="eyebrow">Archivos disponibles</p><h2>Resultados para comparar</h2><p class="help">Las opciones salen de los JSON encontrados dentro de cada configuración.</p></div><span id="selected-count" class="pill">0 seleccionadas</span></div><div class="selection-actions"><button id="select-all" class="link-button">Seleccionar todos</button><button id="clear-all" class="link-button">Limpiar selección</button></div><div id="configurations" class="config-grid" aria-live="polite"></div></section>
+    <section class="query-panel panel"><div class="section-heading"><div><p class="eyebrow">Consulta visible</p><h2>Elige qué resultado mostrar</h2></div><span class="pill">Solo visualización</span></div><div class="query-tools"><div class="field grow"><label for="query-select">Pregunta</label><select id="query-select"><option value="">Selecciona una recuperación</option></select></div></div><p id="query-text" class="query-text">Selecciona una configuración para cargar sus resultados.</p></section>
+    <section id="notice" class="notice hidden" role="status"></section><section id="results" class="comparison-grid" aria-live="polite"><div class="empty-state"><span class="empty-icon">⇄</span><h2>Selecciona resultados para comparar</h2><p>Cada selección aparecerá en una columna independiente.</p></div></section>
+  </main><script src="/app.js"></script>
+</body>
+</html>

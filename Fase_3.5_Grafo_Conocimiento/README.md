@@ -80,6 +80,55 @@ acompañan esa configuración.
 El archivo `construir_grafo_kaggle.py` es independiente del ejecutor local y
 está destinado exclusivamente a copiarse y pegarse en Kaggle.
 
+## Progreso y uso de GPU
+
+Los ejecutores muestran el avance cada 5% del total de chunks procesados,
+incluyendo velocidad, cantidad de nodos y aristas generadas. También informan
+si la inferencia se está ejecutando en `CPU` o `CUDA`.
+
+Por defecto usan `--device auto`: seleccionan GPU si PyTorch detecta CUDA y,
+si no, continúan en CPU. Si CUDA está disponible pero falla la carga del
+modelo, cambian automáticamente a CPU. Para forzar un dispositivo:
+
+```powershell
+python .\generar_grafos_4_1.py --device cpu
+python .\generar_grafos_4_1.py --device cuda
+```
+
+En Kaggle se puede usar la misma opción:
+
+```python
+!python construir_grafo_kaggle.py --device auto
+```
+
+`--device cuda` produce un error claro si no hay GPU disponible.
+
+El ejecutor de Kaggle procesa por lotes mediante las funciones batch de
+GLiNER2. El tamaño por defecto es `8`; con una T4 puedes probar `16` o `32`
+si la memoria lo permite:
+
+```python
+!python construir_grafo_kaggle.py --device auto --batch-size 32
+```
+
+El ejecutor de Kaggle usa todas las GPU CUDA disponibles por defecto. Con dos
+T4 crea dos procesos independientes, carga una copia de GLiNER2 en cada GPU,
+divide la metadata, genera dos grafos parciales y los fusiona en el
+`grafo.graphml` final. Para usar solo una GPU:
+
+Si el código se pega directamente en una celda de Kaggle, detecta ese modo y
+usa workers por hilos para evitar el problema de `multiprocessing` con
+funciones definidas en `__main__`. Si se ejecuta como archivo `.py`, usa
+procesos independientes.
+
+```python
+!python construir_grafo_kaggle.py --gpus 1 --batch-size 8
+```
+
+Los grafos parciales y los fragmentos temporales quedan en una carpeta
+`grafo_shards_*` dentro de `/kaggle/working` para facilitar la recuperación si
+la sesión se interrumpe.
+
 ## Ejecución en Kaggle
 
 Puedes copiar y pegar `construir_grafo_kaggle.py` como una celda/archivo único.

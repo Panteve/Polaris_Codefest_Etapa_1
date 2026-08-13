@@ -10,8 +10,13 @@ Busca un único metadata.jsonl en /kaggle/input y escribe el GraphML en
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import json
+import multiprocessing as mp
 import re
+import sys
+import tempfile
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -127,16 +132,7 @@ def load_metadata(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def extract(extractor: Any, body: str, threshold: float):
-    entity_result = extractor.extract_entities(
-        body, ENTITY_TYPES, threshold=threshold,
-        include_confidence=True, include_spans=True,
-    )
-    relation_result = extractor.extract_relations(
-        body, RELATION_TYPES, threshold=threshold,
-        include_confidence=True, include_spans=True,
-    )
-
+def parse_results(entity_result: dict, relation_result: dict):
     entities = []
     for kind, values in entity_result.get("entities", {}).items():
         for value in values or []:
@@ -166,58 +162,89 @@ def extract(extractor: Any, body: str, threshold: float):
     return entities, relations
 
 
-def build_graph(rows: list[dict[str, Any]], extractor: Any, threshold: float) -> nx.MultiDiGraph:
+def build_graph(
+    rows: list[dict[str, Any]], extractor: Any, threshold: float, batch_size: int,
+    progress_label: str = "Grafo Kaggle",
+) -> nx.MultiDiGraph:
     graph = nx.MultiDiGraph(name="Polaris Knowledge Graph")
     counts = Counter()
     entity_index = {}
 
-    for row in rows:
-        doc = clean(row["doc_id"])
-        chunk = clean(row["chunk_id"])
-        source = clean(row.get("fuente") or "unknown")
-        phenomenon = clean(row["fenomeno"])
-        body = str(row.get("texto") or row.get("text") or "").strip()
-        doc_node, chunk_node = f"doc:{doc}", f"chunk:{chunk}"
-        source_node = f"source:{source.casefold()}"
-        phenomenon_node = f"phenomenon:{phenomenon}"
-
-        add_node(graph, doc_node, "document", doc, doc_id=doc, fuente=source)
-        add_node(
-            graph, chunk_node, "chunk", chunk, doc_id=doc, chunk_id=chunk,
-            fuente=source, fenomeno=phenomenon, formato=row.get("formato"),
-            idioma=row.get("idioma"), posicion=row.get("posicion"),
+    total = len(rows)
+    next_progress = 5
+    started = time.perf_counter()
+    print(f"[{progress_label}] Registros a procesar: {total:,}", flush=True)
+    for start in range(0, total, batch_size):
+        batch = rows[start : start + batch_size]
+        texts = [str(row.get("texto") or row.get("text") or "").strip() for row in batch]
+        entity_results = extractor.batch_extract_entities(
+            texts, ENTITY_TYPES, batch_size=batch_size, threshold=threshold,
+            include_confidence=True, include_spans=True,
         )
-        add_node(graph, source_node, "source", source, fuente=source)
-        add_node(graph, phenomenon_node, "phenomenon", f"Fenómeno {phenomenon}", fenomeno=phenomenon)
-        add_edge_once(graph, doc_node, chunk_node, relation="contains")
-        add_edge_once(graph, doc_node, source_node, relation="comes_from")
-        add_edge_once(graph, doc_node, phenomenon_node, relation="belongs_to")
+        relation_results = extractor.batch_extract_relations(
+            texts, RELATION_TYPES, batch_size=batch_size, threshold=threshold,
+            include_confidence=True, include_spans=True,
+        )
 
-        entities, relations = extract(extractor, body, threshold)
-        counts["chunks"] += 1
-        counts["entities"] += len(entities)
-        counts["relations"] += len(relations)
+        for row, entity_result, relation_result in zip(batch, entity_results, relation_results):
+            doc = clean(row["doc_id"])
+            chunk = clean(row["chunk_id"])
+            source = clean(row.get("fuente") or "unknown")
+            phenomenon = clean(row["fenomeno"])
+            doc_node, chunk_node = f"doc:{doc}", f"chunk:{chunk}"
+            source_node = f"source:{source.casefold()}"
+            phenomenon_node = f"phenomenon:{phenomenon}"
 
-        for entity in entities:
-            label = clean(entity["text"])
-            kind = clean(entity["kind"]).lower().replace(" ", "_")
-            entity_node = node_key(kind, label)
-            entity_index[label.casefold()] = entity_node
-            add_node(graph, entity_node, kind, label, confidence=entity.get("confidence"))
-            graph.add_edge(chunk_node, entity_node, relation="mentions", doc_id=doc, chunk_id=chunk)
-
-        for item in relations:
-            head_label, tail_label = clean(item["head"]), clean(item["tail"])
-            head_node = entity_index.get(head_label.casefold(), node_key("entity", head_label))
-            tail_node = entity_index.get(tail_label.casefold(), node_key("entity", tail_label))
-            if head_node not in graph:
-                add_node(graph, head_node, "entity", head_label)
-            if tail_node not in graph:
-                add_node(graph, tail_node, "entity", tail_label)
-            graph.add_edge(
-                head_node, tail_node, relation=clean(item["relation"]),
-                doc_id=doc, chunk_id=chunk, confidence=item.get("confidence"),
+            add_node(graph, doc_node, "document", doc, doc_id=doc, fuente=source)
+            add_node(
+                graph, chunk_node, "chunk", chunk, doc_id=doc, chunk_id=chunk,
+                fuente=source, fenomeno=phenomenon, formato=row.get("formato"),
+                idioma=row.get("idioma"), posicion=row.get("posicion"),
             )
+            add_node(graph, source_node, "source", source, fuente=source)
+            add_node(graph, phenomenon_node, "phenomenon", f"Fenómeno {phenomenon}", fenomeno=phenomenon)
+            add_edge_once(graph, doc_node, chunk_node, relation="contains")
+            add_edge_once(graph, doc_node, source_node, relation="comes_from")
+            add_edge_once(graph, doc_node, phenomenon_node, relation="belongs_to")
+
+            entities, relations = parse_results(entity_result, relation_result)
+            counts["chunks"] += 1
+            counts["entities"] += len(entities)
+            counts["relations"] += len(relations)
+
+            for entity in entities:
+                label = clean(entity["text"])
+                kind = clean(entity["kind"]).lower().replace(" ", "_")
+                entity_node = node_key(kind, label)
+                entity_index[label.casefold()] = entity_node
+                add_node(graph, entity_node, kind, label, confidence=entity.get("confidence"))
+                graph.add_edge(chunk_node, entity_node, relation="mentions", doc_id=doc, chunk_id=chunk)
+
+            for item in relations:
+                head_label, tail_label = clean(item["head"]), clean(item["tail"])
+                head_node = entity_index.get(head_label.casefold(), node_key("entity", head_label))
+                tail_node = entity_index.get(tail_label.casefold(), node_key("entity", tail_label))
+                if head_node not in graph:
+                    add_node(graph, head_node, "entity", head_label)
+                if tail_node not in graph:
+                    add_node(graph, tail_node, "entity", tail_label)
+                graph.add_edge(
+                    head_node, tail_node, relation=clean(item["relation"]),
+                    doc_id=doc, chunk_id=chunk, confidence=item.get("confidence"),
+                )
+
+        row_number = min(start + len(batch), total)
+        percent = row_number * 100 / total
+        while next_progress <= 100 and percent >= next_progress:
+            elapsed = max(time.perf_counter() - started, 1e-9)
+            rate = row_number / elapsed
+            print(
+                f"[{progress_label}] {next_progress}% | {row_number:,}/{total:,} chunks | "
+                f"{rate:,.1f} chunks/s | nodos={graph.number_of_nodes():,} "
+                f"aristas={graph.number_of_edges():,}",
+                flush=True,
+            )
+            next_progress += 5
 
     graph.graph.update(
         schema_version="2.0", extractor="GLiNER2", generative_models="false",
@@ -226,31 +253,133 @@ def build_graph(rows: list[dict[str, Any]], extractor: Any, threshold: float) ->
     return graph
 
 
+def split_metadata(path: Path, output_dir: Path, parts: int) -> list[Path]:
+    """Divide metadata.jsonl en partes sin cargarla completa en memoria."""
+    # tempfile.mkdtemp ya crea output_dir; exist_ok permite reutilizar una ruta.
+    output_dir.mkdir(parents=True, exist_ok=True)
+    handles = [
+        (output_dir / f"metadata_gpu_{index}.jsonl").open("w", encoding="utf-8")
+        for index in range(parts)
+    ]
+    try:
+        with path.open("r", encoding="utf-8") as source:
+            for number, line in enumerate(source):
+                if line.strip():
+                    handles[number % parts].write(line)
+    finally:
+        for handle in handles:
+            handle.close()
+    return [part for part in sorted(output_dir.glob("metadata_gpu_*.jsonl")) if part.stat().st_size]
+
+
+def write_graph(graph: nx.MultiDiGraph, output: Path) -> None:
+    temporary = output.with_suffix(output.suffix + ".tmp")
+    nx.write_graphml(graph, temporary)
+    temporary.replace(output)
+
+
+def process_shard(
+    metadata_path: str, output_path: str, model_name: str, device: str,
+    threshold: float, batch_size: int, shard_number: int, shard_total: int,
+) -> str:
+    """Carga un modelo independiente en una GPU y procesa una parte del corpus."""
+    from gliner2 import GLiNER2
+
+    label = f"GPU {device.replace('cuda:', '')} ({shard_number}/{shard_total})"
+    print(f"[{label}] Cargando modelo en {device.upper()}...", flush=True)
+    try:
+        extractor = GLiNER2.from_pretrained(model_name, map_location=device)
+    except Exception as exc:
+        if not device.startswith("cuda"):
+            raise
+        print(f"[{label}] CUDA falló ({exc}); cambiando a CPU.", flush=True)
+        device = "cpu"
+        label = f"CPU ({shard_number}/{shard_total})"
+        extractor = GLiNER2.from_pretrained(model_name, map_location=device)
+    rows = load_metadata(Path(metadata_path))
+    graph = build_graph(rows, extractor, threshold, batch_size, label)
+    output = Path(output_path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    write_graph(graph, output)
+    print(
+        f"[{label}] Grafo parcial listo: nodos={graph.number_of_nodes():,} "
+        f"aristas={graph.number_of_edges():,}", flush=True,
+    )
+    return str(output)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Grafo Polaris autónomo para Kaggle.")
     parser.add_argument("--metadata", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=KAGGLE_OUTPUT / "grafo.graphml")
     parser.add_argument("--model", default=MODEL_NAME)
     parser.add_argument("--threshold", type=float, default=0.35)
+    parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
+    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--gpus", type=int, default=0, help="0=usar todas las GPU disponibles")
     args, _ = parser.parse_known_args()
     if not 0 <= args.threshold <= 1:
         parser.error("--threshold debe estar entre 0 y 1")
+    if args.batch_size < 1:
+        parser.error("--batch-size debe ser mayor que cero")
 
     metadata_path = find_metadata(args.metadata)
     print(f"[Grafo Kaggle] Metadata: {metadata_path}", flush=True)
     print(f"[Grafo Kaggle] Modelo: {args.model}", flush=True)
     print(f"[Grafo Kaggle] Umbral: {args.threshold}", flush=True)
 
-    from gliner2 import GLiNER2
+    import torch
+    if args.device == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("Se solicitó CUDA, pero no hay una GPU disponible.")
+    if args.device == "cpu":
+        devices = ["cpu"]
+    elif torch.cuda.is_available():
+        available = torch.cuda.device_count()
+        requested = available if args.gpus <= 0 else min(args.gpus, available)
+        devices = [f"cuda:{index}" for index in range(requested)]
+    else:
+        devices = ["cpu"]
 
-    print("[Grafo Kaggle] Cargando modelo...", flush=True)
-    extractor = GLiNER2.from_pretrained(args.model)
-    graph = build_graph(load_metadata(metadata_path), extractor, args.threshold)
+    print(f"[Grafo Kaggle] GPUs CUDA disponibles: {torch.cuda.device_count()}", flush=True)
+    print(f"[Grafo Kaggle] Dispositivos usados: {', '.join(devices)}", flush=True)
+    print(f"[Grafo Kaggle] Procesos paralelos: {len(devices)}", flush=True)
 
+    shard_dir = Path(tempfile.mkdtemp(prefix="grafo_shards_", dir=KAGGLE_OUTPUT))
+    shard_paths = split_metadata(metadata_path, shard_dir, len(devices))
+    if len(shard_paths) != len(devices):
+        raise RuntimeError("No se pudieron crear todos los fragmentos de metadata.")
+
+    partial_paths = [shard_dir / f"grafo_gpu_{index}.graphml" for index in range(len(devices))]
+    jobs = [
+        (
+            str(shard_path), str(partial_path), args.model, device,
+            args.threshold, args.batch_size, index + 1, len(devices),
+        )
+        for index, (shard_path, partial_path, device)
+        in enumerate(zip(shard_paths, partial_paths, devices))
+    ]
+    # En una celda de Kaggle no existe un archivo importable para spawn. En
+    # ese caso usamos hilos: cada hilo carga su modelo en una T4 distinta y no
+    # necesita serializar process_shard desde __main__.
+    interactive = not getattr(sys.modules.get("__main__"), "__file__", None)
+    if interactive:
+        print("[Grafo Kaggle] Ejecución en notebook: usando workers por hilos.", flush=True)
+        with ThreadPoolExecutor(max_workers=len(devices)) as pool:
+            generated = list(pool.map(lambda job: process_shard(*job), jobs))
+    else:
+        context = mp.get_context("spawn")
+        with context.Pool(processes=len(devices)) as pool:
+            generated = pool.starmap(process_shard, jobs)
+
+    print("[Grafo Kaggle] Fusionando grafos parciales...", flush=True)
+    graphs = [nx.read_graphml(path) for path in generated]
+    graph = nx.compose_all(graphs)
+    graph.graph.update(
+        schema_version="2.0", extractor="GLiNER2", devices=", ".join(devices),
+        parallel_processes=str(len(devices)), batch_size=str(args.batch_size),
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = args.output.with_suffix(args.output.suffix + ".tmp")
-    nx.write_graphml(graph, temporary)
-    temporary.replace(args.output)
+    write_graph(graph, args.output)
     print(
         f"[Grafo Kaggle] Listo: nodos={graph.number_of_nodes():,} "
         f"aristas={graph.number_of_edges():,}",

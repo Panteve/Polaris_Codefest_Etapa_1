@@ -1,0 +1,1031 @@
+{
+  "metric_definition": {
+    "ndcg_at_10": "Substring exacto de cada texto_verbatim dentro de fragments[].text; chunk_id ignorado.",
+    "f1_at_3": "Intersección entre documentos top-3 y fuentes ground truth; doc_id resuelto a fuente.",
+    "precision_at_3_denominator": 3,
+    "recall_at_3_denominator": "min(numero_fuentes_relevantes, 3)"
+  },
+  "summary": {
+    "queries_ground_truth": 15,
+    "queries_with_results": 15,
+    "ndcg_at_10": 0.3755436797316848,
+    "f1_at_3": 0.23333333333333334
+  },
+  "by_fenomeno": {
+    "1": {
+      "queries": 5,
+      "ndcg_at_10": 0.2,
+      "f1_at_3": 0.3
+    },
+    "2": {
+      "queries": 5,
+      "ndcg_at_10": 0.4,
+      "f1_at_3": 0.2
+    },
+    "3": {
+      "queries": 5,
+      "ndcg_at_10": 0.5266310391950543,
+      "f1_at_3": 0.2
+    }
+  },
+  "by_tipo": {
+    "cross_lingual": {
+      "queries": 4,
+      "ndcg_at_10": 0.5,
+      "f1_at_3": 0.25
+    },
+    "estandar": {
+      "queries": 4,
+      "ndcg_at_10": 0.3467132018086354,
+      "f1_at_3": 0.25
+    },
+    "multi_documento": {
+      "queries": 2,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0
+    },
+    "numerico": {
+      "queries": 5,
+      "ndcg_at_10": 0.449260477748146,
+      "f1_at_3": 0.3
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "qa001",
+      "query": "¿Qué modelo de lenguaje fue el primero en alcanzar el rendimiento humano en la prueba MMLU?",
+      "fenomeno": 1,
+      "tipo": "cross_lingual",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "6 HELM evaluates 10 scenarios: (1) NarrativeQA (reading comprehension), (2) Natural Questions (closed-book) (closed-book short-answer question answering), (3) Natural Questions (open-book) (open-book short-answer question answering), (4) OpenBookQA (commonsense question answering), (5) MMLU (multisubject understanding), (6) GSM8K (grade school math), (7) MATH (competition math), (8) LegalBench (legal reasoning), (9) MedQA (medical knowledge), and (10) WMT 2014 (machine translation). 7 There are several versions of HELM. This section reports the score on HELM Lite, Release v1.0.0 (2023-12-19), with the data having been collected in January 2024.\n\n**Index Report 2024 2.2 Language**\n\n**MMLU: Massive Multitask Language** In early 2023, GPT-4 posted a state-of-the-art score\n\n**Understanding** on MMLU, later surpassed by Google’s Gemini Ultra.\n\nThe Massive Multitask Language Understanding Figure 2.2.6 highlights the top model scores on the\n\n(MMLU) benchmark assesses model performance in MMLU benchmark in different years. The scores\n\nzero-shot or few-shot scenarios across 57 subjects, reported are the averages across the test set. As of\n\nincluding the humanities, STEM, and social sciences January 2024, Gemini Ultra holds the top score of\n\n(Figure 2.2.5). MMLU has emerged as a premier 90.0%, marking a 14.8 percentage point improvement\n\nbenchmark for assessing LLM capabilities: Many state-since 2022 and a 57.6 percentage point increase since\n\nof-the-art models like GPT-4, Claude 2, and Gemini have MMLU’s inception in 2019. Gemini Ultra’s score was\n\nbeen evaluated against MMLU. the first to surpass MMLU’s human baseline of 89.8%."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**8. 小型模型展现更强性能。**2022 年，在 MMLU 比较基准中达到 60% 以上分数的最小模型是拥有 5400 亿参数的 PaLM；而到 2024 年，微软推出的 Phi-3-mini 仅用 38 亿参数就实现了相同水平——相当于两年间参数规模缩减了 142 倍。\n**9. 复杂推理仍是人工智能面对的难题。**尽管通过思维链（Chain-of-Thought）等推理机制的引入显著提升了大语言模型的性能，这 些系统仍无法可靠解决本可通过逻辑推理获得确定性答案的问题——包括数学运算和任务规划等，尤其当问题规模超出其训练范 围时。这一缺陷严重影响了人工智能系统的可信度，使其难以胜任高风险场景的应用需求。\n**10. 人工智能智能体展现初步潜力。**2024 年推出的 RE-Bench 基准为评估 AI 智能体的复杂任务能力建立了严格标准。在短时任务 （2 小时时限）中，顶级人工智能系统的得分可达人类专家的 4 倍；但随着时间延长至 32 小时，人类表现反超人工智能系统，得分达 到 2:1 的优势。AI 智能体已在特定领域，如编写 Triton Kernels，达到人类专业水平，且能更快、更低成本地产出结果。"
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "“Pre entrenar un modelo de lenguaje es enseñarle a comprender el invento más sofisticado que tenemos como especie: el lenguaje humano. Esto se logra exponiendo al modelo a miles de millones de palabras extraídas de documentos, libros, sitios web y registros históricos. En el caso de LatamGPT, esta información es inédita, pues a menudo no reside en la web pública y, por lo tanto, no ha sido extraída por otros modelos de lenguaje”, explica Florez."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "题目（图 2.2.15），包含多个评估套件，其中 MixEval-Hard MixEval 由新加坡国立大学、卡内基梅隆大学和 Allen 是更具挑战性的版本，聚焦高难度查询，成为评估模型处理 Institute for AI 的研究团队联合推出，是解决当前大语言模型 复杂问题的有效工具。 评估领域局限性的一项新比较基准。MixEval 结合了 Chatbot Arena 中的综合性真实用户查询与 MMLU 基于标准答案的"
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "What is the best way to interpret the rapid progress in natural language and what might measures like GLUE and SuperGLUE tell us about progress in this domain? Sam Bowman, an assistant professor at NYU whose group has developed GLUE and SuperGLUE offers:\n\n*“We know now how to solve an overwhelming* *majority of the sentence- or pararaph-level text* *classification benchmark datasets that we’ve been* *able to come up with to date. GLUE and SuperGLUE* *demonstrate this out nicely, and you can see similar* *trends across the field of NLP. I don’t think we have* *been in a position even remotely like this before:* *We’re solving hard, AI-oriented challenge tasks just* *about as fast as we can dream them up,” Sam says. “I* *want to emphasize, though, that we haven’t solved* *language understanding yet in any satisfying way.”*\n\nWhile GLUE and SuperGLUE may indicate progress in the field, it is important to remember that successful models could be exploiting statistical patterns in their underlying datasets, are likely to display harmful biases, and when they demonstrate better- than-human performance, they may be doing this unevenly, displaying good performance on some tasks and faulty or inhuman reasoning on others."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "El LLM utilizado fue Mistral 8x22b como agente conversacional encargado de inferir el resultado solicitado. El prompt del sistema fue el siguiente:"
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "columna_1: 9742 | PMID: 11785524 | Title: Language in man, monkeys, and machines | Authors: Mistler-Lachman JL, Lachman R. | Citation: Science. 1974 Sep 6;185(4154):871-3. doi: 10.1126/science.185.4154.871. | First Author: Mistler-Lachman JL | Journal/Book: Science | Publication Year: 1974 | Create Date: 1974/09/06 | DOI: 10.1126/science.185.4154.871"
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "standard language modeling tasks, it outperformed GPT-2. This work won best paper at the International Conference on Machine Learning (ICML) 2024.\n\nCREDIT: DAVID GONZALES\n\nPROJECT HIGHLIGHT"
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Data on MMLU accuracy was retrieved through a detailed arXiv literature review cross-referenced by technical progress reported on Papers With Code. The reported dates correspond to the year in which a paper was first published to arXiv, and the reported results (accuracy) correspond to the result reported in the most recent version of each paper. Details about the MMLU benchmark can be found in the MMLU paper.\n\n**Appendix** **Chapter 2: Technical Performance**\n\nTo highlight progress on MMLU accuracy, scores were taken from the following papers:"
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "columna_1: 7075 | PMID: 11825178 | Title: Evaluating the UMLS as a source of lexical knowledge for medical language processing | Authors: Friedman C, Liu H, Shagina L, Johnson S, Hripcsak G. | Citation: Proc AMIA Symp. 2001:189-93. | First Author: Friedman C | Journal/Book: Proc AMIA Symp | Publication Year: 2001 | Create Date: 2002/02/05 | PMCID: PMC2243298"
+        }
+      ],
+      "predicted_sources": [
+        "AIINDEX_ai-index-2024-ch2-technical-performance.pdf",
+        "AIINDEX_ai-index-2025-chinese-version.pdf",
+        "ILIA_documento-ilia-2025.pdf"
+      ],
+      "relevant_sources": [
+        "AIINDEX_ai-index-report-2024.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa002",
+      "query": "¿Cuántos ecosistemas pioneros de GEIAL profundizaron en los niveles de confianza para el trabajo colaborativo?",
+      "fenomeno": 1,
+      "tipo": "numerico",
+      "result_found": true,
+      "ndcg_at_10": 1.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            0
+          ],
+          "returned_text": "GEIAL es una iniciativa oportuna para desbloquear la creación de conocimiento y democratizar la información sobre las dimensio- nes que hacen a una ciudad más o menos propicia para la crea- ción y el crecimiento de empresas. El reporte GEIAL 2023 es una herramienta fundamental tanto para conocer el estado de cada uno de estos ecosistemas locales como para ofrecer a otras ciu- dades del mundo una brújula para organizar sus propios esfuer- zos de desarrollo de sus ecosistemas.\n\nTodos aquellos que contribuyeron a la construcción de inteli- gencia colectiva contenida en este informe son pioneros en este tipo de iniciativa, a nivel mundial, al haber lanzado un reporte que ofrece no solo nuevos datos y análisis en base a una metodología robusta y reconocida globalmente, sino también por haber tra- bajado por el desarrollo de sus ecosistemas a lo largo del proceso llevado a cabo durante 2023. Cada uno de los 17 ecosistemas par- ticipantes han, sin duda, profundizado en los niveles de confianza necesarios para el trabajo colaborativo en base a los resultados de un proceso estructurado.\n\nEl reporte GEIAL 2023 es un llamado a la acción informada para el de- sarrollo de los ecosistemas de emprendimiento dinámico de la región."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Distintos son los casos de Copiapó y, en menor medida, Iquique, los ecosistemas con más terreno por recorrer, por ejemplo, en el campo de la **articulación** de los actores, la construcción de una **visión estratégica** **compartida**, la generación de mecanismos institucionales y una **agen-** **da de proyectos con recursos**. Algunas de estas cuestiones, como el fortalecimiento de la institucionalidad también son reconocidos en La CIUDADES GEIAL Serena-Coquimbo.\n\nEn suma, las ciudades intermedias de GEIAL se caracterizan por mos- trar algunos aspectos favorables en los tres ejes conceptuales. Por ejemplo, la valoración positiva del emprendimiento y la existencia de modelos de rol y actividades de sensibilización; o el apoyo institucional para crear la empresa, las políticas públicas y el financiamiento público, aunque estos dos últimos aspectos se verifican principalmente en las ciudades chilenas. En la mayoría de los ecosistemas también suelen existir bases de confianza entre los actores, voluntad de trabajo cola- borativo y una agenda compartida, ingredientes básicos para el desa- rrollo y consolidación de las gobernanzas de los ecosistemas."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Un aspecto que suele ser favorable para avanzar en el desarrollo de los ecosistemas es la articulación de los actores, los niveles de confianza alcanzados y la voluntad de trabajo colaborativo, aún cuando todavía hay terreno para avanzar en un desarrollo mayor de las gobernan- zas. Las condiciones comentadas en esta sección ofrecen una buena cantidad de insumos para el diseño de iniciativas tanto por parte de las gobernanzas como de los gobiernos.\n\nQuito"
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||Figura 1. MODELO CONCEPTUAL DE GEIAL: EL ECOSISTEMA DE EMPRENDIMIENTOS DINÁMICOS||18||\n|---|---|---|---|---|\n||Atracción Demandas retención extra-locales Consumo local Cultura local Capital humano emprendedor Plataforma CTI local Empresas locales Ámbitos formativos Capital humano Fuentes de Oportunidades y sus formadores|Vínculos extra-locales local Fuentes extra-locales|Espacio CIUDADES GEIAL extra-local Puentes extra-locales Capital social y redes de contacto Gobernanza del ecosistema Plataforma de apoyo institucional Políticas y Dinámica Financiamiento regulaciones emprendedora locales local Políticas extra-locales Factores viabilizadores||\n\nEn el corazón del modelo está el proceso de emprendimiento. Así, la interacción entre el capital humano emprendedor (los emprendedores) y las fuentes de oportunidades da lugar al surgimiento de propuestas de valor. La fuerza de esta interacción, alimentada por las capacidades de los emprendedores (capital humano emprendedor) y la riqueza de las fuentes de oportunidades, incide en la potencia de las propuestas CIUDADES GEIAL de valor que se generan. Por otra parte, para lograr que estas propues- tas se conviertan en proyectos y se materialicen se requiere de la exis- tencia de fuerzas viabilizadoras, que faciliten la creación y el desarrollo de nuevas empresas dinámicas."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "En relación con las fuentes de financiación, tanto públicas como priva- das, es importante resaltar la positiva percepción que se tiene de estas en el ecosistema, ya que sin ser líderes en la región tienen calificacio- nes superiores al promedio. Esto por lo tanto implica que existe una importante brecha que se traduce en oportunidad para el ecosistema. CIUDADES GEIAL Sin embargo, se han logrado avances que cabe reconocer y ellos se debe en gran medida a los esfuerzos que desde diversos actores se ha venido adelantando en diferentes frentes como son la preparación de los emprendimientos y el fortalecimiento de los pitches, la identi- ficación y optimización de los mecanismos y programas de *scouting* y el trabajo mancomunado que se ha realizado en la identificación, evaluación, acompañamiento y visibilización de los diferentes actores de inversión a través de la Red de Capital Inteligente. Esta Red que se materializa en el INVERSÓMETRO, es una herramienta construida y liderada por Ruta N que tiene como fin el tener en un instrumento que consolida las tesis de inversión, fondos disponibles, y demás caracte- rísticas de interés de los diferentes ángeles inversionistas, *family office*, inversionistas de *early stage*, entre otros, y sus respectivos procesos de vinculación de startups."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "por tipo de negocio (e.j. emprendimiento de alta tecnología vs. baja tecnología) y etapa de negocio (etapas tempranas vs. crecimiento). Por lo tanto, la cantidad de estas organizaciones en un ecosistema es un indicador débil del apoyo disponible para los empresarios. Lo crítico es la diversidad de tipos de apoyo disponibles en los ecosiste- mas. Es particularmente importante para los ecosistemas de América CIUDADES GEIAL Latina que haya suficiente apoyo disponible para las empresas que están más allá de la etapa de inicio y que buscan crecer. También es necesario que los empresarios puedan acceder a apoyos procedentes de más allá del ecosistema en el que están ubicados, por ejemplo, de manera virtual. Además, el apoyo debe ser entregado por personas con experiencia empresarial/emprendedora."
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "columna_1: 2469 | PMID: 32084201 | Title: Adaptive trust calibration for human-AI collaboration | Authors: Okamura K, Yamada S. | Citation: PLoS One. 2020 Feb 21;15(2):e0229132. doi: 10.1371/journal.pone.0229132. eCollection 2020. | First Author: Okamura K | Journal/Book: PLoS One | Publication Year: 2020 | Create Date: 2020/02/22 | PMCID: PMC7034851 | DOI: 10.1371/journal.pone.0229132"
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "De acuerdo con los datos obtenidos del Ín- dice Global de IA Responsable, las naciones con ecosistemas maduros en la región demuestran niveles similares en relación con países europeos y asiáticos. Esta madurez se refleja en materias como transparencia y explicabilidad, rendición de cuentas o pro- moción de “no daño”."
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The same requirements for collaborative sensemaking that were present in our hunter-gatherer ancestors are present today—requirements such as trust, meaningful consensus, the integrity and accessibility of information streams, wisdom, comparability of sense data, and a sense of “self-efficacy”, which is a confidence in or ability to make sense of and engage with our environment in a meaningful way (Bandura 1997; Weick and Roberts 1993; Weick 1993; Hodgkinson and Starbuck 2008; Weick 1995; Crichton, Flin, and Rattray 2000; Enya, Dempsey, and Pillay 2019). While the pandemic has highlighted the absence of these requirements, none of these problems are new, in fact, they were normalized prior to the pandemic. As Norman Maclean, the author of an analysis of the Mann Gulch Fire, an event that would be the subject of numerous analyses on breakdowns in sensemaking, once suggested: the ordinary can become monstrous given the right gust. (Bigelow 1992; Weick 1993; Maclean 1992) As we move toward the end of the first quarter of the twenty-first century, we face complex environments plagued by wicked problems."
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Experts expected that geopolitics would increase private sector cooperation significantly in health technologies, moderately in the future of work and in data and AI, and negligibly in space technologies as well as trust and supply chains. Notably, while respondents agreed that geopolitics wouldn’t alter private cooperation in space technologies, they disagreed about its effect on trust and supply chains—about half believe private cooperation in the field will be hindered, and half predicted its increase. Only answers about space technologies were unimodal, though few bimodal distributions were symmetric (see figure 3 for respective symmetric bimodal, skewed bimodal, and unimodal examples). When asked about the impact of innovation on regional employment numbers, respondents mostly anticipated slight or moderate increases in unemployment in China, Russia, the Middle East, Latin and South America, as well as Africa. Their opinions on Western nations were less consistent. Once again, responses were distributed bimodally, predicting either a moderate increase or decrease in unemployment, split evenly for the United States and skewed slightly towards unemployment for the UK, Canada, Australia, New Zealand, and the European Union."
+        }
+      ],
+      "predicted_sources": [
+        "RUTAN_informe-geial-latam.pdf",
+        "RUTAN_informe-geial-medellin.pdf",
+        "ILIA_2024.pdf"
+      ],
+      "relevant_sources": [
+        "RUTAN_informe-geial-latam.pdf"
+      ],
+      "overlap_sources": [
+        "RUTAN_informe-geial-latam.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa003",
+      "query": "How many AI-related regulations were there in the United States in 2023, and how many were there in 2016?",
+      "fenomeno": 1,
+      "tipo": "numerico",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**1. The number of AI regulations in the United States sharply increases.** The number of AI-related regulations in the U.S. has risen significantly in the past year and over the last five years. In 2023, there were 25 AI-related regulations, up from just one in 2016. Last year alone, the total number of AI-related regulations grew by 56.3%. **2. The United States and the European Union advance landmark AI policy action.** In 2023, policymakers on both sides of the Atlantic put forth substantial AI regulatory proposals. The European Union reached a deal on the terms of the AI Act, a landmark piece of legislation enacted in 2024. Meanwhile, President Biden signed an Executive Order on AI, the most notable AI policy initiative in the United States that year. **3. AI captures U.S. policymaker attention.** The year 2023 witnessed a remarkable increase in AI-related legislation at the federal level, with 181 bills proposed, more than double the 88 proposed in 2022. **4. Policymakers across the globe cannot stop talking about AI.** Mentions of AI in legislative proceedings across the globe have nearly doubled, rising from 1,247 in 2022 to 2,175 in 2023."
+        }
+      ],
+      "predicted_sources": [
+        "AIINDEX_ai-index-report-2024.pdf"
+      ],
+      "relevant_sources": [
+        "AIINDEX_ai-index-report-2024.pdf"
+      ],
+      "overlap_sources": [
+        "AIINDEX_ai-index-report-2024.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa004",
+      "query": "¿Cuál es una de las limitaciones de financiamiento identificadas para los emprendimientos dinámicos en sus primeras etapas?",
+      "fenomeno": 1,
+      "tipo": "estandar",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Por último y con el fin de identificar los principales retos en el cor- to plazo, se deben hacer ingentes esfuerzos por diseñar estructuras normativas y regulaciones públicas que faciliten el emprendimiento y apoyen la sostenibilidad de las empresas en etapa temprana. Sumado a esto, desde el componente de financiamiento, es necesario igualmente crear y/o fortalecer las fuentes de capital para la creación de empren- dimientos y que permitan la atracción de capitales foráneos, ya que es este el aspecto más rezagado. Es claro que los recursos son limita- dos, pero aunando esfuerzos desde las políticas y regulaciones para la atracción de capital y aprovechando las oportunidades y potencialida- des identificadas para la creación de nuevos emprendimientos con so- luciones puntuales a dolores de la gran empresa, podrá generarse una dinámica que permita el fortalecimiento acelerado del ecosistema de emprendimiento e innovación del distrito especial de ciencia, tecnolo- gía e innovación de Medellín."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Esto es similar a la dinámica que se ve en el Medio Oriente con Dubai y el sudeste asiático con Singapur. En resumen, la falta de un mercado de financiamiento privado que brinde apoyo en las etapas de crecimiento y expansión parece ser una de las principales brechas aún en los ecosistemas con mayor escala de la región. Desarrollar una oferta de financiamiento para las etapas de crecimiento permitiría una mayor madurez de los ecosis- temas y el logro de una masa crítica en América Latina. Esta masa crítica ayudará a ampliar los ecosistemas y aumentará su madurez dentro de la región, impactando también sobre la retención general del talento emprendedor."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Esto no implica desconocer que existen influencias relevantes desde los niveles nacional e incluso global, sino que coloca el énfasis en la necesidad de incorporar el análisis de los vínculos y canales que existen desde lo local hasta lo nacional y también lo global (Kantis y otros, 2017; 2018; 2019; Brown y Mason, 2017)10. CIUDADES GEIAL El marco conceptual en el que se basa el **ICEC-Prodem** incorpora estos elementos, tomando como punto de partida una visión sistémica y evolutiva del surgimiento y desarrollo de emprendimientos dinámicos (Kantis y otros, 2004; 2020)11. El concepto de **emprendimiento dinámico** alude a las empresas nuevas¹² con potencial de convertirse en (al menos) una PyME con proyección de crecimiento luego de superados los prime- ros años (de mayor tasa de mortalidad¹³) así como también a las Pymes jóvenes¹⁴ con proyección de crecimiento (Kantis y otros, 2004; y 2020).\n\nTal como se ilustra en la siguiente figura, el marco conceptual com- prende **tres ejes**: el capital humano emprendedor y sus ámbitos formadores (aspectos culturales, ámbitos formativos); las fuentes de oportunidades (consumo local, empresas locales, plataforma local de CTI, captación de demandas extra-locales) y los factores viabilizadores de los proyectos emprendedores, es decir, de su creación y desarrollo y del propio ecosistema (apoyo institucional, financiamiento, capital social y redes, gobernanzas, políticas y regulaciones)."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "tienen valores medio-altosMás allá de los valores medios de las distintas dimensiones, es relevan- son considera- te analizar la situación de los distintos ecosistemas, pudiendo de este dos **aspectos** **favorables**. Las modo identificar **con qué frecuencia** las condiciones son favorables oportunidadespara el emprendimiento y así como también ofrecer oportunidades de de mejora más mejora¹⁴. Entre las primeras, por ejemplo, está la **cultura emprendedo-** notorias corres-**ra** y el **capital social** y las **redes**, las dimensiones que más usualmente ponden a valores presentan condiciones favorables, con valores medio-altos en 8 y 7 por debajo de los 50 puntos ciudades, respectivamente (sobre de un total de 10). aunque ello no significa que no Del otro lado, los aspectos que aparecen generalmente como desfavo- las haya aún porrables son las **regulaciones y políticas** y el **financiamiento**. En efecto, en encima de ese ambas dimensiones predominan los valores medio-bajos o, a lo sumo, puntaje. medios. En financiamiento, inclusive, hay 4 ciudades grandes sobre un total de 10 que se ubican en un nivel bajo de desarrollo."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "» Financiación: identificamos, preparamos y conectamos a los em- prendimientos de un alto grado de madurez con inversionistas y otras fuentes de financiación."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "There is often a critical lack of capital for companies that have moved beyond the initial seed funding stage. While early-stage capital is available, there is a shortage of growth capital to maintain investments and offer initial backers a return on their investments. This makes investors reluctant to make the initial outlay, which increases pressure on local businesses and communities. 34"
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Valoración social del emprendimiento Acceso a financiamiento para arrancar y dar los y los emprendedores primeros pasos"
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Alongside the general global trend for reductions in partner funding, add itional financial challenges to funding sustainability can result from internal government funding restrictions, or from external restrictions linked to inter national sanctions or restrictions on funding and travel. These are additional to the increased costs of operating in restrictive environments due to the increased administrative workload, additional charges for documentation, and the need for security provision or for government officials’ participation in or monitoring of events (see above). Internal funding restrictions might be generic, such as foreign agents legislation that limits the ability of CSOs to receive international funding 19 either partially or completely. It can also be more targeted, as in Niger 20 where French funding in particular has been made off-limits.\n\n16 Borgh and Terwindt (note 7), pp. 1065–81. 17 Transition context civil society representative, 18 Feb. 2025. 18 Borgh and Terwindt (note 7), pp. 1065–81. 19 Kirova, I., ‘Foreign agent laws in the authoritarian playbook’, *New Eastern Europe*, 19 Sep. 2024. 20 Banchereau, M., ‘Niger junta bans French aid group amid tensions with France’, Associated Press, 13 Nov. 2024."
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The KDP decision to authorize a program or project’s transition to the next life-cycle phase is based on a number of factors, including technical maturity; continued relevance to Agency strategic goals; adequacy of cost and schedule estimates; associated probabilities of meeting those estimates (confidence levels); continued affordability with respect to the Agency’s resources; maturity and the readiness to proceed to the next phase; and remaining program or project risk (safety, cost, schedule, technical, management, and programmatic). At the KDP, the key program or project cost, schedule, and content parameters that govern the remaining life- cycle activities are established."
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "columna_1: 5919 | PMID: 26708982 | Title: Financing drug discovery via dynamic leverage | Authors: Montazerhodjat V, Frishkopf JJ, Lo AW. | Citation: Drug Discov Today. 2016 Mar;21(3):410-4. doi: 10.1016/j.drudis.2015.12.004. Epub 2015 Dec 18. | First Author: Montazerhodjat V | Journal/Book: Drug Discov Today | Publication Year: 2016 | Create Date: 2015/12/29 | DOI: 10.1016/j.drudis.2015.12.004"
+        }
+      ],
+      "predicted_sources": [
+        "RUTAN_informe-geial-medellin.pdf",
+        "RUTAN_informe-geial-latam.pdf",
+        "SIPRI_rpp-florian-katongo.pdf"
+      ],
+      "relevant_sources": [
+        "RUTAN_informe-geial-latam.pdf"
+      ],
+      "overlap_sources": [
+        "RUTAN_informe-geial-latam.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa005",
+      "query": "How did the 2024 AI Index describe generative-AI investment, and what U.S. private AI investment figure did the 2025 report give for 2024?",
+      "fenomeno": 1,
+      "tipo": "multi_documento",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "4.2.8). This disparity was also seen in entrepreneurial activity, as the United States led with 1,953 newly funded AI companies in 2025, compared to 172 in the United Kingdom and 161 in China (Figure 4.2.9). In the United States, more than half of total private AI investment was generative AI-related ($163.6 billion), while the combined investment by China and Europe was $4.7 billion (Figure 4.2.10). Since 2024, private AI investment in the United States increased 160.2%, compared to an increase of 32.2% in China and 7.2% in Europe (Figure 4.2.11). **Global private investment in AI by geographic area, 2025**\nSource: Quid, 2025 | Chart: 2026 AI Index report\nUnited States 285.88 China 12.41 United Kingdom 5.90 France 4.36 Canada 4.28 India 4.09 Germany 3.89 Israel 3.58 Australia 2.52 Saudi Arabia 2.03 Singapore 1.82 South Korea 1.78 Belgium 1.20 Japan 1.11 Sweden 0.97 0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270 280 290\nTotal investment (in billions of US dollars)\n\n**Figure 4.2.8**\n\n**Number of newly funded AI companies by geographic area, 2025**\n\nSource: Quid, 2025 | Chart: 2026 AI Index report"
+        }
+      ],
+      "predicted_sources": [
+        "AIINDEX_ai-index-report-2026.pdf"
+      ],
+      "relevant_sources": [
+        "AIINDEX_ai-index-report-2024.pdf",
+        "AIINDEX_ai-index-report-2025.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa006",
+      "query": "¿Cómo define el documento en portugués el primer desafío para la estabilidad del entorno espacial?",
+      "fenomeno": 2,
+      "tipo": "cross_lingual",
+      "result_found": true,
+      "ndcg_at_10": 1.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            0
+          ],
+          "returned_text": "O crescimento da economia espacial (e a geração de retornos a partir dela) será mais fácil se o ambiente for estável. Existem riscos para essa estabilidade. Esses riscos começam com os perigos naturais; o espaço é um ambiente operacional hostil, no qual fatores naturais (que vão desde o clima solar e a radiação até micrometeoróides) podem afetar negati- vamente as operações de satélites e outros sistemas espaciais. As ativ- idades humanas estão introduzindo riscos adicionais nesse ambiente naturalmente perigoso. O primeiro desafio são os detritos espaciais (space debris), que são os satélites inoperantes, corpos de foguetes e objetos fragmentados no espaço que não têm mais utilidade. Um se- gundo desafio fundamental é o congestionamento orbital e a necessi- dade de coordenação associada a ele. As órbitas nas quais os satélites e constelações operam e o espectro de radiofrequências do qual depen- dem para prestar serviços são recursos naturais limitados que devem ser utilizados de forma racional e equitativa para garantir que as ativi- dades espaciais continuem viáveis, agora e no futuro."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Responsible Behavior in Space Space Sustainability Space Governance Space Risk Management Orbital Debris Space Traffic Management Space Economy and Investment Global Space Policy Analysis Global Space Environment The Portuguese translation of Responsible Investment in the Space Sector, which explains how stewardship, risk management, and responsible behavior in space operations protect long-term value in the growing space economy. This is the Portuguese translation of Responsible Investment in the Space Sector: A Guide to Stewardship for Sustainable Value Creation. A publicação explica por que investir no setor espacial exige mais do que diligência financeira convencional. Ela trata o espaço como um domínio estratégico, compartilhado, adverso e frequentemente incerto, no qual as decisões de investimento podem influenciar comportamentos em órbita, afetar a estabilidade de longo prazo e moldar a geração de valor futuro em toda a economia espacial. O texto deixa claro que o espaço já impulsiona atividade econômica real e que os investidores precisam tratá-lo como um domínio com regras próprias. O guia começa enquadrando o espaço como um domínio econômico emergente."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The threat of space debris to the future of spaceflight combined with the nearly universal adoption of the Lia- bilityConvention[2]createdtheneedforasetofinternationallyacceptedspacedebrismitigationmeasures. A majorstepwastakenin2002,whentheIADCpublishedthe *IADC Space Debris Mitigation Guidelines* [3]and presented them to the UNCOPUOS Scientific & Technical Subcommittee. This document has since served as baselinefornon-bindingpolicydocuments,nationallegislation,andasstartingpointforthederivationoftech- nicalstandards. Aconsistentsetofmeasuresisparamounttotackletheglobalproblemofspacedebris,butitis uptotheindividualnations,operators,andmanufacturerstoimplementthem,whichcanleadtovariationson acasebycasebasis. Assuch,nationsaroundtheworldhavedevelopedsafetystandardsandspecificguidelines building on the work of the IADC. However, standardisation of mitigation measures is important in order to achieveacommonunderstandingoftherequiredtasksleadingtotransparentandcomparableprocesses. This isthetaskofnormativeinternationalstandardizationbodiessuchastheInternationalStandardsOrganisation (ISO)[4].\n\nInordertoaddresstheissuesposedbyspacedebrisonspaceflightactivitiesUNCOPUOShastakentheinitiative tocreateasetofinternationallyagreed *guidelines for the long-term sustainability of outer space activities* [5]. These guidelines contain recommendations on the policy and regulatory frameworks for space activities, the safetyofspaceoperations,rulesofengagementforinternationalcooperation,capacity-buildingandawareness, andscientificandtechnicalresearchanddevelopment.\n\nThecontentofthethisdocumentiswritteninresponsetothoseguidelinesbyraisingawarenessofspaceactiv- ities,andaimsto:\n\nProvideatransparentoverviewofglobalspaceactivities,\n- Estimatetheimpactoftheseactivitiesonthespaceenvironment,\n- And quantify the effect of internationally endorsed mitigation measures aimed at sustainability of the environment.\nThedocumentisstructuredasfollows: Section1containsthedefinitions,datasources,andmethodologiesused to compile this document. Section 2 contains the history of the space environment since the beginning of the\n\n!\n\nspace age. Section 3 contains a snapshot of the space environment for a specific year analysed. The content of Sections 2 and 3 are further analysed in depth in Sections 4, 5, and 6 where respectively the intentional release of objects, fragmentation events, and end-of-life operations of space missions are covered. Section 7 summarises the space activities in Low Earth Orbit up until the year of analysis into an environment index. Section8containsasummaryofthemainspaceenvironmenttrendsidentified."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "La finalidad de la presente publicación es facilitar orientación de alto nivel consistente en un marco de seguridad modelo, que sirva de base para la elaboración de marcos de seguridad nacionales e internacionales intergubernamentales y al mismo tiempo ofrezca flexibilidad para adaptar esos marcos a aplicaciones de fuentes de energía nuclear en el espacio y estructuras orgánicas específicas. Esos marcos nacionales e internacionales intergubernamentales deben incluir elementos técnicos y programáticos para mitigar los riesgos dimanantes de la utilización de fuentes de energía nuclear en **__________________** Tal como se entiende en el presente documento, la expresión “espacio ultraterrestre” es sinónima de “espacio”. Tal como se entiende en el presente documento, la expresión “las personas y el medio ambiente” es sinónima de “las personas y el medio ambiente en la biosfera de la Tierra”.\n\nel espacio. La implantación de los marcos no sólo fomentaría la confianza del público mundial en que las aplicaciones de fuentes de energía nuclear en el espacio se lanzarían y utilizarían en condiciones de seguridad, sino que podría facilitar también la cooperación bilateral y multilateral en misiones espaciales que utilicen fuentes de energía nuclear. La orientación proporcionada en el presente documento refleja un consenso internacional sobre las medidas necesarias para lograr la seguridad y se aplica a todas las aplicaciones de fuentes de energía nuclear en el espacio sin excepción."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Al considerar las grandes posibilidades de crecimiento e innovación, y a la luz de los múltiples y vinculados desafíos que enfrentarán las nuevas actividades espaciales, la Secure World Foundation ofrece este Manual para Nuevos Actores en el Espacio con la esperanza de que pueda asistir a todos los aspirantes, sean gubernamentales o no gubernamentales, en la planificación y ejecución de actividades espaciales de manera segura y sostenible. Obtenga más información en https://swfound.org/handbook/ Al considerar las mayores oportunidades para el crecimiento y la innovación, al igual que los retos innumerables entrelazados que enfrentarán las nuevas actividades espaciales, la Security World Foundation brinda este Manual para Nuevos Actores en el Espacio con la esperanza de que asistirán a todos los nuevos participantes ambiciosos, ya sea gubernamental o no gubernamental, al planificar y al realizar las actividades espaciales de una forma segura y sostenible. Explore some of our related publications below. Traduction française de l’édition 2017 du Manuel à l’intention des nouveaux acteurs de l’espace The COPUOS Briefing Book is a practical guide by Secure World Foundation to help newcomers understand and engage with the UN’s central forum for space diplomacy. A practical guide to responsible, sustainable space activities for new actors."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "1. Deter the concentration of hostile forces on the ground borders and Brazil’s jurisdictional waters and prevent the use of th 1. Deter the concentration of hostile forces on the ground borders and Brazil’s jurisdictional waters and prevent the use of the nat e national ional\n**guidelines:** air space. To deter, however, it is necessary to be prepared for combat.\n\n2. Organize the Armed Forces under the monitoring/control, mobility and presence trinomial umbrella.\n- 3. Develop capabilities to monitor and control the air space, territory and territorial waters of Brazil.\n- 4. Develop the capacity to quickly respond to any threat or aggression: strategic mobility.\n- 5. Strengthen the connection between the technological and operational aspects.\n- 6. Strengthen the three sectors of strategic importance: space, IT and nuclear energy.\n- 7. Unify the operations of all three Services.\n\n|||Brazil published the||\n|---|---|---|---|\n|||Política de De|fesa|\n||N Estraté|acionall Defence Policy) in 1996|(National and 2005 and the gia Nacional de|\n|Defesa|Strategy|)|(National Defence in 2008. The|\n|Livr|o Bra|n|co de Defesa|\n||Nacionall||(White Paper on|\n|N||ational De|fence was|\n|sub||mitted to the updated versions of the previous documents.|Nat)io nal Congress in 2012, with|"
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "(Accessed on December 2022) as the contribution of space to society and environment is quite broad, as demonstrated in ST/SPACE/71.7 The list of challenges is not meant to be comprehensive but rather to provide examples, with the purpose of rais- ing awareness of where the Earth observation, Global Navigation Satellite Systems and satellite communications can be of use in the context of an 8 billion world."
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "To facilitate growth of the national space sector, with emphasis on “New Space”; 2. To promote, implement, and propose updates to the Portuguese space policy and strategy (Portugal Space 2030); 3. To promote an adequate spectrum management, technology transfer and regulatory frameworks for the responsible use of space; 4. To foster interaction with ESA; 5. To promote an active engagement of Portuguese stakeholders in European programs; 6. To represent Portugal on the international scene, promote cooperation, and serve as Portugal’s gateway to space in Portugal and around the world. 7. To manage and promote the Azores International Satellite Launch Program (ISLP); 8. To promote the creation of a Space Fund to foster investments in new space technologies and proof-of- concepts [188]. Cooperation Part of the mission assigned to Portugal Space is to strengthen and extend international strategic partnerships. In particular, the agency’s Business Plan highlights Portugal’s cooperation with ESA as well as with “natural partners,” including Africa, Brazil, New Zealand and the United Kingdom [188]."
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Le premier groupe de travail de ce type, présidé par Peter Martinez (Afrique du Sud), a été créé en 2010 dans le cadre du SCST. Il a étudié les questions qui revêtaient un intérêt futur pour la viabilité des activités spatiales et a été chargée d’élaborer des lignes directrices juridiquement non contraignantes sur la réduction des risques pour la viabilité des activités spatiales. Sur la base des discussions de ses groupes d’experts gouvernementaux, le groupe de travail a examiné des questions telles que l’utilisation de l’espace pour faire progresser le développement durable sur Terre, la lutte contre débris spatiaux, les mécanismes visant à promouvoir la coopération en matière de sensibilisation aux objets et aux événements spatiaux, la météorologie spatiale et les éventuels régimes juridiques et réglementaires. Le groupe de travail est parvenu à un consensus sur le premier ensemble de lignes directrices en 2016 et le deuxième ensemble en 2018. Les 21 lignes directrices ont été officiellement adoptées par le CUPEEA en juin 2019. En outre, le Comité a créé un nouveau groupe de travail sur la viabilité des activités spatiales dans le cadre du SCST. Ce groupe de travail s’est réuni en 2021 sous la présidence d’Umamaheswaran R. (Inde) et continue d’améliorer des résultats obtenus par le précédent groupe de travail sur la viabilité à long terme des activités spatiales dans le cadre du nouveau plan de travail quinquennal.\n\nAttributions du GT A/AC.105/1258, Annexe II, al. 7, et adjonction."
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "To ensure a safe, secure and sustainable use of space, the EU Space Programme has defined the European Union approach for space traffic management (STM).\n\nThere are various challenges in today’s space:40"
+        }
+      ],
+      "predicted_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf",
+        "SWF_12-2-portuguese-translation-responsible-investment-in-the-space-sector-a-guide-to-stew.json",
+        "ESA_space-environment-report-i4r0-20200911.pdf"
+      ],
+      "relevant_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf"
+      ],
+      "overlap_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa007",
+      "query": "Which five categories does the Spanish counterspace report use to assess capabilities?",
+      "fenomeno": 2,
+      "tipo": "cross_lingual",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "This report compiles and assesses publicly-available information on the counterspace capabilities being developed by multiple countries across five categories: direct-ascent, co-orbital, electronic warfare, directed energy, and cyber. It assesses the current and near-term future capabilities for each country, along with their potential military utility. The evidence shows significant research and development of a broad range of kinetic (i.e. destructive) and non-kinetic counterspace capabilities in multiple countries. **However, only non-kinetic capabilities are actively being** **used in current military operations.** The following provides a more detailed summary of each country’s capabilities."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||Résumé du rapport—|\n|---|---|\n||ÉVALUATION DES CAPACITÉS ANTISATELLITES DANS LE MONDE Une évaluation open source|\n|>|04 2025|\n\nÉVALUATION DES CAPACITÉS ANTISATELLITES DANS LE MONDE"
+        }
+      ],
+      "predicted_sources": [
+        "SWF_69cffa84a1834078d6f9fe5e-2018-global-counterspace-capabilities-an-open-source-assessme.pdf",
+        "SWF_2025-executive-summary-french.pdf"
+      ],
+      "relevant_sources": [
+        "SWF_2025-executive-summary-spanish.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa008",
+      "query": "Quanto as empresas espaciais atraíram em investimentos globais em 2025?",
+      "fenomeno": 2,
+      "tipo": "numerico",
+      "result_found": true,
+      "ndcg_at_10": 1.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            0
+          ],
+          "returned_text": "**o setor espacial comercial está passando por** uma expansão mundial. Esse crescimento nos níveis de atividade e capacidade **2025** oferece o potencial de ampliar o acesso da sociedade global à tecnolo-\n\n**55.3B**\n**$** gia, às aplicações e aos serviços espaciais, assim como aos benefícios **+113%** sociais e econômicos decorrentes desse acesso. Analistas da Space Capital, empresa de capital de risco especializada no setor espacial, estimaram que as empresas espaciais atraíram US$ 55,3 bilhões em*Um Guia de Gestão Responsável para a Geração de Valor Sustentável* investimentos globalmente em 2025, mais do que o dobro do total **2** registrado em 2024 pela mesma empresa. A Space Capital espera **2024** que a atividade de investimento focada no setor espacial continue a crescer nos próximos anos. A maior parte do investimento (rastreada Estimativas indicam que as empresas por fonte, e não pelo tamanho do negócio) continua a vir de fontes de espaciais atraíram US$ 55,3 bilhões em capital de risco, embora fontes de capital de longo prazo e de seto-investimentos globalmente em 2025, mais do res a jusante (downstream) estejam se envolvendo. Outros analistas, que o dobro do total registrado em 2024 da empresa de análise do setor Bryce Tech, relataram que, em 2024, mais da metade dos investidores que realizaram investimentos eram **3** investidores novatos no domínio espacial.\n\nEsse fluxo de investimentos é impulsionado pela expectativa de opor- tunidades na área de tecnologia espacial, aplicações e atividades que"
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "As atividades do setor espacial também enfrentam incertezas regu- **INVESTIMENTO RESPONSÁVEL NO SETOR ESPACIAL:** latórias que podem representar um risco para os investimentos espaciais. Os novos serviços e aplicações espaciais que estão sendo desenvolvidos por atores espaciais comerciais podem não se enquadrar claramente nas estruturas regulatórias e de licenciamento existentes; além disso, a eficácia e a eficiência dos marcos existentes estão sendo postas à prova para acompanhar o ritmo de desenvolvimento da indústria. Os gover- nos também estão competindo para desenvolver indústrias espaciais comerciais em prol de seus próprios interesses nacionais. Isso pode le- var a uma competição regulatória ou baseada em incentivos, na qual os governos buscam atrair empresas espaciais comerciais. A falta de uniformidade nos princípios e abordagens regulatórias cria o potencial para uma regulamentação fragmentada, a busca pela jurisdição mais favorável e maior incerteza.\n\nAs atividades espaciais são sensíveis aos riscos geopolíticos devido à *Um Guia de Gestão Responsável para a Geração de Valor Sustentável* natureza estratégica do domínio espacial. As forças armadas em todo o mundo dependem cada vez mais de satélites para reconhecimento, co- municações e até mesmo para funções de comando e controle. Por isso, vários países têm empreendido esforços para desenvolver capacidades contraespaciais com o objetivo de impedir, enfraquecer ou destruir as capacidades espaciais de um adversário. As capacidades espaciais comerciais (incluindo lançamentos) também podem ser utilizadas em, ou ser afetadas por, conflitos na Terra."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Source: Quid, 2025 | Chart: 2026 AI Index report\n\nUnited States 8,909 China 1,766 United Kingdom 1,057 Canada 560 Israel 556 France 552 India 542 Germany 486 Japan 444 South Korea 329 Singapore 288 Australia 216 Switzerland 188 Spain 150 Netherlands 141 3,000 3,500 5,000 5,500 6,000 6,500 7,000\n\n||Number of newly funded AI companies by geographic area, 2013–25||\n|---|---|---|\n||Source: Quid, 2025 | Chart: 2026 AI Index report||\n|2,000||1,953, United States|\n|1,500 es ni pa om fc 1,000 ro be m|||\n|Nu|500 0 2013 2014 2015 2016 2017 2018|639, Europe 161, China 2019 2020 2021 2022 2023 2024 2025|\n\n||0 500|1,000 1,500|2,000 2,500|4,000 4,500|7,500 8,000|8,500 9,000|\n|---|---|---|---|---|---|---|\n|||||Number of companies||Figure 4.2.13|\n\n**Figure 4.2.14**\n\nWithin the United States, funding and entrepreneurial activity is heavily concentrated in a small number of states (Figure 4.2.15). California accounted for $218 billion in 2025, representing over 75% of the national total. Colorado ($19 billion), New York ($13 billion), and Florida ($6 billion) tracked the next largest investments. More than half of all U.S. states received less than $100 million in private AI investment, and a few, including South Dakota, Oklahoma, Arkansas, and West Virginia, reported no mapped investment activity. The underlying data for these state-level figures is not exhaustive but the overall pattern is clear."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "US, China Target Africa,” Voice of America, December 22, 2023, https://www.voanews.com/a/enough-space-for-everyone-us-china-target-africa-/7388756. html; and Aleksandra Gadzala Tirziu, “China, Latin America and the New Space Race,” GIS Reports, July 4, 2023, https://www.gisreportsonline.com/r/china-space-latin/; and “Interna-� tional Cooperation in Outer Space,” China National Space Administration, January 7, 2022, https://www.cnsa.gov.cn/english/n6465668/n6465670/c6840364/content.html. 21 Jonathan McDowell, “Space Activities in 2023,” Jonathan’s Space Report, January 15, 2024, https://planet4589.org/space/papers/space23.pdf. 22 “China’s National Defense in the New Era,” Ministry of National Defense of the People’s Republic of China, July 24, 2019, http://eng.mod.gov.cn/xb/Publications/WhitePa�- pers/4846452.html. 23 “Space Investment Quarterly: Q4 2023*,”* Space Capital, January 16, 2024, 4, https://www. spacecapital.com/publications/space-investment-quarterly-q4-2023. 24 Karen M. Sutter, “‘Made in China 2025’ Industrial Policies: Issues for Congress,” Congres- sional Research Service, IF10964, updated December 22, 2022, https://crsreports.congress. gov/product/pdf/IF/IF10964/9; and “Chinese Space Sector Continues World-Leading Post-Covid Rebound: Euroconsult Quarterly Report,” Euroconsult, May 11, 2021, https:// www.euroconsult-ec.com/press-release/chinese-space-sector-continues-world-lead- ing-post-covid-rebound-euroconsult-quarterly-report/."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||Recently|Table A2. Most In-Space Satellite Servicing Companies Founded||\n|---|---|---|---|\n||Companies in dataset Companies founded………………….……before 2000 ………………………………………...…………….…2000 to 2012 ………………………………………................……2013 to 2019 ……………………………………………………………2020 or later Source: PitchBook Data, Inc.; author analysis. Companies in dataset Companies founded………………...……before 2000 ………………………………….……………….……2000 to 2012 …………………………………….…………….……2013 to 2019 ………………………………..…………………..……2020 or later Source: PitchBook Data, Inc.; author analysis.|Commercial In-Space Satellite Servicing Company Founding Trends 5% 11% 35% 49% Table A3. Most In-Space Manufacturing Companies Founded Recently Commercial In-Space Manufacturing Company Founding Trends 0% 7% 40% 53%|37 2 4 13 18 15 0 1 6 8|\n\n|Table A4. Companies from PitchBook|||||\n|---|---|---|---|---|\n|PNT|SSA|In-Space Satellite Services|In-Space Manufacturing|Exploration|\n|KOfinder|L3 Applied Defense Solutions|Ad Astra Rocket|Above Space|Aquarian Space|\n|Satelles|LeoLabs|Altius Space Machines|Axiom Space|Argo Space|\n|Xairos (Information Services (B2C))|Numerica (Space Domain Awareness Division)|Apex (Culver City)|CisLunar Industries|Astrobotic|\n|Xona Space Systems|Privateer|Argo Space Arkisys Atomos (Aerospace and Defense) CisLunar Industries Exclosure Free Space Galactiv GeoJump Guardian Space Technology Solutions iMetalx Impulse Space|In Orbit LatticeX (Acquirer) Made in Space MaxSpace Odyssey SpaceWorks Outpost Redwire (Jacksonville) reOrbital Sierra Space Space Tango Uplift Aerospace|AstroForge Blue Origin Boeing Cislune Constanellis Aerospace Deep Space Industries Dynetics Firefly Aerospace Gravitics Interlune Interorbital Systems|"
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||b Company|c Country|Arms revenues, 2024|Arms revenues, d 2023|Change in arms revenues, 2023–24 (%)|Total revenues, 2024|Arms revenues as a % of total revenues, 2024||\n|a Rank|||||||||\n|2024|2023||||||||\n|44|42|Hindustan Aeronautics|India|3 810|3 820|–0.3|4 010|95|\n|45|44|V2X|United States|3 760|3 510|7.1|4 320|87|\n|46|81|Czechoslovak Group|Czechia|3 630|1 240|193|4 340|84|\n|47|52|ASELSAN|Türkiye|3 470|2 790|24|3 660|95|\n|48|48|Textron|United States|3 290|3 030|8.6|13 700|24|\n|49|51|TransDigm Group|United States|3 180|2 650|20|7 940|40|\n|50|46|NCSIST|Taiwan|3 110|3 190|–2.5|3 190|97|\n|51|60|PGZ|Poland|3 040|2 270|34|3 380|90|\n|52|57|JSC Ukrainian Defense Industry|Ukraine|3 010|2 140|41|3 010|100|\n|53|49|Fincantieri|Italy|2 990|2 860|4.5|8 790|34|\n|54|50|Parker- Hannifin Corp.|United States|2 740|2 680|2.2|19 850|14|\n|55|61|Kawasaki Heavy Industries|Japan|2 650|1 950|36|14 060|19|"
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Up to USD100bn initiative supported by MGX, Microsoft, and BlackRock to 255 scale AI infrastructure capacity; 256 USD20bn for the Stargate UAE digital cluster to boost AI infrastructure; USD3.5bn investments in 2025–2027 to fully digitize and automate govern- ment processes²⁵⁷ USD0.5bn investment by Du, an Emirati telecommunications company, and Microsoft for the Du-Microsoft Hyperscale Data Center in Dubai²⁵⁸\n\n248 Al-Barkati, “Saudi Arabia’s $100bn tech investment shows global leadership on AI, says Microsoft executive.” 249 Kitishian, “Saudi Arabia: Hundreds of billions for global AI supremacy.” 250 Priyadarshi, “Humain: Inside Saudi Arabia’s $77b vision 2030 AI superpower project.” 251 “Oracle’s commitment to Saudi Arabia and President Trump’s vision for global prosperity.” 252 “Google Cloud and PIF advance AI hub in Saudi Arabia.” 253 “AWS and Humain announce a more than $5b investment to accelerate AI adoption in Saudi Arabia and globally.” 254 Kessel, “Amazon follows Google, Meta, and Microsoft with plans to boost spending on AI”; Ashare, “Google pours billions into AI, cyber and infrastructure expansion.” 255 “BlackRock, Global Infrastructure Partners, Microsoft and MGX launch new AI partnership to invest in data centers and supporting power infrastructure.” 256 Lee, “Abu Dhabi’s Stargate UAE.” 257 Grey, “Is Abu Dhabi poised to emerge from the shadows of Dubai?” 258 Butler, “Microsoft and Du to develop $544m data center in the UAE.”"
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "D.C. に本社を置いている。 航空宇宙及び防衛分野を運営する複合企業に加え、日本には特有の商社経済がある。 「総合商社」と呼ばれる日本の投資会社は、多くの場合「系列」と呼ばれる日本の大規 模な企業グループの一部であり、さまざまな分野や技術に関与している。これらの企業 は、特に戦後の復興期以降、日本を世界市場や産業化へと押し上げるのに貢献した。現\n114 代の投資会社は、日本や海外の宇宙技術や宇宙企業への投資を増やしている。 伝統的 な企業も、合弁会社などを通じて国際的な宇宙関連スタートアップへの投資を行ってい 115 る。"
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "*Investment Funds* As of the end of 2019, the LSA has invested with more than 50 commercial space companies and research laboratories employing more than 800 people, with the intention of providing economic return to Luxembourg and expanding Luxembourg’s economy to include a wider range of new space activities [41]. Of these companies, a large number of them have been founded in or have offices based in Luxembourg itself, which they see as a major milestone reached towards their pillars. Each company has the opportunity to pitch for investment, bid on certain ESA programs via the GeoReturn mechanism, and apply for research grants from the Luxembourg government. The LSA has invested in commercial companies within the following core segments of the space industry:\n\n*In-Space Segment* Includes satellite and instrument manufacturers, system integration of small satellites, providers of electric propulsion for satellites, robotic payloads, in-space manufacturing companies, composites companies, radio frequency (RF) payloads, and field-programmable gate array (FPGA) providers.\n\n*Services Segment* Includes satellite-based media and telecommunications services, risk management services, satellite data analytics companies, providers of environmental applications and services, aeronautical information services, and builders of analytics platforms for satellite data.\n\n*Ground Segment* Includes satellite ground stations development, mechanical and electrical ground support equipment, communication networks, and mission operations providers."
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "|UNDS BY||\n|---|---|\n|Budget Authority ($ in millions)|FY 2019*|\n|Deep Space Exploration Systems|27.8|\n|Exploration Research and Technology|56.7|\n|LEO and Spaceflight Operations|38.8|\n\nScience 191.1 Aeronautics 111.5 Education 0.0\n\n|Safety, Security, and Mission Services|204.4|\n|---|---|\n|Construction and Environmental Compliance and Restoration|4.8|\n|Ames Research Center (ARC) Total|635.1|\n|Deep Space Exploration Systems|15.0|\n|Exploration Research and Technology|4.4|\n|LEO and Spaceflight Operations|0.3|\n\nScience 59.4 Aeronautics 146.1 Education 0.0\n\n|Safety, Security, and Mission Services|59.6|\n|---|---|\n|Construction and Environmental Compliance and Restoration|7.2|\n|Armstrong Flight Research Center (AFRC) Total|292.1|\n|Deep Space Exploration Systems|115.4|\n|Exploration Research and Technology|80.7|\n|LEO and Spaceflight Operations|64.5|\n\nScience 32.4 Aeronautics 144.9 Education 0.0\n\n|Safety, Security, and Mission Services|210.7|\n|---|---|\n|Construction and Environmental Compliance and Restoration|62.8|\n|Glenn Research Center (GRC) Total|711.5|\n|Deep Space Exploration Systems|2.0|\n|Exploration Research and Technology|65.8|\n|LEO and Spaceflight Operations|185.5|\n\nScience 2,075.9 Aeronautics 14.0 Education 0.0\n\n|Safety, Security, and Mission Services|399.6|\n|---|---|\n|Construction and Environmental Compliance and Restoration|34.9|\n|Goddard Space Flight Center (GSFC) Total|2,777.7|\n\nSD-2"
+        }
+      ],
+      "predicted_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf",
+        "AIINDEX_ai-index-report-2026.pdf",
+        "CSIS_240417-swope-spacethreatassessment-2024.pdf"
+      ],
+      "relevant_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf"
+      ],
+      "overlap_sources": [
+        "SWF_investimento-respons-vel-no-setor-espacial.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa009",
+      "query": "What categories does the 2026 Global Counterspace Capabilities report use in its assessment?",
+      "fenomeno": 2,
+      "tipo": "estandar",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "As space becomes increasingly congested and contested, the report highlights a parallel rise in military interest and investment in space warfare strategies, posing new threats to global stability and space sustainability. Drawing from public domain sources, this annual assessment analyzes five categories of counterspace threats—direct-ascent, co-orbital, electronic warfare, directed energy, and cyber—from nations including China, Russia, the United States, and emerging space actors like India, Iran, and North Korea. The report underscores how most current military activity involves non-kinetic capabilities, with kinetic systems largely under development or testing. Importantly, it calls attention to the cascading consequences such capabilities may have, not only for national security but for the global economy and civil society. 2020 Executive Summary - English 2020 Executive Summary - French 2020 Executive Summary - Spanish Explore Other Editions of the Counterspace Reports For the most recent edition and program overview, visit the Counterspace Program Homepage. Explore some of our related publications below. This insight piece highlights major findings from Secure World Foundation’s 2026 Global Counterspace Capabilities report, which tracks how 13 countries are developing capabilities to disrupt, deny, degrade, or destroy space systems."
+        }
+      ],
+      "predicted_sources": [
+        "SWF_2-2-2020-global-counterspace-capabilities-report.json"
+      ],
+      "relevant_sources": [
+        "SWF_gcsr-2026-execsum-eng.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa010",
+      "query": "How many operational electronic-warfare offensive counterspace systems does the report attribute to the United States?",
+      "fenomeno": 2,
+      "tipo": "numerico",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**1.3 — US ELECTRONIC WARFARE** **Assessment /** The United States has three operational EW counterspace system: the Counter Communications System (CCS), which can be deployed globally to provide uplink jamming capability against geostationary communications satellites; Meadowlands, an updated version of the CCS system; and Remote Modular Terminal (RMT), an EW counterspace system that can be operated remotely. Through its Navigation Warfare program, the United States has the capability to jam and interfere with the civil signals of global navigation satellite services 02 (GNSS) within a local area of operation to prevent their effective use by adversaries and has demonstrated doing so in several military exercises. 03 The United States likely could jam military GNSS signals as well, although the effectiveness is difficult to assess based on publicly available information. The 04 effectiveness of US measures to counter adversarial jamming and spoofing operations against military GPS signals is not known. 05 **Specifics /** 06 The following paragraphs provide a general overview of different types of EW capabilities as related to counterspace applications that are relevant to all the 07 country-specific EW sections in this report."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The 2026 report reveals growing global counterspace capabilities and urges public awareness of the risks of space conflict. An infographic illustrating the risks posed by anti-satellite (ASAT) weapons and their impact on orbital debris and sustainability. 2018's initial open-source report tracking the development of counterspace technologies worldwide. 2019's comprehensive open-source review of evolving military space threats and technologies. A comprehensive review of space security and anti-satellite developments worldwide. A 2021 snapshot of counterspace developments, assessing military space capabilities and their implications for global security. https://www.youtube.com/c/SwfoundOrg https://cdn.prod.website-files.com/66dcc6872f6ed23bce1db235/69dd56091230134870d33810_8c763ccd.jpeg https://www.swfound.org/publications-and-reports/2026-global-counterspace-capabilities-report https://www.swfound.org/publications-and-reports/copuos-briefing-book https://www.swfound.org/publications-and-reports/handbook-for-new-actors-in-space https://www.swfound.org/publications-and-reports/swf-asat-infographic-2022 https://www.swfound.org/publications-and-reports/2018-global-counterspace-capabilities-report https://www.swfound.org/publications-and-reports/2019-global-counterspace-capabilities-report https://www.swfound.org/publications-and-reports/2020-global-counterspace-capabilities-report https://www.swfound.org/publications-and-reports/2021-global-counterspace-capabilities-report"
+        }
+      ],
+      "predicted_sources": [
+        "SWF_global-counterspace-capabilities-2026-hr.pdf",
+        "SWF_16-global-counterspace-capabilities-report-insight-counterspace-surge-2026.json"
+      ],
+      "relevant_sources": [
+        "SWF_gcsr-2026-execsum-eng.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa011",
+      "query": "¿Qué tres Espacios de Conversación Sociojurídica acompañó la MAPP/OEA en el marco de las iniciativas de paz urbana?",
+      "fenomeno": 3,
+      "tipo": "estandar",
+      "result_found": true,
+      "ndcg_at_10": 1.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            0
+          ],
+          "returned_text": "A su vez, en la MDP entre el Gobierno nacional y el Estado Mayor Central de las FARC-EP se acordó fortalecer la participación directa de las organizaciones sociales respetando la autonomía, el pluralismo y el gobierno propio, así como avanzar en la construcción del “Acuerdo Especial para la Participación y Decisiones” y el “Protocolo de Participación”.\n\nLa MAPP/OEA continuó acompañando las iniciativas de Paz urbana, apoyando la formalización de los acercamientos exploratorios a través de la instalación de tres Espacios de Conversación Sociojurídica en Medellín y Valle de Aburrá, Quibdó y Buenaventura, espacios que tienen como objetivo lograr el sometimiento a la justicia y el desmantelamiento de estos grupos. Tanto en Buenaventura como en Medellín y Quibdó, las autoridades regionales y locales, salientes y electas, incluyeron en sus empalmes las agendas de paz y derechos humanos. Para la SG/OEA este escenario es una oportunidad para impulsar y asegurar la continuidad de acciones derivadas de los ECSJ, como la tregua entre Los Shottas y Los Espartanos en Buenaventura, y avanzar hacia la transformación de esos municipios."
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Asimismo, la Mesa de Diálogos de Paz reconoció la grave situación humanitaria que se vive en las cárceles y acordó la atención a personas privadas de la libertad del ELN mediante la concesión de alivios humanitarios para mejorar sus condiciones de reclusión, especialmente en materia de salud. Su implementación ha requerido del trabajo articulado entre la Oficina del Alto Comisionado para la Paz (OACP), el Ministerio de Justicia y del Derecho, el Instituto Nacional Penitenciario y Carcelario (INPEC) y la Gestoría de Paz de ELN, con el acompañamiento de la MAPP/OEA.\n\nPor otra parte, la OACP llevó a cabo acercamientos y conversaciones con máximos comandantes de las desmovilizadas Autodefensas Unidas de Colombia (AUC) para definir una hoja de ruta sobre los aportes que harán a la Política de Paz Total. Estrategia que incluye, entre otras acciones, la creación de mesas técnicas para hacer un balance del proceso de Justicia y Paz. La MAPP/OEA ha acompañado los acercamientos y ha puesto a disposición de la institucionalidad el conocimiento y la experiencia acumulada en este proceso desde 2004, y, a su vez, ha brindado asistencia metodológica para la estructuración de estos espacios."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "El Espacio de Conversación Socio Jurídica del Valle de Aburrá sesionó en la cárcel de Itagüí con la participación de las delegaciones del Gobierno nacional y de los GA⁶⁸, así como de la Iglesia Católica y la MAPP/OEA, en calidad de facilitadores y testigos. Uno de los objetivos de las sesiones consistió en la construcción de los protocolos para el funcionamiento del ECSJ y la definición de una agenda temática, que, una vez acordados, serán publicados para el conocimiento de la sociedad civil y los actores institucionales y políticos."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**9. JUSTICIA Y PAZ** Desde su llegada a Colombia, la MAPP/OEA ha acompañado y monitoreado la implementación\nde distintos mecanismos de justicia transicional que buscan dar garantía a los derechos de las víctimas en el marco de la consecución de la paz. A la fecha, la implementación de la Ley 975 de 2005 (Justicia y Paz) continúa siendo un componente relevante y a la vez un antecedente para lograr la consolidación de un marco integral de justicia transicional, que busque construir memoria y verdad, obtener justicia y reparación, y garantizar la participación y la no repetición.\n\nA 16 años de la expedición de la Ley de Justicia y Paz, se observa que el apoyo institucional al proceso ha decrecido, aun cuando en el marco de este permanece la expectativa de aproximadamente"
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "La MAPP/OEA en compañía del Ministerio del Interior y de Justicia, hizo presencia en las 43 comunidades de la zona de ubicación para comunicar los objetivos del proceso. El acompañamiento tuvo que construirse a partir de visitas continuas de los ofi ciales de la MAPP/OEA para contar el Mandato a las comunidades e ir ganando esa confi anza que luego permitió detectar en conjunto, el vacío de administración de justicia y para luego poder dar paso a Conciliemos. Al principio, la gente no confi aba en el proceso, para eso pasaron casi diez meses de continua relación con las comunidades. Al fi nal se logró hacer una amplia difusión de la pertinencia de la fi gura del conciliador, y las características y responsabilidades de la persona elegida, una vez posicionada en su cargo."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "La Sala Administrativa del Consejo Superior de la Judicatura, a través de la Escuela Judicial “Rodrigo Lara Bonilla”, se unió a la iniciativa de la Misión de Apoyo al Proceso de Paz en Colombia de la Organización de Estados Americanos (MAPP/OEA) y de la Comisión de Seguimiento a la Política Pública sobre Desplazamiento Forzado, para realizar conversatorios interinstitucionales regionales sobre restitución de tierras y territorios en las ciudades de Medellín, Cartagena, Cali, Cúcuta y Bogotá. Estos espacios de diálogo permitieron que los niveles regionales de la Unidad de Restitución de Tierras, la Procuraduría Delegada para Tierras y los Jueces y Magistrados de Restitución de Tierras discutieran temas jurídicos de gran profundidad para situaciones no previstas por la Ley de Víctimas y Restitución de Tierras, como por ejemplo el de los opositores que ostentan la calidad de víctimas, así como también temas de coordinación interinstitucional. Todas estas reflexiones se adelantaron en búsqueda de identificar las problemáticas que afronta el proceso de restitución según las dinámicas regionales de la tierra y los territorios.\n\nLa Sala Administrativa y en especial los Jueces y Magistrados de Restitución de Tierras participaron de forma activa en estos espacios de saberes y aprehendieron para su labor los conocimientos surgidos en estos conversatorios, que se ponen ahora a disposición de los lectores y que esperamos sean aprovechados de la mejor forma."
+        },
+        {
+          "rank": 7,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Durante el periodo del presente informe, la SG/OEA valora que la JEP ha desarrollado varias diligencias de diálogo interjurisdiccional en el marco del caso 002 “Situación en Tumaco, Ricaurte y Barbacoas” y el caso 005 “Situación territorial en la región del Norte del Cauca y sur del Valle del Cauca”. La MAPP/OEA ha acompañado seis de estos ejercicios con autoridades indígenas de los pueblos indígenas Awá, Nasa y Misak en los municipios de Ricaurte, Tumaco y Pasto, en el departamento de Nariño, y Caloto y Pitayó en el departamento del Cauca."
+        },
+        {
+          "rank": 8,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "|||de espacios comunales, canchas deportivas, el desarrollo de iniciativas ambientales y la generación de proyectos productivos, para lo cual conformaron comités barriales y equipos de jóvenes comunicadores.|\n|54||Se entiende por paz carcelaria todas aquellas acciones desarrolladas en establecimientos de reclusión encaminadas a generar escenarios de reconciliación, diálogo y transformación de conflictos y prácticas de justicia restaurativa que aporte a la construcción de una Paz Completa.|\n|55||INPEC (2023). “Insumos logros Institucionales Informe Semestral XXXV MAPP/OEA” Oficio 8100–DINPE-OFPLA.|\n|56||Las mesas de trabajo carcelario creadas por iniciativa de las PPL de diferentes ERON han tenido objetivos como aportar con iniciativas para el mejoramiento de las condiciones de reclusión, crear escenarios de diálogo, fortalecer la capacitación en transformación de conflictos, generar iniciativas de emprendimiento para tener oportunidades laborales una vez en libertad e implementar prácticas de justicia restaurativa. 18|"
+        },
+        {
+          "rank": 9,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Asimismo, se considera necesario fortalecer la armonización entre las sanciones propias, los Trabajos, Obras y Acciones con contenido Reparador (TOAR), el régimen de condicionalidad y el servicio comunitario para la paz de la Agencia para la Reincorporación y Normalización (ARN). Al respecto, la MAPP/OEA ha entregado a la JEP un documento que recoge reflexiones, percepciones, normativa y jurisprudencia aplicable en materia de sanciones propias que pueda servir a la JEP y específicamente a la Sección de Reconocimiento a tiempo de dictar dichas sanciones.\n\nAl respecto, la MAPP/OEA ha realizado una guía metodológica que está sirviendo a varias organizaciones sociales que utilizan dichas herramientas para presentar informes ante la Jurisdicción. Marzo de 2020.\n\nPor otro lado, la SG/OEA valora de manera positiva la apertura de once (11) Casas de la Verdad³⁵ por parte de la Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición (CEV), así como el inicio del despliegue de la Unidad de Búsqueda de Personas dadas por Desaparecidas (UBPD) con sus equipos territoriales³⁶.\n\nEn un trabajo cercano con la CEV, la MAPP/OEA ha desarrollado un modelo de transferencia de conocimiento basado en las reflexiones y aprendizajes recolectados durante más de 15 años de trabajo, acompañando y monitoreando la implementación de distintos mecanismos de justicia transicional como la Ley 975/2005 y la Ley 1448/2011."
+        },
+        {
+          "rank": 10,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Gobierno nacional en cada una de las Mesas de Diálogos de Paz (MDP) y los Espacios de Conversación Sociojurídica (ECSJ)."
+        }
+      ],
+      "predicted_sources": [
+        "MAPPOEA_xxxi-informe-semestral-mappoea.pdf",
+        "MAPPOEA_2008-una-experiencia-de-justicia-comunitaria-conciliemos.pdf",
+        "MAPPOEA_informe-semestral-36-mappoea-1.pdf"
+      ],
+      "relevant_sources": [
+        "MAPPOEA_informe-semestral-36-mappoea-1.pdf"
+      ],
+      "overlap_sources": [
+        "MAPPOEA_informe-semestral-36-mappoea-1.pdf"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa012",
+      "query": "¿Qué PBI, PBI por habitante, número de efectivos y presupuesto de defensa reporta el Atlas 2024 para Colombia?",
+      "fenomeno": 3,
+      "tipo": "numerico",
+      "result_found": true,
+      "ndcg_at_10": 0.24630238874073,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||||||Capítulo 13|| El presupuesto|COLOMBIA|||||||\n|||Presupuesto de defensa, 2024 (en miles de Pesos Colombianos)||Gastos de personal|Adquisición de bienes y servicios|Gasto corriente|Transferencias Corrientes|Otros gastos operativos*|Servicios de la deuda||Inversión||Total|\n|Nota: Fuente:|||de enero al 31 de diciembre de 2024, y Decretos de Liquidación 2022 y 2024. PBI: FMI, 3.822,05 Pesos Colombianos, enero 2024). El presupuesto considerado no incluye partidas de Policía Nacional.|Oficiales; Hospital Militar; Agencia Logística de las Fuerzas Militares; y Unidad Administrativa Especial de la Justicia Penal Militar y Policial.||la categoría otros incluye Dirección de Veteranos y Rehabilitación Inclusiva; Caja de Retiro de las Fuerzas Militares; Instituto Casas Fiscales del Ejército; Defensa Civil Colombiana; Club Militar de Elaboración propia en base a Ley 2342 por la cual se decreta el Presupuesto de Rentas y Recursos de Capital y Ley de Apropiaciones para la vigencia fiscal del 1o. 129|World Economic Outlook Database||||. Banco de la República (tipo de cambio: 1 US$ =|||"
+        },
+        {
+          "rank": 2,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            2
+          ],
+          "returned_text": "|ARGENTINA|BOLIVIA|BRASIL|CHILE|COLOMBIA|\n|Población: 45.773.900|Población: 12.388.600|Población: 216.422.400|Población: 19.629.600|Población: 52.085.200|\n|Extensión territorial: 2.780.400 km²|Extensión territorial: 1.098.580 km²|Extensión territorial: 8.515.770 km²|Extensión territorial: 756.700 km²|Extensión territorial: 1.140.620 km²|\n|PBI (en US$): 604.260.000.000|PBI (en US$): 49.334.000.000|PBI (en US$): 2.331.391.000.000|PBI (en US$): 333.760.000.000|PBI (en US$): 386.076.000.000|\n|PBI por habitante (en US$): 13.200|PBI por habitante (en US$): 3.982|PBI por habitante (en US$): 10.772|PBI por habitante (en US$): 17.002|PBI por habitante (en US$): 7.412|\n|Efectivos Fuerzas Armadas: 88.090|Efectivos Fuerzas Armadas: 15.368|Efectivos Fuerzas Armadas: 344.103|Efectivos Fuerzas Armadas: 67.146|Efectivos Fuerzas Armadas: 267.709|\n|Presupuesto de Defensa (en US$): 4.459.699.868|Presupuesto de Defensa (en US$): 474.685.054|Presupuesto de Defensa (en US$): 25.857.311.288|Presupuesto de Defensa (en US$): 2.345.824.000|Presupuesto de Defensa (en US$): 8.131.785.035|"
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "|Colombian Civil Defence|5,999,267,574 15|,373,932,800 1|,097,216,373 22||,470,416,747|\n|Offi cers Military Club|6,353,000,813|27,070,808,841||0|33,423,809,654|\n|Military Hospital|44,370,802,000|150,270,357,000|16,307,084,009||210,948,243,009|\n|Logistics Agency of the Armed Forces|9,952,309,796|983,062,556,539|16,935,000,000||1,009,949,866,335|\n|TOTAL 5,|340,751,716,922 7,1|05,817,700,320 1,5||89,994,806,175 14,036,564,223,417||"
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||||||Atlas Comparativo de la Defensa en América Latina y Caribe | Edición 2024||El Ministerio de Defensa Nacional||||||\n||AÑO DE CREACIÓN|*|MISIÓN||||||COMPETENCIAS||||"
+        }
+      ],
+      "predicted_sources": [
+        "RESDAL_atlas-2024-esp.pdf",
+        "RESDAL_atlas-2012-ing-completo.pdf",
+        "RESDAL_24-esp-paraguay.pdf"
+      ],
+      "relevant_sources": [
+        "RESDAL_13-esp-colombia.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa013",
+      "query": "What does SIPRI's report provide a comparative analysis of?",
+      "fenomeno": 3,
+      "tipo": "estandar",
+      "result_found": true,
+      "ndcg_at_10": 0.38685280723454163,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The Stockholm International Peace Research Insti- tute (SIPRI) is an independent international institute dedicated to research into conflict, armaments, arms control, and disarmament. Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources, to policymakers, research- ers, media and the interested public. SIPRI’s work in Africa spans several regions and tackles many cross-cutting themes—including security, govern- ance, conflict prevention, peacekeeping and peace- building."
+        },
+        {
+          "rank": 2,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            1
+          ],
+          "returned_text": "The world’s military burden—the share of global gross domestic product (GDP) devoted to military expenditure—went up from 2.4 per cent in 2024 to 2.5 per cent in 2025. The global average military expenditure as a share of government expenditure was 6.9 per cent in 2025, compared with 7.0 per cent in 2024, and world spending per person stood at $352 in 2025. Global military expenditure rose in 2025 despite a drop in spending by the United States, the world’s biggest spender. A sharp increase in European spending and continued growth in Asia and Oceania were more than enough to offset the decrease in US spending during the year. World military expenditure excluding the USA grew by 9.2 per cent in 2025. When peace is under threat, accurate information is more important than ever. SIPRI is an independent international institute dedicated to research into conflict, armaments, arms control and disarmament. Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources. Stockholm International Peace Research Institute SIPRI, Signalistgatan 9 SE-169 72 Solna Sweden Telephone/switchboard +46 8 655 97 00 The proliferation and misuse of spyware and other cyber-surveillance tools pose significant threats to human rights and national security. Export controls and sanctions are critical components of wider attempts to regulate the production and trade in these tools and to prevent exports that are likely to be misused. Further expansions in the use of sanctions and export controls have been encouraged by recent multilateral initiatives. However, export controls and sanctions are complex instruments, and to deploy these tools effectively, states require a deeper understanding of how they work and what they can and cannot achieve. This report reviews the content of the export controls and sanctions that have been applied to the trade in spyware and other cyber-surveillance tools. The analysis is supported by a detailed study of the types of spyware and other cyber-surveillance tools that have been captured by export controls and sanctions, and a mapping of the location of the companies that produce these tools."
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "An archive of national arms export reports is maintained by SIPRI at https://www.sipri.org/databases/ national-reports."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "© SIPRI 2026 DOI: https://doi.org/10.55163/HJGB6649\n\nAll rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted, in any form or by any means, without the prior permission in writing of SIPRI or as expressly permitted by law."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**This report is produced by the Center for Strategic and International Studies (CSIS), a private, tax-ex-** **empt institution focusing on international public policy issues. Its research is nonpartisan and nonpro-** **prietary. CSIS does not take specific policy positions. Accordingly, all views, positions, and conclusions** **expressed in this publication should be understood to be solely those of the author(s).**"
+        }
+      ],
+      "predicted_sources": [
+        "SIPRI_2025-11-19-xcept-policy-brief-sudanese-refugee-women-in-eastern-chad.pdf",
+        "SIPRI_2026-04-27-trends-world-military-expenditure-2025.json",
+        "SIPRI_2025-06-24-export-controls-and-spyware-enhancing-oversight-transparency-and-restraint.json"
+      ],
+      "relevant_sources": [
+        "SIPRI_2025-autonomous-weapon-systems-and-ai-enabled-decision-support-systems-military-targeting-.json"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    },
+    {
+      "query_id": "qa014",
+      "query": "¿Qué principios del derecho internacional humanitario examina SIPRI al analizar el sesgo en sistemas militares de IA?",
+      "fenomeno": 3,
+      "tipo": "cross_lingual",
+      "result_found": true,
+      "ndcg_at_10": 1.0,
+      "f1_at_3": 0.5,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 1.0,
+          "matched": true,
+          "matched_ground_truth_indices": [
+            0
+          ],
+          "returned_text": "Drawing from insights gained during an expert workshop convened by SIPRI, this report explores the implications of bias in military AI for compliance with international humanitarian law (IHL). The report first unpacks what ‘bias in military AI’ refers to and what its causes are. Then, focusing on bias in AI-enabled autonomous weapon systems and AI-enabled decision support systems used for targeting, it examines the implications of bias for compliance with IHL, particularly the principles of distinction, proportionality and precautions in attack. Then, it outlines technical, operational and institutional measures to address bias and strengthen IHL compliance. In closing, it outlines key findings and recommendations to states involved in military AI policy debates. 2. Bias in military AI: characterization, causes and concerns 3. Bias in military AI and compliance with the rules regulating the conduct of hostilities 4. Measures to address bias in military AI and ensure respect for IHL SIPRI is an independent international institute dedicated to research into conflict, armaments, arms control and disarmament. Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources. Stockholm International Peace Research Institute SIPRI, Signalistgatan 9 SE-169 72 Solna Sweden Telephone/switchboard +46 8 655 97 00"
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "알렉산더 블랜차드(Alexander Blanchard) 박사는 SIPRI 인공지능(AI) 거버넌스 프 로그램의 선임연구원이다. 인공지능의 군사적 응용 분야의 개발, 사용 및 통제와 관련된 문제들을 위주로 연구하고 있다.\n\n로라 브룬(Laura Bruun)은 SIPRI 인공지능 거버넌스 프로그램의 연구원이다. 새로 운 군사 기술, 특히 자율무기체계와 군사 AI가 국제인도법(IHL)의 준수 및 해석에 미치 는 영향을 중심으로 연구하고 있다. 브룬의 연구 주제에는 군사용 AI 시스템 내 편향이 IHL 준수에 미치는 영향과, 군사 AI의 개발 및 사용 과정에서 인간의 책임성을 어떻게 보장할 수 있는지가 있다.\n\n번역: 이대훈 ( 피스모모 평화/교육 연구소 소장) 검수: 김가연 ( 피스모모 리서치랩 실장)\n\nPEACEMOMO **피스모모** Signalistgatan 9 서울특별시 서대문구 연희로 41다길 48-12, 1층 SE-169 72 Solna, Sweden 전화: 02-6351-0904 Telephone: +46 8 655 97 00 이메일: office@peacemomo.org Email: sipri@sipri.org 홈페이지: www.peacemomo.org Internet: www.sipri.org © SIPRI 2025"
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Their impact will depend on governance choices—including how states manage data integrity, human oversight, interoperability and equitable access to digital capabilities. Used responsibly, these tools could improve record integrity, administrative efficiency and confidence in the peaceful use of biological research. SIPRI is an independent international institute dedicated to research into conflict, armaments, arms control and disarmament. Established in 1966, SIPRI provides data, analysis and recommendations, based on open sources. Stockholm International Peace Research Institute SIPRI, Signalistgatan 9 SE-169 72 Solna Sweden Telephone/switchboard +46 8 655 97 00"
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "지침 3000.09는 시스템이 '엄격한 하드웨어 및 소프트웨어 검증과 유효성 검사, 그리 고 현실적인 시스템 개발 및 운영 테스트 및 평가'를 거쳐야 하며, 공식 개발 및 배치 전 49 에 여러 국방부 고위 관계자의 승인을 받아야 한다고 규정합니다. 이 지침은 '자율 및 반자율 무기 시스템에서 인공지능 기능의 설계, 개발, 배포 및 사용은 국방부 인공지능 윤리 원칙 및 국방부의 책임 있는 AI S&I 경로와 일치해야 한다'고 명시적으로 요구합 50 니다. 2020년 2월에 채택된 국방부의 인공지능 윤리 원칙은 인공지능이 책임감 있고, 공정 51 하며, 추적 가능하고, 신뢰할 수 있으며, 관리 가능해야 한다고 명시합니다. 국방부의 책임 있는 AI S&I 경로는 6가지 기본 원칙을 제시하며, 그중 세 번째 원칙은 다음과 같습 니다. 목표는 'AI 제품 및 획득 수명주기 전반에 걸쳐 적절한 주의를 기울여 잠재적인 AI 위험을 AI 프로젝트 초기 단계부터 고려하고, 이러한 위험을 완화하거나 개선하고 의도 치 않은 결과 발생 가능성을 줄이는 동시에 국방부가 필요로 하는 속도로 AI 개발을 지"
+        }
+      ],
+      "predicted_sources": [
+        "SIPRI_2025-bias-military-artificial-intelligence-and-compliance-international-humanitarian-law.json",
+        "SIPRI_ko-laws-v.pdf",
+        "SIPRI_2026-preventing-biological-weapons-proliferation-operational-applications-emerging-technol.json"
+      ],
+      "relevant_sources": [
+        "SIPRI_2025-bias-military-artificial-intelligence-and-compliance-international-humanitarian-law.json"
+      ],
+      "overlap_sources": [
+        "SIPRI_2025-bias-military-artificial-intelligence-and-compliance-international-humanitarian-law.json"
+      ],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 1.0
+    },
+    {
+      "query_id": "qa015",
+      "query": "¿Qué PBI y presupuesto de defensa reporta el Atlas 2024 para Colombia y Brasil?",
+      "fenomeno": 3,
+      "tipo": "multi_documento",
+      "result_found": true,
+      "ndcg_at_10": 0.0,
+      "f1_at_3": 0.0,
+      "fragment_matches": [
+        {
+          "rank": 1,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||||||Capítulo 13|| El presupuesto|COLOMBIA|||||||\n|||Presupuesto de defensa, 2024 (en miles de Pesos Colombianos)||Gastos de personal|Adquisición de bienes y servicios|Gasto corriente|Transferencias Corrientes|Otros gastos operativos*|Servicios de la deuda||Inversión||Total|\n|Nota: Fuente:|||de enero al 31 de diciembre de 2024, y Decretos de Liquidación 2022 y 2024. PBI: FMI, 3.822,05 Pesos Colombianos, enero 2024). El presupuesto considerado no incluye partidas de Policía Nacional.|Oficiales; Hospital Militar; Agencia Logística de las Fuerzas Militares; y Unidad Administrativa Especial de la Justicia Penal Militar y Policial.||la categoría otros incluye Dirección de Veteranos y Rehabilitación Inclusiva; Caja de Retiro de las Fuerzas Militares; Instituto Casas Fiscales del Ejército; Defensa Civil Colombiana; Club Militar de Elaboración propia en base a Ley 2342 por la cual se decreta el Presupuesto de Rentas y Recursos de Capital y Ley de Apropiaciones para la vigencia fiscal del 1o. 129|World Economic Outlook Database||||. Banco de la República (tipo de cambio: 1 US$ =|||"
+        },
+        {
+          "rank": 2,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "The Brazilian AI Plan (PBIA), which is part of the country’s AI strategy, outlines the future roadmap to develop national AI capacities. With an allocated budget of BRL23bn (USD4.3bn) until 2028, approximately BRL1bn (USD180M) has been mobilized through FINEP and the National Bank for Economic and Social Devel- opment (BNDES). The objective is to finance projects with immediate impact, particularly those related to defense.\n\nUnder this plan significant investments were allocated to build the Santos Dumont supercomputer located at the National Laboratory for Scientific Computing (LNCC) and linked to the MCTI. This system is fundamental to support AI opera- tions of the Brazilian Air Force and the Navy. The system was modernized in 2019 to advance its processing capacity to 5.1 petaflops (quadrillions of operations per second) and is one of the region’s most powerful computers. The system is used for AI algorithm training, data analysis, and operational research.\n\nOverall, Brazil is Latin America’s biggest defense spender. In 2024, the country spent around BRL133bn (USD23.8bn) on defense. This, however, represents only\n\n1.1% of its GDP and puts the country behind Colombia (3%), Guyana (2.4%), Chile\n25 (1.9%), Uruguay (1.8%) and Ecuador (1.5%). Dedicated spending on defense AI is miniscule. The Air Force, for example, invested BRL6.5M (USD1.2M) in LabIA, while the Ministry of Defense allocated undisclosed sums to enable SISFRON (Army) and to integrate AI-enhanced predictive analysis into the Navy’s Amazon Blue Management System."
+        },
+        {
+          "rank": 3,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "|ARGENTINA|BOLIVIA|BRASIL|CHILE|COLOMBIA|\n|Población: 45.773.900|Población: 12.388.600|Población: 216.422.400|Población: 19.629.600|Población: 52.085.200|\n|Extensión territorial: 2.780.400 km²|Extensión territorial: 1.098.580 km²|Extensión territorial: 8.515.770 km²|Extensión territorial: 756.700 km²|Extensión territorial: 1.140.620 km²|\n|PBI (en US$): 604.260.000.000|PBI (en US$): 49.334.000.000|PBI (en US$): 2.331.391.000.000|PBI (en US$): 333.760.000.000|PBI (en US$): 386.076.000.000|\n|PBI por habitante (en US$): 13.200|PBI por habitante (en US$): 3.982|PBI por habitante (en US$): 10.772|PBI por habitante (en US$): 17.002|PBI por habitante (en US$): 7.412|\n|Efectivos Fuerzas Armadas: 88.090|Efectivos Fuerzas Armadas: 15.368|Efectivos Fuerzas Armadas: 344.103|Efectivos Fuerzas Armadas: 67.146|Efectivos Fuerzas Armadas: 267.709|\n|Presupuesto de Defensa (en US$): 4.459.699.868|Presupuesto de Defensa (en US$): 474.685.054|Presupuesto de Defensa (en US$): 25.857.311.288|Presupuesto de Defensa (en US$): 2.345.824.000|Presupuesto de Defensa (en US$): 8.131.785.035|"
+        },
+        {
+          "rank": 4,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "||en|de la|ATLAS COMPARATIVO|DEFENSA AMÉRICA LATINA y CARIBE|\n|---|---|---|---|---|\n|definiciones políticas|relaciones internacionales educación y carrera mujer, paz y seguridad|presupuestos gestión de riesgos marco legal|Edición 2024||\n\nEs un honor para mí, en mi condición de Presidente de la XVI Conferencia de Ministros de Defensa de las Américas, tener la oportunidad este año de presentarles una nueva y tan anhelada edición del Atlas Comparativo\n\nde la Defensa en América Latina y el Caribe elaborado por la Red de Seguridad y Defensa de América Latina."
+        },
+        {
+          "rank": 5,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "**Fuente:** Elaboración propia en base a Ministério do Planejamento e Orçamento, Presupuesto Anual 2024. FMI, *World Economic Outlook Database* (PBI, abril 2024). Banco Central do Brasil (tipo de cambio: 1 US$ = 4,891 Reales, enero 2024)."
+        },
+        {
+          "rank": 6,
+          "gain": 0.0,
+          "matched": false,
+          "matched_ground_truth_indices": [],
+          "returned_text": "Fuente: Elaboración propia en base a la información suministrada por las instituciones mencionadas y publicaciones oficiales de defensa. Ingreso a la academia: Colombia: Oficina Asesora de Planeación del Ministerio de Defensa, DINRE Armada y Jefatura de Personal de la Escuela de Aviación.\n\n**Capítulo 12:** Colombia"
+        }
+      ],
+      "predicted_sources": [
+        "DAIO_study2634-fragmented-efforts-joao-paulo-moralez-santiago-rivas.pdf",
+        "RESDAL_atlas-2024-esp.pdf",
+        "RESDAL_atlas-completo-2.pdf"
+      ],
+      "relevant_sources": [
+        "RESDAL_03-esp-elpresupuesto.pdf",
+        "RESDAL_13-esp-colombia.pdf"
+      ],
+      "overlap_sources": [],
+      "unresolved_doc_ids": [],
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0
+    }
+  ]
+}

@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -107,7 +108,7 @@ def load(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def load_extractor(model_name: str):
+def load_extractor(model_name: str, device: str = "auto"):
     try:
         from gliner2 import GLiNER2
     except ImportError as exc:
@@ -115,7 +116,29 @@ def load_extractor(model_name: str):
             "Falta GLiNER2. Instala las dependencias con "
             "python -m pip install -r requirements-grafo.txt"
         ) from exc
-    return GLiNER2.from_pretrained(model_name)
+    if device not in {"auto", "cpu", "cuda"}:
+        raise ValueError("device debe ser auto, cpu o cuda")
+    if device == "auto":
+        try:
+            import torch
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+        except ImportError:
+            device = "cpu"
+    if device == "cuda":
+        try:
+            import torch
+            if not torch.cuda.is_available():
+                raise RuntimeError("Se solicitó CUDA, pero no hay una GPU disponible.")
+        except ImportError as exc:
+            raise RuntimeError("Para usar CUDA se necesita PyTorch.") from exc
+    print(f"Dispositivo de inferencia: {device.upper()}", flush=True)
+    try:
+        return GLiNER2.from_pretrained(model_name, map_location=device), device
+    except Exception as exc:
+        if device != "cuda":
+            raise
+        print(f"CUDA no pudo cargar el modelo ({exc}); cambiando a CPU.", flush=True)
+        return GLiNER2.from_pretrained(model_name, map_location="cpu"), "cpu"
 
 
 def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -157,12 +180,19 @@ def extract(extractor: Any, body: str, threshold: float) -> tuple[list[dict[str,
     return entities, relations
 
 
-def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -> nx.MultiDiGraph:
+def build(
+    rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35,
+    progress_label: str = "Grafo",
+) -> nx.MultiDiGraph:
     graph = nx.MultiDiGraph(name="Polaris Knowledge Graph")
     counts = Counter()
     entity_index: dict[str, str] = {}
 
-    for row in rows:
+    total = len(rows)
+    next_progress = 5
+    started = time.perf_counter()
+    print(f"[{progress_label}] Registros a procesar: {total:,}", flush=True)
+    for row_number, row in enumerate(rows, 1):
         doc = text(row["doc_id"])
         chunk = text(row["chunk_id"])
         source = text(row.get("fuente") or row.get("source") or "unknown")
@@ -210,6 +240,19 @@ def build(rows: list[dict[str, Any]], extractor: Any, threshold: float = 0.35) -
                 doc_id=doc, chunk_id=chunk, confidence=item.get("confidence"),
             )
 
+        percent = row_number * 100 / total
+        while next_progress <= 100 and percent >= next_progress:
+            elapsed = max(time.perf_counter() - started, 1e-9)
+            rate = row_number / elapsed
+            print(
+                f"[{progress_label}] {next_progress}% | "
+                f"{row_number:,}/{total:,} chunks | "
+                f"{rate:,.1f} chunks/s | "
+                f"nodos={graph.number_of_nodes():,} aristas={graph.number_of_edges():,}",
+                flush=True,
+            )
+            next_progress += 5
+
     graph.graph.update(
         schema_version="2.0", extractor="GLiNER2", generative_models="false",
         **{f"stat_{key}": str(value) for key, value in counts.items()},
@@ -223,12 +266,13 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--model", default="fastino/gliner2-multi-v1")
     parser.add_argument("--threshold", type=float, default=0.35)
+    parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     args = parser.parse_args()
     if not 0 <= args.threshold <= 1:
         parser.error("--threshold debe estar entre 0 y 1")
 
-    extractor = load_extractor(args.model)
-    graph = build(load(args.metadata), extractor, args.threshold)
+    extractor, _ = load_extractor(args.model, args.device)
+    graph = build(load(args.metadata), extractor, args.threshold, "Grafo local")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix(args.output.suffix + ".tmp")
     nx.write_graphml(graph, temporary)

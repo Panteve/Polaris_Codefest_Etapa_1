@@ -48,6 +48,7 @@ def main() -> None:
     parser.add_argument("--configuracion", default=None, help="Procesa solo una carpeta, por ejemplo 01_bge_m3_corpus.")
     parser.add_argument("--model", default="fastino/gliner2-multi-v1")
     parser.add_argument("--threshold", type=float, default=0.35)
+    parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--salida", type=Path, default=None, help="Raíz alternativa para los GraphML.")
     args = parser.parse_args()
     if not 0 <= args.threshold <= 1:
@@ -59,14 +60,15 @@ def main() -> None:
     print(f"Modelo: {args.model}")
     print(f"Umbral: {args.threshold}")
     print("Cargando modelo...")
-    extractor = load_extractor(args.model)
+    extractor, device = load_extractor(args.model, args.device)
+    print(f"Dispositivo seleccionado: {device.upper()}")
 
     for number, config in enumerate(configs, 1):
         metadata = config / "metadata.jsonl"
         output = output_root / config.name / "grafo.graphml"
         print(f"[{number}/{len(configs)}] {config.name}")
         print(f"  metadata: {metadata}")
-        graph = build(load(metadata), extractor, args.threshold)
+        graph = build(load(metadata), extractor, args.threshold, config.name)
         write_graph(graph, output)
         print(f"  salida: {output}")
         print(f"  nodos={graph.number_of_nodes():,} aristas={graph.number_of_edges():,}")

@@ -1,0 +1,9 @@
+{
+  "name": "visor-recuperaciones-fase-4-1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Visor local de resultados de recuperacion para la fase 4.1",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
